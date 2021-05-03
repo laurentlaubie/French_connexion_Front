@@ -1,5 +1,8 @@
 // == Import npm
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+
+// == Import Locaux
 import Footer from 'src/components/Footer';
 import HomePageHeader from 'src/components/HomePageHeader';
 import SearchBar from 'src/components/SearchBar';
@@ -10,6 +13,8 @@ import ProfilesResults from 'src/components/ProfilesResults';
 import OtherPagesHeader from 'src/components/OtherPagesHeader';
 import MapResults from 'src/components/MapResults';
 import Profile from 'src/components/Profile';
+import Page404 from 'src/components/Page404';
+
 
 import SignIn from 'src/components/SignIn';
 import LogIn from 'src/components/LogIn';
@@ -22,29 +27,33 @@ import './styles.css';
 const App = () => (
   <div className="app">
     <img src={reactLogo} alt="react logo" />
-    <div>
-      HOME PAGE
-      <HomePageHeader />
-      <Explaination />
-      <HomePageMap />
-      <UsersReviews />
-      <SignIn />
-      <LogIn />
-      <Footer />
-    </div>
-    <div>
-      PAGE RESULTS
-      <OtherPagesHeader />
-      <SearchBar />
-      <ProfilesResults />
-      <MapResults />
-      <Profile />
-    </div>
-    <div>
-      PAGE PROFILE
-      <OtherPagesHeader />
-      <Profile />
-    </div>
+    <Switch>
+      <Route path="/" exact>
+        <HomePageHeader />
+        <Explaination />
+        <HomePageMap />
+        <UsersReviews />
+        <SignIn />
+        <LogIn />
+        <Footer />
+      </Route>
+      <Route path="/resultats" exact>
+        <OtherPagesHeader />
+        <SearchBar />
+        <ProfilesResults />
+        <MapResults />
+        <Profile />
+        <Footer />
+      </Route>
+      <Route path="/notre-reseau/utilisateur" exact>
+        <OtherPagesHeader />
+        <Profile />
+        <Footer />
+      </Route>
+      <Route>
+        <Page404 />
+      </Route>
+    </Switch>
   </div>
 );
 
