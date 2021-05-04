@@ -1,0 +1,58 @@
+@use 'src/styles/_vars';
+
+.profile__all {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  // border:1px solid black;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+
+
+  }
+}
+
+.profile__left {
+  width: 38%;
+}
+.profile__right {
+  width: 58%; 
+}
+
+.member {
+  box-shadow: 10px 5px 5px black;
+  border: solid gray 1px;
+  border-radius: 3%;
+  background-color: vars.$light-blue;
+  
+
+  &__image {
+    background-image: url("https://img.freepik.com/photos-gratuite/portrait-homme-blanc-isole_53876-40306.jpg?size=626&ext=jpg" );
+    background-position: center center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 10em;
+    width: 10em;
+    border-radius: 50%;
+    margin: auto;
+   
+  }
+
+  &__name {
+    font-weight: bolder;
+    padding-top: 2rem;
+  }
+  &__date {
+    color: rgb(235, 235, 235);
+    
+  }
+
+  &__infos {
+    padding-top: 2rem;
+  }
+
+
+}

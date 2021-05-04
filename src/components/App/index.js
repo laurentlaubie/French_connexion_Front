@@ -2,6 +2,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+// == Import style
+import 'semantic-ui-css/semantic.min.css';
+
+
 // == Import Locaux
 import Footer from 'src/components/Footer';
 import HomePageHeader from 'src/components/HomePageHeader';

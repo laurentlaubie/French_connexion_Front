@@ -1,0 +1,61 @@
+
+@use 'src/styles/_vars';
+
+.profile{
+  display:flex;
+  flex-direction:column
+}
+
+.card {
+  
+  box-shadow: 10px 5px 5px black;
+  border: solid gray 1px;
+  border-radius: 3%;
+  background-color: vars.$light-blue;
+
+  &__title {
+    font-weight: bold;
+    text-align: left;
+    padding-left: 5%;
+    padding-bottom: 5%;
+    padding-top: 5px;
+        
+  }
+}
+
+.about {
+
+  z-index:-1;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+
+    z-index:2;
+
+  }
+
+  &__description {
+    line-height: 2%;
+    text-align: left;
+    padding-left: 5%;
+  }
+}
+
+.hobbies {
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    border: 1px solid grey;
+    border-radius: 3px;
+    width: 45%;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+    background-color: vars.$light-red;
+    color: vars.$light-color
+  }
+
+}

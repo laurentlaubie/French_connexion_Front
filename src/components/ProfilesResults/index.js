@@ -4,7 +4,7 @@ import './profilesResults.scss';
 
 const ProfilesResults = () => (
   <div className="profilesResults">
-    Je suuis le component profilesResults
+    Je suis le component profilesResults
   </div>
 );
 
