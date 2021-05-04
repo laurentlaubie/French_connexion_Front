@@ -27,7 +27,7 @@ import './styles.css';
 // == Composant
 const App = () => (
   <div className="app">
-    <img src={reactLogo} alt="react logo" />
+   
     <Switch>
       <Route path="/" exact>
         <HomePageHeader />
@@ -39,8 +39,8 @@ const App = () => (
         <Footer />
       </Route>
       <Route path="/resultats" exact>
-        *<OtherPagesHeader />
-        {/*<SearchBar />*/}
+        <OtherPagesHeader />
+        <SearchBar />
         <ProfilesResults data={DataFile} />
         {/*<MapResults />*/}
         {/*<Profile />*/}

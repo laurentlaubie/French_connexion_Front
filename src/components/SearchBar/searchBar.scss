@@ -1,0 +1,24 @@
+.searchBar{
+  border-radius: 40px;
+  width: 80%;
+  margin: 8em auto auto;
+
+  &__input{
+    width: 100%;
+    padding-left: 1em;
+    border: none;
+    border-radius: 40px;
+    font-size: 1.25em;
+    height: 2.5em;
+    color: black;
+    background-color: #F0F0F0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .searchBar{
+    margin: 12em auto auto;
+    width: 60%;
+  }
+}

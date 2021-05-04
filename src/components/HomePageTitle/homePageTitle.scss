@@ -19,13 +19,14 @@
       position: absolute;
       top: 0;
       width: 100%;
-      
+      height: 10em;
+
     &__logo__mobile{
       display:none;
     }
     &__logo__desktop{
       display:block;
-      margin: 1em 1em;
+      margin: 2em 2em;
       width: 200px;
     }
      
