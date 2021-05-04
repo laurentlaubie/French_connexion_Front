@@ -1,5 +1,6 @@
 .navBar{
-  
+  position: fixed;
+  bottom:0;
   background-color: #C4C4C4;
   width: 100%;
   color:#000000;
@@ -10,10 +11,53 @@
     justify-content: space-around;
     flex-wrap: wrap;
     align-items:center;
+    position: relative;
+    z-index: 5;
     
+  }
+
+  &__Title{
+    margin-top: 0.3em;
+  }
+
+  &__Rounded{
+    display: none;
   }
 }
 
 .navBar li{
   width: 33%;
+}
+
+.navBar img{
+  display :block;
+  margin: auto;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+@media only screen and (min-width: 601px) {
+  .navBar {
+    position: fixed;
+    top: 5%;
+    bottom: unset;
+    right: 0;
+    width: 30%;
+
+    &__Title{
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+
+    &__Rounded{
+      display: block;
+      position: absolute;
+      left: -2em;
+      background-color: #c4c4c4;
+      color:#c4c4c4 ;
+      width: 4em;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
 }
