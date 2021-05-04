@@ -1,5 +1,19 @@
 .navBar{
-  position: absolute;
-  bottom: 0;
-  background-color: red;
+  
+  background-color: #C4C4C4;
+  width: 100%;
+  color:#000000;
+  text-align: center;
+  
+  &__List{
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items:center;
+    
+  }
+}
+
+.navBar li{
+  width: 33%;
 }
