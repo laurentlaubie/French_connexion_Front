@@ -41,8 +41,9 @@ const App = () => (
       <Route path="/resultats" exact>
         <OtherPagesHeader />
         <SearchBar />
+        <MapResults />
         <ProfilesResults data={DataFile} />
-        {/*<MapResults />*/}
+        
         {/*<Profile />*/}
     
         {/*<Footer />*/}

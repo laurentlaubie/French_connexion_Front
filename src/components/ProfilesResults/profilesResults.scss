@@ -1,0 +1,14 @@
+.profilesResults{
+  padding-bottom:5em;
+
+  
+  &__Title{
+    font-size: 1.75em;
+    width: 100%;
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+    height: 2em;
+    display: grid;
+    place-items: center;
+  }
+}

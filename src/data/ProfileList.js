@@ -17,5 +17,26 @@ export default [
     description: 'Je ne suis pas vraiment guide, mais je connais la region comme ma poche',
    
   },
+
+  {
+    id: 4,
+    name: 'Romain',
+    description: 'Je ne suis pas vraiment guide, mais je connais la region comme ma poche',
+   
+  },
+
+  {
+    id: 5,
+    name: 'Romain',
+    description: 'Je ne suis pas vraiment guide, mais je connais la region comme ma poche',
+   
+  },
+
+  {
+    id: 6,
+    name: 'Romain',
+    description: 'Je ne suis pas vraiment guide, mais je connais la region comme ma poche',
+   
+  },
   
 ]
