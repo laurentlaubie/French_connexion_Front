@@ -43,7 +43,10 @@
   }
 
   &__item:hover{
-    background-color:vars.$light-color;
+    
+    @media (min-width: vars.$breakpoint-tablet) {
+      background-color:vars.$light-color;
+    }
   }
 
   

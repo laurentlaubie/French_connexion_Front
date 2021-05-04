@@ -16,6 +16,7 @@ const HomePageHeader = () => (
     <NavBar />
     <HomePageTitle />
     <SearchBar />
+
   </div>
 );
 

@@ -2,11 +2,28 @@
 
 .homePageMap{
   // border:5px solid black;
-  width:70%;
-  height:800px;
-  // border:1px solid green;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position:center;
+  margin:auto;
+  margin-top:2rem;
 
-}
+  @media (min-width: vars.$max-width) {
+    width:vars.$max-width;
+  }
+
+  &__title{
+    font-size:1.5rem;
+    margin-top:5rem;
+    font-weight: bold;
+  }
+
+  &__image{
+    margin-top:5rem;
+    width:85%;
+
+    @media (min-width: vars.$max-width) {
+      width:vars.$max-width;
+    }
+  }
+
+
+  }
+
