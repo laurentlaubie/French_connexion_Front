@@ -21,6 +21,8 @@ import LogIn from 'src/components/LogIn';
 // == Import
 import './styles.css';
 
+import users from 'src/data/users';
+
 // == Composant
 const App = () => (
   <div className="app">
@@ -29,7 +31,7 @@ const App = () => (
         <HomePageHeader />
         <HomePageFonctionnalities />
         <HomePageMap />
-        <UsersReviews />
+        <UsersReviews users={users} />
         <SignIn />
         <LogIn />
         <Footer />
