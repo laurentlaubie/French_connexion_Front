@@ -5,9 +5,9 @@ import './navBar.scss';
 const NavBar = () => (
   <div className="navBar">
     <ul>
-      <li> Mon Profil/se connecter </li>
-      <li> Notre Réseau </li>
-      <li> Rechercher </li>
+      <li className="navBar__Profile"> Mon Profil/se connecter </li>
+      <li className="navBar__Network"> Notre Réseau </li>
+      <li className="navBar__Search"> Rechercher </li>
     </ul>
   </div>
 );

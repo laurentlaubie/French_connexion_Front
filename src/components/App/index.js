@@ -21,6 +21,7 @@ import LogIn from 'src/components/LogIn';
 
 // == Import
 import reactLogo from './react-logo.svg';
+import DataFile from 'src/data/ProfileList';
 import './styles.css';
 
 // == Composant
@@ -38,12 +39,13 @@ const App = () => (
         <Footer />
       </Route>
       <Route path="/resultats" exact>
-        <OtherPagesHeader />
-        <SearchBar />
-        <ProfilesResults />
-        <MapResults />
-        <Profile />
-        <Footer />
+        *<OtherPagesHeader />
+        {/*<SearchBar />*/}
+        <ProfilesResults data={DataFile} />
+        {/*<MapResults />*/}
+        {/*<Profile />*/}
+    
+        {/*<Footer />*/}
       </Route>
       <Route path="/notre-reseau/utilisateur" exact>
         <OtherPagesHeader />

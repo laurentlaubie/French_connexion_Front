@@ -2,9 +2,11 @@ import React from 'react';
 
 import './profile.scss';
 
-const Profile = () => (
+const Profile = ({id,name,description}) => (
   <div className="profile">
-    Je suis le composant Profile
+    <div className="profile__name">{name}</div>
+    <div className="profile__description">{description}</div>
+    
   </div>
 );
 
