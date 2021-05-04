@@ -2,4 +2,23 @@
 
 .usersReviews{
   background-color:vars.$light-red;
+  margin-top: 5rem;
+
+  &__title{
+    padding:2rem;
+    font-size:1.5rem;
+    font-weight: bold;
+    color:vars.$light-color;
+  }
+
+  &__list{
+    margin:auto;
+    display:flex;
+    flex-direction:row;
+    justify-content:center ;
+
+    @media (min-width: vars.$max-width) {
+      width:vars.$max-width;
+    }
+  }
 }

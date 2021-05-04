@@ -1,0 +1,43 @@
+@use 'src/styles/vars';
+
+.userReview{
+
+  margin: 2rem;
+  display:flex;
+  align-items: center;
+
+  &__image{
+    width:90px;
+
+  }
+
+  &__text{
+    padding-left:1rem;
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+
+    &__username{
+      color:vars.$light-color;
+      font-weight: bold;
+      font-size:1.2rem;
+      padding-bottom:0.4rem;
+
+    }
+  
+    &__city{
+      font-size:1rem;
+      padding-bottom:0.3rem;
+
+    }
+
+    &__country{
+      font-size:1rem;
+      font-style:italic;
+
+    }
+
+  }
+
+  
+}
