@@ -2,6 +2,8 @@ import React from 'react';
 import ProfileResult from 'src/components/ProfileResult';
 import './profilesResults.scss';
 
+
+
 const ProfilesResults = ({data}) => 
 {
 console.log(data);
@@ -18,5 +20,6 @@ console.log(data);
     </div>
   )
 }
+
 
 export default ProfilesResults;
