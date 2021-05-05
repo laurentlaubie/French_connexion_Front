@@ -9,6 +9,7 @@ console.log(name,description,role,localisation,created_at,hobbys);
 
 
   return(
+    <a href="/notre-reseau/utilisateur">
     <div className="profileCard">
       <div className="profileCard__FlexCard">
         <div className="profileCard__LeftCard">
@@ -33,6 +34,7 @@ console.log(name,description,role,localisation,created_at,hobbys);
         </ul>
       </div>
     </div>
+    </a>
   )
 }
 
