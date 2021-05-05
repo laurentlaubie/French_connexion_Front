@@ -8,13 +8,13 @@ import 'semantic-ui-css/semantic.min.css';
 
 // == Import Locaux
 import Footer from 'src/components/Footer';
+import Header from 'src/components/Header';
 import HomePageHeader from 'src/components/HomePageHeader';
 import SearchBar from 'src/components/SearchBar';
 import HomePageFonctionnalities from 'src/components/HomePageFonctionnalities';
 import HomePageMap from 'src/components/HomePageMap';
 import UsersReviews from 'src/components/UsersReviews';
 import ProfilesResults from 'src/components/ProfilesResults';
-import OtherPagesHeader from 'src/components/OtherPagesHeader';
 import MapResults from 'src/components/MapResults';
 import Profile from 'src/components/Profile';
 import Page404 from 'src/components/Page404';
@@ -30,6 +30,7 @@ import users from 'src/data/users';
 // == Composant
 const App = () => (
   <div className="app">
+    <Header />
     <Switch>
       <Route path="/" exact>
         <HomePageHeader />
@@ -41,19 +42,13 @@ const App = () => (
         <Footer />
       </Route>
       <Route path="/resultats" exact>
-        <OtherPagesHeader />
         <SearchBar />
         <div className="app__ResultDesktop">
           <MapResults />
           <ProfilesResults data={DataFile} />
         </div>
-        
-        {/*<Profile />*/}
-    
-        {/*<Footer />*/}
       </Route>
       <Route path="/notre-reseau/utilisateur" exact>
-        <OtherPagesHeader />
         <Profile />
         <Footer />
       </Route>
