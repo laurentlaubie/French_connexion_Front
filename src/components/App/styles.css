@@ -1,9 +1,16 @@
-.app {
-  width: 500px;
-  margin: 1em auto;
-  text-align: center;
+html,body {
+  /*height:100%;*/
 }
 
-.app img {
-  max-width: 150px;
+@media only screen and (min-width: 601px) {
+
+  .app__ResultDesktop{
+    display: flex;
+    height: 70vh;
+    border: 1px solid #000;
+    padding: 1em;
+    width: 99%;
+    margin: 1em auto;
+  }
+
 }

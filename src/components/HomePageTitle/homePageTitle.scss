@@ -1,0 +1,34 @@
+.homePageTitle{
+  
+
+  &__logo__desktop{
+    display:none;
+  }
+  &__logo__mobile{
+    position: relative;
+    top: 3%;
+    margin: auto;
+    width: 50px;
+    left: 40%;
+  }
+}
+
+  @media only screen and (min-width: 601px) { /* You can edit the max-width value to match what you need */
+    .homePageTitle{
+      background-color: #346e93;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 10em;
+
+    &__logo__mobile{
+      display:none;
+    }
+    &__logo__desktop{
+      display:block;
+      margin: 2em 2em;
+      width: 200px;
+    }
+     
+    }
+  }
