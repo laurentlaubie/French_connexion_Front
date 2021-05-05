@@ -5,8 +5,9 @@ import React from 'react';
 import './profilDescription.scss';
 
 const ProfileDescription = () => (
-
-  // ----- Description's Card -----
+  
+  // ----- informations Card -----
+  
   <div className="profile">
 
     <div className="card about">
@@ -28,6 +29,8 @@ const ProfileDescription = () => (
     </div>
 
   </div>
+
+
 );
 
 export default ProfileDescription;

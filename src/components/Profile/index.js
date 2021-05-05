@@ -1,9 +1,9 @@
 import React from 'react';
-//import { Card, Image, Flag } from 'semantic-ui-react';
 
 // == import local
 import ProfileDescription from 'src/components/ProfilDescription';
 import ContactMe from 'src/components/ContactMe';
+import UserInfos from 'src/components/UserInfos';
 
 
 // == import style 
@@ -26,6 +26,7 @@ const Profile = () => (
           <div className="member__infos">Massy-Palaiseau, France</div>
         </div>
         <ContactMe />
+        <UserInfos />
       </div>
       <div className="profile__right">
         <ProfileDescription />
