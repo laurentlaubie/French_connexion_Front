@@ -5,6 +5,7 @@ import ProfileDescription from 'src/components/ProfilDescription';
 import ContactMe from 'src/components/ContactMe';
 import UserInfos from 'src/components/UserInfos';
 import Services from 'src/components/Services';
+import ResidentMap from 'src/components/ResidentMap';
 
 
 // == import style 
@@ -17,7 +18,7 @@ const Profile = () => (
 
   <div className="profile">
 
-    <h2 className="profile__title"> Mon profil </h2>
+    <div className="profile__title"> Mon profil </div>
     <div className="profile__all">
       <div className="profile__left">
         <div className="member">
@@ -28,6 +29,7 @@ const Profile = () => (
           <div className="member__infos">Massy-Palaiseau, France</div>
         </div>
         <ContactMe />
+       <ResidentMap />
         <UserInfos />
       </div>
       <div className="profile__right">

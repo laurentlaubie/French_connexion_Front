@@ -9,7 +9,7 @@ const UserInfos = () => (
 
   // ----- Description's Card -----
 
-<div className="userInfos">
+<div className="userinfos">
   <div className="card infos">
     <div className="card__title">Mes informations personnelles </div>
       <div className="info__list">
