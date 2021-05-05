@@ -1,13 +1,72 @@
 @use 'src/styles/vars';
 
 .homePageHeader{
-  // border:5px solid black;
-  width:95%;
-  height:1000px;
   // border:1px solid green;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position:center;
-  border:1px solid green;
+  position : relative;
+  top:2rem;
+  width:100%;
+  height:100%;
+  margin:auto;
+  // margin-bottom:3rem;
+  // border:1px solid green;
+  
+  // border:1px solid green;
 
+
+
+  @media (min-width: vars.$max-width) {
+    width: vars.$max-width;
+    
+  }
+
+  &__image{
+    margin-left:-1rem;
+    width:100%;
+    // border:2px solid red;
+
+    img{
+      width:100%;
+      margin:3rem;
+    }
+  }
+
+  &__content{
+    font-size:2.5rem;
+    position: absolute;
+    top:5%;
+    padding:5rem;
+    text-align: left;
+    // border:1px solid red;
+
+    @media(min-width: vars.$breakpoint-tablet) {
+      font-size:5rem;
+      top:10%;
+    }
+
+    &__title{
+      font-size:1em;
+      text-shadow: 1px 1px 1px black;
+
+    }
+
+    &__subtitle{
+      font-size:0.6em;
+      padding-left:10rem;
+
+      span{
+        color:vars.$light-red;
+      }
+    }
+  }
+
+  &__searchbar{
+    width:100%;
+    position: absolute;
+    top:50%;
+  
+    @media(min-width: vars.$breakpoint-tablet) {
+      top:40%;
+    }
+  } 
 }
+
