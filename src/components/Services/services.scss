@@ -1,10 +1,23 @@
 @use 'src/styles/_vars';
 
+.card {
+  
+  border: solid gray 1px;
+  background-color: vars.$light-blue;
+  
+}
 
 .services {
+  
 
-  padding-top: 10px;
+  @media (min-width: vars.$breakpoint-tablet) {
 
+    width: 90%;
+
+  }
+
+  margin-top: 10px;
+  
   &__list {
     display: flex;
     align-items: center;

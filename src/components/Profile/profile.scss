@@ -5,7 +5,8 @@
   flex-direction:column;
   align-items: center;
   // border:1px solid black;
-  margin-top: -140px;
+  width: 90%;
+  margin: auto;
 
   @media (min-width: vars.$breakpoint-tablet) {
     flex-direction: row;
@@ -20,23 +21,23 @@
 .profile__title {
 
 padding-top: 6em;
-text-align: left;
-padding-left: 8em;
+text-align: center;
+width: 100%;
 }
 
 .profile__left {
-  width: 38%;
   margin-right: 10em;
   margin-left: 10em;
+  width: 100%;
 }
 .profile__right {
-  width: 58%; 
+  width: 100%; 
 }
 
+
 .member {
-  box-shadow: 10px 5px 5px black;
+  
   border: solid gray 1px;
-  border-radius: 30px;
   background-color: vars.$light-blue;
   margin-top: 10rem;
   

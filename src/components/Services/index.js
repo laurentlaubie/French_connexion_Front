@@ -8,8 +8,8 @@ const Services = () => (
   
   // ----- informations Card -----
   
-  <div className="services">
-    <div className="card services">
+  <div className="card services">
+    <div className="card__services">
       <div className="card__title">Mes services > </div>
       <div className="services__list">
         <div className="services__item">Traduction</div>

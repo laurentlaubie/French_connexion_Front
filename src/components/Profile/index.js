@@ -17,7 +17,7 @@ const Profile = () => (
 
   <div className="profile">
 
-    <h2 className="profile__title"> Mon profil (ou nom et prénom mode visite) </h2>
+    <h2 className="profile__title"> Mon profil </h2>
     <div className="profile__all">
       <div className="profile__left">
         <div className="member">
