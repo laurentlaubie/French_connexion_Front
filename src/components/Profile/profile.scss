@@ -5,14 +5,23 @@
   flex-direction:column;
   align-items: center;
   // border:1px solid black;
+  margin-top: -140px;
 
   @media (min-width: vars.$breakpoint-tablet) {
     flex-direction: row;
     justify-content: space-between;
     align-items: start;
+   margin-top: -120px;
 
 
   }
+}
+
+.profile__title {
+
+padding-top: 6em;
+text-align: left;
+padding-left: 8em;
 }
 
 .profile__left {
@@ -62,5 +71,8 @@
     padding-bottom: 1rem;
   }
 
+    &__update {
+      padding-top: 0.5rem;
+    }
 
 }

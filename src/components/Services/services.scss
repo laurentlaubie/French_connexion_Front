@@ -1,0 +1,28 @@
+@use 'src/styles/_vars';
+
+
+.services {
+
+  padding-top: 10px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+  }
+
+  &__item {
+    border: 1px solid grey;
+    border-radius: 20px;
+    width: 45%;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+    background-color: vars.$dark-blue;
+    color: vars.$light-color
+  }
+
+
+
+}
