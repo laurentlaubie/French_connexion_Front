@@ -1,5 +1,5 @@
 import React from 'react';
-import Profile from 'src/components/Profile';
+import ProfileResult from 'src/components/ProfileResult';
 import './profilesResults.scss';
 
 const ProfilesResults = ({data}) => 
@@ -12,7 +12,7 @@ console.log(data);
       <h1 className="profilesResults__Title">6 profils trouvés</h1>
      <ul className="profilesResults__List">
        <li>
-       {data.map((profileData) => <Profile key={profileData.id} {...profileData} />)}
+       {data.map((profileData) => <ProfileResult key={profileData.id} {...profileData} />)}
        </li>
      </ul>
     </div>
