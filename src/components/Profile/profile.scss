@@ -17,6 +17,8 @@
 
 .profile__left {
   width: 38%;
+  margin-right: 10em;
+  margin-left: 10em;
 }
 .profile__right {
   width: 58%; 
@@ -25,8 +27,9 @@
 .member {
   box-shadow: 10px 5px 5px black;
   border: solid gray 1px;
-  border-radius: 3%;
+  border-radius: 30px;
   background-color: vars.$light-blue;
+  margin-top: 10rem;
   
 
   &__image {
