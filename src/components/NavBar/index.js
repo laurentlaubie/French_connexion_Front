@@ -11,22 +11,26 @@ const NavBar = ({ isConnected }) => (
   <div className="navBar">
     <div className="navBar__rounded">.</div>
     <ul className="navBar__list">
-      <li className="navBar__item">
+      <li className={isConnected ? 'navBar__item__hidden' : 'navBar__item'}>
+        <img className="navBar__item__image" src={profile} alt="Logo profil" />
+        <div className="navBar__item__title"> Se connecter </div>
+      </li>
+      <li className={isConnected ? 'navBar__item' : 'navBar__item__hidden'}>
         <NavLink to="/mon-profil">
-          <img src={profile} alt="Logo profil" />
-          <div className="navBar__title"> { (isConnected) ? 'Mon Profil' : 'Se connecter' } </div>
+          <img className="navBar__item__image" src={profile} alt="Logo profil" />
+          <div className="navBar__item__title"> Mon profil </div>
         </NavLink>
       </li>
       <li className="navBar__item">
         <NavLink to="/notre-reseau">
-          <img src={network} alt="Logo reseau" />
-          <div className="navBar__title"> Notre Réseau  </div>
+          <img className="navBar__item__image" src={network} alt="Logo reseau" />
+          <div className="navBar__item__title"> Notre Réseau  </div>
         </NavLink>
       </li>
       <li className="navBar__item">
         <NavLink to="/">
-          <img src={search} alt="Logo recherche" />
-          <div className="navBar__title"> Rechercher  </div>
+          <img className="navBar__item__image" src={search} alt="Logo recherche" />
+          <div className="navBar__item__title"> Rechercher  </div>
         </NavLink>
       </li>
     </ul>

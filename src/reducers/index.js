@@ -1,7 +1,7 @@
 import { CLOSE_SIGN_IN } from 'src/actions';
 
 const initialState = {
-  isConnected: true,
+  isConnected: false,
   isSignInOpen: true,
 };
 
