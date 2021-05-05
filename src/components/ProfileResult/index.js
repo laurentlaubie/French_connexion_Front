@@ -17,4 +17,4 @@ const ProfileResult = ({id,name,description}) => (
   </div>
 );
 
-export default Profile;
+export default ProfileResult;
