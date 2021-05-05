@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './navBar.scss';
 import network from 'src/assets/pictures/network.png';
@@ -8,11 +9,26 @@ import search from 'src/assets/pictures/search.png';
 const NavBar = () => (
   
   <div className="navBar">
-    <div className="navBar__Rounded">.</div>
-    <ul className="navBar__List">
-      <li className="navBar__Profile"> <img src={profile} /> <div className="navBar__Title"> Mon Profil  </div> </li>
-      <li className="navBar__Network"> <img src={network} /> <div className="navBar__Title"> Notre Réseau </div> </li>
-      <li className="navBar__Search"> <img src={search} /> <div className="navBar__Title"> Rechercher </div> </li>
+    <div className="navBar__rounded">.</div>
+    <ul className="navBar__list">
+      <li className="navBar__item">
+        <NavLink to="/mon-profil">
+          <img src={profile} alt="Logo profil" />
+          <div className="navBar__title"> Mon Profil  </div>
+        </NavLink>
+      </li>
+      <li className="navBar__item">
+        <NavLink to="/notre-reseau">
+          <img src={network} alt="Logo reseau" />
+          <div className="navBar__title"> Notre Réseau  </div>
+        </NavLink>
+      </li>
+      <li className="navBar__item">
+        <NavLink to="/">
+          <img src={search} alt="Logo recherche" />
+          <div className="navBar__title"> Rechercher  </div>
+        </NavLink>
+      </li>
     </ul>
   </div>
 );

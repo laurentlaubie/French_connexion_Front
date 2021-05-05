@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .navBar{
   z-index: 50;
   position: fixed;
@@ -7,27 +9,24 @@
   color:#000000;
   text-align: center;
   
-  &__List{
+  &__list{
     display:flex;
     justify-content: space-around;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items:center;
     position: relative;
     z-index: 5;
     
   }
 
-  &__Title{
+  &__title{
     margin-top: 0.3em;
+    font-size:0.8rem;
   }
 
-  &__Rounded{
+  &__rounded{
     display: none;
   }
-}
-
-.navBar li{
-  width: 33%;
 }
 
 .navBar img{
@@ -43,14 +42,14 @@
     top: 5%;
     bottom: unset;
     right: 0;
-    width: 30%;
+    width: 35%;
 
-    &__Title{
+    &__title{
       margin-top: 0.5em;
       margin-bottom: 0.5em;
     }
 
-    &__Rounded{
+    &__rounded{
       display: block;
       position: absolute;
       left: -2em;
@@ -60,5 +59,12 @@
       height: 100%;
       border-radius: 50%;
     }
+  }
+
+}
+
+@media only screen and (min-width: vars.$max-width) {
+  .navBar {
+    width:420px;
   }
 }
