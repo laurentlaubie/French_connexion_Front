@@ -18,12 +18,14 @@ import OtherPagesHeader from 'src/components/OtherPagesHeader';
 import MapResults from 'src/components/MapResults';
 import Profile from 'src/components/Profile';
 import Page404 from 'src/components/Page404';
+import ProfilesCards from 'src/components/ProfilesCards';
 
 import SignIn from 'src/components/SignIn';
 import LogIn from 'src/components/LogIn';
 
 // == Import
 import DataFile from 'src/data/ProfileList';
+import DataProfile from 'src/data/DataProfile';
 import './styles.css';
 import users from 'src/data/users';
 
@@ -56,6 +58,11 @@ const App = () => (
         <OtherPagesHeader />
         <Profile />
         <Footer />
+      </Route>
+      <Route path="/notre-reseau" exact>
+      <OtherPagesHeader />
+      <SearchBar />
+      <ProfilesCards networkProfiles = {DataProfile} />
       </Route>
       <Route>
         <Page404 />
