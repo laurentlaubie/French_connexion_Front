@@ -41,8 +41,10 @@ const App = () => (
       <Route path="/resultats" exact>
         <OtherPagesHeader />
         <SearchBar />
-        <MapResults />
-        <ProfilesResults data={DataFile} />
+        <div className="app__ResultDesktop">
+          <MapResults />
+          <ProfilesResults data={DataFile} />
+        </div>
         
         {/*<Profile />*/}
     

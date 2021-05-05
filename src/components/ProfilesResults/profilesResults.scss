@@ -12,3 +12,26 @@
     place-items: center;
   }
 }
+
+@media only screen and (min-width: 601px) {
+
+  .profilesResults{
+    //display:flex;
+    margin-top: 3em;
+    width: 50%;
+    
+    
+    padding-bottom:0em;
+
+  &__Title{
+    
+    height: 4em;
+    border-top: solid black 0px;
+    border-bottom: solid black 0px;
+  }
+  &navBar__List{
+    overflow-y: scroll;
+  }
+}
+
+}
