@@ -1,5 +1,5 @@
 import React from 'react';
-import HomePageTitle from 'src/components/HomePageTitle';
+import Banner from 'src/components/Banner';
 import NavBar from 'src/components/NavBar';
 
 import './header.scss';
@@ -7,7 +7,7 @@ import './header.scss';
 const Header = () => (
   <div className="header">
     <NavBar />
-    <HomePageTitle />
+    <Banner />
   </div>
 );
 

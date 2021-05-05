@@ -1,6 +1,6 @@
 @use 'src/styles/vars';
 
-.homePageTitle{
+.banner{
   
 
   &__logo__desktop{
@@ -16,7 +16,7 @@
 }
 
   @media only screen and (min-width: 601px) { /* You can edit the max-width value to match what you need */
-    .homePageTitle{
+    .banner{
       background-color: #346e93;
       position: absolute;
       top: 0;

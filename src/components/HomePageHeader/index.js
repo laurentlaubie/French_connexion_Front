@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HomePageTitle from 'src/components/HomePageTitle';
+// import HomePageTitle from 'src/components/HomePageTitle';
 import NavBar from 'src/components/NavBar';
 import SearchBar from 'src/components/SearchBar';
 
@@ -14,7 +14,7 @@ const HomePageHeader = () => (
     style={{ backgroundImage: `url(${header1})` }}
   >
     <NavBar />
-    <HomePageTitle />
+    {/* <HomePageTitle /> */}
     <SearchBar />
 
   </div>
