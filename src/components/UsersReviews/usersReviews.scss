@@ -3,6 +3,9 @@
 .usersReviews{
   background-color:vars.$light-red;
   margin-top: 5rem;
+  // padding: 2rem;
+  // border:1px solid blue;
+  
 
   &__title{
     padding:2rem;
@@ -14,11 +17,19 @@
   &__list{
     margin:auto;
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     justify-content:center ;
+    flex-wrap: wrap;
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      flex-direction:row;
+    }
 
     @media (min-width: vars.$max-width) {
       width:vars.$max-width;
     }
+
+
   }
+
 }

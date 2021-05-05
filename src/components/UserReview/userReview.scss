@@ -2,14 +2,30 @@
 
 .userReview{
 
-  margin: 2rem;
+  // margin-left:2rem;
   display:flex;
+  flex-direction: row;
   align-items: center;
+  // border:1px solid red;
+  // padding-bottom:2rem;
+  // border:1px solid blue;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    flex-direction:column;
+  }
+
+  @media (min-width: vars.$breakpoint-desktop) {
+    flex-direction:row;
+  }
 
   &__image{
     width:90px;
 
   }
+
+  // &:first-child{
+  //   padding-left:5rem;
+  // }
 
   &__text{
     padding-left:1rem;
