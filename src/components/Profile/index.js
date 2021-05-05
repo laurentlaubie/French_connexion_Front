@@ -9,11 +9,13 @@ import ContactMe from 'src/components/ContactMe';
 // == import style 
 import './profile.scss';
 
+
 const Profile = () => (
 
   // ----- Profil's Card -----
 
   <div className="profile">
+
     <h2 className="profile__title"> Mon profil</h2>
     <div className="profile__all">
       <div className="profile__left">
@@ -29,6 +31,7 @@ const Profile = () => (
         <ProfileDescription />
       </div>
     </div>
+
   </div>
 );
 
