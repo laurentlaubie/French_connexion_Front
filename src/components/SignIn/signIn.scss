@@ -1,0 +1,88 @@
+@use 'src/styles/vars';
+
+.signIn{
+
+  &__modal{
+    background-color:vars.$light-color;
+    width:50%;
+    top:25%;
+    left:25%;
+    padding-bottom:2rem;
+    border-radius:2rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    // position:relative;
+    position:fixed;
+    
+
+
+    @media (min-width: vars.$breakpoint-tablet){
+      width: 50%;
+    }
+
+    &__closeButton {
+      position:absolute;
+      top:1.7rem;
+      right:1.7rem;
+      border-radius:50%;
+      width:2.5rem;
+      height:2.5rem;
+      background-color:vars.$light-red;
+      border:none;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      font-size:1.5rem;
+      color:white;
+
+    }
+
+    &__title{
+      
+      padding:6rem 0 2rem;
+      width:70%;
+      margin:auto;
+      font-size:1.5rem;
+
+      @media (min-width: vars.$breakpoint-tablet){
+        font-size:1.8rem;
+      }
+    }
+
+
+
+    &__form{
+      display:flex;
+      flex-direction:column;
+
+      &__field{
+        border: none;
+        box-shadow: none;
+        border-bottom: 1px solid black;
+        display:block;
+        padding-bottom: 1rem;
+        padding-left: 1rem;
+        width:70%;
+        margin:1rem auto;
+      
+      }
+
+      &__button{
+        width:40%;
+        margin: 2rem auto;
+        background-color:vars.$light-red;
+        border:none;
+        padding:0.5rem;
+        color:vars.$light-color;
+        border-radius:0.5rem;
+        font-weight:bold;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+        @media (min-width: vars.$breakpoint-tablet){
+          width: 30%;
+        }
+
+      }
+      
+    }
+
+  }
+
+}
