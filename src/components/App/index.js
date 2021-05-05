@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import Footer from 'src/components/Footer';
 import HomePageHeader from 'src/components/HomePageHeader';
 import SearchBar from 'src/components/SearchBar';
-import Explaination from 'src/components/Explaination';
+import HomePageFonctionnalities from 'src/components/HomePageFonctionnalities';
 import HomePageMap from 'src/components/HomePageMap';
 import UsersReviews from 'src/components/UsersReviews';
 import ProfilesResults from 'src/components/ProfilesResults';
@@ -15,25 +15,23 @@ import MapResults from 'src/components/MapResults';
 import Profile from 'src/components/Profile';
 import Page404 from 'src/components/Page404';
 
-
 import SignIn from 'src/components/SignIn';
 import LogIn from 'src/components/LogIn';
 
 // == Import
-import reactLogo from './react-logo.svg';
 import DataFile from 'src/data/ProfileList';
 import './styles.css';
+import users from 'src/data/users';
 
 // == Composant
 const App = () => (
   <div className="app">
-   
     <Switch>
       <Route path="/" exact>
         <HomePageHeader />
-        <Explaination />
+        <HomePageFonctionnalities />
         <HomePageMap />
-        <UsersReviews />
+        <UsersReviews users={users} />
         <SignIn />
         <LogIn />
         <Footer />

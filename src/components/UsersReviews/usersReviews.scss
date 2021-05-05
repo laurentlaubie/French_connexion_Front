@@ -1,0 +1,35 @@
+@use 'src/styles/vars';
+
+.usersReviews{
+  background-color:vars.$light-red;
+  margin-top: 5rem;
+  // padding: 2rem;
+  // border:1px solid blue;
+  
+
+  &__title{
+    padding:2rem;
+    font-size:1.5rem;
+    font-weight: bold;
+    color:vars.$light-color;
+  }
+
+  &__list{
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center ;
+    flex-wrap: wrap;
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      flex-direction:row;
+    }
+
+    @media (min-width: vars.$max-width) {
+      width:vars.$max-width;
+    }
+
+
+  }
+
+}
