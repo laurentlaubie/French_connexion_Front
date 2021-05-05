@@ -19,8 +19,8 @@ import SignIn from 'src/components/SignIn';
 import LogIn from 'src/components/LogIn';
 
 // == Import
+import DataFile from 'src/data/ProfileList';
 import './styles.css';
-
 import users from 'src/data/users';
 
 // == Composant
@@ -39,10 +39,14 @@ const App = () => (
       <Route path="/resultats" exact>
         <OtherPagesHeader />
         <SearchBar />
-        <ProfilesResults />
-        <MapResults />
-        <Profile />
-        <Footer />
+        <div className="app__ResultDesktop">
+          <MapResults />
+          <ProfilesResults data={DataFile} />
+        </div>
+        
+        {/*<Profile />*/}
+    
+        {/*<Footer />*/}
       </Route>
       <Route path="/notre-reseau/utilisateur" exact>
         <OtherPagesHeader />
