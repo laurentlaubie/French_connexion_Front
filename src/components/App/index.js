@@ -19,7 +19,7 @@ import MapResults from 'src/components/MapResults';
 import Profile from 'src/components/Profile';
 import Page404 from 'src/components/Page404';
 
-import SignIn from 'src/components/SignIn';
+import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/components/LogIn';
 
 // == Import
@@ -31,13 +31,13 @@ import users from 'src/data/users';
 const App = () => (
   <div className="app">
     <Header />
+    <SignIn />
     <Switch>
       <Route path="/" exact>
         <HomePageHeader />
         <HomePageFonctionnalities />
         <HomePageMap />
         <UsersReviews users={users} />
-        <SignIn />
         <LogIn />
         <Footer />
       </Route>
