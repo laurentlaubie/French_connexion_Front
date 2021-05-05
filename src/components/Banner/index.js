@@ -7,8 +7,12 @@ import LogoDesktop from 'src/assets/pictures/logo_desktop.png';
 const Banner = () => (
 
   <div className="banner">
-    <img src={LogoMobile} className="banner__logo__mobile" />
-    <img src={LogoDesktop} className="banner__logo__desktop" />
+    {/* <div className="banner__logo__mobile">
+      <img src={LogoMobile} alt="logo French Connection" />
+    </div> */}
+    <div className="banner__logo__desktop">
+      <img src={LogoDesktop} alt="logo French Connection" />
+    </div>
   </div>
 );
 
