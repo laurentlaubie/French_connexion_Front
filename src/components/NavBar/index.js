@@ -1,20 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './navBar.scss';
 import network from 'src/assets/pictures/network.png';
 import profile from 'src/assets/pictures/profile.png';
 import search from 'src/assets/pictures/search.png';
 
-const NavBar = () => (
-  
+const NavBar = ({ isConnected }) => (
   <div className="navBar">
     <div className="navBar__rounded">.</div>
     <ul className="navBar__list">
       <li className="navBar__item">
         <NavLink to="/mon-profil">
           <img src={profile} alt="Logo profil" />
-          <div className="navBar__title"> Mon Profil  </div>
+          <div className="navBar__title"> { (isConnected) ? 'Mon Profil' : 'Se connecter' } </div>
         </NavLink>
       </li>
       <li className="navBar__item">
@@ -33,5 +33,8 @@ const NavBar = () => (
   </div>
 );
 
-export default NavBar;
+NavBar.propTypes = {
+  isConnected: PropTypes.bool.isRequired,
+};
 
+export default NavBar;

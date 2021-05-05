@@ -5,7 +5,7 @@ import NavBar from 'src/components/NavBar';
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
-  // propName:  valueFromTheState,
+  isConnected: state.isConnected,
 });
 
 // connection de props fonctions qui déclenchent des actions

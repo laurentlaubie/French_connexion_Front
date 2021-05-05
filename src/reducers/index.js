@@ -1,5 +1,5 @@
 const initialState = {
-  isConnected: false,
+  isConnected: true,
 };
 
 export default (state = initialState, action = {}) => {

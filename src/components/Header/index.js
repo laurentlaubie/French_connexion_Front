@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from 'src/components/Banner';
-import NavBar from 'src/components/NavBar';
+import NavBar from 'src/containers/NavBar';
 
 import './header.scss';
 
