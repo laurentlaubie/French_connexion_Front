@@ -4,10 +4,14 @@ import React from 'react';
 import './modifyProfile.scss';
 
 
-const ModifyProfile = () => (
+const ModifyProfile = ({dataHobbies, dataServices }) => {
 
   // ----- modify my profil page -----
 
+  console.log(dataHobbies);
+  console.log(dataServices);
+
+  return(
   <div className="modifyprofile">
     <h2 className="modifyprofile__title">Modifier mon profil </h2>
       <div className="modifyprofile__allinfos">
@@ -31,7 +35,8 @@ const ModifyProfile = () => (
         </div>
       </div>
   </div>
-);
+  )
+};
 
 
 

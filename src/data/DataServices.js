@@ -1,39 +1,39 @@
 export default [
   {
     id: 1,
-    hobby: 'Hébergement',
+    service: 'Hébergement',
   },
   {
     id: 2,
-    hobby: 'Traduction',
+    service: 'Traduction',
   },
   {
     id: 3,
-    hobby: 'Visite guidées',
+    service: 'Visite guidées',
   },
   {
     id: 4,
-    hobby: 'Visites Insolites',
+    service: 'Visites Insolites',
   },
   {
     id: 5,
-    hobby: 'Rencontre Expatriés',
+    service: 'Rencontre Expatriés',
   },
   {
     id: 6,
-    hobby: 'Garde d\'enfants',
+    service: 'Garde d\'enfants',
   },
   {
     id: 7,
-    hobby: 'Aides au démarche administratives',
+    service: 'Aides au démarche administratives',
   },
   {
     id: 8,
-    hobby: 'Rendez-vous immobilié',
+    service: 'Rendez-vous immobilié',
   },
   {
     id: 9,
-    hobby: 'Réservation Vehicule',
+    service: 'Réservation Vehicule',
   },
 
 ];
