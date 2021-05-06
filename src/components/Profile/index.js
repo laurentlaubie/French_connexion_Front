@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == import local
 import ProfileDescription from 'src/components/ProfilDescription';
@@ -10,16 +11,16 @@ import ModifyButton from 'src/components/ModifyButton';
 import HelperButton from 'src/components/HelperButton';
 
 
-// == import style 
+// == import style
 import './profile.scss';
 
 
-const Profile = ({ isMyProfile }) => (
+const Profile = ({ isMyProfile, isHelper }) => (
 
   // ----- Profil's Card -----
 
   <div className="profile">
-    { isMyProfile && <HelperButton /> }
+    { isMyProfile && !isHelper && <HelperButton /> }
     <div className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </div>
     <div className="profile__all">
       <div className="profile__left">
@@ -31,18 +32,22 @@ const Profile = ({ isMyProfile }) => (
           <div className="member__infos">Massy-Palaiseau, France</div>
         </div>
         { !isMyProfile && <ContactMe /> }
-        <ResidentMap />
+        { isHelper && <ResidentMap /> }
         { isMyProfile && <UserInfos /> }
         <ModifyButton />
       </div>
       <div className="profile__right">
         <ProfileDescription />
-        <Services />
-      
+        {isHelper && <Services />}
       </div>
     </div>
 
   </div>
 );
+
+Profile.propTypes = {
+  isMyProfile: PropTypes.bool.isRequired,
+  isHelper: PropTypes.bool.isRequired,
+};
 
 export default Profile;

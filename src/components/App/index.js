@@ -15,7 +15,7 @@ import HomePageMap from 'src/components/HomePageMap';
 import UsersReviews from 'src/components/UsersReviews';
 import ProfilesResults from 'src/components/ProfilesResults';
 import MapResults from 'src/components/MapResults';
-import Profile from 'src/components/Profile';
+import Profile from 'src/containers/Profile';
 import Page404 from 'src/components/Page404';
 import ProfilesCards from 'src/components/ProfilesCards';
 
