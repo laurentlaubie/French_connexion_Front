@@ -6,6 +6,8 @@
     display:none;
   }
 
+  
+
   &__modal{
     background-color:vars.$light-color;
     width:80%;
@@ -87,6 +89,14 @@
 
       }
       
+    }
+
+    &__openSignInButton{
+      border:none;
+      background-color:white;
+      color:vars.$dark-blue;
+      font-weight: bold;
+      text-decoration: underline;
     }
 
   }

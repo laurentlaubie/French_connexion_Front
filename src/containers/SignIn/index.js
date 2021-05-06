@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import SignIn from 'src/components/SignIn';
-import { closeSignIn } from 'src/actions';
+import { closeSignIn, openLogIn } from 'src/actions';
  
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
@@ -14,6 +14,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   close: () => {
     dispatch(closeSignIn());
+  },
+  openLogIn: () => {
+    dispatch(openLogIn());
   },
 });
 

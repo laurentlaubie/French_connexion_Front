@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './logIn.scss';
 
-const LogIn = ({ isOpen, close }) => (
+const LogIn = ({ isOpen, close, openSignIn }) => (
   <div className={isOpen ? 'logIn' : 'logIn__close' }>
     <div className="logIn__modal">
       <h1 className="logIn__modal__title"> Bienvenue sur French Connection </h1>
@@ -14,7 +14,7 @@ const LogIn = ({ isOpen, close }) => (
         <button className="logIn__modal__form__button" type="submit"> Se connecter </button>
       </form>
 
-      <a className="logIn__link" href="#"> Vous n'avez pas encore de compte ?</a>
+      <button type="button" className="logIn__modal__openSignInButton" onClick={openSignIn}> Vous n'avez pas encore de compte ?</button>
     </div>
   </div>
 );
@@ -22,6 +22,7 @@ const LogIn = ({ isOpen, close }) => (
 LogIn.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
+  openSignIn: PropTypes.func.isRequired,
 };
 
 export default LogIn;

@@ -3,7 +3,7 @@ import { CLOSE_LOG_IN, OPEN_LOG_IN, CLOSE_SIGN_IN, OPEN_SIGN_IN } from 'src/acti
 const initialState = {
   isConnected: false,
   isLogInOpen: false,
-  isSignInOpen: true,
+  isSignInOpen: false,
 };
 
 export default (state = initialState, action = {}) => {

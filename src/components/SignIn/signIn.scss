@@ -89,6 +89,14 @@
       
     }
 
+    &__openLogInButton{
+      border:none;
+      background-color:white;
+      color:vars.$dark-blue;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
   }
 
 }
