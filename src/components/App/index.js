@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router-dom';
 // == Import style
 import 'semantic-ui-css/semantic.min.css';
 
-
 // == Import Locaux
 import Footer from 'src/components/Footer';
 import Header from 'src/components/Header';

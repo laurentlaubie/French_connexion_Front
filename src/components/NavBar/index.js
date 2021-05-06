@@ -7,13 +7,15 @@ import network from 'src/assets/pictures/network.png';
 import profile from 'src/assets/pictures/profile.png';
 import search from 'src/assets/pictures/search.png';
 
-const NavBar = ({ isConnected }) => (
+const NavBar = ({ isConnected, openModal }) => (
   <div className="navBar">
     <div className="navBar__rounded">.</div>
     <ul className="navBar__list">
-      <li className={isConnected ? 'navBar__item__hidden' : 'navBar__item'}>
-        <img className="navBar__item__image" src={profile} alt="Logo profil" />
-        <div className="navBar__item__title"> Se connecter </div>
+      <li className={isConnected ? 'navBar__item__hidden' : 'navBar__item'} onClick={openModal}>
+        <button type="button" className="navBar__item__button">
+          <img className="navBar__item__image" src={profile} alt="Logo profil" />
+          <div className="navBar__item__title"> Se connecter </div>
+        </button>
       </li>
       <li className={isConnected ? 'navBar__item' : 'navBar__item__hidden'}>
         <NavLink to="/mon-profil">
@@ -39,6 +41,7 @@ const NavBar = ({ isConnected }) => (
 
 NavBar.propTypes = {
   isConnected: PropTypes.bool.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 export default NavBar;
