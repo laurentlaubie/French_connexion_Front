@@ -30,12 +30,11 @@
 
 
    margin-top: 2rem;
-  @media (min-width: vars.$breakpoint-tablet) {
 
+  @media (min-width: vars.$breakpoint-tablet) {
     margin-right: 50px;
     margin-top: 10rem;
     width: 90%;
-
   }
 
   &__description {
@@ -47,6 +46,12 @@
 }
 
 .hobbies {
+
+  @media (min-width: vars.$breakpoint-tablet){
+    margin-right: 50px;
+    margin-top: 2em;
+    width: 90%;
+  }
 
   margin-top: 20px;
   
