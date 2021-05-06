@@ -1,12 +1,10 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-import './profilDescription.scss';
+import './profileDescription.scss';
 
 const ProfileDescription = () => (
-  
-  // ----- informations Card -----
-  
+
   <div className="profileDescription">
 
     <div className="profileDescription__about card">
@@ -28,7 +26,6 @@ const ProfileDescription = () => (
     </div>
 
   </div>
-
 
 );
 

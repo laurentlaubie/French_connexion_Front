@@ -3,6 +3,7 @@
 .profile{
   width:90%;
   margin:5rem auto;
+  position:relative;
 
   @media (min-width:vars.$max-width){
     width:vars.$max-width;
@@ -41,10 +42,17 @@
 
     &__left {
       width: 100%;
-      // border:2px solid blue;
+      border:1px solid #c4c4c4;
+      background-color:vars.$light-blue;
+      border-radius:2rem;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
       @media (min-width: vars.$breakpoint-tablet){
         width:48%;
+      } 
+
+      @media (min-width: vars.$breakpoint-desktop){
+        width:38%;
       } 
     }
 
@@ -55,47 +63,111 @@
       @media (min-width: vars.$breakpoint-tablet){
         width:48%;
       }
+
+      @media (min-width: vars.$breakpoint-desktop){
+        width:58%;
+      } 
     }
   }
 }
 
 .member {
     
-  border: solid gray 1px;
+  // border: solid gray 1px;
   border-radius: 30px;
-  background-color: vars.$light-blue;
+  // background-color: vars.$light-blue;
   //margin-top: 10rem;
+  padding-bottom:2rem;
 
-  &__image {
-    background-image: url("https://img.freepik.com/photos-gratuite/portrait-homme-blanc-isole_53876-40306.jpg?size=626&ext=jpg" );
-    background-position: center center ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 10em;
-    width: 10em;
-    border-radius: 50%;
-    margin: auto; 
-   
+  &__status{
+
+    position:relative;
+    padding-top:1.5em;
+
+    &__name{
+      font-size:2em;
+      // text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+
+
+      // @media (min-width: vars.$breakpoint-tablet){
+      //   font-size:2em;
+      // }
+
+      // @media (min-width: vars.$breakpoint-desktop){
+      //   font-size:2.5em;
+      // }
+    }
+
+    &__logo{
+      position:absolute;
+      top:1.5em;
+      width:70px;
+      right:2em;
+
+      @media (min-width: vars.$breakpoint-tablet){
+        width:50px;
+      }
+
+      // @media (min-width: vars.$breakpoint-desktop){
+      //   width:70px;
+      // }
+
+    }
+
   }
 
   &__name {
     font-weight: bolder;
-    font-size: large;
-    padding-top: 2rem;
+    font-size: 2.5em;
+    padding-top: 0.5rem;
     padding-bottom: 1rem;
+    color:vars.$light-color;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    // text-transform: uppercase;
+
   }
 
   &__date {
     color: rgb(235, 235, 235);
     padding-bottom: 2rem; 
+    color:vars.$dark-color;
+    font-size:1.5em;
+    font-style:italic ;
+    padding-top:0.8em; 
   }
+
+  &__image {
+    
+    margin:auto;
+
+    img{
+      object-fit:contain;
+      width: 300px;
+      height: 300px;
+      border-radius:50%;
+      object-fit:cover;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+      @media (min-width:vars.$breakpoint-tablet){
+        width:200px;
+        height:200px;
+      }
+
+      @media (min-width:vars.$breakpoint-desktop){
+        width:300px;
+        height:300px;
+      }
+
+    }
+   
+  }
+
 
   &__update {
     padding-top: 0.5rem;
-
-    &--hidden{
-      display:none;
-    }
+    text-decoration: underline;
+    font-weight:bold;
+    
   }
 
   &__localisation{
@@ -103,4 +175,8 @@
     padding-bottom: 1rem;
   }
 
+}
+
+.hidden{
+  display:none;
 }

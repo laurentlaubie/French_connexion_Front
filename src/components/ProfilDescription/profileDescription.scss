@@ -11,10 +11,10 @@
 
 .card {
   
-  border: solid gray 1px;
-  background-color: vars.$light-blue;
+  // background-color: white;
   border-radius: 30px;
   margin-bottom:2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
   &__title {
     font-weight: 700;

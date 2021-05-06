@@ -1,5 +1,15 @@
+@use 'src/styles/_vars';
 
-.button{
-  width: 20px;
-  height: 20px;
+.modifyButton{
+  background-color: vars.$light-red;
+  position: absolute ;
+  bottom : -2rem;
+  right : 0;
+  color: vars.$light-color;
+  font-size: 1.8rem;
+  border:none;
+  padding: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius:0.5rem;
+
 }

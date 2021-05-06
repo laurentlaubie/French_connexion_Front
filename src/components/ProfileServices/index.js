@@ -1,27 +1,21 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-
-import './services.scss';
+import './profileServices.scss';
 
 const ProfileServices = () => (
-  
-  // ----- informations Card -----
-  
+
   <div className="card profileServices">
-    <div className="card__services">
-      <div className="card__title">Mes services > </div>
-      <div className="services__list">
-        <div className="services__item">Traduction</div>
-        <div className="services__item">Hébergement</div>
-        <div className="services__item">Visites guidées</div>
-        <div className="services__item">Trajets Aeroports</div>
-        <div className="services__item">Rencontrer des expatriés</div>
-      </div>
+    <div className="card__title">Mes services </div>
+    <div className="card__list">
+      <div className="card__item">Traduction</div>
+      <div className="card__item">Hébergement</div>
+      <div className="card__item">Visites guidées</div>
+      <div className="card__item">Trajets Aeroports</div>
+      <div className="card__item">Rencontrer des expatriés</div>
     </div>
 
   </div>
-
 
 );
 
