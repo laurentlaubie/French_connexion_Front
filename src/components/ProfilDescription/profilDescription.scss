@@ -1,10 +1,11 @@
 
 @use 'src/styles/_vars';
 
-.profile{
+.profileDescription{
   
   display:flex;
-  flex-direction:column
+  flex-direction:column;
+  width:100%;
   
 }
 
@@ -13,55 +14,30 @@
   border: solid gray 1px;
   background-color: vars.$light-blue;
   border-radius: 30px;
+  margin-bottom:2rem;
 
   &__title {
     font-weight: 700;
     text-align: left;
-    padding: 1em;
+    padding: 2rem;
     font-size: 1.5em;
-        
+
+    &::after{
+      content: '>';
+    }    
   }
 
-     
-  
-}
-
-.about {
-
-
-   margin-top: 2rem;
-
-  @media (min-width: vars.$breakpoint-tablet) {
-    margin-right: 50px;
-    margin-top: 10rem;
-    width: 90%;
+  &__text{
+    padding:0 2rem 2rem;
+    text-align:justify;
   }
-
-  &__description {
-    line-height: 2%;
-    text-align: left;
-    padding: 1em;
-    font-size: 1em;
-  }
-}
-
-.hobbies {
-
-  @media (min-width: vars.$breakpoint-tablet){
-    margin-right: 50px;
-    margin-top: 2em;
-    width: 90%;
-  }
-
-  margin-top: 20px;
-  
 
   &__list {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap; 
+    // border:1px solid blue;
   }
 
   &__item {
@@ -71,7 +47,8 @@
     margin-top: 0.4em;
     margin-bottom: 0.4em;
     background-color: vars.$dark-blue;
-    color: vars.$light-color
+    color: vars.$light-color;
   }
 
 }
+

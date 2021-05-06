@@ -4,11 +4,11 @@ import React from 'react';
 
 import './services.scss';
 
-const Services = () => (
+const ProfileServices = () => (
   
   // ----- informations Card -----
   
-  <div className="card services">
+  <div className="card profileServices">
     <div className="card__services">
       <div className="card__title">Mes services > </div>
       <div className="services__list">
@@ -25,4 +25,4 @@ const Services = () => (
 
 );
 
-export default Services;
+export default ProfileServices;
