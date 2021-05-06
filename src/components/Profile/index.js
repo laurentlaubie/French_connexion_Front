@@ -6,6 +6,7 @@ import ContactMe from 'src/components/ContactMe';
 import UserInfos from 'src/components/UserInfos';
 import Services from 'src/components/Services';
 import ResidentMap from 'src/components/ResidentMap';
+import ModifyButton from 'src/components/ModifyButton';
 
 
 // == import style 
@@ -31,6 +32,7 @@ const Profile = () => (
         <ContactMe />
        <ResidentMap />
         <UserInfos />
+        <ModifyButton />
       </div>
       <div className="profile__right">
         <ProfileDescription />
