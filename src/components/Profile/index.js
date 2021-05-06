@@ -7,6 +7,7 @@ import UserInfos from 'src/components/UserInfos';
 import Services from 'src/components/Services';
 import ResidentMap from 'src/components/ResidentMap';
 import ModifyButton from 'src/components/ModifyButton';
+import HelperButton from 'src/components/HelperButton';
 
 
 // == import style 
@@ -18,7 +19,7 @@ const Profile = () => (
   // ----- Profil's Card -----
 
   <div className="profile">
-
+      <HelperButton />
     <div className="profile__title"> Mon profil </div>
     <div className="profile__all">
       <div className="profile__left">
@@ -37,6 +38,7 @@ const Profile = () => (
       <div className="profile__right">
         <ProfileDescription />
         <Services />
+      
       </div>
     </div>
 
