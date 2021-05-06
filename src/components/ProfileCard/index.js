@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './profileCard.scss';
-import profilePicture from 'src/assets/pictures/profile.png';
+// import profilePicture from 'src/assets/pictures/profile.png';
 
 const ProfileCard = ({name,description,role,localisation,created_at,hobbys}) => 
 {

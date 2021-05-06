@@ -55,9 +55,8 @@ const App = () => (
         <Footer />
       </Route>
       <Route path="/notre-reseau" exact>
-      <OtherPagesHeader />
-      <SearchBar />
-      <ProfilesCards networkProfiles = {DataProfile} />
+        <SearchBar />
+        <ProfilesCards networkProfiles = {DataProfile} />
       </Route>
       <Route>
         <Page404 />
