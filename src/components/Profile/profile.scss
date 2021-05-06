@@ -31,6 +31,7 @@
     align-items: center;
     width: 100%;
     // border:1px solid red;
+    position:relative;
 
     @media (min-width: vars.$breakpoint-tablet) {
       flex-direction: row;
@@ -42,10 +43,12 @@
 
     &__left {
       width: 100%;
-      border:1px solid #c4c4c4;
       background-color:vars.$light-blue;
       border-radius:2rem;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      margin-bottom:2rem;
+      padding-top:2.5rem;
+
 
       @media (min-width: vars.$breakpoint-tablet){
         width:48%;
@@ -81,31 +84,39 @@
 
   &__status{
 
-    position:relative;
-    padding-top:1.5em;
+    margin-bottom:2rem;
 
-    &__name{
-      font-size:2em;
-      // text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+      &__name{
+      font-size:1.2em;
+      position: relative;
+      display:inline;
+      text-decoration: underline;
 
+      &--helper{
+        font-size:2em;
+        text-decoration: none;
 
-      // @media (min-width: vars.$breakpoint-tablet){
-      //   font-size:2em;
-      // }
-
-      // @media (min-width: vars.$breakpoint-desktop){
-      //   font-size:2.5em;
-      // }
+      }
     }
 
     &__logo{
       position:absolute;
-      top:1.5em;
-      width:70px;
-      right:2em;
+      top:0;
+      width:20px;
+      right:-1.9em;
 
-      @media (min-width: vars.$breakpoint-tablet){
-        width:50px;
+      &--helper{
+        top:0;
+        width:70px;
+        right:-6rem;
+
+        @media (min-width: vars.$breakpoint-tablet){
+          width:50px;
+          top:0em;
+          right:-1.9em;
+
+
+        }
       }
 
       // @media (min-width: vars.$breakpoint-desktop){
@@ -173,6 +184,7 @@
   &__localisation{
     padding-top: 2rem;
     padding-bottom: 1rem;
+    font-size:1.5rem;
   }
 
 }

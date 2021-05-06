@@ -4,9 +4,10 @@ import './contactMe.scss';
 
 const ContactMe = () => (
 
-  // ----- contact Button -----
+  <div className="contactMe">
+    <button type="button" className="contactMe__button">Contactez-moi !</button>
+  </div>
 
-  <button type="button" className="contact">Contactez moi</button>
 
 );
 

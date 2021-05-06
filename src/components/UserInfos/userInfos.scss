@@ -1,15 +1,23 @@
 @use 'src/styles/_vars';
 
+.userInfos{
 
-.info {
+  background-color:white;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  padding-bottom:2rem;
 
-  &__item {
-    
-    padding-top: 2px;
-    padding-bottom: 2px;
-    margin: 15px 50px 15px 50px;
-    border-radius: 5px;
-    background-color: vars.$dark-blue;
+  &__title{
+    font-size:1.5rem;
+    padding: 2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__item{
+    font-size:1.3rem;
+    padding:0.5rem;
+
   }
 
 

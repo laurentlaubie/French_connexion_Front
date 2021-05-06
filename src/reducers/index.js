@@ -4,7 +4,7 @@ const initialState = {
   isConnected: false,
   isLogInOpen: false,
   isSignInOpen: false,
-  isHelper: true,
+  isHelper: false,
 };
 
 export default (state = initialState, action = {}) => {

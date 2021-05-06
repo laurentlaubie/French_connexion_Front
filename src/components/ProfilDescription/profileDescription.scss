@@ -17,10 +17,10 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
   &__title {
-    font-weight: 700;
+    font-weight: bold;
     text-align: left;
     padding: 2rem;
-    font-size: 1.5em;
+    font-size: 1.5rem;
 
     &::after{
       content: '>';
