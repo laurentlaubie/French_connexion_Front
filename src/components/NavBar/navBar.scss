@@ -20,6 +20,11 @@
 
   &__item{
 
+    &__button{
+      border:none;
+      background-color: #C4C4C4;
+    }
+
     &__hidden{
       display:none;
     }
@@ -27,6 +32,7 @@
     &__title{
       margin-top: 0.3em;
       font-size:0.8rem;
+      color:vars.$dark-color;
     }
 
     &__image{

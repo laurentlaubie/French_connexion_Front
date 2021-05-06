@@ -22,6 +22,7 @@
 
     @media (min-width: vars.$breakpoint-tablet){
       width: 50%;
+      left:25%;
     }
 
     &__closeButton {
@@ -41,7 +42,7 @@
 
     &__title{
       
-      padding:6rem 0 2rem;
+      padding:6rem 0 4rem;
       width:70%;
       margin:auto;
       font-size:1.5rem;
@@ -86,6 +87,14 @@
 
       }
       
+    }
+
+    &__openLogInButton{
+      border:none;
+      background-color:white;
+      color:vars.$dark-blue;
+      font-weight: bold;
+      text-decoration: underline;
     }
 
   }
