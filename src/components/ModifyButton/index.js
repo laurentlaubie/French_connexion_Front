@@ -1,17 +1,13 @@
 import React from 'react';
 
-// == import style 
+// == import style
 import './modifyButton.scss';
-
-import editbutton from 'src/assets/pictures/editbutton.png';
-
 
 const ModifyButton = () => (
 
-  // ----- Modify Button -----
-
-    <div className="editbutton"> <img className="button" src={editbutton} /> </div>
-       
+  <button type="button" className="modifyButton">
+    Modifier mon profil
+  </button>
 );
 
 export default ModifyButton;

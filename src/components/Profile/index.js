@@ -28,7 +28,7 @@ const Profile = ({ isMyProfile, isHelper }) => (
           <div className="member__name">Jean-José</div>
           <div className="member__date"> Membre depuis Mars 2018 </div>
           <div className="member__image" />
-          <div className="member__update">Mettre à jour votre photo</div>
+          <div className={isMyProfile ? 'member__update' : 'member__update member__update--hidden'}>Mettre à jour votre photo</div>
           <div className="member__infos">Massy-Palaiseau, France</div>
         </div>
         { !isMyProfile && <ContactMe /> }

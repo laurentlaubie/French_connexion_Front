@@ -91,10 +91,10 @@ width: 100%;
     padding-top: 2rem;
     padding-bottom: 1rem;
   }
+
   &__date {
     color: rgb(235, 235, 235);
-    padding-bottom: 2rem;
-    
+    padding-bottom: 2rem; 
   }
 
   &__infos {
@@ -104,6 +104,10 @@ width: 100%;
 
     &__update {
       padding-top: 0.5rem;
+
+      &--hidden{
+        display:none;
+      }
     }
 
 }
