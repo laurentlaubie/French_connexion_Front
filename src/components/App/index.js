@@ -20,7 +20,7 @@ import Page404 from 'src/components/Page404';
 import ProfilesCards from 'src/components/ProfilesCards';
 
 import SignIn from 'src/containers/SignIn';
-import LogIn from 'src/components/LogIn';
+import LogIn from 'src/containers/LogIn';
 
 // == Import
 import DataFile from 'src/data/ProfileList';
@@ -32,6 +32,7 @@ import users from 'src/data/users';
 const App = () => (
   <div className="app">
     <Header />
+    <LogIn />
     <SignIn />
     <Switch>
       <Route path="/" exact>

@@ -1,21 +1,20 @@
 import { connect } from 'react-redux';
 
-import NavBar from 'src/components/NavBar';
-
-import { openLogIn } from 'src/actions';
-
+import LogIn from 'src/components/SignIn';
+import { closeLogIn } from 'src/actions';
+ 
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
-  isConnected: state.isConnected,
+  isOpen: state.isLogInOpen,
 });
 
 // connection de props fonctions qui déclenchent des actions
 // ces props seraont des fonctions
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  openModal: () => {
-    dispatch(openLogIn());
+  close: () => {
+    dispatch(closeLogIn());
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
