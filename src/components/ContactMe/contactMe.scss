@@ -1,6 +1,13 @@
 @use 'src/styles/_vars';
 
 .contact {
+
+  @media (min-width: vars.$breakpoint-tablet){
+    width: 80%;
+    margin-top: 2em;
+  }
+
+
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: vars.$dark-red;
