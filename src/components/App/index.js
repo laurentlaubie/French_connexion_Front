@@ -51,12 +51,16 @@ const App = () => (
         </div>
       </Route>
       <Route path="/notre-reseau/utilisateur" exact>
-        <Profile />
+        <Profile isMyProfile={false} />
+        <Footer />
+      </Route>
+      <Route path="/mon-profil" exact>
+        <Profile isMyProfile />
         <Footer />
       </Route>
       <Route path="/notre-reseau" exact>
         <SearchBar />
-        <ProfilesCards networkProfiles = {DataProfile} />
+        <ProfilesCards networkProfiles={DataProfile} />
       </Route>
       <Route>
         <Page404 />

@@ -14,13 +14,13 @@ import HelperButton from 'src/components/HelperButton';
 import './profile.scss';
 
 
-const Profile = () => (
+const Profile = ({ isMyProfile }) => (
 
   // ----- Profil's Card -----
 
   <div className="profile">
-      <HelperButton />
-    <div className="profile__title"> Mon profil </div>
+    { isMyProfile && <HelperButton /> }
+    <div className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </div>
     <div className="profile__all">
       <div className="profile__left">
         <div className="member">
@@ -30,9 +30,9 @@ const Profile = () => (
           <div className="member__update">Mettre à jour votre photo</div>
           <div className="member__infos">Massy-Palaiseau, France</div>
         </div>
-        <ContactMe />
-       <ResidentMap />
-        <UserInfos />
+        { !isMyProfile && <ContactMe /> }
+        <ResidentMap />
+        { isMyProfile && <UserInfos /> }
         <ModifyButton />
       </div>
       <div className="profile__right">
