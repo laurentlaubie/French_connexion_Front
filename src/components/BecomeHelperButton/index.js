@@ -6,9 +6,9 @@ import './becomeHelperButton.scss';
 
 const BecomeHelperButton = () => (
 
-  <button type="button" className="becomeHelperButton">
+  <a type="button" className="becomeHelperButton" href="/mon-profil/modifier">
     Devenir helper
-  </button>
+  </a>
 );
 
 

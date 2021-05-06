@@ -31,7 +31,7 @@ const Profile = ({ isMyProfile, isHelper }) => (
               <img className="member__status__logo--helper" src={hands} alt="Logo du helpeur" />
             </div>
             <div className={(!isHelper && isMyProfile) ? 'member__status__name' : 'hidden'}>
-              Je deviens helper
+              <a href="mon-profil/modifier"> Je deviens helper</a>
               <img className="member__status__logo" src={question} alt="Logo question" />
             </div>
 

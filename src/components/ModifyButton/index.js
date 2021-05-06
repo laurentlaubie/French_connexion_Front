@@ -6,9 +6,9 @@ import './modifyButton.scss';
 
 const ModifyButton = () => (
 
-  <button type="button" className="modifyButton">
+  <a type="button" className="modifyButton" href="mon-profil/modifier">
     Modifier mon profil
-  </button>
+  </a>
 );
 
 

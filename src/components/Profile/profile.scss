@@ -91,6 +91,15 @@
       position: relative;
       display:inline;
       text-decoration: underline;
+      color:vars.$dark-color;
+
+      a{
+        color:black;
+
+        &:hover{
+          color:black;
+        }
+      }
 
       &--helper{
         font-size:2em;
