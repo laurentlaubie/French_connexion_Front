@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // == import local
@@ -15,16 +15,21 @@ import ContactMe from 'src/components/ContactMe';
 // == import style
 import './profile.scss';
 
-const Profile = ({ isMyProfile, connectedUserInfos, otherUserInfos }) => {
-  let userInfos = null;
-  // console.log(connectedUserInfos);
-  if (isMyProfile) {
-    userInfos = { ...connectedUserInfos };
-    // console.log(userInfos);
-  } else {
-    userInfos = { ...otherUserInfos };
-    // console.log(userInfos);
-  }
+const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
+  // let userInfos = null;
+  // // console.log(connectedUserInfos);
+  // if (isMyProfile) {
+  //   userInfos = { ...connectedUserInfos };
+  //   // console.log(userInfos);
+  // } else {
+  //   userInfos = { ...otherUserInfos };
+  //   // console.log(userInfos);
+  // }
+
+  useEffect(
+    loadUserProfile,
+    [],
+  );
 
   return (
     <div className="profile">
@@ -32,21 +37,21 @@ const Profile = ({ isMyProfile, connectedUserInfos, otherUserInfos }) => {
       <div className="profile__content">
         <div className="profile__content__left">
           <ProfilePrincipalInfos {...userInfos} />
-          { (userInfos.isHelper) && <ProfileMap {...userInfos} /> }
+          { (userInfos.helper) && <ProfileMap {...userInfos} /> }
           { isMyProfile && <ProfilePersonalInfos {...userInfos} /> }
           { !isMyProfile && <ContactMe /> }
         </div>
 
         <div className="profile__content__right">
           <ProfileDescription {...userInfos} />
-          <ProfileHobbies {...userInfos} />
-          {(userInfos.isHelper) && <ProfileServices {...userInfos} />}
+          {/* <ProfileHobbies {...userInfos} /> */}
+          {/* {(userInfos.isHelper) && <ProfileServices {...userInfos} />} */}
         </div>
 
       </div>
       <div className="profile__button">
         { isMyProfile && <ModifyButton />}
-        { isMyProfile && !(userInfos.isHelper) && <BecomeHelperButton />}
+        { isMyProfile && !(userInfos.helper) && <BecomeHelperButton />}
       </div>
     </div>
   );
@@ -55,17 +60,22 @@ const Profile = ({ isMyProfile, connectedUserInfos, otherUserInfos }) => {
 Profile.propTypes = {
   isMyProfile: PropTypes.bool.isRequired,
   isHelper: PropTypes.bool.isRequired,
-  connectedUserInfos: PropTypes.shape(
+  // connectedUserInfos: PropTypes.shape(
+  //   {
+  //     isHelper: PropTypes.bool.isRequired,
+  //   },
+  // ).isRequired,
+  // otherUserInfos: PropTypes.shape(
+  //   {
+  //     isHelper: PropTypes.bool.isRequired,
+  //   },
+  // ).isRequired,
+  userInfos: PropTypes.shape(
     {
-      isHelper: PropTypes.bool.isRequired,
+      helper: PropTypes.bool.isRequired,
     },
   ).isRequired,
-  otherUserInfos: PropTypes.shape(
-    {
-      isHelper: PropTypes.bool.isRequired,
-    },
-  ).isRequired,
-
+  loadUserProfile: PropTypes.func.isRequired,
 
 };
 
