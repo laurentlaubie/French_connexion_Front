@@ -2,15 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // == import local
+import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
+import ProfileMap from 'src/components/ProfileMap';
+import ProfilePersonalInfos from 'src/components/ProfilePersonalInfos';
 import ProfileDescription from 'src/components/ProfileDescription';
 import ProfileHobbies from 'src/components/ProfileHobbies';
-import ContactMe from 'src/components/ContactMe';
-import ProfilePersonalInfos from 'src/components/ProfilePersonalInfos';
 import ProfileServices from 'src/components/ProfileServices';
-import ProfileMap from 'src/components/ProfileMap';
 import ModifyButton from 'src/components/ModifyButton';
 import hands from 'src/assets/images/hands.png';
 import BecomeHelperButton from 'src/components/BecomeHelperButton';
+import ContactMe from 'src/components/ContactMe';
+
 
 import question from 'src/assets/images/question.png';
 
@@ -23,26 +25,7 @@ const Profile = ({ isMyProfile, isHelper, connectedUserInfos }) => (
     <div className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </div>
     <div className="profile__content">
       <div className="profile__content__left">
-        <div className="member">
-          <div className="member__status">
-            <div className={isHelper ? 'member__status__name--helper' : 'hidden'}>
-              HELPER
-              <img className="member__status__logo--helper" src={hands} alt="Logo du helpeur" />
-            </div>
-            <div className={(!isHelper && isMyProfile) ? 'member__status__name' : 'hidden'}>
-              <a href="mon-profil/modifier"> Je deviens helper</a>
-              <img className="member__status__logo" src={question} alt="Logo question" />
-            </div>
-
-          </div>
-          <div className="member__username">{connectedUserInfos.username}</div>
-          <div className="member__date"> Membre depuis {connectedUserInfos.createdAt} </div>
-          <div className="member__image">
-            <img className="jose" alt="image__profile" src="https://img.freepik.com/photos-gratuite/portrait-homme-blanc-isole_53876-40306.jpg?size=626&ext=jpg" />
-          </div>
-          <div className={isMyProfile ? 'member__update' : 'hidden'}>Mettre à jour ma photo</div>
-          <div className={!isHelper ? 'member__localisation' : 'hidden'}>`{connectedUserInfos.city}, {connectedUserInfos.country}`</div>
-        </div>
+        <ProfilePrincipalInfos {...connectedUserInfos} />
         { isHelper && <ProfileMap /> }
         { isMyProfile && <ProfilePersonalInfos /> }
         { !isMyProfile && <ContactMe /> }
