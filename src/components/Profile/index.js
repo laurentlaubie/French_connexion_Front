@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // == import local
-import ProfileDescription from 'src/components/ProfilDescription';
+import ProfileDescription from 'src/components/ProfileDescription';
+import ProfileHobbies from 'src/components/ProfileHobbies';
 import ContactMe from 'src/components/ContactMe';
 import UserInfos from 'src/components/UserInfos';
 import ProfileServices from 'src/components/ProfileServices';
@@ -49,11 +50,15 @@ const Profile = ({ isMyProfile, isHelper, connectedUserInfos }) => (
 
       <div className="profile__content__right">
         <ProfileDescription />
-        {isHelper && <ProfileServices />}
+        <ProfileHobbies />
+        {(connectedUserInfos.isHelper) && <ProfileServices />}
       </div>
+
     </div>
-    { isMyProfile && <ModifyButton />}
-    { isMyProfile && !isHelper && <BecomeHelperButton />}
+    <div className="profile__button">
+      { isMyProfile && <ModifyButton />}
+      { isMyProfile && !(connectedUserInfos.isHelper) && <BecomeHelperButton />}
+    </div>
   </div>
 );
 
