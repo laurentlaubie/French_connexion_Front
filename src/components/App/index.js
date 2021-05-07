@@ -19,6 +19,7 @@ import MapResults from 'src/components/MapResults';
 import Profile from 'src/components/Profile';
 import Page404 from 'src/components/Page404';
 import ProfilesCards from 'src/components/ProfilesCards';
+import MapTest from 'src/containers/MapTest';
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/components/LogIn';
@@ -56,7 +57,10 @@ const App = () => (
       </Route>
       <Route path="/notre-reseau" exact>
         <SearchBar />
-        <ProfilesCards networkProfiles = {DataProfile} />
+        <ProfilesCards networkProfiles={DataProfile} />
+      </Route>
+      <Route path="/map" exact>
+        <MapTest />
       </Route>
       <Route>
         <Page404 />

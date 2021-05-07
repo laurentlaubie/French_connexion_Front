@@ -1,8 +1,27 @@
 import { CLOSE_SIGN_IN } from 'src/actions';
+import { SET_SELECTED } from 'src/actions';
 
 const initialState = {
   isConnected: false,
-  isSignInOpen: true,
+  isSignInOpen: false,
+  center: {
+    lat: 48.866667,
+    lng: 2.333333,
+  },
+  markers: [{
+    lat: 47.866667,
+    lng: 2.333333,
+  },
+  {
+    lat: 46.866667,
+    lng: 6.433333,
+  },
+  {
+    lat: 45.866667,
+    lng: 8.533333,
+  },
+  ],
+  markerSelected: true,
 };
 
 export default (state = initialState, action = {}) => {
@@ -11,6 +30,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isSignInOpen: false,
+      };
+    case SET_SELECTED:
+      return {
+        ...state,
+        markerSelected: action.marker,
       };
     default:
       return state;
