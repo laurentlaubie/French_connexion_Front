@@ -18,13 +18,18 @@ import MapResults from 'src/components/MapResults';
 import Profile from 'src/containers/Profile';
 import Page404 from 'src/components/Page404';
 import ProfilesCards from 'src/components/ProfilesCards';
+import ModifyProfile from 'src/components/ModifyProfile';
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/containers/LogIn';
 
-// == Import
+// == Import Data
 import DataFile from 'src/data/ProfileList';
 import DataProfile from 'src/data/DataProfile';
+import DataHobbies from 'src/data/DataHobbies';
+import DataServices from 'src/data/DataServices';
+
+
 import './styles.css';
 import users from 'src/data/users';
 
@@ -56,6 +61,10 @@ const App = () => (
       </Route>
       <Route path="/mon-profil" exact>
         <Profile isMyProfile />
+        <Footer />
+        </Route>
+      <Route path="/mon-profil/modifier" exact>
+        <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices}/>
         <Footer />
       </Route>
       <Route path="/notre-reseau" exact>
