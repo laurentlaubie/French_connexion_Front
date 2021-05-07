@@ -30,26 +30,24 @@ const ModifyProfile = ({dataHobbies, dataServices }) => {
      
       <div className="modifymyprofile__all__services">
         <h3 className="modifymyprofile__all__title">Mes centres d'interet</h3> 
-          <input className="modifymyprofile__form__input" type="checkbox" id="" name="hobby" />
-          <label className="modifymyprofile__form__label" for="hobby">Rugby</label>
-          <input className="modifymyprofile__form__input" type="checkbox" id="" name="hobby" />
-          <label className="modifymyprofile__form__label" for="hobby">test</label>
-          <input className="modifymyprofile__form__input" type="checkbox" id="" name="hobby" />
-          <label className="modifymyprofile__form__label" for="hobby">test</label>
-          <input className="modifymyprofile__form__input" type="checkbox" id="" name="hobby" />
-          <label className="modifymyprofile__form__label" for="hobby">test</label>
+        {dataHobbies.map((Hobby) => {
+          <React.Fragment key={Hobby.id}>
+          <input className="modifymyprofile__form__input" type="checkbox" id={Hobby.id} name={Hobby.hobby} />
+          <label className="modifymyprofile__form__label" for={Hobby.id} >{Hobby.hobby}</label>
+          </React.Fragment>
+        })}
+      
       </div>
     
       <div className="profile__services">
       <h3 className="modifymyprofile__all__title">Mes services</h3>  
-          <input className="modifymyprofile__form__input" type="checkbox" id="service" name="service" />
-          <label className="modifymyprofile__form__label" for="service">Hebergement</label>
-          <input className="modifymyprofile__form__input" type="checkbox" id="service" name="service" />
-          <label className="modifymyprofile__form__label" for="service">test</label>
-          <input className="modifymyprofile__form__input" type="checkbox" id="service" name="service" />
-          <label className="modifymyprofile__form__label" for="service">test</label>
-          <input className="modifymyprofile__form__input" type="checkbox" id="service" name="service" />
-          <label className="modifymyprofile__form__label" for="service">test</label>
+      {dataServices.map((Service) => {
+         <React.Fragment key={Service.id}>
+          <input className="modifymyprofile__form__input" type="checkbox" id={Service.id} name={Service.service} />
+          <label className="modifymyprofile__form__label" for={Service.id} >{Service.service}</label>
+          </React.Fragment>
+        })}
+          
       </div>
         </form>
 
