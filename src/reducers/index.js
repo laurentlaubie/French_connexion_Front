@@ -5,6 +5,22 @@ const initialState = {
   isLogInOpen: false,
   isSignInOpen: false,
   isHelper: false,
+  connectedUserInfos: {
+    id: 2,
+    email: 'albert@albert.com',
+    username: 'Albert22',
+    password: 'albertalbert',
+    firstName: 'Albert',
+    lastName: 'Dupont',
+    isHelper: true,
+    avatar: '',
+    status: 'expert',
+    biography: 'Lorem ipsum dolor sit amet. Eum atque dicta est quod suscipit ea nihil impedit cum exercitationem voluptatem! Sed galisum quod sed cumque dignissimos sed magnam fugit qui odio quibusdam 33 perferendis explicabo ut odit amet et similique galisum. Qui ipsum magnam sit pariatur quia et labore Quis id eius ullam.Aut pariatur quia est commodi perferendis et ratione amet eos obcaecati quidem. Sed harum sint aut quas numquam id ratione corrupti ut maiores illum et facilis labore? Eum consequatur deserunt ut ratione porro ut magni veritatis. Et omnis quas id optio quidem vel unde magni et ipsam aliquid 33 asperiores officiis hic ipsa atque. Ea voluptatum quod aut nisi beatae ut odit error ut odio officia et repellat ullam est quaerat corporis? Cum sequi fugiat eos tempora atque aut ipsum omnis est autem esse rem commodi aperiam qui fugiat omnis. Sed magnam optio in itaque Quis qui saepe consequatur. Vel explicabo dignissimos ab consequatur excepturi et porro ducimus sed fugiat odio.Lorem ipsum dolor sit amet. Eum atque dicta est quod suscipit ea nihil impedit cum exercitationem voluptatem! Sed galisum quod sed cumque dignissimos sed magnam fugit qui odio quibusdam 33 perferendis explicabo ut odit amet et similique galisum. Qui ipsum magnam sit pariatur quia et labore Quis id eius ullam. Aut pariatur quia est commodi perferendis et ratione amet eos obcaecati quidem. Sed harum sint aut quas numquam id ratione corrupti ut maiores illum et facilis labore? Eum consequatur deserunt ut ratione porro ut magni veritatis. Et omnis quas id optio quidem vel unde magni et ipsam aliquid 33 asperiores officiis hic ipsa atque.Ea voluptatum quod aut nisi beatae ut odit error ut odio officia et repellat ullam est quaerat corporis? Cum sequi fugiat eos tempora atque aut ipsum omnis est autem esse rem commodi aperiam qui fugiat omnis. Sed magnam optio in itaque Quis qui saepe consequatur. Vel explicabo dignissimos ab consequatur excepturi et porro ducimus sed fugiat odio.',
+    shortDescription: 'blablablablablablablabla blablablablabla blablabla',
+    city: 'Bogota',
+    country: 'Colombie',
+    createdAd: 'Mars 2018',
+  },
 };
 
 export default (state = initialState, action = {}) => {
