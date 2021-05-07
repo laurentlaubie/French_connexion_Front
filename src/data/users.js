@@ -6,6 +6,8 @@ export default [
     country: 'Colombie',
     comment: 'Ce site est super et m\'a permis de faire de belles rencontres',
     avatar: 'https://cdn.icon-icons.com/icons2/1736/PNG/512/4043260-avatar-male-man-portrait_113269.png',
+    email: 'hello@oclock.io',
+    password: 'hello',
   },
   {
     id: 2,

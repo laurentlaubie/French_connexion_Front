@@ -26,7 +26,7 @@ const SignIn = ({ isOpen, close, openLogIn }) => (
 SignIn.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-  openLogIn : PropTypes.func.isRequired,
+  openLogIn: PropTypes.func.isRequired,
 };
 
 export default SignIn;

@@ -1,0 +1,54 @@
+
+@use 'src/styles/_vars';
+
+.profileDescription{
+  
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  
+}
+
+.card {
+  
+  // background-color: white;
+  border-radius: 30px;
+  margin-bottom:2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  &__title {
+    font-weight: bold;
+    text-align: left;
+    padding: 2rem;
+    font-size: 1.5rem;
+
+    &::after{
+      content: '>';
+    }    
+  }
+
+  &__text{
+    padding:0 2rem 2rem;
+    text-align:justify;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap; 
+    // border:1px solid blue;
+  }
+
+  &__item {
+    border: 1px solid grey;
+    border-radius: 20px;
+    width: 45%;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+    background-color: vars.$dark-blue;
+    color: vars.$light-color;
+  }
+
+}
+

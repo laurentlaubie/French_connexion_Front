@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './banner.scss';
-import LogoMobile from 'src/assets/pictures/logo_mobile.png';
+// import LogoMobile from 'src/assets/pictures/logo_mobile.png';
 import LogoDesktop from 'src/assets/pictures/logo_desktop.png';
 
 const Banner = () => (
