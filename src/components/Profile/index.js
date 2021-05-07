@@ -7,7 +7,7 @@ import ProfileHobbies from 'src/components/ProfileHobbies';
 import ContactMe from 'src/components/ContactMe';
 import UserInfos from 'src/components/UserInfos';
 import ProfileServices from 'src/components/ProfileServices';
-import ResidentMap from 'src/components/ResidentMap';
+import ProfileMap from 'src/components/ProfileMap';
 import ModifyButton from 'src/components/ModifyButton';
 import hands from 'src/assets/images/hands.png';
 import BecomeHelperButton from 'src/components/BecomeHelperButton';
@@ -43,7 +43,7 @@ const Profile = ({ isMyProfile, isHelper, connectedUserInfos }) => (
           <div className={isMyProfile ? 'member__update' : 'hidden'}>Mettre à jour ma photo</div>
           <div className={!isHelper ? 'member__localisation' : 'hidden'}>`{connectedUserInfos.city}, {connectedUserInfos.country}`</div>
         </div>
-        { isHelper && <ResidentMap /> }
+        { isHelper && <ProfileMap /> }
         { isMyProfile && <UserInfos /> }
         { !isMyProfile && <ContactMe /> }
       </div>
@@ -65,23 +65,21 @@ const Profile = ({ isMyProfile, isHelper, connectedUserInfos }) => (
 Profile.propTypes = {
   isMyProfile: PropTypes.bool.isRequired,
   isHelper: PropTypes.bool.isRequired,
-  connectedUserInfos: PropTypes.arrayOf(
-    PropTypes.shape(
-      {
-        id: PropTypes.number.isRequired,
-        email: PropTypes.string.isRequired,
-        firstName: PropTypes.string.isRequired,
-        lastName: PropTypes.string.isRequired,
-        isHelper: PropTypes.bool.isRequired,
-        avatar: PropTypes.string.isRequired,
-        status: PropTypes.string.isRequired,
-        biography: PropTypes.string.isRequired,
-        shortDescription: PropTypes.string.isRequired,
-        city: PropTypes.string.isRequired,
-        country: PropTypes.string.isRequired,
-        createdAd: PropTypes.string.isRequired,
-      },
-    ).isRequired,
+  connectedUserInfos: PropTypes.shape(
+    {
+      id: PropTypes.number.isRequired,
+      email: PropTypes.string.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+      isHelper: PropTypes.bool.isRequired,
+      avatar: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+      biography: PropTypes.string.isRequired,
+      shortDescription: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired,
+      createdAd: PropTypes.string.isRequired,
+    },
   ).isRequired,
 
 };
