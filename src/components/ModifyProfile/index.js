@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == import style
 import './modifyProfile.scss';
@@ -12,36 +13,65 @@ const ModifyProfile = ({dataHobbies, dataServices }) => {
   console.log(dataServices);
 
   return(
-  <div className="modifyprofile">
-    <h2 className="modifyprofile__title">Modifier mon profil </h2>
-      <div className="modifyprofile__allinfos">
-
+  <div className="modifymyprofile">
+    <div className="modifymyprofil__all">
+      <h2 className="modifymyprofile__all__title">Modifier mon profil </h2>
         <form className="modifyprofile__form">
-          <label for="Pseudo"> Pseudo</label>
-            <input className="modifyprofile__form__field" type="pseudo" name="pseudo" placeholder="Pseudo" />
-            <input className="modifyprofile__form__field" type="email" name="email" placeholder="Adresse Mail" />
-            <input className="modifyprofile__form__field" type="firstname" name="firstname" placeholder="Nom" />
-            <input className="modifyprofile__form__field" type="lastname" name="lastname" placeholder="Prénom" />
-            <input className="modifyprofile__form__field" type="city" name="city" placeholder="Ville" />
-            <input className="modifyprofile__form__field" type="Country" name="Country" placeholder="Pays" />
-            <input className="modifyprofile__form__field" type="Phone" name="CountPhonery" placeholder="Téléphone" />
+        <input className="modifymyprofile__form__field" type="pseudo" name="pseudo" placeholder="pseudo"/>
+        <input className="modifymyprofile__form__field" type="email" name="email" placeholder="email"/>
+        <input className="modifymyprofile__form__field" type="firstname" name="firstname" placeholder="Prénom"/>
+        <input className="modifymyprofile__form__field" type="lastname" name="lastname" placeholder="Nom" />
+        <input className="modifymyprofile__form__field" type="city" name="city" placeholder="Ville"/>
+        <input className="modifymyprofile__form__field" type="Country" name="Country" placeholder="Pays"/>
+        
+        <input className="modifymyprofile__form__field" type="Phone" name="Phone" placeholder="Téléphone"/>
+        
+        <button className="modifymyprofile__form__password" type="submit"> Modifier mon mot de passe </button>    
+     
+      <div className="modifymyprofile__all__services">
+        <h3 className="modifymyprofile__all__title">Mes centres d'interet</h3> 
+          <input className="modifymyprofile__form__input" type="checkbox" id="" name="hobby" />
+          <label className="modifymyprofile__form__label" for="hobby">Rugby</label>
+          <input className="modifymyprofile__form__input" type="checkbox" id="" name="hobby" />
+          <label className="modifymyprofile__form__label" for="hobby">test</label>
+          <input className="modifymyprofile__form__input" type="checkbox" id="" name="hobby" />
+          <label className="modifymyprofile__form__label" for="hobby">test</label>
+          <input className="modifymyprofile__form__input" type="checkbox" id="" name="hobby" />
+          <label className="modifymyprofile__form__label" for="hobby">test</label>
+      </div>
+    
+      <div className="profile__services">
+      <h3 className="modifymyprofile__all__title">Mes services</h3>  
+          <input className="modifymyprofile__form__input" type="checkbox" id="service" name="service" />
+          <label className="modifymyprofile__form__label" for="service">Hebergement</label>
+          <input className="modifymyprofile__form__input" type="checkbox" id="service" name="service" />
+          <label className="modifymyprofile__form__label" for="service">test</label>
+          <input className="modifymyprofile__form__input" type="checkbox" id="service" name="service" />
+          <label className="modifymyprofile__form__label" for="service">test</label>
+          <input className="modifymyprofile__form__input" type="checkbox" id="service" name="service" />
+          <label className="modifymyprofile__form__label" for="service">test</label>
+      </div>
         </form>
 
-          <button className="modifyprofile__mp" type="submit"> Modifier mon mot de passe </button>    
       </div>
-      <div className="profile__services">
-          <input type="checkbox" id="hobby" name="hobby" />
-          <label for="hobby">test</label>
-      </div>
-      
-          
-        <div className="profile__services">
-          <p>soirée de fou</p>
-        </div>
-  </div>
-  
+    </div>
   )
 };
+
+ModifyProfile.propTypes = {
+  dataHobbies : PropTypes.arrayOf(
+    PropTypes.shape({
+      hobby : PropTypes.string.isRequired,
+      id : PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+  dataServices : PropTypes.arrayOf(
+    PropTypes.shape({
+      service : PropTypes.string.isRequired,
+      id : PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+}
 
 
 
