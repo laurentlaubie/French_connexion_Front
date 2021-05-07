@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ProfileDescription from 'src/components/ProfileDescription';
 import ProfileHobbies from 'src/components/ProfileHobbies';
 import ContactMe from 'src/components/ContactMe';
-import UserInfos from 'src/components/UserInfos';
+import ProfilePersonalInfos from 'src/components/ProfilePersonalInfos';
 import ProfileServices from 'src/components/ProfileServices';
 import ProfileMap from 'src/components/ProfileMap';
 import ModifyButton from 'src/components/ModifyButton';
@@ -44,7 +44,7 @@ const Profile = ({ isMyProfile, isHelper, connectedUserInfos }) => (
           <div className={!isHelper ? 'member__localisation' : 'hidden'}>`{connectedUserInfos.city}, {connectedUserInfos.country}`</div>
         </div>
         { isHelper && <ProfileMap /> }
-        { isMyProfile && <UserInfos /> }
+        { isMyProfile && <ProfilePersonalInfos /> }
         { !isMyProfile && <ContactMe /> }
       </div>
 
