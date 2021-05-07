@@ -1,23 +1,24 @@
 /* eslint-disable max-len */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // import './profileHobbies.scss';
 
-const ProfileHobbies = () => (
+const ProfileHobbies = ({ hobbiesList }) => (
 
-  <div className="profileHobbies">
-    <div className="card">
-      <div className="card__title">Mes centres d'interets </div>
-      <div className="card__list">
-        <div className="card__item">Faire la fete</div>
-        <div className="card__item">Sport</div>
-        <div className="card__item">Surf</div>
-        <div className="card__item">Viste de Musée</div>
-        <div className="card__item">Peinture</div>
-      </div>
+  <div className="profileHobbies card">
+    <div className="card__title">Mes centres d'interets </div>
+    <div className="card__list">
+      {hobbiesList.map((hobby) => (
+        <div className="card__item">{hobby}</div>
+      ))}
     </div>
   </div>
 
 );
+
+ProfileHobbies.propTypes = {
+  hobbiesList: PropTypes.string.isRequired,
+};
 
 export default ProfileHobbies;

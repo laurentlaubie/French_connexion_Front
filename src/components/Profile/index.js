@@ -9,61 +9,63 @@ import ProfileDescription from 'src/components/ProfileDescription';
 import ProfileHobbies from 'src/components/ProfileHobbies';
 import ProfileServices from 'src/components/ProfileServices';
 import ModifyButton from 'src/components/ModifyButton';
-import hands from 'src/assets/images/hands.png';
 import BecomeHelperButton from 'src/components/BecomeHelperButton';
 import ContactMe from 'src/components/ContactMe';
-
-
-import question from 'src/assets/images/question.png';
 
 // == import style
 import './profile.scss';
 
-const Profile = ({ isMyProfile, isHelper, connectedUserInfos }) => (
+const Profile = ({ isMyProfile, connectedUserInfos, otherUserInfos }) => {
+  let userInfos = null;
+  // console.log(connectedUserInfos);
+  if (isMyProfile) {
+    userInfos = { ...connectedUserInfos };
+    // console.log(userInfos);
+  } else {
+    userInfos = { ...otherUserInfos };
+    // console.log(userInfos);
+  }
 
-  <div className="profile">
-    <div className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </div>
-    <div className="profile__content">
-      <div className="profile__content__left">
-        <ProfilePrincipalInfos {...connectedUserInfos} />
-        { isHelper && <ProfileMap /> }
-        { isMyProfile && <ProfilePersonalInfos /> }
-        { !isMyProfile && <ContactMe /> }
+  return (
+    <div className="profile">
+      <div className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </div>
+      <div className="profile__content">
+        <div className="profile__content__left">
+          <ProfilePrincipalInfos {...userInfos} />
+          { (userInfos.isHelper) && <ProfileMap {...userInfos} /> }
+          { isMyProfile && <ProfilePersonalInfos {...userInfos} /> }
+          { !isMyProfile && <ContactMe /> }
+        </div>
+
+        <div className="profile__content__right">
+          <ProfileDescription {...userInfos} />
+          <ProfileHobbies {...userInfos} />
+          {(userInfos.isHelper) && <ProfileServices {...userInfos} />}
+        </div>
+
       </div>
-
-      <div className="profile__content__right">
-        <ProfileDescription />
-        <ProfileHobbies />
-        {(connectedUserInfos.isHelper) && <ProfileServices />}
+      <div className="profile__button">
+        { isMyProfile && <ModifyButton />}
+        { isMyProfile && !(userInfos.isHelper) && <BecomeHelperButton />}
       </div>
-
     </div>
-    <div className="profile__button">
-      { isMyProfile && <ModifyButton />}
-      { isMyProfile && !(connectedUserInfos.isHelper) && <BecomeHelperButton />}
-    </div>
-  </div>
-);
+  );
+};
 
 Profile.propTypes = {
   isMyProfile: PropTypes.bool.isRequired,
   isHelper: PropTypes.bool.isRequired,
   connectedUserInfos: PropTypes.shape(
     {
-      id: PropTypes.number.isRequired,
-      email: PropTypes.string.isRequired,
-      firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired,
       isHelper: PropTypes.bool.isRequired,
-      avatar: PropTypes.string.isRequired,
-      status: PropTypes.string.isRequired,
-      biography: PropTypes.string.isRequired,
-      shortDescription: PropTypes.string.isRequired,
-      city: PropTypes.string.isRequired,
-      country: PropTypes.string.isRequired,
-      createdAd: PropTypes.string.isRequired,
     },
   ).isRequired,
+  otherUserInfos: PropTypes.shape(
+    {
+      isHelper: PropTypes.bool.isRequired,
+    },
+  ).isRequired,
+
 
 };
 

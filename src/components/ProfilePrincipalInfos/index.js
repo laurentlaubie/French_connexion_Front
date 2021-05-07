@@ -9,7 +9,7 @@ import hands from 'src/assets/images/hands.png';
 // == import style
 import './profilePrincipalInfos.scss';
 
-const ProfilePrincipalInfos = ({ isMyProfile, isHelper, username, createdAt, city, country }) => (
+const ProfilePrincipalInfos = ({ isMyProfile, isHelper, username, createdAt, avatar, city, country }) => (
 
   <div className="profilePrincipalInfos">
     <div className="profilePrincipalInfos__status">
@@ -26,7 +26,7 @@ const ProfilePrincipalInfos = ({ isMyProfile, isHelper, username, createdAt, cit
     <div className="profilePrincipalInfos__username">{username}</div>
     <div className="profilePrincipalInfos__date"> Membre depuis {createdAt} </div>
     <div className="profilePrincipalInfos__image">
-      <img className="jose" alt="image__profile" src="https://img.freepik.com/photos-gratuite/portrait-homme-blanc-isole_53876-40306.jpg?size=626&ext=jpg" />
+      <img className="jose" alt="image__profile" src={avatar} />
     </div>
     <div className={isMyProfile ? 'profilePrincipalInfos__update' : 'hidden'}>Mettre à jour ma photo</div>
     <div className={!isHelper ? 'profilePrincipalInfos__localisation' : 'hidden'}>`{city}, {country}`</div>
@@ -39,7 +39,7 @@ ProfilePrincipalInfos.propTypes = {
   isHelper: PropTypes.bool.isRequired,
   username: PropTypes.string.isRequired,
   // id: PropTypes.number.isRequired,
-  // avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
   // status: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   country: PropTypes.string.isRequired,

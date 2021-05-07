@@ -1,23 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == import style
 import './profilePersonalInfos.scss';
 
-const ProfilePersonalInfos = () => (
+const ProfilePersonalInfos = ({
+  firstName, lastName, email, cityName, countryName, phoneNumber,
+}) => (
 
   <div className="profilePersonalInfos">
     <div className="profilePersonalInfos__title"> Mes informations personnelles </div>
     <div className="profilePersonalInfos__list">
-      <div className="profilePersonalInfos__item">Jean-José Dupont</div>
-      <div className="profilePersonalInfos__item">jeanjosé.dupont@gmail.com</div>
-      <div className="profilePersonalInfos__item">17 Allée des Lutins, Massy Palaiseau</div>
-      <div className="profilePersonalInfos__item">France</div>
-      <div className="profilePersonalInfos__item">06.25.25.25.25</div>
+      <div className="profilePersonalInfos__item">{firstName} {lastName}</div>
+      <div className="profilePersonalInfos__item">{email}</div>
+      <div className="profilePersonalInfos__item">{cityName}</div>
+      <div className="profilePersonalInfos__item">{countryName}</div>
+      <div className="profilePersonalInfos__item">{phoneNumber}</div>
     </div>
   </div>
 
-
- 
 );
+
+ProfilePersonalInfos.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  cityName: PropTypes.string.isRequired,
+  countryName: PropTypes.string.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
+
+};
 
 export default ProfilePersonalInfos;

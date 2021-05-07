@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
   // propName:  valueFromTheState,
   isHelper: state.isHelper,
   connectedUserInfos: state.connectedUserInfos,
+  otherUserInfos: state.otherUserInfos,
 
 });
 
