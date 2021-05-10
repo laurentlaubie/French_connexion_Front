@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOAD_USER_PROFILE, saveUserProfile } from 'src/actions/user';
+import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER } from 'src/actions/user';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -8,7 +8,7 @@ const api = axios.create({
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case LOAD_USER_PROFILE:
-      // on interroge l'api pour récupérer les infos de l'utilisateur
+      // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
 
       api
         .get('/user/3')
@@ -27,6 +27,26 @@ export default (store) => (next) => (action) => {
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
+
+    case ADD_NEW_USER:
+      // Création d'un nouvel utilisateur (inscription)
+
+      api
+        .post(
+          '/user',
+          {
+            firstName,
+            lastName,
+            email,
+            password,
+          },
+        )
+        .then((response) => {
+          console.log(response);
+          console.log("Vous êtes inscrit");
+        }).catch((error) => {
+          console.log(error);
+        });
 
     default:
       console.log('auth');

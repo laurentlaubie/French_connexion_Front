@@ -30,7 +30,11 @@ export const openLogIn = () => ({
   type: OPEN_LOG_IN,
 });
 
+
 // action type CHANGE_USER_FIELD_VALUE
+
+//action using for log and SignIn 
+
 export const CHANGE_USER_FIELD_VALUE = 'CHANGE_USER_FIELD_VALUE';
 
 // action creator changeUserFieldValue

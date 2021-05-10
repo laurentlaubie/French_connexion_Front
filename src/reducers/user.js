@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
-import {
-  SAVE_USER_PROFILE
-} from 'src/actions/user';
+import { SAVE_USER_PROFILE } from 'src/actions/user';
+import { CHANGE_USER_FIELD_VALUE} from 'src/actions/log';
 
 const initialState = {
   isHelper: false,
@@ -37,6 +36,11 @@ const initialState = {
   //   ],
   // },
   userInfos: [],
+  firstName:'',
+  lastName:'',
+  email:'',
+  password:'',
+  confirmedPassword:'',
 
 };
 
@@ -46,6 +50,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         userInfos: action.userInfos,
+      };
+    case CHANGE_USER_FIELD_VALUE:
+      return {
+        ...state,
+        [action.name]: action.value,
       };
     default:
       return state;

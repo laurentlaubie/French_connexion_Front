@@ -46,3 +46,12 @@ export const saveUserProfile = (userInfos) => ({
   type: SAVE_USER_PROFILE,
   userInfos,
 });
+
+// action type ADD_NEW_USER
+export const ADD_NEW_USER = 'ADD_NEW_USER';
+
+// action creator addNewUser
+export const addNewUser = (newUser) => ({
+  type: ADD_NEW_USER,
+  newUser,
+});
