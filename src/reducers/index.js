@@ -1,5 +1,5 @@
-import { CLOSE_SIGN_IN } from 'src/actions';
-import { SET_SELECTED } from 'src/actions';
+import { CLOSE_SIGN_IN, SET_SELECTED } from 'src/actions';
+
 
 const initialState = {
   isConnected: false,
