@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadUserProfile } from 'src/actions';
+import { loadUserProfile } from 'src/actions/user';
 
 import Profile from 'src/components/Profile';
 
@@ -7,10 +7,10 @@ import Profile from 'src/components/Profile';
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   // propName:  valueFromTheState,
-  isHelper: state.isHelper,
+  isHelper: state.user.isHelper,
   // connectedUserInfos: state.connectedUserInfos,
   // otherUserInfos: state.otherUserInfos,
-  userInfos: state.userInfos,
+  userInfos: state.user.userInfos,
 
 });
 

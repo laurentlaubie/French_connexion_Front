@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 
 import NavBar from 'src/components/NavBar';
 
-import { openLogIn } from 'src/actions';
+import { openLogIn } from 'src/actions/log';
 
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
-  isConnected: state.isConnected,
+  isConnected: state.log.isConnected,
 });
 
 // connection de props fonctions qui déclenchent des actions

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOAD_USER_PROFILE, saveUserProfile } from 'src/actions';
+import { LOAD_USER_PROFILE, saveUserProfile } from 'src/actions/user';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',

@@ -1,0 +1,13 @@
+.field{
+
+  &__input{
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid black;
+  display:block;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  width:70%;
+  margin:1rem auto;
+  }
+}
