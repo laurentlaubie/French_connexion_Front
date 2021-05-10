@@ -2,13 +2,20 @@ import React from 'react';
 
 import './footer.scss';
 
+
+
 const Footer = () => (
   <div className="footer">
-    Je suis le composant footer
     <ul>
-      <li> Plan du site</li>
-      <li> Mentions légales </li>
-      <li> A propos de nous </li>
+      <li> 
+      <NavLink to="/plan-du-site">Plan du site</NavLink>
+      </li>
+      <li> 
+      <NavLink to="/mentions-legales">Mentions légales</NavLink>
+     </li>
+      <li> 
+      <NavLink to="/mentions-legales">A propos de nous</NavLink>
+      </li>
     </ul>
   </div>
 );

@@ -53,6 +53,7 @@ const App = () => (
         <div className="app__ResultDesktop">
           <MapResults />
           <ProfilesResults data={DataFile} />
+          <Footer />
         </div>
       </Route>
       <Route path="/notre-reseau/utilisateur" exact>
@@ -70,6 +71,7 @@ const App = () => (
       <Route path="/notre-reseau" exact>
         <SearchBar />
         <ProfilesCards networkProfiles={DataProfile} />
+        <Footer />
       </Route>
       <Route>
         <Page404 />
