@@ -1,6 +1,7 @@
-import { createStore } from 'redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducer from 'src/reducers';
+import apiMiddleware from 'src/middlewares/apiBack';
 
-export default createStore(reducer, devToolsEnhancer());
+export default createStore(reducer, composeWithDevTools(applyMiddleware(apiMiddleware)));
