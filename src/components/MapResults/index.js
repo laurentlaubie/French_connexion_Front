@@ -54,7 +54,7 @@ const MapResults = ({ center, markers, handleSelected, markerSelected }) => {
   if (!isLoaded) return 'Chargement...';
 
   return (
-    <div>
+    <div className="mapResults">
       <Search panTo={panTo} />
 
       <GoogleMap
