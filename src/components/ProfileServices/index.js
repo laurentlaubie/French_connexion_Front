@@ -1,22 +1,24 @@
 /* eslint-disable max-len */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './profileServices.scss';
 
-const ProfileServices = () => (
+const ProfileServices = ({ servicesList }) => (
 
   <div className="card profileServices">
     <div className="card__title">Mes services </div>
     <div className="card__list">
-      <div className="card__item">Traduction</div>
-      <div className="card__item">Hébergement</div>
-      <div className="card__item">Visites guidées</div>
-      <div className="card__item">Trajets Aeroports</div>
-      <div className="card__item">Rencontrer des expatriés</div>
+      {servicesList.map((service) => (
+        <div className="card__item">{service}</div>
+      ))}
     </div>
-
   </div>
 
 );
+
+ProfileServices.propTypes = {
+  servicesList: PropTypes.array.isRequired,
+};
 
 export default ProfileServices;

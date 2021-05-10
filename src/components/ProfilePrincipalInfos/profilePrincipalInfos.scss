@@ -1,0 +1,129 @@
+@use 'src/styles/_vars';
+
+.profilePrincipalInfos {
+    
+  // border: solid gray 1px;
+  border-radius: 30px;
+  // background-color: vars.$light-blue;
+  //margin-top: 10rem;
+  padding-bottom:2rem;
+
+  &__status{
+
+    margin-bottom:2rem;
+
+      &__name{
+      font-size:1.2em;
+      position: relative;
+      display:inline;
+      text-decoration: underline;
+      color:vars.$dark-color;
+
+      a{
+        color:black;
+
+        &:hover{
+          color:black;
+        }
+      }
+
+      &--helper{
+        font-size:2em;
+        text-decoration: none;
+
+      }
+    }
+
+    &__logo{
+      position:absolute;
+      top:0;
+      width:20px;
+      right:-1.9em;
+
+      &--helper{
+        top:0;
+        width:70px;
+        right:-6rem;
+
+        @media (min-width: vars.$breakpoint-tablet){
+          width:50px;
+          top:0em;
+          right:-1.9em;
+
+
+        }
+      }
+
+      // @media (min-width: vars.$breakpoint-desktop){
+      //   width:70px;
+      // }
+
+    }
+
+  }
+
+  &__username {
+    font-weight: bolder;
+    font-size: 2.5em;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    color:vars.$light-color;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    // text-transform: uppercase;
+
+  }
+
+  &__date {
+    color: rgb(235, 235, 235);
+    padding-bottom: 2rem; 
+    color:vars.$dark-color;
+    font-size:1.5em;
+    font-style:italic ;
+    padding-top:0.8em; 
+  }
+
+  &__image {
+    
+    margin:auto;
+
+    img{
+      object-fit:contain;
+      width: 300px;
+      height: 300px;
+      border-radius:50%;
+      object-fit:cover;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+      @media (min-width:vars.$breakpoint-tablet){
+        width:200px;
+        height:200px;
+      }
+
+      @media (min-width:vars.$breakpoint-desktop){
+        width:300px;
+        height:300px;
+      }
+
+    }
+   
+  }
+
+
+  &__update {
+    padding-top: 0.5rem;
+    text-decoration: underline;
+    font-weight:bold;
+    
+  }
+
+  &__localisation{
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    font-size:1.5rem;
+  }
+
+}
+
+.hidden{
+  display:none;
+}
