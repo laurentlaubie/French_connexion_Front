@@ -1,7 +1,7 @@
-import { CLOSE_SIGN_IN, SET_SELECTED, SET_NEW_MARKER } from 'src/actions';
-
+import { SET_SELECTED, SET_NEW_MARKER } from 'src/actions';
 
 const initialState = {
+  // required for navbar
   isConnected: false,
   isSignInOpen: false,
   center: {
@@ -26,11 +26,6 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case CLOSE_SIGN_IN:
-      return {
-        ...state,
-        isSignInOpen: false,
-      };
     case SET_SELECTED:
       return {
         ...state,
