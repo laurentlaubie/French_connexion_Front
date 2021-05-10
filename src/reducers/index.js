@@ -1,4 +1,4 @@
-import { CLOSE_SIGN_IN, SET_SELECTED } from 'src/actions';
+import { CLOSE_SIGN_IN, SET_SELECTED, SET_NEW_MARKER } from 'src/actions';
 
 
 const initialState = {
@@ -21,7 +21,7 @@ const initialState = {
     lng: 8.533333,
   },
   ],
-  markerSelected: true,
+  markerSelected: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -35,6 +35,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         markerSelected: action.marker,
+      };
+    case SET_NEW_MARKER:
+      return {
+        ...state,
+        markers: [...state.markers, action.marker],
       };
     default:
       return state;
