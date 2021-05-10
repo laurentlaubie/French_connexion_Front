@@ -62,7 +62,7 @@ const App = () => (
       <Route path="/mon-profil" exact>
         <Profile isMyProfile />
         <Footer />
-        </Route>
+      </Route>
       <Route path="/mon-profil/modifier" exact>
         <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices}/>
         <Footer />
