@@ -1,4 +1,4 @@
-import { SET_SELECTED, SET_NEW_MARKER } from 'src/actions';
+import { SET_SELECTED, SET_NEW_MARKER, SET_ADRESS, SET_CENTER } from 'src/actions';
 
 const initialState = {
   // required for navbar
@@ -23,6 +23,7 @@ const initialState = {
   ],
   markerSelected: null,
   localisation: 'Rouen',
+  adress: 'Paris, France',
 };
 
 export default (state = initialState, action = {}) => {
@@ -36,6 +37,16 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         markers: [...state.markers, action.marker],
+      };
+    case SET_ADRESS:
+      return {
+        ...state,
+        adress: action.adress,
+      };
+    case SET_CENTER:
+      return {
+        ...state,
+        center: action.center,
       };
     default:
       return state;

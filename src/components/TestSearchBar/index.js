@@ -7,7 +7,7 @@ import PlacesAutocomplete, {
 import './testSearchBar.scss';
 import search from 'src/assets/pictures/search.png';
 
-const TestSearchBar = () => {
+const TestSearchBar = ({Tadress, TsetAdress, Tcoordinates, TsetCenter}) => {
   const [address, setAddress] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
     lat: null,
@@ -17,15 +17,17 @@ const TestSearchBar = () => {
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
-    setAddress(value);
+    TsetAdress(value);
     setCoordinates(latLng);
+    TsetCenter(latLng);
+    console.log(address);
   };
 
   return (
     <div className="TestSearchBar">
       <PlacesAutocomplete
-        value={address}
-        onChange={setAddress}
+        value={Tadress}
+        onChange={TsetAdress}
         onSelect={handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (

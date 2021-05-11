@@ -20,7 +20,7 @@ import Profile from 'src/components/Profile';
 import Page404 from 'src/components/Page404';
 import ProfilesCards from 'src/components/ProfilesCards';
 import MapTest from 'src/containers/MapTest';
-import TestSearchBar from 'src/components/TestSearchBar';
+import TestSearchBar from 'src/containers/TestSearchBar';
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/components/LogIn';
