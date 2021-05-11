@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileCard from 'src/components/ProfileCard';
+import UserCard from 'src/components/UserCard';
 import './usersCards.scss';
 
 const UsersCards = ({networkProfiles}) =>
@@ -8,7 +8,7 @@ const UsersCards = ({networkProfiles}) =>
     <h1 className="usersCards__title">Notre réseau</h1>
     <ul className="usersCards__list">
       <li>
-        {networkProfiles.map((Profile) => <ProfileCard key={Profile.id} {...Profile} />)}
+        {networkProfiles.map((Profile) => <UserCard key={Profile.id} {...Profile} />)}
       </li>
     </ul>
   </div>

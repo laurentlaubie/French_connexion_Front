@@ -1,17 +1,17 @@
-.profileCard{
+.userCard{
   display: flex;
   flex-direction: column;
   margin-bottom: 1em;
   background-color: #F0F0F0;
   box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
 
-  &__FlexCard{
+  &__flexCard{
     width: 100%;
     display: flex;
     flex-direction: row;
   }
 
-  &__LeftCard{
+  &__leftCard{
     width: 40%;
     display:flex;
     flex-direction: column;
@@ -20,15 +20,15 @@
     
   }
 
-  &__Name{
+  &__name{
     font-size: 1.25em;
   }
 
-  &__Localisation{
+  &__localisation{
     margin-bottom: 1em;
   }
 
-  &__Picture{
+  &__picture{
     height: 2em;
     border-radius: 50%;
     background-image: url("src/assets/pictures/profile.png");
@@ -38,22 +38,22 @@
   
   }
 
-  &__RightCard{
+  &__rightCard{
     width: 60%;
     display:flex;
     flex-direction: column;
     padding:1em;
   }
 
-  &__Name,&__Localisation,&__Role,&__Created_At{
+  &__name,&__localisation,&__role,&__created_At{
     font-weight: bold;
   }
 
-  &__Created_At{
+  &__created_At{
     margin-bottom: 1em;
   }
 
-  &__Hobbys
+  &__hobbys
   {
     width: 100%;
     display:flex;
@@ -61,7 +61,7 @@
     margin-top: 0.5em;
     justify-content: space-around;
   }
-  &__Hobby{
+  &__hobby{
     display: inline-block;
     padding: 0.5em;
     background-color: #dad8d8;
@@ -73,7 +73,7 @@
 
 @media only screen and (min-width: 601px) {
 
-  .profileCard{
+  .userCard{
     width: 30%;
     display: inline-block;
     margin-left: 3%;
