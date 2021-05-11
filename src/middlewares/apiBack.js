@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER } from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData } from 'src/actions/log';
 
@@ -25,7 +26,9 @@ export default (store) => (next) => (action) => {
         )
         .then((response) => {
           const userData = (response.data);
-          console.log(userData);
+          console.log(userData.token);
+          const decoded = jwt_decode(userData.token);
+          console.log(decoded);
           api.defaults.headers.common.Authorization = `Bearer ${userData.token}`;
           console.log('je sauvegarde mon token');
           store.dispatch(saveConnectedUserData(userData));
