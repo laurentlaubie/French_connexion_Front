@@ -5,7 +5,7 @@ import defaultAvatar from 'src/assets/images/defaultAvatar.jpg';
 
 import './userCard.scss';
 
-const UserCard = ({firstname, lastname, nickname, helper, cities, avatar, createdAt, services}) => {
+const UserCard = ({id, firstname, lastname, nickname, helper, cities, avatar, createdAt, services}) => {
   let localisation = '';
   if (cities != null) {
     localisation = `${cities.name} , ${cities.country.frenchName}`;
@@ -15,7 +15,7 @@ const UserCard = ({firstname, lastname, nickname, helper, cities, avatar, create
   }
 
   return (
-    <Link to="/notre-reseau/utilisateur" className="userCard">
+    <Link to={`/notre-reseau/utilisateur/${id}`} className="userCard">
       <div className="userCard__picture">
         <img alt={`Profil de ${firstname} ${lastname}`} src={avatar != null ? avatar : defaultAvatar} />
       </div>
@@ -40,6 +40,7 @@ const UserCard = ({firstname, lastname, nickname, helper, cities, avatar, create
 };
 
 UserCard.propTypes = {
+  id: PropTypes.number.isRequired,
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   nickname: PropTypes.string,

@@ -17,8 +17,8 @@ const mapStateToProps = (state, ownProps) => ({
 // connection de props fonctions qui déclenchent des actions
 // ces props seraont des fonctions
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  loadUserProfile: () => {
-    dispatch(loadUserProfile());
+  loadUserProfile: (userId) => {
+    dispatch(loadUserProfile(userId));
   },
 });
 

@@ -59,7 +59,7 @@ const App = () => (
         <SearchBar />
         <UsersCards networkProfiles={DataProfile} />
       </Route>
-      <Route path="/notre-reseau/utilisateur" exact>
+      <Route path="/notre-reseau/utilisateur/:id" exact>
         <Profile isMyProfile={false} />
         <Footer />
       </Route>

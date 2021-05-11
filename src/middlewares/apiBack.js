@@ -39,11 +39,12 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
     }
-    case LOAD_USER_PROFILE:
+    case LOAD_USER_PROFILE: {
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
-
+      const idParam = (action.userId);
+      console.log(idParam);
       api
-        .get('/user/14')
+        .get(`/user/${idParam}`)
         .then((response) => {
           // l'API nous retourne les infos de l'utilisateur
           console.log(response.data);
@@ -59,7 +60,7 @@ export default (store) => (next) => (action) => {
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
-
+    }
     case ADD_NEW_USER:
       // Création d'un nouvel utilisateur (inscription)
 

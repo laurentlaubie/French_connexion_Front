@@ -34,8 +34,9 @@ export const openLogIn = () => ({
 export const LOAD_USER_PROFILE = 'LOAD_USER_PROFILE';
 
 // action creator loadUserProfile
-export const loadUserProfile = () => ({
+export const loadUserProfile = (userId) => ({
   type: LOAD_USER_PROFILE,
+  userId,
 });
 
 // action type SAVE_USER_PROFILE

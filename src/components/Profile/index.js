@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 // == import local
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
@@ -25,8 +26,14 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
   //   // console.log(userInfos);
   // }
 
+  // let gaga = location.query.id;
+  // console.log(gaga);
+
+  const params = useParams();
+  const userId = params.id;
+  console.log(userId);
   useEffect(
-    loadUserProfile,
+    loadUserProfile(userId),
     [],
   );
 
