@@ -9,14 +9,18 @@ const api = axios.create({
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
-    case LOG_IN:
+    case LOG_IN: {
       // connexion de l'utilisateur
+      // on extrait l'email et le password du state
+      const state = store.getState();
+      const { email: username, password } = state.user;
+
       api
         .post(
           '/login',
           {
-            username: 'leon@leon.com',
-            password: 'leonleon',
+            username,
+            password,
           },
         )
         .then((response) => {
@@ -30,7 +34,7 @@ export default (store) => (next) => (action) => {
         });
       next(action);
       break;
-
+    }
     case LOAD_USER_PROFILE:
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
 
@@ -75,7 +79,6 @@ export default (store) => (next) => (action) => {
       break;
 
     default:
-      console.log('auth');
       next(action);
   }
 };
