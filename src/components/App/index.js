@@ -19,6 +19,9 @@ import Profile from 'src/containers/Profile';
 import Page404 from 'src/components/Page404';
 import ProfilesCards from 'src/components/ProfilesCards';
 import ModifyProfile from 'src/components/ModifyProfile';
+import LegalsMentions from 'src/components/LegalsMentions';
+import SiteMap from 'src/components/SiteMap';
+import AboutUs from 'src/components/AboutUs';
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/containers/LogIn';
@@ -28,10 +31,13 @@ import DataFile from 'src/data/ProfileList';
 import DataProfile from 'src/data/DataProfile';
 import DataHobbies from 'src/data/DataHobbies';
 import DataServices from 'src/data/DataServices';
-
-
-import './styles.css';
 import users from 'src/data/users';
+import DataTeam from 'src/data/DataTeam';
+
+
+// == Import Style
+import './styles.css';
+
 
 // == Composant
 const App = () => (
@@ -73,11 +79,23 @@ const App = () => (
         <ProfilesCards networkProfiles={DataProfile} />
         <Footer />
       </Route>
+      <Route path="/plan-du-site">
+        <SiteMap />
+        <Footer />
+        </Route>
+      <Route path="/mentions-legales">
+        <LegalsMentions />
+        <Footer />
+      </Route>
+      <Route path="/a-propos">
+        <AboutUs dataTeam={DataTeam}/>
+        <Footer />
+      </Route>
       <Route>
         <Page404 />
       </Route>
-    </Switch>
-  </div>
+      </Switch>
+     </div>
 );
 
 // == Export

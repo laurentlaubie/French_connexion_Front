@@ -1,24 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
-
 
 
 import './footer.scss';
 
-// == import local
-import LegalsMentions from 'src/components/LegalsMentions';
-import SiteMap from 'src/components/SiteMap';
-import AboutUs from 'src/components/AboutUs';
 
-
-
-
+// -- definir la couleur exact du footer sur le spring 3 lors d'un dailyScrum !!!!
 
 const Footer = () => (
   <div className="footer">
- 
-    <ul>
+     <ul className="footer__list">
       <li> 
       <NavLink to="/plan-du-site" >Plan du site</NavLink>
       </li>
@@ -29,18 +20,7 @@ const Footer = () => (
       <NavLink to="/a-propos">A propos de nous</NavLink>
       </li>
     </ul>
-    <Switch>
-    <Route path="/plan-du-site">
-      <SiteMap />
-    </Route>
-    <Route path="/mentions-legales">
-      <LegalsMentions />
-    </Route>
-    <Route path="/a-propos">
-      <AboutUs />
-    </Route>
-    </Switch>
-    
+        
   </div>
 );
 
