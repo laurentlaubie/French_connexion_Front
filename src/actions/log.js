@@ -30,11 +30,7 @@ export const openLogIn = () => ({
   type: OPEN_LOG_IN,
 });
 
-
 // action type CHANGE_USER_FIELD_VALUE
-
-//action using for log and SignIn 
-
 export const CHANGE_USER_FIELD_VALUE = 'CHANGE_USER_FIELD_VALUE';
 
 // action creator changeUserFieldValue
@@ -47,11 +43,18 @@ export const changeUserFieldValue = (value, name) => ({
 });
 
 // action type LOGIN
-export const LOGIN = 'LOGIN';
+export const LOG_IN = 'LOG_IN';
 
-// action creator login
-export const login = () => ({
-  type: LOGIN,
+// action creator logIn
+export const logIn = () => ({
+  type: LOG_IN,
 });
 
+// action type SAVE_CONNECTED_USER_DATA
+export const SAVE_CONNECTED_USER_DATA = 'SAVE_CONNECTED_USER_DATA';
 
+// action creator saveConnectedUserData
+export const saveConnectedUserData = (userData) => ({
+  type: SAVE_CONNECTED_USER_DATA,
+  userData,
+});

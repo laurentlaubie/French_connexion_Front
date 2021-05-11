@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER } from 'src/actions/user';
+import { LOG_IN, saveConnectedUserData } from 'src/actions/log';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -7,11 +9,33 @@ const api = axios.create({
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
+    case LOG_IN:
+      // connexion de l'utilisateur
+      api
+        .post(
+          '/login',
+          {
+            username: 'leon@leon.com',
+            password: 'leonleon',
+          },
+        )
+        .then((response) => {
+          const userData = (response.data);
+          console.log(userData);
+          api.defaults.headers.common.Authorization = `Bearer ${userData.token}`;
+          console.log('je sauvegarde mon token');
+          store.dispatch(saveConnectedUserData(userData));
+        }).catch((error) => {
+          console.log(error);
+        });
+      next(action);
+      break;
+
     case LOAD_USER_PROFILE:
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
 
       api
-        .get('/user/3')
+        .get('/user/9')
         .then((response) => {
           // l'API nous retourne les infos de l'utilisateur
           console.log(response.data);
@@ -35,18 +59,20 @@ export default (store) => (next) => (action) => {
         .post(
           '/user',
           {
-            firstName,
-            lastName,
-            email,
-            password,
+            // firstName,
+            // lastName,
+            // email,
+            // password,
           },
         )
         .then((response) => {
           console.log(response);
-          console.log("Vous êtes inscrit");
+          console.log('Vous êtes inscrit');
         }).catch((error) => {
           console.log(error);
         });
+      next(action);
+      break;
 
     default:
       console.log('auth');

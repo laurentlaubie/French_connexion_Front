@@ -4,18 +4,19 @@ import Field from 'src/components/Field';
 
 import './logIn.scss';
 
-const LogIn = ({ isOpen, close, openSignIn, email, password, changeField,  handleLogin}) => {
+const LogIn = ({ isOpen, close, openSignIn, email, password, changeField, handleLogin}) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    console.log("jappuie sur le bouton se loguer");
     handleLogin();
   };
 
-  return(
+  return (
     <div className={isOpen ? 'logIn' : 'logIn__close' }>
       <div className="logIn__modal">
         <h1 className="logIn__modal__title"> Bienvenue sur French Connection </h1>
         <button className="logIn__modal__closeButton" type="button" onClick={close}> X </button>
-        <form className="logIn__modal__form">
+        <form className="logIn__modal__form" onSubmit={handleSubmit}>
           <Field
             name="email"
             placeholder="Adresse Email"
@@ -28,14 +29,14 @@ const LogIn = ({ isOpen, close, openSignIn, email, password, changeField,  handl
             onChange={changeField}
             value={password}
           />
-          <button className="logIn__modal__form__button" type="submit" onSubmit={handleSubmit}> Se connecter </button>
+          <button className="logIn__modal__form__button" type="submit"> Se connecter </button>
         </form>
 
         <button type="button" className="logIn__modal__openSignInButton" onClick={openSignIn}> Vous n'avez pas encore de compte ?</button>
       </div>
     </div>
   );
-}
+};
 
 LogIn.propTypes = {
   isOpen: PropTypes.bool.isRequired,

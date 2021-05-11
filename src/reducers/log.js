@@ -1,5 +1,5 @@
 import {
-  CLOSE_LOG_IN, OPEN_LOG_IN, CLOSE_SIGN_IN, OPEN_SIGN_IN, CHANGE_USER_FIELD_VALUE
+  CLOSE_LOG_IN, OPEN_LOG_IN, CLOSE_SIGN_IN, OPEN_SIGN_IN, CHANGE_USER_FIELD_VALUE, SAVE_CONNECTED_USER_DATA
 } from 'src/actions/log';
 
 const initialState = {
@@ -12,6 +12,13 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case SAVE_CONNECTED_USER_DATA:
+      return {
+        ...state,
+        token: action.userData.token,
+        isConnected: true,
+        isLogInOpen: false,
+      };
     case CLOSE_LOG_IN:
       return {
         ...state,
