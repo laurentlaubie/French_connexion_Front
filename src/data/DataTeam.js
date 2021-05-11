@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    avatar: 'https://cdn.icon-icons.com/icons2/1736/PNG/512/4043260-avatar-male-man-portrait_113269.png',
+    avatar: 'https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png',
     name: 'Clémence',
     role: 'Scrum Master',
     description: 'Je vieng de Rouen. La Normandie tu l\'aimes ou tu la quittes',
