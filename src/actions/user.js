@@ -55,3 +55,20 @@ export const addNewUser = (newUser) => ({
   type: ADD_NEW_USER,
   newUser,
 });
+
+// action type LOAD_USERS_CARDS
+export const LOAD_USERS_CARDS = 'LOAD_USERS_CARDS';
+
+// action creator loadUsersCards
+export const loadUsersCards = () => ({
+  type: LOAD_USERS_CARDS,
+});
+
+// action type SAVE_USERS_CARDS
+export const SAVE_USERS_CARDS = 'SAVE_USERS_CARDS';
+
+// action creator saveUsersCards
+export const saveUsersCards = (usersList) => ({
+  type: SAVE_USERS_CARDS,
+  usersList,
+});

@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 import axios from 'axios';
+// eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
-import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER } from 'src/actions/user';
+import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards } from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData } from 'src/actions/log';
 
 const api = axios.create({
@@ -78,6 +79,24 @@ export default (store) => (next) => (action) => {
         }).catch((error) => {
           console.log(error);
         });
+      next(action);
+      break;
+
+    case LOAD_USERS_CARDS:
+      // affichage de tous les profils sous forme de cards
+
+      api
+        .get('user')
+        .then((response) => {
+          console.log(response);
+          const usersList = response.data;
+          store.dispatch(saveUsersCards(usersList));
+        }).catch((error) => {
+        // eslint-disable-next-line no-console
+          console.log(error);
+        });
+
+      // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
 

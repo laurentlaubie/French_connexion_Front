@@ -1,83 +1,92 @@
+
 .userCard{
   display: flex;
   flex-direction: column;
-  margin-bottom: 1em;
+  margin-bottom: 1.5rem;
   background-color: #F0F0F0;
   box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
+  width:100%;
+  justify-content:space-between;
 
-  &__flexCard{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
+  @media only screen and (min-width: 601px) {
 
-  &__leftCard{
-    width: 40%;
-    display:flex;
-    flex-direction: column;
-    padding:1em;
-
-    
-  }
-
-  &__name{
-    font-size: 1.25em;
-  }
-
-  &__localisation{
-    margin-bottom: 1em;
+    width: 32%;
+    flex-direction:row;
   }
 
   &__picture{
-    height: 2em;
-    border-radius: 50%;
-    background-image: url("src/assets/pictures/profile.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
+
+    
   
+    img{
+      object-fit:contain;
+      width: 180px;
+      height: 180px;
+      border-radius:50%;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      margin:1rem 0 1rem 1rem;
+    }
   }
 
-  &__rightCard{
-    width: 60%;
-    display:flex;
-    flex-direction: column;
-    padding:1em;
-  }
+  &__text{
+    width:45%;
+    text-align: left;
+    position:relative;
 
-  &__name,&__localisation,&__role,&__created_At{
-    font-weight: bold;
+    &__role{
+      padding-top:0.8rem;
+      font-size: 1.5rem;
+      text-align:right;
+      padding-right:1rem;
+
+      &--hidden{
+        visibility: hidden,
+      }
+    }
+
+    &__name{
+      font-size: 1.5rem;
+      padding-top:1rem;
+
+    }
+  
+    &__localisation{
+      margin-bottom: 1em;
+      font-size: 1.2rem;
+      padding-top:0.8rem;
+    }
+
+    &__name,&__localisation,&__role,&__created_At{
+      font-weight: bold;
+    }
+
+    &__link{
+      position:absolute;
+      bottom:1rem;
+      right:1rem;
+      text-align: right;
+    }
+
   }
 
   &__created_At{
     margin-bottom: 1em;
   }
 
-  &__hobbys
-  {
-    width: 100%;
-    display:flex;
-    flex-direction: row;
-    margin-top: 0.5em;
-    justify-content: space-around;
-  }
-  &__hobby{
-    display: inline-block;
-    padding: 0.5em;
-    background-color: #dad8d8;
-    margin: 0.5em;
-  }
+  // &__hobbys
+  // {
+  //   width: 100%;
+  //   display:flex;
+  //   flex-direction: row;
+  //   margin-top: 0.5em;
+  //   justify-content: space-around;
+  // }
+  // &__hobby{
+  //   display: inline-block;
+  //   padding: 0.5em;
+  //   background-color: #dad8d8;
+  //   margin: 0.5em;
+  // }
 
   
-}
-
-@media only screen and (min-width: 601px) {
-
-  .userCard{
-    width: 30%;
-    display: inline-block;
-    margin-left: 3%;
-   
-}
-
 }

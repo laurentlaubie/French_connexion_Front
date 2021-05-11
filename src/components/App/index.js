@@ -17,7 +17,7 @@ import ProfilesResults from 'src/components/ProfilesResults';
 import MapResults from 'src/components/MapResults';
 import Profile from 'src/containers/Profile';
 import Page404 from 'src/components/Page404';
-import UsersCards from 'src/components/UsersCards';
+import UsersCards from 'src/containers/UsersCards';
 import ModifyProfile from 'src/components/ModifyProfile';
 
 import SignIn from 'src/containers/SignIn';
