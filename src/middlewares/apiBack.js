@@ -19,8 +19,8 @@ export default (store) => (next) => (action) => {
         .post(
           '/login',
           {
-            username,
-            password,
+            username: 'leon@leon.com',
+            password: 'leonleon',
           },
         )
         .then((response) => {

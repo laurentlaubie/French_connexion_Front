@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 // == import local
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
-import ProfileMap from 'src/components/ProfileMap';
 import ProfilePersonalInfos from 'src/components/ProfilePersonalInfos';
 import ProfileDescription from 'src/components/ProfileDescription';
 import ProfileHobbies from 'src/components/ProfileHobbies';
@@ -37,7 +36,6 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
       <div className="profile__content">
         <div className="profile__content__left">
           <ProfilePrincipalInfos {...userInfos} isMyProfile={isMyProfile} />
-          { (userInfos.helper) && <ProfileMap {...userInfos} /> }
           { isMyProfile && <ProfilePersonalInfos {...userInfos} /> }
           { !isMyProfile && <ContactMe /> }
         </div>
@@ -59,10 +57,12 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
 
 Profile.propTypes = {
   isMyProfile: PropTypes.bool.isRequired,
-  userInfos: PropTypes.shape(
-    {
-      helper: PropTypes.bool.isRequired,
-    },
+  userInfos: PropTypes.arrayOf(
+    PropTypes.shape(
+      {
+        helper: PropTypes.bool.isRequired,
+      },
+    ).isRequired,
   ).isRequired,
   loadUserProfile: PropTypes.func.isRequired,
 

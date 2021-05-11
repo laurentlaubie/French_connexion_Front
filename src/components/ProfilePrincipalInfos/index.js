@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import question from 'src/assets/images/question.png';
 import hands from 'src/assets/images/hands.png';
 import defaultAvatar from 'src/assets/images/defaultAvatar.jpg';
+import ProfileLocalisation from 'src/components/ProfileLocalisation';
+
 
 // == import style
 import './profilePrincipalInfos.scss';
 
 const ProfilePrincipalInfos = ({
-  isMyProfile, helper, nickname, createdAt, avatar, cities, country, firstname, lastname,
+  isMyProfile, helper, nickname, createdAt, avatar, cities, firstname, lastname,
 }) => (
 
   <div className="profilePrincipalInfos">
@@ -30,7 +32,7 @@ const ProfilePrincipalInfos = ({
       <img className="jose" alt="image__profile" src={avatar != null ? avatar : defaultAvatar} />
     </div>
     <div className={isMyProfile ? 'profilePrincipalInfos__update' : 'hidden'}>Mettre à jour ma photo</div>
-    {/* <div className={!helper ? 'profilePrincipalInfos__localisation' : 'hidden'}>`{cities.name}, {cities}`</div> */}
+    <ProfileLocalisation {...cities} />
   </div>
 
 );
