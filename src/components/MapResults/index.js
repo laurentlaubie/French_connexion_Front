@@ -24,7 +24,7 @@ import mapStyles from './mapStyles';
 
 const libraries = ['places'];
 
-const MapResults = ({ center, markers, handleSelected, markerSelected }) => {
+const MapResults = ({ center, markers, handleSelected, markerSelected, localisation }) => {
   const mapContainerStyle = {
     height: '50vh',
     width: '50vw',
@@ -55,7 +55,7 @@ const MapResults = ({ center, markers, handleSelected, markerSelected }) => {
 
   return (
     <div className="mapResults">
-      <Search panTo={panTo} />
+      <Search panTo={panTo} value={localisation} />
 
       <GoogleMap
         id='map'

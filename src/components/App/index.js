@@ -20,6 +20,7 @@ import Profile from 'src/components/Profile';
 import Page404 from 'src/components/Page404';
 import ProfilesCards from 'src/components/ProfilesCards';
 import MapTest from 'src/containers/MapTest';
+import TestSearchBar from 'src/components/TestSearchBar';
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/components/LogIn';
@@ -62,11 +63,16 @@ const App = () => (
       <Route path="/map" exact>
         <MapTest />
       </Route>
+      <Route path="/search" exact>
+        <TestSearchBar />
+      </Route>
       <Route>
         <Page404 />
       </Route>
     </Switch>
+
   </div>
+  
 );
 
 // == Export

@@ -22,6 +22,7 @@ const initialState = {
   },
   ],
   markerSelected: null,
+  localisation: 'Rouen',
 };
 
 export default (state = initialState, action = {}) => {

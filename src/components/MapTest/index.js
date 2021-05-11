@@ -5,10 +5,8 @@ import {
   Marker,
   InfoWindow,
 } from '@react-google-maps/api';
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from 'use-places-autocomplete';
+
+
 import {
   Combobox,
   ComboboxInput,
@@ -17,6 +15,7 @@ import {
   ComboboxOption,
 } from '@reach/combobox';
 import { formatRelative } from 'date-fns';
+
 
 import '@reach/combobox/styles.css';
 import './mapTest.scss';
@@ -93,7 +92,9 @@ const MapTest = ({ center, markers, handleSelected, markerSelected }) => {
           </InfoWindow>
         ) : null}
       </GoogleMap>
+      
     </div>
+    
   );
 };
 

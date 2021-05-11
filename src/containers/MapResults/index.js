@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
   center: state.center,
   markers: state.markers,
   markerSelected: state.markerSelected,
+  localisation: state.localisation,
 
 });
 
