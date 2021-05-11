@@ -36,7 +36,7 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
       <div className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </div>
       <div className="profile__content">
         <div className="profile__content__left">
-          <ProfilePrincipalInfos {...userInfos} />
+          <ProfilePrincipalInfos {...userInfos} isMyProfile={isMyProfile} />
           { (userInfos.helper) && <ProfileMap {...userInfos} /> }
           { isMyProfile && <ProfilePersonalInfos {...userInfos} /> }
           { !isMyProfile && <ContactMe /> }
@@ -59,17 +59,6 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
 
 Profile.propTypes = {
   isMyProfile: PropTypes.bool.isRequired,
-  isHelper: PropTypes.bool.isRequired,
-  // connectedUserInfos: PropTypes.shape(
-  //   {
-  //     isHelper: PropTypes.bool.isRequired,
-  //   },
-  // ).isRequired,
-  // otherUserInfos: PropTypes.shape(
-  //   {
-  //     isHelper: PropTypes.bool.isRequired,
-  //   },
-  // ).isRequired,
   userInfos: PropTypes.shape(
     {
       helper: PropTypes.bool.isRequired,

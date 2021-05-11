@@ -39,7 +39,7 @@ export default (store) => (next) => (action) => {
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
 
       api
-        .get('/user/9')
+        .get('/user/14')
         .then((response) => {
           // l'API nous retourne les infos de l'utilisateur
           console.log(response.data);

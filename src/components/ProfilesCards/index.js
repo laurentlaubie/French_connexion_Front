@@ -4,7 +4,7 @@ import './profilesCards.scss';
 
 const ProfilesCards = ({networkProfiles}) => 
 {
-console.log(networkProfiles);
+// console.log(networkProfiles);
 
 
 

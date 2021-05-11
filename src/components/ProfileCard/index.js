@@ -6,7 +6,7 @@ import './profileCard.scss';
 
 const ProfileCard = ({name,description,role,localisation,created_at,hobbys}) => 
 {
-console.log(name,description,role,localisation,created_at,hobbys);
+// console.log(name,description,role,localisation,created_at,hobbys);
 
   return (
     <Link to="/notre-reseau/utilisateur">
