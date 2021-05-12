@@ -26,13 +26,18 @@ export default (store) => (next) => (action) => {
           },
         )
         .then((response) => {
-          const userData = (response.data);
-          console.log(userData.token);
-          const decoded = jwt_decode(userData.token);
-          console.log(decoded);
-          api.defaults.headers.common.Authorization = `Bearer ${userData.token}`;
-          console.log('je sauvegarde mon token');
-          store.dispatch(saveConnectedUserData(userData));
+          // on récupère le token et on paramètre axios pour le faire apparaitre dans notre header
+          const userToken = (response.data.token);
+          console.log(userToken);
+          api.defaults.headers.common.Authorization = `Bearer ${userToken}`;
+
+          // on décode notre token pour récupérer les données de l'utilisateur connecté
+          // et on les sauvegardes dans le state
+          const decodedToken = jwt_decode(userToken);
+          console.log(decodedToken);
+          // const connectedUserData = decodedToken.username;
+          // console.log(connectedUserData);
+          store.dispatch(saveConnectedUserData(decodedToken));
         }).catch((error) => {
           console.log(error);
         });

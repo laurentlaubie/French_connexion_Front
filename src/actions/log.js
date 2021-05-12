@@ -54,7 +54,7 @@ export const logIn = () => ({
 export const SAVE_CONNECTED_USER_DATA = 'SAVE_CONNECTED_USER_DATA';
 
 // action creator saveConnectedUserData
-export const saveConnectedUserData = (userData) => ({
+export const saveConnectedUserData = (decodedToken) => ({
   type: SAVE_CONNECTED_USER_DATA,
-  userData,
+  decodedToken,
 });

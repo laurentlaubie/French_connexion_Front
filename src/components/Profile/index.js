@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, location } from 'react';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
+
 
 // == import local
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
@@ -15,7 +16,7 @@ import ContactMe from 'src/components/ContactMe';
 // == import style
 import './profile.scss';
 
-const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
+const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData }) => {
   // let userInfos = null;
   // // console.log(connectedUserInfos);
   // if (isMyProfile) {
@@ -29,12 +30,28 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
   // let gaga = location.query.id;
   // console.log(gaga);
 
+  let userId = '';
   const params = useParams();
-  const userId = params.id;
-  console.log(userId);
+
+  if (isMyProfile) {
+    userId = connectedUserData.id;
+    console.log(userId);
+    console.log('je suis dans monProfile');
+  }
+  else {
+    userId = params.id;
+  }
+
+  const pathName = useLocation().pathname;
+  console.log(pathName);
+
   useEffect(() => {
     loadUserProfile(userId);
-  }, []);
+    console.log('l\'url a changé');
+  }, [pathName]);
+
+  // useEffect(() => {
+  // }, [location]);
 
   return (
     <div className="profile">
@@ -71,6 +88,11 @@ Profile.propTypes = {
     ).isRequired,
   ).isRequired,
   loadUserProfile: PropTypes.func.isRequired,
+  connectedUserData: PropTypes.shape(
+    {
+      id: PropTypes.number.isRequired,
+    },
+  ).isRequired,
 
 };
 

@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
   // connectedUserInfos: state.connectedUserInfos,
   // otherUserInfos: state.otherUserInfos,
   userInfos: state.user.userInfos,
+  connectedUserData: state.log.connectedUserData,
 
 });
 

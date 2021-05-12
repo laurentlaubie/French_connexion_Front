@@ -1,4 +1,5 @@
 import {
+  // eslint-disable-next-line max-len
   CLOSE_LOG_IN, OPEN_LOG_IN, CLOSE_SIGN_IN, OPEN_SIGN_IN, CHANGE_USER_FIELD_VALUE, SAVE_CONNECTED_USER_DATA
 } from 'src/actions/log';
 
@@ -8,6 +9,7 @@ const initialState = {
   isSignInOpen: false,
   email: '',
   password: '',
+  connectedUserData: '',
 };
 
 export default (state = initialState, action = {}) => {
@@ -15,7 +17,7 @@ export default (state = initialState, action = {}) => {
     case SAVE_CONNECTED_USER_DATA:
       return {
         ...state,
-        token: action.userData.token,
+        connectedUserData: action.decodedToken,
         isConnected: true,
         isLogInOpen: false,
       };
