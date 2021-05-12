@@ -15,20 +15,14 @@ import HomePageMap from 'src/components/HomePageMap';
 import UsersReviews from 'src/components/UsersReviews';
 import ProfilesResults from 'src/components/ProfilesResults';
 import MapResults from 'src/containers/MapResults';
-import Profile from 'src/components/Profile';
 import Page404 from 'src/components/Page404';
-import ProfilesCards from 'src/components/ProfilesCards';
-import MapTest from 'src/containers/MapTest';
 import TestSearchBar from 'src/containers/TestSearchBar';
-import MapResults from 'src/components/MapResults';
 import Profile from 'src/containers/Profile';
-import Page404 from 'src/components/Page404';
 import UsersCards from 'src/containers/UsersCards';
 import ModifyProfile from 'src/components/ModifyProfile';
 import LegalsMentions from 'src/components/LegalsMentions';
 import SiteMap from 'src/components/SiteMap';
 import AboutUs from 'src/components/AboutUs';
-
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/containers/LogIn';
@@ -85,13 +79,6 @@ const App = () => (
         <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices}/>
         <Footer />
       </Route>
-      <Route path="/notre-reseau" exact>
-        <SearchBar />
-        <ProfilesCards networkProfiles={DataProfile} />
-      </Route>
-      <Route path="/map" exact>
-        <MapTest />
-      </Route>
       <Route path="/search" exact>
         <TestSearchBar />
         <Footer />
@@ -99,7 +86,7 @@ const App = () => (
       <Route path="/plan-du-site">
         <SiteMap />
         <Footer />
-        </Route>
+      </Route>
       <Route path="/mentions-legales">
         <LegalsMentions />
         <Footer />
@@ -114,9 +101,6 @@ const App = () => (
     </Switch>
 
   </div>
-  
-      </Switch>
-     </div>
 );
 
 // == Export

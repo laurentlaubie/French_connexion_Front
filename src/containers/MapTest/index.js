@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import MapTest from 'src/components/MapTest';
-import { setSelected, setNewMarker } from 'src/actions';
+import { setSelected, setNewMarker } from 'src/actions/map';
  
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string

@@ -19,8 +19,8 @@ import {
 import { formatRelative } from 'date-fns';
 
 import '@reach/combobox/styles.css';
-import './map.scss';
 import mapStyles from './mapStyles';
+import './mapResults.scss';
 
 const libraries = ['places'];
 
@@ -35,10 +35,10 @@ const MapResults = ({ center, markers, handleSelected, markerSelected, localisat
     zoomControl: true,
   };
 
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyBwtmT6Y23Qa2w0kN9YnenHqTfjgadDEgc',
-    libraries,
-  });
+  // const { isLoaded, loadError } = useLoadScript({
+  //   googleMapsApiKey: 'AIzaSyBwtmT6Y23Qa2w0kN9YnenHqTfjgadDEgc',
+  //   libraries,
+  // });
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -50,8 +50,8 @@ const MapResults = ({ center, markers, handleSelected, markerSelected, localisat
     mapRef.current.setZoom(14);
   }, []);
 
-  if (loadError) return 'Erreur';
-  if (!isLoaded) return 'Chargement...';
+  // if (loadError) return 'Erreur';
+  // if (!isLoaded) return 'Chargement...';
 
   return (
     <div className="mapResults">
