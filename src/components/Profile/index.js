@@ -32,10 +32,9 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
   const params = useParams();
   const userId = params.id;
   console.log(userId);
-  useEffect(
-    loadUserProfile(userId),
-    [],
-  );
+  useEffect(() => {
+    loadUserProfile(userId);
+  }, []);
 
   return (
     <div className="profile">
