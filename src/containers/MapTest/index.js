@@ -6,9 +6,9 @@ import { setSelected, setNewMarker } from 'src/actions';
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
-  center: state.center,
-  markers: state.markers,
-  markerSelected: state.markerSelected,
+  center: state.map.center,
+  markers: state.map.markers,
+  markerSelected: state.map.markerSelected,
 
 });
 

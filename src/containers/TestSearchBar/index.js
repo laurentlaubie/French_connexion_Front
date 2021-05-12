@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
 import TestSearchBar from 'src/components/TestSearchBar';
-import {setNewAdress, setNewCenter } from 'src/actions';
+import {setNewAdress, setNewCenter } from 'src/actions/map';
  
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
-  adress: state.adress,
+  adress: state.map.adress,
 
 });
 
