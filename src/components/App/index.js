@@ -14,6 +14,12 @@ import HomePageFonctionnalities from 'src/components/HomePageFonctionnalities';
 import HomePageMap from 'src/components/HomePageMap';
 import UsersReviews from 'src/components/UsersReviews';
 import ProfilesResults from 'src/components/ProfilesResults';
+import MapResults from 'src/containers/MapResults';
+import Profile from 'src/components/Profile';
+import Page404 from 'src/components/Page404';
+import ProfilesCards from 'src/components/ProfilesCards';
+import MapTest from 'src/containers/MapTest';
+import TestSearchBar from 'src/containers/TestSearchBar';
 import MapResults from 'src/components/MapResults';
 import Profile from 'src/containers/Profile';
 import Page404 from 'src/components/Page404';
@@ -22,6 +28,7 @@ import ModifyProfile from 'src/components/ModifyProfile';
 import LegalsMentions from 'src/components/LegalsMentions';
 import SiteMap from 'src/components/SiteMap';
 import AboutUs from 'src/components/AboutUs';
+
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/containers/LogIn';
@@ -81,6 +88,12 @@ const App = () => (
       <Route path="/notre-reseau" exact>
         <SearchBar />
         <ProfilesCards networkProfiles={DataProfile} />
+      </Route>
+      <Route path="/map" exact>
+        <MapTest />
+      </Route>
+      <Route path="/search" exact>
+        <TestSearchBar />
         <Footer />
       </Route>
       <Route path="/plan-du-site">
@@ -98,6 +111,10 @@ const App = () => (
       <Route>
         <Page404 />
       </Route>
+    </Switch>
+
+  </div>
+  
       </Switch>
      </div>
 );

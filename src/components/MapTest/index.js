@@ -5,10 +5,8 @@ import {
   Marker,
   InfoWindow,
 } from '@react-google-maps/api';
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from 'use-places-autocomplete';
+
+
 import {
   Combobox,
   ComboboxInput,
@@ -18,13 +16,14 @@ import {
 } from '@reach/combobox';
 import { formatRelative } from 'date-fns';
 
+
 import '@reach/combobox/styles.css';
-import './map.scss';
+import './mapTest.scss';
 import mapStyles from './mapStyles';
 
 const libraries = ['places'];
 
-const MapResults = ({ center, markers, handleSelected, markerSelected, localisation }) => {
+const MapTest = ({ center, markers, handleSelected, markerSelected }) => {
   const mapContainerStyle = {
     height: '50vh',
     width: '50vw',
@@ -54,8 +53,8 @@ const MapResults = ({ center, markers, handleSelected, markerSelected, localisat
   if (!isLoaded) return 'Chargement...';
 
   return (
-    <div className="mapResults">
-      <Search panTo={panTo} value={localisation} />
+    <div>
+      <Search panTo={panTo} />
 
       <GoogleMap
         id='map'
@@ -93,7 +92,9 @@ const MapResults = ({ center, markers, handleSelected, markerSelected, localisat
           </InfoWindow>
         ) : null}
       </GoogleMap>
+      
     </div>
+    
   );
 };
 
@@ -152,4 +153,4 @@ function Search({ panTo }) {
   );
 }
 
-export default MapResults;
+export default MapTest;
