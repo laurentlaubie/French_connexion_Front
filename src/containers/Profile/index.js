@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { loadUserProfile } from 'src/actions/user';
+import { openLogOut } from 'src/actions/log';
 
 import Profile from 'src/components/Profile';
 
@@ -12,6 +13,7 @@ const mapStateToProps = (state, ownProps) => ({
   // otherUserInfos: state.otherUserInfos,
   userInfos: state.user.userInfos,
   connectedUserData: state.log.connectedUserData,
+  isLogOutOpen: state.log.isLogOutOpen,
 
 });
 
@@ -20,6 +22,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   loadUserProfile: (userId) => {
     dispatch(loadUserProfile(userId));
+  },
+  openLogOut: () => {
+    dispatch(openLogOut());
   },
 });
 

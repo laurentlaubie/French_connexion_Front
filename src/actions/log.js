@@ -58,3 +58,27 @@ export const saveConnectedUserData = (decodedToken) => ({
   type: SAVE_CONNECTED_USER_DATA,
   decodedToken,
 });
+
+// action type OPEN_LOG_OUT
+export const OPEN_LOG_OUT = 'OPEN_LOG_OUT';
+
+// action creator openLogOut
+export const openLogOut = () => ({
+  type: OPEN_LOG_OUT,
+});
+
+// action type CLOSE_LOG_OUT
+export const CLOSE_LOG_OUT = 'CLOSE_LOG_OUT';
+
+// action creator closeLogOut
+export const closeLogOut = () => ({
+  type: CLOSE_LOG_OUT,
+});
+
+// action type LOG_OUT
+export const LOG_OUT = 'LOG_OUT';
+
+// action creator logOut
+export const logOut = () => ({
+  type: LOG_OUT,
+});

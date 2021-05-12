@@ -1,22 +1,24 @@
-import React, { useEffect, location } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, useLocation } from 'react-router-dom';
 
-
 // == import local
+import LogOut from 'src/containers/LogOut';
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
 import ProfilePersonalInfos from 'src/components/ProfilePersonalInfos';
 import ProfileDescription from 'src/components/ProfileDescription';
-import ProfileHobbies from 'src/components/ProfileHobbies';
-import ProfileServices from 'src/components/ProfileServices';
-import ModifyButton from 'src/components/ModifyButton';
-import BecomeHelperButton from 'src/components/BecomeHelperButton';
+// import ProfileHobbies from 'src/components/ProfileHobbies';
+// import ProfileServices from 'src/components/ProfileServices';
+// import ModifyButton from 'src/components/ModifyButton';
+// import BecomeHelperButton from 'src/components/BecomeHelperButton';
 import ContactMe from 'src/components/ContactMe';
+import ProfileButton from 'src/components/ProfileButton';
+
 
 // == import style
 import './profile.scss';
 
-const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData }) => {
+const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, openLogOut }) => {
   // let userInfos = null;
   // // console.log(connectedUserInfos);
   // if (isMyProfile) {
@@ -53,6 +55,7 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData })
 
   return (
     <div className="profile">
+      <LogOut />
       <div className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </div>
       <div className="profile__content">
         <div className="profile__content__left">
@@ -68,9 +71,13 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData })
         </div>
 
       </div>
-      <div className="profile__button">
-        { isMyProfile && <ModifyButton />}
-        { isMyProfile && !(userInfos.helper) && <BecomeHelperButton />}
+      <div className="profile__buttons">
+        {/* { isMyProfile && <ModifyButton />}
+        { isMyProfile && !(userInfos.helper) && <BecomeHelperButton />} */}
+        { isMyProfile && <ProfileButton textContent="Me déconnecter" color="blue" linkTo="/mon-profil" onClick={openLogOut} />}
+        { isMyProfile && <ProfileButton textContent="Devenez helper" color="red" linkTo="/mon-profil/modifier" />}
+        { isMyProfile && <ProfileButton textContent="Modifier mon profil" color="red" linkTo="/mon-profil/modifier" />}
+
       </div>
     </div>
   );
@@ -91,6 +98,7 @@ Profile.propTypes = {
       id: PropTypes.number.isRequired,
     },
   ).isRequired,
+  openLogOut: PropTypes.func.isRequired,
 
 };
 
