@@ -45,13 +45,11 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData })
   const pathName = useLocation().pathname;
   console.log(pathName);
 
+  // on charge les infos du user à chaque fois que le pathname est modifié
   useEffect(() => {
     loadUserProfile(userId);
     console.log('l\'url a changé');
   }, [pathName]);
-
-  // useEffect(() => {
-  // }, [location]);
 
   return (
     <div className="profile">
