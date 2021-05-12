@@ -43,6 +43,7 @@ import './styles.css';
 // == Composant
 const App = () => (
   <div className="app">
+    <Footer />
     <Header />
     <LogIn />
     <SignIn />
@@ -53,14 +54,12 @@ const App = () => (
         <HomePageMap />
         <UsersReviews users={users} />
         <LogIn />
-        <Footer />
       </Route>
       <Route path="/resultats" exact>
         <SearchBar />
         <div className="app__ResultDesktop">
           <MapResults />
           <ProfilesResults data={DataFile} />
-          <Footer />
         </div>
       </Route>
       <Route path="/notre-reseau" exact>
@@ -68,31 +67,24 @@ const App = () => (
       </Route>
       <Route path="/notre-reseau/utilisateur/:id" exact>
         <Profile isMyProfile={false} />
-        <Footer />
       </Route>
       <Route path="/mon-profil" exact>
         <Profile isMyProfile />
-        <Footer />
       </Route>
       <Route path="/mon-profil/modifier" exact>
         <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices}/>
-        <Footer />
       </Route>
       <Route path="/search" exact>
         <SearchBar />
-        <Footer />
       </Route>
       <Route path="/plan-du-site">
         <SiteMap />
-        <Footer />
       </Route>
       <Route path="/mentions-legales">
         <LegalsMentions />
-        <Footer />
       </Route>
       <Route path="/a-propos">
         <AboutUs dataTeam={DataTeam}/>
-        <Footer />
       </Route>
       <Route>
         <Page404 />
