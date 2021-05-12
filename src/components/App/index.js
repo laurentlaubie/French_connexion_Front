@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // == Import style
 //import 'semantic-ui-css/semantic.min.css';
@@ -16,6 +17,7 @@ import UsersReviews from 'src/components/UsersReviews';
 import ProfilesResults from 'src/components/ProfilesResults';
 import MapResults from 'src/containers/MapResults';
 import Page404 from 'src/components/Page404';
+import Page403 from 'src/components/Page403';
 import TestSearchBar from 'src/containers/TestSearchBar';
 import Profile from 'src/containers/Profile';
 import UsersCards from 'src/containers/UsersCards';
@@ -35,73 +37,82 @@ import DataServices from 'src/data/DataServices';
 import users from 'src/data/users';
 import DataTeam from 'src/data/DataTeam';
 
-
 // == Import Style
 import './styles.css';
 
-
 // == Composant
-const App = () => (
-  <div className="app">
-    <Header />
-    <LogIn />
-    <SignIn />
-    <Switch>
-      <Route path="/" exact>
-        <HomePageHeader />
-        <HomePageFonctionnalities />
-        <HomePageMap />
-        <UsersReviews users={users} />
-        <LogIn />
-        <Footer />
-      </Route>
-      <Route path="/resultats" exact>
-        <SearchBar />
-        <div className="app__ResultDesktop">
-          <MapResults />
-          <ProfilesResults data={DataFile} />
-          <Footer />
-        </div>
-      </Route>
-      <Route path="/notre-reseau" exact>
-        <SearchBar />
-        <UsersCards networkProfiles={DataProfile} />
-      </Route>
-      <Route path="/notre-reseau/utilisateur/:id" exact>
-        <Profile isMyProfile={false} />
-        <Footer />
-      </Route>
-      <Route path="/mon-profil" exact>
-        <Profile isMyProfile />
-        <Footer />
-      </Route>
-      <Route path="/mon-profil/modifier" exact>
-        <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices}/>
-        <Footer />
-      </Route>
-      <Route path="/search" exact>
-        <TestSearchBar />
-        <Footer />
-      </Route>
-      <Route path="/plan-du-site">
-        <SiteMap />
-        <Footer />
-      </Route>
-      <Route path="/mentions-legales">
-        <LegalsMentions />
-        <Footer />
-      </Route>
-      <Route path="/a-propos">
-        <AboutUs dataTeam={DataTeam}/>
-        <Footer />
-      </Route>
-      <Route>
-        <Page404 />
-      </Route>
-    </Switch>
+const App = ({isConnected}) => {
+  console.log(isConnected);
 
-  </div>
-);
+  return (
+    <div className="app">
+      <Header />
+      <LogIn />
+      <SignIn />
+      <Switch>
+        <Route path="/" exact>
+          <HomePageHeader />
+          <HomePageFonctionnalities />
+          <HomePageMap />
+          <UsersReviews users={users} />
+          <LogIn />
+          <Footer />
+        </Route>
+        <Route path="/resultats" exact>
+          <SearchBar />
+          <div className="app__ResultDesktop">
+            <MapResults />
+            <ProfilesResults data={DataFile} />
+            <Footer />
+          </div>
+        </Route>
+        <Route path="/notre-reseau" exact>
+          <SearchBar />
+          <UsersCards networkProfiles={DataProfile} />
+        </Route>
+        <Route path="/notre-reseau/utilisateur/:id" exact>
+          {isConnected ? <Profile isMyProfile={false} /> : <Redirect to="/403" />}
+          <Footer />
+        </Route>
+        <Route path="/mon-profil" exact>
+          {isConnected ? <Profile isMyProfile /> : <Redirect to="/403" />}
+          <Footer />
+        </Route>
+        <Route path="/mon-profil/modifier" exact>
+          {isConnected ? <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices} /> : <Redirect to="/403" />}
+          <Footer />
+        </Route>
+        <Route path="/search" exact>
+          <TestSearchBar />
+          <Footer />
+        </Route>
+        <Route path="/plan-du-site">
+          <SiteMap />
+          <Footer />
+        </Route>
+        <Route path="/mentions-legales">
+          <LegalsMentions />
+          <Footer />
+        </Route>
+        <Route path="/a-propos">
+          <AboutUs dataTeam={DataTeam}/>
+          <Footer />
+        </Route>
+        <Route path="/403">
+          <Page403 />
+        </Route>
+        <Route>
+          <Page404 />
+        </Route>
+      </Switch>
+
+    </div>
+  );
+};
+
+App.propTypes = {
+  isConnected: PropTypes.bool.isRequired,
+};
 
 // == Export
 export default App;
