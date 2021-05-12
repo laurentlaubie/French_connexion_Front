@@ -1,0 +1,33 @@
+
+@use 'src/styles/vars';
+
+
+.siteMap{
+
+  @media only screen and (min-width: 601px){
+    background-color: vars.$light-red;
+  }
+
+ 
+
+
+  width: 80%;
+  margin: 2em auto;
+  
+  &__title{
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+ 
+  &__global{
+    
+    margin-top: 3em;
+
+    &__icon{
+      width: 80%;
+
+    }
+
+  }
+  
+}
