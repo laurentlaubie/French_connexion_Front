@@ -3,7 +3,7 @@ import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards } from 'src/actions/user';
-import { LOG_IN, saveConnectedUserData } from 'src/actions/log';
+import { LOG_IN, saveConnectedUserData, closeSignIn } from 'src/actions/log';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -63,20 +63,24 @@ export default (store) => (next) => (action) => {
     }
     case ADD_NEW_USER:
       // Création d'un nouvel utilisateur (inscription)
-
+      
+      const state = store.getState();
+      const { firstname, lastname, email, password, confirmedPassword } = state.user;
       api
         .post(
           '/user',
           {
-            // firstName,
-            // lastName,
-            // email,
-            // password,
+            firstname,
+            lastname,
+            email,
+            confirmedPassword,
+            password,
           },
         )
         .then((response) => {
           console.log(response);
           console.log('Vous êtes inscrit');
+          store.dispatch(closeSignIn());
         }).catch((error) => {
           console.log(error);
         });

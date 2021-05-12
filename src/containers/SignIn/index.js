@@ -11,8 +11,8 @@ import { addNewUser } from 'src/actions/user';
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   isOpen: state.log.isSignInOpen,
-  firstName: state.user.firstName,
-  lastName: state.user.lastName,
+  firstname: state.user.firstname,
+  lastname: state.user.lastname,
   email: state.user.email,
   password: state.user.password,
   confirmedPassword: state.user.confirmedPassword,
