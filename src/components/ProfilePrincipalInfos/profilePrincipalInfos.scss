@@ -87,7 +87,7 @@
     margin:auto;
 
     img{
-      object-fit:contain;
+      // object-fit:contain;
       width: 300px;
       height: 300px;
       border-radius:50%;
@@ -114,12 +114,6 @@
     text-decoration: underline;
     font-weight:bold;
     
-  }
-
-  &__localisation{
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    font-size:1.5rem;
   }
 
 }

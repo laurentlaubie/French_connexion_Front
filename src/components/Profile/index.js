@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 // == import local
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
-import ProfileMap from 'src/components/ProfileMap';
 import ProfilePersonalInfos from 'src/components/ProfilePersonalInfos';
 import ProfileDescription from 'src/components/ProfileDescription';
 import ProfileHobbies from 'src/components/ProfileHobbies';
@@ -26,18 +26,22 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
   //   // console.log(userInfos);
   // }
 
-  useEffect(
-    loadUserProfile,
-    [],
-  );
+  // let gaga = location.query.id;
+  // console.log(gaga);
+
+  const params = useParams();
+  const userId = params.id;
+  console.log(userId);
+  useEffect(() => {
+    loadUserProfile(userId);
+  }, []);
 
   return (
     <div className="profile">
       <div className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </div>
       <div className="profile__content">
         <div className="profile__content__left">
-          <ProfilePrincipalInfos {...userInfos} />
-          { (userInfos.helper) && <ProfileMap {...userInfos} /> }
+          <ProfilePrincipalInfos {...userInfos} isMyProfile={isMyProfile} />
           { isMyProfile && <ProfilePersonalInfos {...userInfos} /> }
           { !isMyProfile && <ContactMe /> }
         </div>
@@ -59,21 +63,12 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
 
 Profile.propTypes = {
   isMyProfile: PropTypes.bool.isRequired,
-  isHelper: PropTypes.bool.isRequired,
-  // connectedUserInfos: PropTypes.shape(
-  //   {
-  //     isHelper: PropTypes.bool.isRequired,
-  //   },
-  // ).isRequired,
-  // otherUserInfos: PropTypes.shape(
-  //   {
-  //     isHelper: PropTypes.bool.isRequired,
-  //   },
-  // ).isRequired,
-  userInfos: PropTypes.shape(
-    {
-      helper: PropTypes.bool.isRequired,
-    },
+  userInfos: PropTypes.arrayOf(
+    PropTypes.shape(
+      {
+        helper: PropTypes.bool.isRequired,
+      },
+    ).isRequired,
   ).isRequired,
   loadUserProfile: PropTypes.func.isRequired,
 

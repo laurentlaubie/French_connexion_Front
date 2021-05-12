@@ -17,7 +17,7 @@ import ProfilesResults from 'src/components/ProfilesResults';
 import MapResults from 'src/components/MapResults';
 import Profile from 'src/containers/Profile';
 import Page404 from 'src/components/Page404';
-import ProfilesCards from 'src/components/ProfilesCards';
+import UsersCards from 'src/containers/UsersCards';
 import ModifyProfile from 'src/components/ModifyProfile';
 import LegalsMentions from 'src/components/LegalsMentions';
 import SiteMap from 'src/components/SiteMap';
@@ -62,7 +62,11 @@ const App = () => (
           <Footer />
         </div>
       </Route>
-      <Route path="/notre-reseau/utilisateur" exact>
+      <Route path="/notre-reseau" exact>
+        <SearchBar />
+        <UsersCards networkProfiles={DataProfile} />
+      </Route>
+      <Route path="/notre-reseau/utilisateur/:id" exact>
         <Profile isMyProfile={false} />
         <Footer />
       </Route>

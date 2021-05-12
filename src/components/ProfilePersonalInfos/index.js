@@ -25,10 +25,16 @@ ProfilePersonalInfos.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  cityName: PropTypes.string.isRequired,
-  countryName: PropTypes.string.isRequired,
-  phoneNumber: PropTypes.string.isRequired,
+  cityName: PropTypes.string,
+  countryName: PropTypes.string,
+  phoneNumber: PropTypes.string,
 
+};
+
+ProfilePersonalInfos.defaultProps = {
+  cityName: '',
+  countryName: '',
+  phoneNumber: '',
 };
 
 export default ProfilePersonalInfos;

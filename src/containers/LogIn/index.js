@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import LogIn from 'src/components/LogIn';
-import { closeLogIn, openSignIn, changeUserFieldValue, login } from 'src/actions/log';
+import { closeLogIn, openSignIn, changeUserFieldValue, logIn } from 'src/actions/log';
  
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
@@ -9,7 +9,6 @@ const mapStateToProps = (state, ownProps) => ({
   isOpen: state.log.isLogInOpen,
   email: state.log.email,
   password: state.log.password,
-  
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -28,7 +27,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   handleLogin: () => {
     console.log('Allez, on se logge');
-    dispatch(login());
+    dispatch(logIn());
   },
 });
 

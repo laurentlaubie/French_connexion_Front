@@ -1,11 +1,13 @@
 @use 'src/styles/_vars';
 
-.profileMap {
+.profileLocalisation {
+  margin-top:2rem;
   width:90%;
   margin:auto;
   padding-bottom:2rem;
 
   &__title{
+    margin-top:2rem;
     font-size: 2rem;
     color:vars.$light-color;
     font-weight: bold;
@@ -24,3 +26,10 @@
   }
   
 }
+
+
+// &__localisation{
+//   padding-top: 2rem;
+//   padding-bottom: 1rem;
+//   font-size:1.5rem;
+// }
