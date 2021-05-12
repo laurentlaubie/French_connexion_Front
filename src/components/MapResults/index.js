@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   GoogleMap,
-  useLoadScript,
   Marker,
   InfoWindow,
 } from '@react-google-maps/api';
@@ -24,7 +23,7 @@ import './mapResults.scss';
 
 const libraries = ['places'];
 
-const MapResults = ({ center, markers, handleSelected, markerSelected, localisation }) => {
+const MapResults = ({ center, markers, handleSelected, markerSelected }) => {
   const mapContainerStyle = {
     height: '50vh',
     width: '50vw',
@@ -55,7 +54,6 @@ const MapResults = ({ center, markers, handleSelected, markerSelected, localisat
 
   return (
     <div className="mapResults">
-      <Search panTo={panTo} value={localisation} />
 
       <GoogleMap
         id='map'

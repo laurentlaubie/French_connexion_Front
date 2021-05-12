@@ -9,14 +9,14 @@ import { Route, Switch } from 'react-router-dom';
 import Footer from 'src/components/Footer';
 import Header from 'src/components/Header';
 import HomePageHeader from 'src/components/HomePageHeader';
-import SearchBar from 'src/components/SearchBar';
+// import SearchBar from 'src/components/SearchBar';
 import HomePageFonctionnalities from 'src/components/HomePageFonctionnalities';
 import HomePageMap from 'src/components/HomePageMap';
 import UsersReviews from 'src/components/UsersReviews';
 import ProfilesResults from 'src/components/ProfilesResults';
 import MapResults from 'src/containers/MapResults';
 import Page404 from 'src/components/Page404';
-import TestSearchBar from 'src/containers/TestSearchBar';
+import SearchBar from 'src/containers/SearchBar';
 import Profile from 'src/containers/Profile';
 import UsersCards from 'src/containers/UsersCards';
 import ModifyProfile from 'src/components/ModifyProfile';
@@ -64,7 +64,6 @@ const App = () => (
         </div>
       </Route>
       <Route path="/notre-reseau" exact>
-        <SearchBar />
         <UsersCards networkProfiles={DataProfile} />
       </Route>
       <Route path="/notre-reseau/utilisateur/:id" exact>
@@ -80,7 +79,7 @@ const App = () => (
         <Footer />
       </Route>
       <Route path="/search" exact>
-        <TestSearchBar />
+        <SearchBar />
         <Footer />
       </Route>
       <Route path="/plan-du-site">

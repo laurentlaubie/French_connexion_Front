@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 
-import TestSearchBar from 'src/components/TestSearchBar';
-import {setNewAdress, setNewCenter } from 'src/actions/map';
- 
+import SearchBar from 'src/components/SearchBar';
+import { setNewAdress, setNewCenter } from 'src/actions/map';
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
@@ -20,7 +19,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   setCenter: (center) => {
     dispatch(setNewCenter(center));
   },
- 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestSearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

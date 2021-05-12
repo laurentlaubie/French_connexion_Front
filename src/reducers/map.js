@@ -21,7 +21,6 @@ const initialState = {
   },
   ],
   markerSelected: null,
-  localisation: 'Rouen',
   adress: 'Paris, France',
 };
 

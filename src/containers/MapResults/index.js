@@ -9,7 +9,6 @@ const mapStateToProps = (state, ownProps) => ({
   center: state.map.center,
   markers: state.map.markers,
   markerSelected: state.map.markerSelected,
-  localisation: state.map.localisation,
 
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import HomePageTitle from 'src/components/HomePageTitle';
-import SearchBar from 'src/components/SearchBar';
+import SearchBar from 'src/containers/SearchBar';
 
 import header1 from '../../assets/images/cherry-728.svg';
 
