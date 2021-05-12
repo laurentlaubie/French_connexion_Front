@@ -20,6 +20,11 @@
 
   &__item{
 
+    &__button{
+      border:none;
+      background-color: #C4C4C4;
+    }
+
     &__hidden{
       display:none;
     }
@@ -27,6 +32,7 @@
     &__title{
       margin-top: 0.3em;
       font-size:0.8rem;
+      color:vars.$dark-color;
     }
 
     &__image{
@@ -45,7 +51,7 @@
 
 
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: vars.$breakpoint-tablet) {
   .navBar {
     position: fixed;
     top: 5%;

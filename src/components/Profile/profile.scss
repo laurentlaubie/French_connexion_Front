@@ -1,83 +1,75 @@
 @use 'src/styles/_vars';
 
-.profile__all {
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-  //border:1px solid black;
-  width: 90%;
-  margin: auto;
+.profile{
+  width:90%;
+  margin:5rem auto;
+  position:relative;
 
-  @media (min-width: vars.$breakpoint-tablet) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: start;
-    margin-top: -120px;
-
-
+  @media (min-width:vars.$max-width){
+    width:vars.$max-width;
   }
-}
 
-.profile__title {
-font-weight: 700;
-font-size: 1.5em;
-//padding-top: 6em;
-padding-bottom: 1em;
-text-align: center;
-width: 100%;
-}
-
-.profile__left {
-  margin-right: 10em;
-  margin-left: 10em;
-  width: 100%;
-}
-.profile__right {
-  width: 100%; 
-}
-
-
-.member {
-  
-  border: solid gray 1px;
-  border-radius: 30px;
-  background-color: vars.$light-blue;
-  //margin-top: 10rem;
-  
-  
-
-  &__image {
-    background-image: url("https://img.freepik.com/photos-gratuite/portrait-homme-blanc-isole_53876-40306.jpg?size=626&ext=jpg" );
-    background-position: center center ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 10em;
-    width: 10em;
-    border-radius: 50%;
-    margin: auto;
-    
+  &__title {
+    font-weight: 700;
+    font-size: 1.5em;
+    //padding-top: 6em;
+    padding-bottom: 3rem;
+    text-align: center;
+    width: 100%;
    
+    @media (min-width: vars.$breakpoint-tablet){
+      // margin-top: 2em;
+      font-weight: 700;
+      font-size: 2.5em;
+      text-align: left
+    }
   }
 
-  &__name {
-    font-weight: bolder;
-    font-size: large;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-  }
-  &__date {
-    color: rgb(235, 235, 235);
-    padding-bottom: 2rem;
-    
-  }
+  &__content {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    width: 100%;
+    // border:1px solid red;
+    position:relative;
 
-  &__infos {
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-  }
-
-    &__update {
-      padding-top: 0.5rem;
+    @media (min-width: vars.$breakpoint-tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: start;
+      // margin-top: -120px;
+      // width:45%
     }
 
+    &__left {
+      width: 100%;
+      background-color:vars.$light-blue;
+      border-radius:2rem;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      margin-bottom:2rem;
+      padding-top:2.5rem;
+
+
+      @media (min-width: vars.$breakpoint-tablet){
+        width:48%;
+      } 
+
+      @media (min-width: vars.$breakpoint-desktop){
+        width:38%;
+      } 
+    }
+
+    &__right {
+      width: 100%;
+      // border:2px solid green;
+
+      @media (min-width: vars.$breakpoint-tablet){
+        width:48%;
+      }
+
+      @media (min-width: vars.$breakpoint-desktop){
+        width:58%;
+      } 
+    }
+  }
 }

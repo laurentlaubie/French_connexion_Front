@@ -1,46 +1,77 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 // == import local
-import ProfileDescription from 'src/components/ProfilDescription';
-import ContactMe from 'src/components/ContactMe';
-import UserInfos from 'src/components/UserInfos';
-import Services from 'src/components/Services';
-import ResidentMap from 'src/components/ResidentMap';
+import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
+import ProfilePersonalInfos from 'src/components/ProfilePersonalInfos';
+import ProfileDescription from 'src/components/ProfileDescription';
+import ProfileHobbies from 'src/components/ProfileHobbies';
+import ProfileServices from 'src/components/ProfileServices';
 import ModifyButton from 'src/components/ModifyButton';
+import BecomeHelperButton from 'src/components/BecomeHelperButton';
+import ContactMe from 'src/components/ContactMe';
 
-
-// == import style 
+// == import style
 import './profile.scss';
 
+const Profile = ({ isMyProfile, loadUserProfile, userInfos }) => {
+  // let userInfos = null;
+  // // console.log(connectedUserInfos);
+  // if (isMyProfile) {
+  //   userInfos = { ...connectedUserInfos };
+  //   // console.log(userInfos);
+  // } else {
+  //   userInfos = { ...otherUserInfos };
+  //   // console.log(userInfos);
+  // }
 
-const Profile = () => (
+  // let gaga = location.query.id;
+  // console.log(gaga);
 
-  // ----- Profil's Card -----
+  const params = useParams();
+  const userId = params.id;
+  console.log(userId);
+  useEffect(() => {
+    loadUserProfile(userId);
+  }, []);
 
-  <div className="profile">
-
-    <div className="profile__title"> Mon profil </div>
-    <div className="profile__all">
-      <div className="profile__left">
-        <div className="member">
-          <div className="member__name">Jean-José</div>
-          <div className="member__date"> Membre depuis Mars 2018 </div>
-          <div className="member__image" />
-          <div className="member__update">Mettre à jour votre photo</div>
-          <div className="member__infos">Massy-Palaiseau, France</div>
+  return (
+    <div className="profile">
+      <div className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </div>
+      <div className="profile__content">
+        <div className="profile__content__left">
+          <ProfilePrincipalInfos {...userInfos} isMyProfile={isMyProfile} />
+          { isMyProfile && <ProfilePersonalInfos {...userInfos} /> }
+          { !isMyProfile && <ContactMe /> }
         </div>
-        <ContactMe />
-       <ResidentMap />
-        <UserInfos />
-        <ModifyButton />
+
+        <div className="profile__content__right">
+          <ProfileDescription {...userInfos} />
+          {/* <ProfileHobbies {...userInfos} /> */}
+          {/* {(userInfos.isHelper) && <ProfileServices {...userInfos} />} */}
+        </div>
+
       </div>
-      <div className="profile__right">
-        <ProfileDescription />
-        <Services />
+      <div className="profile__button">
+        { isMyProfile && <ModifyButton />}
+        { isMyProfile && !(userInfos.helper) && <BecomeHelperButton />}
       </div>
     </div>
+  );
+};
 
-  </div>
-);
+Profile.propTypes = {
+  isMyProfile: PropTypes.bool.isRequired,
+  userInfos: PropTypes.arrayOf(
+    PropTypes.shape(
+      {
+        helper: PropTypes.bool.isRequired,
+      },
+    ).isRequired,
+  ).isRequired,
+  loadUserProfile: PropTypes.func.isRequired,
+
+};
 
 export default Profile;
