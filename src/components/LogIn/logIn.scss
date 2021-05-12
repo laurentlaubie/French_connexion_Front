@@ -60,18 +60,6 @@
       display:flex;
       flex-direction:column;
 
-      &__field{
-        border: none;
-        box-shadow: none;
-        border-bottom: 1px solid black;
-        display:block;
-        padding-bottom: 1rem;
-        padding-left: 1rem;
-        width:70%;
-        margin:1rem auto;
-      
-      }
-
       &__button{
         width:40%;
         margin: 2rem auto;

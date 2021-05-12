@@ -1,7 +1,9 @@
 .app {
   width: 100%;
   margin: 1em auto;
+  margin-bottom: 0;
   text-align: center;
+
 }
 
 @media only screen and (min-width: 601px) {

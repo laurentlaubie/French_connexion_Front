@@ -1,0 +1,60 @@
+@use 'src/styles/vars';
+
+.aboutUs{
+
+      
+  width: 100%;
+  background-color: vars.$light-red;
+ 
+    
+  &__title{
+    font-size: 1.5em;
+    font-weight: 700;
+    padding-top: 1em;
+
+      &__subtitle{
+        font-size: 1em;
+        font-weight: 700;
+        padding-top: 2em;
+        padding-bottom: 1.5em;
+        text-decoration :underline;
+      }
+  }
+
+  &__text{
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        //background-color: vars.$light-blue;
+
+        @media (min-width: vars.$breakpoint-tablet){
+          width: 80%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+  }
+
+  &__list{
+
+    
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center ;
+    //flex-wrap: wrap;
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      flex-direction:row;
+    }
+
+    @media (min-width: vars.$max-width) {
+      width:vars.$max-width;
+    }
+
+
+
+  }
+
+}
+    
