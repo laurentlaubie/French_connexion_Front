@@ -22,11 +22,14 @@
   &__Name{
     margin-bottom: 0.2em;
   }
+
+ 
 }
 
 @media only screen and (min-width: 601px) {
 
   .profileResult{
+    margin-right: 2%;
     
     &__Picture{
       width:unset;
