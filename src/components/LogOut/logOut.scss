@@ -26,29 +26,38 @@
     }
 
     &__title{
-      
-      padding:6rem 0 4rem;
+
+      padding:3rem 0 3rem;
       width:70%;
       margin:auto;
-      font-size:1.5rem;
+      font-size:1rem;
 
       @media (min-width: vars.$breakpoint-tablet){
-        font-size:1.8rem;
+        font-size:1.3rem;
       }
     }
 
     &__buttons{
 
+      display:flex;
+      flex-direction: row;
+      justify-content:space-around;
+
       &__item{
-        width:40%;
         margin: 2rem auto;
         background-color:vars.$light-red;
         border:none;
-        padding:0.5rem;
+        padding:0.8rem 3rem;
         color:vars.$light-color;
         border-radius:0.5rem;
         font-weight:bold;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        font-size:1rem;
+
+        &--cancel{
+          background-color:vars.$light-color;
+          color: vars.$dark-color;
+        }
       }
 
     }

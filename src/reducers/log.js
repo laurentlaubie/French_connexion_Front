@@ -1,6 +1,9 @@
 import {
-  // eslint-disable-next-line max-len
-  CLOSE_LOG_IN, OPEN_LOG_IN, CLOSE_SIGN_IN, OPEN_SIGN_IN, CHANGE_USER_FIELD_VALUE, SAVE_CONNECTED_USER_DATA, OPEN_LOG_OUT,
+  CLOSE_LOG_IN, OPEN_LOG_IN,
+  CLOSE_SIGN_IN, OPEN_SIGN_IN,
+  CHANGE_USER_FIELD_VALUE,
+  SAVE_CONNECTED_USER_DATA,
+  OPEN_LOG_OUT, CLOSE_LOG_OUT, LOG_OUT,
 } from 'src/actions/log';
 
 const initialState = {
@@ -53,6 +56,17 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isLogOutOpen: true,
+      };
+    case CLOSE_LOG_OUT:
+      return {
+        ...state,
+        isLogOutOpen: false,
+      };
+    case LOG_OUT:
+      return {
+        ...state,
+        isConnected: false,
+        isLogOutOpen: false,
       };
     default:
       return state;

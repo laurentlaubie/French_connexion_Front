@@ -3,7 +3,7 @@ import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards } from 'src/actions/user';
-import { LOG_IN, saveConnectedUserData } from 'src/actions/log';
+import { LOG_IN, saveConnectedUserData, LOG_OUT } from 'src/actions/log';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -106,6 +106,11 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
 
+    case LOG_OUT:
+      delete api.defaults.headers.common.Authorization;
+      console.log('je me déconnecte');
+      next(action);
+      break;
     default:
       next(action);
   }
