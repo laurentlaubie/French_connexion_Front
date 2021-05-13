@@ -51,9 +51,20 @@ const App = ({ saveConnectedUserData, isConnected }) => {
   useEffect(() => {
     if (userToken != null) {
       const decodedToken = jwt_decode(userToken);
-      saveConnectedUserData(decodedToken);
-      console.log('je suis déjà connecté');
-    } else {
+      console.log(decodedToken);
+      const dateNow = Math.round(Date.now() / 1000);
+      console.log(dateNow);
+
+      if (decodedToken.exp - 600 > dateNow) {
+        saveConnectedUserData(decodedToken);
+        console.log('je suis déjà connecté');
+      }
+      else {
+        console.log('Token expiré');
+        localStorage.removeItem('token');
+      }
+    }
+    else {
       console.log('je ne suis pas encore connecté');
     }
   }, []);
