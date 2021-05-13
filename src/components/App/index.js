@@ -1,7 +1,8 @@
 // == Import npm
-import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import jwt_decode from 'jwt-decode';
 
 // == Import style
 //import 'semantic-ui-css/semantic.min.css';
@@ -41,8 +42,22 @@ import DataTeam from 'src/data/DataTeam';
 import './styles.css';
 
 // == Composant
-const App = ({isConnected}) => {
-  console.log(isConnected);
+const App = ({ saveConnectedUserData, isConnected }) => {
+
+  const pathName = useLocation().pathname;
+  console.log(pathName);
+  const userToken = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (userToken != null) {
+      const decodedToken = jwt_decode(userToken);
+      saveConnectedUserData(decodedToken);
+      console.log('je suis déjà connecté');
+    } else {
+      console.log('je ne suis pas encore connecté');
+    }
+  }, []);
+
 
   return (
     <div className="app">
@@ -111,6 +126,7 @@ const App = ({isConnected}) => {
 };
 
 App.propTypes = {
+  saveConnectedUserData: PropTypes.func.isRequired,
   isConnected: PropTypes.bool.isRequired,
 };
 

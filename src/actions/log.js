@@ -82,3 +82,11 @@ export const LOG_OUT = 'LOG_OUT';
 export const logOut = () => ({
   type: LOG_OUT,
 });
+
+// action type SET_TO_CONNECTED
+export const SET_TO_CONNECTED = 'SET_TO_CONNECTED';
+
+// action creator setToConnected
+export const setToConnected = () => ({
+  type: SET_TO_CONNECTED,
+});

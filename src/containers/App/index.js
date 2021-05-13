@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 
+import { saveConnectedUserData } from 'src/actions/log';
+
 import App from 'src/components/App';
 
 // connection de props en lecture sur le state
@@ -11,9 +13,9 @@ const mapStateToProps = (state, ownProps) => ({
 // connection de props fonctions qui déclenchent des actions
 // ces props seraont des fonctions
 const mapDispatchToProps = (dispatch, ownProps) => ({
-// props: () => {
-//   dispatch(actionFromAnActionCreator());
-// },
+  saveConnectedUserData: (decodedToken) => {
+    dispatch(saveConnectedUserData(decodedToken));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

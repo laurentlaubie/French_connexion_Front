@@ -28,8 +28,12 @@ export default (store) => (next) => (action) => {
         .then((response) => {
           // on récupère le token et on paramètre axios pour le faire apparaitre dans notre header
           const userToken = (response.data.token);
+
+          // on stocke le token dans le localStorage
+          localStorage.setItem('token', (userToken));
+
           console.log(userToken);
-          api.defaults.headers.common.Authorization = `Bearer ${userToken}`;
+          // api.defaults.headers.common.Authorization = `Bearer ${userToken}`;
 
           // on décode notre token pour récupérer les données de l'utilisateur connecté
           // et on les sauvegardes dans le state
@@ -45,11 +49,22 @@ export default (store) => (next) => (action) => {
       break;
     }
     case LOAD_USER_PROFILE: {
+      // CETTE REQUETE N'EST ACCESSIBLE QUE POUR UN UTILISATEUR CONNECTE
+      
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
       const idParam = (action.userId);
       console.log(idParam);
+
+      // on récupère le token stocké dans le localStorage
+      const userToken = localStorage.getItem('token');
+      console.log(userToken);
+
       api
-        .get(`/user/${idParam}`)
+        .get(`/user/${idParam}`, {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        })
         .then((response) => {
           // l'API nous retourne les infos de l'utilisateur
           console.log(response.data);
@@ -108,6 +123,7 @@ export default (store) => (next) => (action) => {
 
     case LOG_OUT:
       delete api.defaults.headers.common.Authorization;
+      localStorage.removeItem('token');
       console.log('je me déconnecte');
       next(action);
       break;
