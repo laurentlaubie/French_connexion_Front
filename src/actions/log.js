@@ -30,14 +30,12 @@ export const openLogIn = () => ({
   type: OPEN_LOG_IN,
 });
 
-// action type CHANGE_USER_FIELD_VALUE
-export const CHANGE_USER_FIELD_VALUE = 'CHANGE_USER_FIELD_VALUE';
+// action type CHANGE_LOG_IN_FIELD_VALUE
+export const CHANGE_LOG_IN_FIELD_VALUE = 'CHANGE_LOG_IN_FIELD_VALUE';
 
-// action creator changeUserFieldValue
-// on récupère le nom du champ et la valeur
-// et on construit un objet action qui contient ces informations
-export const changeUserFieldValue = (value, name) => ({
-  type: CHANGE_USER_FIELD_VALUE,
+// action creator changeLogInFieldValue
+export const changeLogInFieldValue = (value, name) => ({
+  type: CHANGE_LOG_IN_FIELD_VALUE,
   value,
   name,
 });

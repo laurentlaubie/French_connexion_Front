@@ -2,17 +2,14 @@ import { connect } from 'react-redux';
 
 import SignIn from 'src/components/SignIn';
 import { closeSignIn, openLogIn } from 'src/actions/log';
-import { changeUserFieldValue } from 'src/actions/log';
-import { addNewUser } from 'src/actions/user';
+import { addNewUser, changeSignInFieldValue } from 'src/actions/user';
 
-
- 
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   isOpen: state.log.isSignInOpen,
-  firstName: state.user.firstName,
-  lastName: state.user.lastName,
+  firstname: state.user.firstname,
+  lastname: state.user.lastname,
   email: state.user.email,
   password: state.user.password,
   confirmedPassword: state.user.confirmedPassword,
@@ -28,11 +25,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(openLogIn());
   },
   changeField: (value, name) => {
-    dispatch(changeUserFieldValue(value, name));
+    dispatch(changeSignInFieldValue(value, name));
   },
   handleSignIn: () => {
     dispatch(addNewUser());
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

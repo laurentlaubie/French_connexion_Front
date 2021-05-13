@@ -22,7 +22,7 @@ import Page403 from 'src/components/Page403';
 import TestSearchBar from 'src/containers/TestSearchBar';
 import Profile from 'src/containers/Profile';
 import UsersCards from 'src/containers/UsersCards';
-import ModifyProfile from 'src/components/ModifyProfile';
+import ModifyProfile from 'src/containers/ModifyProfile';
 import LegalsMentions from 'src/components/LegalsMentions';
 import SiteMap from 'src/components/SiteMap';
 import AboutUs from 'src/components/AboutUs';
@@ -68,7 +68,6 @@ const App = ({ saveConnectedUserData, isConnected }) => {
       console.log('je ne suis pas encore connecté');
     }
   }, []);
-
 
   return (
     <div className="app">
@@ -121,7 +120,7 @@ const App = ({ saveConnectedUserData, isConnected }) => {
           <Footer />
         </Route>
         <Route path="/a-propos">
-          <AboutUs dataTeam={DataTeam}/>
+          <AboutUs dataTeam={DataTeam} />
           <Footer />
         </Route>
         <Route path="/403">

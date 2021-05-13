@@ -24,6 +24,7 @@ const LogIn = ({ isOpen, close, openSignIn, email, password, changeField, handle
             value={email}
           />
           <Field
+            type="password"
             name="password"
             placeholder="Mot de passe"
             onChange={changeField}

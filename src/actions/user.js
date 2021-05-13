@@ -73,3 +73,13 @@ export const saveUsersCards = (usersList) => ({
   type: SAVE_USERS_CARDS,
   usersList,
 });
+
+// action type CHANGE_SIGN_IN_FIELD_VALUE
+export const CHANGE_SIGN_IN_FIELD_VALUE = 'CHANGE_SIGN_IN_FIELD_VALUE';
+
+// action creator changeSignInFieldValue
+export const changeSignInFieldValue = (value, name) => ({
+  type: CHANGE_SIGN_IN_FIELD_VALUE,
+  value,
+  name,
+});
