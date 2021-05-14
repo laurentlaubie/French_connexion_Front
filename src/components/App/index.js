@@ -103,9 +103,6 @@ const App = ({ saveConnectedUserData, isConnected }) => {
         <Route path="/mon-profil/modifier" exact>
           {isConnected ? <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices} /> : <Redirect to="/403" />}
         </Route>
-        <Route path="/search" exact>
-          <TestSearchBar />
-        </Route>
         <Route path="/plan-du-site">
           <SiteMap />
         </Route>
