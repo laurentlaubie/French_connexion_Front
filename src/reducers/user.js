@@ -10,6 +10,7 @@ const initialState = {
   password: '',
   confirmedPassword: '',
   usersList: [],
+  isLoading: false,
 
 };
 

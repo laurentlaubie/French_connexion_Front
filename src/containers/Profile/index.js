@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
   userInfos: state.user.userInfos,
   connectedUserData: state.log.connectedUserData,
   isLogOutOpen: state.log.isLogOutOpen,
+  isLoading: state.user.isLoading,
 
 });
 
