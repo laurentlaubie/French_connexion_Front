@@ -5,13 +5,11 @@
 
   border-top: 1px black solid;
   background-color: vars.$light-color;
-  padding-top: 1.5em;
-  padding-bottom: 0.5em;
   display: none;
-  background:#ccc;
-  width:100%;
-  padding-top:50px;
-  height:50px;
+  background: #ccc;
+  width: 100%;
+  position: absolute;
+  bottom: -4%;
   
 
   &__list{

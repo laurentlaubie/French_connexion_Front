@@ -52,9 +52,9 @@ export const saveUserProfile = (userInfos) => ({
 export const ADD_NEW_USER = 'ADD_NEW_USER';
 
 // action creator addNewUser
-export const addNewUser = (newUser) => ({
+export const addNewUser = () => ({
   type: ADD_NEW_USER,
-  newUser,
+  
 });
 
 // action type LOAD_USERS_CARDS

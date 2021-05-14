@@ -16,7 +16,7 @@ const SignIn = ({ isOpen, close, openLogIn, firstname, lastname, email, password
       <div className="signIn__modal">
         <h1 className="signIn__modal__title"> Créez votre compte </h1>
         <button className="signIn__modal__closeButton" type="button" onClick={close}> X </button>
-        <form className="signIn__modal__form">
+        <form className="signIn__modal__form" onSubmit={handleSubmit}>
           <Field
             className="modal__form__field"
             name="firstname"
@@ -55,7 +55,7 @@ const SignIn = ({ isOpen, close, openLogIn, firstname, lastname, email, password
             value={confirmedPassword}
           />
 
-          <button className="signIn__modal__form__button" type="submit" onSubmit={handleSubmit}> S'inscrire </button>
+          <button className="signIn__modal__form__button" type="submit" > S'inscrire </button>
         </form>
 
         <button type="button" className="signIn__modal__openLogInButton" onClick={openLogIn}> Vous avez déjà un compte ?</button>

@@ -3,6 +3,8 @@
   margin: 1em auto;
   margin-bottom: 0;
   text-align: center;
+  position: relative;
+  min-height: 96vh;
 
 }
 

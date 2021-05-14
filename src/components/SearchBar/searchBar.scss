@@ -1,35 +1,44 @@
-.searchBar{
+.SearchBar{
   border-radius: 40px;
   width: 80%;
   margin: 3em auto auto;
+  
 
   &__form{
-    position: relative;
+    position:relative;
   }
-
-  &__input{
+  &__mainInput{
     width: 100%;
-    padding-left: 1em;
-    border: none;
-    border-radius: 40px;
-    font-size: 1.25em;
-    height: 2.5em;
-    color: black;
-    background-color: #F0F0F0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      padding-left: 1em;
+      padding-right: 10%;
+      border: none;
+      border-radius: 40px;
+      font-size: 1.25em;
+      height: 2.5em;
+      color: black;
+      background-color: #F0F0F0;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
-  &__icon{
+  &__submit{
     position: absolute;
-    right: 10%;
-    top: 27%;
-    width: 1.25em;
+    right: 3%;
+    top: 0%;
+    background-image: url("/var/www/html/french connection/projet-french-connexion-front/src/assets/pictures/search.png");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    width: 4em;
+    border: none;
+    height: 3.5em;
+    cursor: pointer;
+
   }
+  
 }
 
 @media only screen and (min-width: 601px) {
-  .searchBar{
-    margin: 12em auto auto;
+  .SearchBar{
+    margin: 6em auto auto;
     width: 60%;
 
     &__icon{
@@ -38,3 +47,4 @@
   }
 
 }
+
