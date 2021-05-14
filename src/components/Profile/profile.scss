@@ -30,7 +30,7 @@
     flex-direction:column;
     align-items: center;
     width: 100%;
-    // border:1px solid red;
+    // border:1px solid blue;
     position:relative;
 
     @media (min-width: vars.$breakpoint-tablet) {
@@ -71,5 +71,25 @@
         width:58%;
       } 
     }
+  }
+
+  &__buttons{
+    display:flex;
+    flex-direction: column;
+    // border:1px solid red;
+
+    @media (min-width: vars.$breakpoint-tablet){
+      flex-direction:row;
+      width:100%;
+      position:absolute;
+      bottom:-4rem;
+      right:0;
+    }
+
+    @media (min-width: vars.$breakpoint-desktop){
+      width:65%;
+      justify-content: flex-end;      
+    }
+
   }
 }

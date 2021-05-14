@@ -3,7 +3,7 @@ import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards } from 'src/actions/user';
-import { LOG_IN, saveConnectedUserData, closeSignIn } from 'src/actions/log';
+import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -26,13 +26,22 @@ export default (store) => (next) => (action) => {
           },
         )
         .then((response) => {
-          const userData = (response.data);
-          console.log(userData.token);
-          const decoded = jwt_decode(userData.token);
-          console.log(decoded);
-          api.defaults.headers.common.Authorization = `Bearer ${userData.token}`;
-          console.log('je sauvegarde mon token');
-          store.dispatch(saveConnectedUserData(userData));
+          // on récupère le token et on paramètre axios pour le faire apparaitre dans notre header
+          const userToken = (response.data.token);
+
+          // on stocke le token dans le localStorage
+          localStorage.setItem('token', (userToken));
+
+          console.log(userToken);
+          // api.defaults.headers.common.Authorization = `Bearer ${userToken}`;
+
+          // on décode notre token pour récupérer les données de l'utilisateur connecté
+          // et on les sauvegardes dans le state
+          const decodedToken = jwt_decode(userToken);
+          console.log(decodedToken);
+          // const connectedUserData = decodedToken.username;
+          // console.log(connectedUserData);
+          store.dispatch(saveConnectedUserData(decodedToken));
         }).catch((error) => {
           console.log(error);
         });
@@ -40,11 +49,22 @@ export default (store) => (next) => (action) => {
       break;
     }
     case LOAD_USER_PROFILE: {
+      // CETTE REQUETE N'EST ACCESSIBLE QUE POUR UN UTILISATEUR CONNECTE
+      
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
       const idParam = (action.userId);
       console.log(idParam);
+
+      // on récupère le token stocké dans le localStorage
+      const userToken = localStorage.getItem('token');
+      console.log(userToken);
+
       api
-        .get(`/user/${idParam}`)
+        .get(`/user/${idParam}`, {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        })
         .then((response) => {
           // l'API nous retourne les infos de l'utilisateur
           console.log(response.data);
@@ -105,6 +125,12 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
 
+    case LOG_OUT:
+      delete api.defaults.headers.common.Authorization;
+      localStorage.removeItem('token');
+      console.log('je me déconnecte');
+      next(action);
+      break;
     default:
       next(action);
   }

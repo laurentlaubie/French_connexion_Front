@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import LogIn from 'src/components/LogIn';
-import { closeLogIn, openSignIn, changeUserFieldValue, logIn } from 'src/actions/log';
+import { closeLogIn, openSignIn, changeLogInFieldValue, logIn } from 'src/actions/log';
  
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
@@ -21,9 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(openSignIn());
   },
   changeField: (value, name) => {
-    // console.log(` Je veux changer la valeur de ${name} pour y mettre : ${value}`);
-
-    dispatch(changeUserFieldValue(value, name));
+    dispatch(changeLogInFieldValue(value, name));
   },
   handleLogin: () => {
     console.log('Allez, on se logge');

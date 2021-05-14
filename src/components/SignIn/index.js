@@ -18,24 +18,28 @@ const SignIn = ({ isOpen, close, openLogIn, firstname, lastname, email, password
         <button className="signIn__modal__closeButton" type="button" onClick={close}> X </button>
         <form className="signIn__modal__form" onSubmit={handleSubmit}>
           <Field
+            className="modal__form__field"
             name="firstname"
             placeholder="Prénom"
             onChange={changeField}
             value={firstname}
           />
           <Field
+            className="modal__form__field"
             name="lastname"
             placeholder="Nom"
             onChange={changeField}
             value={lastname}
           />
           <Field
+            className="modal__form__field"
             name="email"
             placeholder="Email"
             onChange={changeField}
             value={email}
           />
           <Field
+            className="modal__form__field"
             name="password"
             type="password"
             placeholder="Mot de passe"
@@ -43,8 +47,9 @@ const SignIn = ({ isOpen, close, openLogIn, firstname, lastname, email, password
             value={password}
           />
           <Field
+            className="modal__form__field"
             name="confirmedPassword"
-            type="confirmedPassword"
+            type="password"
             placeholder="Confirmer votre mot de passe"
             onChange={changeField}
             value={confirmedPassword}
@@ -69,7 +74,7 @@ SignIn.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   confirmedPassword: PropTypes.string.isRequired,
-  changeField : PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
 };
 

@@ -5,7 +5,9 @@ import defaultAvatar from 'src/assets/images/defaultAvatar.jpg';
 
 import './userCard.scss';
 
-const UserCard = ({id, firstname, lastname, nickname, helper, cities, avatar, createdAt, services}) => {
+const UserCard = ({
+  id, firstname, lastname, nickname, helper, cities, avatar, createdAt, services, isConnected, openModal
+}) => {
   let localisation = '';
   if (cities != null) {
     localisation = `${cities.name} , ${cities.country.frenchName}`;
@@ -15,7 +17,7 @@ const UserCard = ({id, firstname, lastname, nickname, helper, cities, avatar, cr
   }
 
   return (
-    <Link to={`/notre-reseau/utilisateur/${id}`} className="userCard">
+    <Link to={isConnected ? `/notre-reseau/utilisateur/${id}` : 'notre-reseau'} className="userCard" onClick={isConnected ? '' : openModal}>
       <div className="userCard__picture">
         <img alt={`Profil de ${firstname} ${lastname}`} src={avatar != null ? avatar : defaultAvatar} />
       </div>
@@ -55,6 +57,8 @@ UserCard.propTypes = {
       ),
     },
   ),
+  isConnected: PropTypes.bool.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 UserCard.defaultProps = {
