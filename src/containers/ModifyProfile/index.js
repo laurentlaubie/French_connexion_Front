@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadUserProfile, changeProfileFormFieldValue } from 'src/actions/user';
+import { loadUserProfile, changeProfileFormFieldValue, modifyProfile } from 'src/actions/user';
 
 import ModifyProfile from 'src/components/ModifyProfile';
 
@@ -8,6 +8,8 @@ import ModifyProfile from 'src/components/ModifyProfile';
 const mapStateToProps = (state, ownProps) => ({
   userInfos: state.user.userInfos,
   connectedUserData: state.log.connectedUserData,
+  newPassword: state.user.newPassword,
+  confirmedNewPassword: state.user.confirmedNewPassword,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -18,6 +20,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   changeField: (value, name) => {
     dispatch(changeProfileFormFieldValue(value, name));
+  },
+  handleModifyProfile: () => {
+    dispatch(modifyProfile());
   },
 });
 

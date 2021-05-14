@@ -21,7 +21,7 @@ export default (store) => (next) => (action) => {
         .post(
           '/login',
           {
-            username: 'leon@leon.com',
+            username: 'leon@gmail.com',
             password: 'leonleon',
           },
         )
@@ -54,7 +54,6 @@ export default (store) => (next) => (action) => {
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
       const idParam = (action.userId);
       console.log(idParam);
-
       // on récupère le token stocké dans le localStorage
       const userToken = localStorage.getItem('token');
       console.log(userToken);
@@ -67,14 +66,20 @@ export default (store) => (next) => (action) => {
         })
         .then((response) => {
           // l'API nous retourne les infos de l'utilisateur
+          console.log(response.status);
           console.log(response.data);
           const userInfos = response.data;
-
+          console.log(response.headers);
           // on sauvegarde ces infos
           store.dispatch(saveUserProfile(userInfos));
         }).catch((error) => {
           // eslint-disable-next-line no-console
-          console.log(error);
+          const errorStatus = error.response.status;
+          console.log(error.response.status);
+          console.log('vous ne passerez pas');
+          if (errorStatus === 401) {
+            window.location.href = '/403';
+          }
         });
 
       // puis on décide si on la laisse filer ou si on la bloque

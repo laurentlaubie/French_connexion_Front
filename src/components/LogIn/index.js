@@ -7,7 +7,7 @@ import './logIn.scss';
 const LogIn = ({ isOpen, close, openSignIn, email, password, changeField, handleLogin}) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log("jappuie sur le bouton se loguer");
+    console.log('jappuie sur le bouton se loguer');
     handleLogin();
   };
 

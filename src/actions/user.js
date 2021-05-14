@@ -93,3 +93,11 @@ export const changeProfileFormFieldValue = (value, name) => ({
   value,
   name,
 });
+
+// action type MODIFY_PROFILE
+export const MODIFY_PROFILE = 'MODIFY_PROFILE';
+
+// action creator modifyProfile
+export const modifyProfile = () => ({
+  type: MODIFY_PROFILE,
+});

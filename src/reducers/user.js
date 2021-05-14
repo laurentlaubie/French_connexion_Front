@@ -10,6 +10,8 @@ const initialState = {
   password: '',
   confirmedPassword: '',
   usersList: [],
+  newPassword: '',
+  confirmedNewPassword: '',
 
 };
 
