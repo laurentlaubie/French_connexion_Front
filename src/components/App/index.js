@@ -71,6 +71,16 @@ const App = ({ saveConnectedUserData, isConnected, loading }) => {
     }
   }, []);
 
+    //-- gestion du scroll
+    const location = useLocation();
+    useEffect (
+      () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth'})
+      },
+      [location],
+    )
+
+    //-- gestion du loader
   if (loading) {
     return <Loading />;
   }
