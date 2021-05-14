@@ -49,24 +49,27 @@ const App = ({ saveConnectedUserData, isConnected }) => {
   const userToken = localStorage.getItem('token');
 
   useEffect(() => {
-    if (userToken != null) {
-      const decodedToken = jwt_decode(userToken);
-      console.log(decodedToken);
-      const dateNow = Math.round(Date.now() / 1000);
-      console.log(dateNow);
+    // async function tatata() {
+      if (userToken != null) {
+        const decodedToken = jwt_decode(userToken);
+        console.log(decodedToken);
+        const dateNow = Math.round(Date.now() / 1000);
+        console.log(dateNow);
 
-      if (decodedToken.exp - 600 > dateNow) {
-        saveConnectedUserData(decodedToken);
-        console.log('je suis déjà connecté');
+        if (decodedToken.exp - 600 > dateNow) {
+          saveConnectedUserData(decodedToken);
+          console.log('je suis déjà connecté');
+        }
+        else {
+          console.log('Token expiré');
+          localStorage.removeItem('token');
+        }
       }
       else {
-        console.log('Token expiré');
-        localStorage.removeItem('token');
+        console.log('je ne suis pas encore connecté');
       }
-    }
-    else {
-      console.log('je ne suis pas encore connecté');
-    }
+    // }
+    // tatata();
   }, []);
 
   return (
@@ -95,10 +98,12 @@ const App = ({ saveConnectedUserData, isConnected }) => {
           <UsersCards networkProfiles={DataProfile} />
         </Route>
         <Route path="/notre-reseau/utilisateur/:id" exact>
-          {isConnected ? <Profile isMyProfile={false} /> : <Redirect to="/403" />}
+          {/* {isConnected ? <Profile isMyProfile={false} /> : <Redirect to="/403" />} */}
+          <Profile isMyProfile={false} />
         </Route>
         <Route path="/mon-profil" exact>
-          {isConnected ? <Profile isMyProfile /> : <Redirect to="/403" />}
+          {/* {isConnected ? <Profile isMyProfile /> : <Redirect to="/403" />} */}
+          <Profile isMyProfile />
         </Route>
         <Route path="/mon-profil/modifier" exact>
           {isConnected ? <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices} /> : <Redirect to="/403" />}

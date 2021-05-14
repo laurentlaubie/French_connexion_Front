@@ -8,6 +8,8 @@ import ModifyProfile from 'src/components/ModifyProfile';
 const mapStateToProps = (state, ownProps) => ({
   userInfos: state.user.userInfos,
   connectedUserData: state.log.connectedUserData,
+  newPassword: state.user.newPassword,
+  confirmedNewPassword: state.user.confirmedNewPassword,
 });
 
 // connection de props fonctions qui déclenchent des actions
