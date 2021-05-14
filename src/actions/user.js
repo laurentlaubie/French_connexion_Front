@@ -83,3 +83,13 @@ export const changeSignInFieldValue = (value, name) => ({
   value,
   name,
 });
+
+// action type CHANGE_PROFILE_FORM_FIELD_VALUE
+export const CHANGE_PROFILE_FORM_FIELD_VALUE = 'CHANGE_PROFILE_FORM_FIELD_VALUE';
+
+// action creator changeProfileFormFieldValue
+export const changeProfileFormFieldValue = (value, name) => ({
+  type: CHANGE_PROFILE_FORM_FIELD_VALUE,
+  value,
+  name,
+});

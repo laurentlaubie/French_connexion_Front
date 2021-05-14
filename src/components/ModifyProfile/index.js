@@ -2,13 +2,15 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 
-
 // == import style
 import './modifyProfile.scss';
 
-const ModifyProfile = ({ connectedUserData, loadUserProfile, userInfos }) => {
+const ModifyProfile = ({
+  connectedUserData, loadUserProfile, userInfos, changeField,
+}) => {
   const userId = connectedUserData.id;
 
+  console.log(userInfos);
   useEffect(() => {
     loadUserProfile(userId);
   }, []);
@@ -27,35 +29,71 @@ const ModifyProfile = ({ connectedUserData, loadUserProfile, userInfos }) => {
           <label className="modifyProfile__form__label" htmlFor="nickname">
             <div className="modifyProfile__form__label__name"> Nom d'utilisateur </div>
             <Field
+              className="modifyProfile__form__field"
               name="nickname"
               placeholder="Ex: Martin88"
               onChange={changeField}
-              value={nickname}
+              value={userInfos.nickname}
             />
             {/* <input className="modifyProfile__form__field" type="text" name="nickname" placeholder="Ex: Martin88" value={userInfos.nickname} onChange={/> */}
           </label>
           <label className="modifyProfile__form__label" htmlFor="email">
             <div className="modifyProfile__form__label__name"> Email </div>
-            <input className="modifyProfile__form__field" type="email" name="email" placeholder="Email@exemple.com" value={userInfos.email} />
+            <Field
+              className="modifyProfile__form__field"
+              name="email"
+              placeholder="Email@exemple.com"
+              onChange={changeField}
+              value={userInfos.email}
+              type="email"
+            />
+            {/* <input className="modifyProfile__form__field" type="email" name="email" placeholder="Email@exemple.com" value={userInfos.email} /> */}
           </label>
           <label className="modifyProfile__form__label" htmlFor="firstname">
             <div className="modifyProfile__form__label__name"> Prénom </div>
-            <input className="modifyProfile__form__field" type="text" name="firstname" placeholder="Ex: Martin" value={userInfos.firstname} />
+            <Field
+              className="modifyProfile__form__field"
+              name="firstname"
+              placeholder="Ex: Martin"
+              onChange={changeField}
+              value={userInfos.firstname}
+            />
+            {/* <input className="modifyProfile__form__field" type="text" name="firstname" placeholder="Ex: Martin" value={userInfos.firstname} /> */}
           </label>
           <label className="modifyProfile__form__label" htmlFor="lastname">
             <div className="modifyProfile__form__label__name">Nom </div>
-            <input className="modifyProfile__form__field" type="text" name="lastname" placeholder="Ex: Dupont" value={userInfos.lastname} />
+            <Field
+              className="modifyProfile__form__field"
+              name="lastname"
+              placeholder="Ex: Dupont"
+              onChange={changeField}
+              value={userInfos.lastname}
+            />
+            {/* <input className="modifyProfile__form__field" type="text" name="lastname" placeholder="Ex: Dupont" value={userInfos.lastname} /> */}
           </label>
-          <label className="modifyProfile__form__label" htmlFor="city">
+          {/* <label className="modifyProfile__form__label" htmlFor="city">
             <div className="modifyProfile__form__label__name">Ville de résidence </div>
+            <Field
+              name="city"
+              placeholder="Ex: Nancy"
+              onChange={changeField}
+              value={userInfos.cities}
+            />
             <input className="modifyProfile__form__field" type="text" name="city" placeholder="Ex: Nancy, France" />
-          </label>
+          </label> */}
           {/* <label className="modifyProfile__form__label" htmlFor="country">
             <input className="modifyProfile__form__infos__field" type="text" name="country" placeholder="Pays" />
           </label> */}
           <label className="modifyProfile__form__label" htmlFor="phoneNumber">
             <div className="modifyProfile__form__label__name">Numéro de téléphone </div>
-            <input className="modifyProfile__form__field" type="number" name="phoneNumber" placeholder="06 34 34 34 34" />
+            <Field
+              className="modifyProfile__form__field"
+              name="phoneNumber"
+              placeholder="Ex: 06 34 34 34 34"
+              onChange={changeField}
+              value={userInfos.phoneNumber}
+            />
+            {/* <input className="modifyProfile__form__field" type="number" name="phoneNumber" placeholder="06 34 34 34 34" /> */}
           </label>
 
           <button className="modifyProfile__form__modifyPassword" type="button"> Modifier mon mot de passe </button>
@@ -110,9 +148,12 @@ ModifyProfile.propTypes = {
     PropTypes.shape(
       {
         helper: PropTypes.bool.isRequired,
+        nickname: PropTypes.string.isRequired,
       },
     ).isRequired,
   ).isRequired,
+  changeField: PropTypes.func.isRequired,
+  nickname: PropTypes.string.isRequired,
 };
 
 export default ModifyProfile;

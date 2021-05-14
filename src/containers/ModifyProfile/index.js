@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadUserProfile } from 'src/actions/user';
+import { loadUserProfile, changeProfileFormFieldValue } from 'src/actions/user';
 
 import ModifyProfile from 'src/components/ModifyProfile';
 
@@ -15,6 +15,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   loadUserProfile: (userId) => {
     dispatch(loadUserProfile(userId));
+  },
+  changeField: (value, name) => {
+    dispatch(changeProfileFormFieldValue(value, name));
   },
 });
 
