@@ -6,7 +6,7 @@ import MapProfile from 'src/components/MapProfile';
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
-  center: state.map.center,
+ 
  
 });
 
