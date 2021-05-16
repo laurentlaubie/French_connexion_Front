@@ -54,7 +54,6 @@ export const ADD_NEW_USER = 'ADD_NEW_USER';
 // action creator addNewUser
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
-  
 });
 
 // action type LOAD_USERS_CARDS
@@ -94,10 +93,21 @@ export const changeProfileFormFieldValue = (value, name) => ({
   name,
 });
 
+// action type CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE
+export const CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE = 'CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE';
+
+// action creator changePasswordProfileFormFieldValue
+export const changePasswordProfileFormFieldValue = (value, name) => ({
+  type: CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE,
+  value,
+  name,
+});
+
 // action type MODIFY_PROFILE
 export const MODIFY_PROFILE = 'MODIFY_PROFILE';
 
 // action creator modifyProfile
-export const modifyProfile = () => ({
+export const modifyProfile = (userId) => ({
   type: MODIFY_PROFILE,
+  userId,
 });

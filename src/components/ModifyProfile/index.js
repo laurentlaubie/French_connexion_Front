@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
+import TextArea from 'src/components/TextArea';
+
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
 
-
-// == import style
+// == Import style
 import './modifyProfile.scss';
 
 const ModifyProfile = ({
-  connectedUserData, loadUserProfile, userInfos, changeField, newPassword, confirmedNewPassword, handleModifyProfile
+  connectedUserData, loadUserProfile, userInfos, changeField, changePasswordField, newPassword, confirmedNewPassword, handleModifyProfile
 }) => {
   const userId = connectedUserData.id;
 
@@ -20,7 +21,7 @@ const ModifyProfile = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('je souhaite envoyer mon formulaire');
-    handleModifyProfile();
+    handleModifyProfile(userId);
   };
 
   // console.log(dataHobbies);
@@ -86,9 +87,9 @@ const ModifyProfile = ({
                   <div className="modifyProfile__form__label__name"> Mot de passe </div>
                   <Field
                     className="modifyProfile__form__field"
-                    name="password"
+                    name="newPassword"
                     placeholder="Nouveau mot de passe"
-                    onChange={changeField}
+                    onChange={changePasswordField}
                     value={newPassword}
                     type="password"
                   />
@@ -97,9 +98,9 @@ const ModifyProfile = ({
                   <div className="modifyProfile__form__label__name"> Confirmer votre mot de passe </div>
                   <Field
                     className="modifyProfile__form__field"
-                    name="confirmedPassword"
+                    name="confirmedNewPassword"
                     placeholder="Confirmez votre mot de passe"
-                    onChange={changeField}
+                    onChange={changePasswordField}
                     value={confirmedNewPassword}
                     type="password"
                   />
@@ -138,13 +139,12 @@ const ModifyProfile = ({
 
               <label className="modifyProfile__form__label" htmlFor="biography">
                 <div className="modifyProfile__form__label__name"> Je raconte ma life sur Internet </div>
-                <Field
-                  className="modifyProfile__form__field"
+                <TextArea
+                  className="modifyProfile__form__textarea"
                   name="biography"
                   placeholder="Ecrivez-ici un petit texte de présentation, pour que nos utilisateurs apprennent à vous connaitre"
                   onChange={changeField}
                   value={userInfos.biography}
-                  type="text-area"
                 />
               </label>
             </div>

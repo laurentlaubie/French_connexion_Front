@@ -12,20 +12,20 @@ const LogIn = ({ isOpen, close, openSignIn, email, password, changeField, handle
   };
 
   return (
-    <div className={isOpen ? 'logIn' : 'logIn__close' }>
+    <div className={isOpen ? 'logIn' : 'logIn__close'}>
       <div className="logIn__modal">
         <h1 className="logIn__modal__title"> Bienvenue sur French Connection </h1>
         <button className="logIn__modal__closeButton" type="button" onClick={close}> X </button>
         <form className="logIn__modal__form" onSubmit={handleSubmit}>
           <Field
-            className="modal__form__field"
+            className="logIn__modal__form__field"
             name="email"
             placeholder="Adresse Email"
             onChange={changeField}
             value={email}
           />
           <Field
-            className="modal__form__field"
+            className="logIn__modal__form__field"
             type="password"
             name="password"
             placeholder="Mot de passe"

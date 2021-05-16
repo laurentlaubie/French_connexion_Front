@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadUserProfile, changeProfileFormFieldValue, modifyProfile } from 'src/actions/user';
+import { loadUserProfile, changeProfileFormFieldValue, changePasswordProfileFormFieldValue, modifyProfile } from 'src/actions/user';
 
 import ModifyProfile from 'src/components/ModifyProfile';
 
@@ -21,8 +21,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   changeField: (value, name) => {
     dispatch(changeProfileFormFieldValue(value, name));
   },
-  handleModifyProfile: () => {
-    dispatch(modifyProfile());
+  changePasswordField: (value, name) => {
+    dispatch(changePasswordProfileFormFieldValue(value, name));
+  },
+  handleModifyProfile: (userId) => {
+    dispatch(modifyProfile(userId));
   },
 });
 
