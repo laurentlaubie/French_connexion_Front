@@ -46,24 +46,27 @@ const App = ({ saveConnectedUserData, isConnected }) => {
   const userToken = localStorage.getItem('token');
 
   useEffect(() => {
-    if (userToken != null) {
-      const decodedToken = jwt_decode(userToken);
-      console.log(decodedToken);
-      const dateNow = Math.round(Date.now() / 1000);
-      console.log(dateNow);
+    // async function tatata() {
+      if (userToken != null) {
+        const decodedToken = jwt_decode(userToken);
+        console.log(decodedToken);
+        const dateNow = Math.round(Date.now() / 1000);
+        console.log(dateNow);
 
-      if (decodedToken.exp - 600 > dateNow) {
-        saveConnectedUserData(decodedToken);
-        console.log('je suis déjà connecté');
+        if (decodedToken.exp - 600 > dateNow) {
+          saveConnectedUserData(decodedToken);
+          console.log('je suis déjà connecté');
+        }
+        else {
+          console.log('Token expiré');
+          localStorage.removeItem('token');
+        }
       }
       else {
-        console.log('Token expiré');
-        localStorage.removeItem('token');
+        console.log('je ne suis pas encore connecté');
       }
-    }
-    else {
-      console.log('je ne suis pas encore connecté');
-    }
+    // }
+    // tatata();
   }, []);
 
   return (
