@@ -96,15 +96,9 @@ const ModifyProfile = ({
                   <div className="modifyProfile__form__label__name"> Mot de passe </div>
                   <Field
                     className="modifyProfile__form__field"
-<<<<<<< HEAD
                     name="newPassword"
                     placeholder="Nouveau mot de passe"
                     onChange={changePasswordField}
-=======
-                    name="password"
-                    placeholder="Nouveau mot de passe"
-                    onChange={changeField}
->>>>>>> 9976918d524063b881d17cb14d31de5deeaf4daf
                     value={newPassword}
                     type="password"
                   />
@@ -113,36 +107,15 @@ const ModifyProfile = ({
                   <div className="modifyProfile__form__label__name"> Confirmer votre mot de passe </div>
                   <Field
                     className="modifyProfile__form__field"
-<<<<<<< HEAD
                     name="confirmedNewPassword"
                     placeholder="Confirmez votre mot de passe"
                     onChange={changePasswordField}
-=======
-                    name="confirmedPassword"
-                    placeholder="Confirmez votre mot de passe"
-                    onChange={changeField}
->>>>>>> 9976918d524063b881d17cb14d31de5deeaf4daf
                     value={confirmedNewPassword}
                     type="password"
                   />
                 </label>
               </div>
 
-<<<<<<< HEAD
-=======
-              
-              {/* <label className="modifyProfile__form__label" htmlFor="city">
-                <div className="modifyProfile__form__label__name">Ville de résidence </div>
-                <Field
-                  name="city"
-                  placeholder="Ex: Nancy"
-                  onChange={changeField}
-                  value={userInfos.cities}
-                />
-              </label> */}
-              {/* <label className="modifyProfile__form__label" htmlFor="country">
-              </label> */}
->>>>>>> 9976918d524063b881d17cb14d31de5deeaf4daf
               <label className="modifyProfile__form__label" htmlFor="phoneNumber">
                 <div className="modifyProfile__form__label__name">Numéro de téléphone </div>
                 <Field
@@ -153,7 +126,6 @@ const ModifyProfile = ({
                   value={userInfos.phoneNumber}
                 />
               </label>
-<<<<<<< HEAD
               <div className="modifyProfile__form__label">
                 <div className="modifyProfile__form__city">
                   {userInfos.cities != null ? `Votre ville de résidence est : ${userInfos.cities.name}` : 'Vous n\'avez pas renseigné votre ville de résidence.' }
@@ -182,30 +154,6 @@ const ModifyProfile = ({
             </div>
           </div>
 
-=======
-
-            </div>
-          </div>
-
-          <div className="modifyProfile__form__section odifyProfile__form__section--active">
-            <div className="modifyProfile__form__section__title"> A propos de moi </div>
-            <div className="modifyProfile__form__section__content">
-
-              <label className="modifyProfile__form__label" htmlFor="biography">
-                <div className="modifyProfile__form__label__name"> Je raconte ma life sur Internet </div>
-                <Field
-                  className="modifyProfile__form__field"
-                  name="biography"
-                  placeholder="Ecrivez-ici un petit texte de présentation, pour que nos utilisateurs apprennent à vous connaitre"
-                  onChange={changeField}
-                  value={userInfos.biography}
-                  type="text-area"
-                />
-              </label>
-            </div>
-          </div>
-
->>>>>>> 9976918d524063b881d17cb14d31de5deeaf4daf
           <div className="modifyProfile__form__section modifyProfile__form__section">
             <div className="modifyProfile__form__section__title"> Je deviens helpeur </div>
             <div className="modifyProfile__form__section__content">
@@ -278,11 +226,8 @@ ModifyProfile.propTypes = {
   nickname: PropTypes.string.isRequired,
   newPassword: PropTypes.string.isRequired,
   confirmedNewPassword: PropTypes.string.isRequired,
-<<<<<<< HEAD
   openModal: PropTypes.func.isRequired,
   // isSearchBarVisible: PropTypes.bool.isRequired,
-=======
->>>>>>> 9976918d524063b881d17cb14d31de5deeaf4daf
 
 };
 
