@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import TextArea from 'src/components/TextArea';
+import ModifyCity from 'src/containers/ModifyCity';
 
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
 
@@ -9,7 +10,15 @@ import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
 import './modifyProfile.scss';
 
 const ModifyProfile = ({
-  connectedUserData, loadUserProfile, userInfos, changeField, changePasswordField, newPassword, confirmedNewPassword, handleModifyProfile
+  connectedUserData,
+  loadUserProfile,
+  userInfos,
+  changeField,
+  changePasswordField,
+  newPassword,
+  confirmedNewPassword,
+  handleModifyProfile,
+  openModal,
 }) => {
   const userId = connectedUserData.id;
 
@@ -107,18 +116,6 @@ const ModifyProfile = ({
                 </label>
               </div>
 
-              
-              {/* <label className="modifyProfile__form__label" htmlFor="city">
-                <div className="modifyProfile__form__label__name">Ville de résidence </div>
-                <Field
-                  name="city"
-                  placeholder="Ex: Nancy"
-                  onChange={changeField}
-                  value={userInfos.cities}
-                />
-              </label> */}
-              {/* <label className="modifyProfile__form__label" htmlFor="country">
-              </label> */}
               <label className="modifyProfile__form__label" htmlFor="phoneNumber">
                 <div className="modifyProfile__form__label__name">Numéro de téléphone </div>
                 <Field
@@ -129,11 +126,18 @@ const ModifyProfile = ({
                   value={userInfos.phoneNumber}
                 />
               </label>
+              <div className="modifyProfile__form__label">
+                <div className="modifyProfile__form__city">
+                  {userInfos.cities != null ? `Votre ville de résidence est : ${userInfos.cities.name}` : 'Vous n\'avez pas renseigné votre ville de résidence.' }
+                </div>
+                <button type="button" onClick={openModal}> Chercher une ville </button>
+                <ModifyCity />
+              </div>
 
             </div>
           </div>
 
-          <div className="modifyProfile__form__section odifyProfile__form__section--active">
+          <div className="modifyProfile__form__section modifyProfile__form__section--active">
             <div className="modifyProfile__form__section__title"> A propos de moi </div>
             <div className="modifyProfile__form__section__content">
 
@@ -208,6 +212,13 @@ ModifyProfile.propTypes = {
       {
         helper: PropTypes.bool.isRequired,
         nickname: PropTypes.string.isRequired,
+        cities: PropTypes.arrayOf(
+          PropTypes.shape(
+            {
+              name: PropTypes.string.isRequired,
+            },
+          ).isRequired,
+        ).isRequired,
       },
     ).isRequired,
   ).isRequired,
@@ -215,6 +226,8 @@ ModifyProfile.propTypes = {
   nickname: PropTypes.string.isRequired,
   newPassword: PropTypes.string.isRequired,
   confirmedNewPassword: PropTypes.string.isRequired,
+  openModal: PropTypes.func.isRequired,
+  // isSearchBarVisible: PropTypes.bool.isRequired,
 
 };
 

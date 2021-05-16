@@ -1,5 +1,11 @@
 import { connect } from 'react-redux';
-import { loadUserProfile, changeProfileFormFieldValue, changePasswordProfileFormFieldValue, modifyProfile } from 'src/actions/user';
+import {
+  loadUserProfile,
+  changeProfileFormFieldValue,
+  changePasswordProfileFormFieldValue,
+  modifyProfile,
+  openModifyCityModal,
+} from 'src/actions/user';
 
 import ModifyProfile from 'src/components/ModifyProfile';
 
@@ -27,6 +33,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   handleModifyProfile: (userId) => {
     dispatch(modifyProfile(userId));
   },
+  openModal: () => {
+    dispatch(openModifyCityModal());
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModifyProfile);

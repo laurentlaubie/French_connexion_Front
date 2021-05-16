@@ -111,3 +111,19 @@ export const modifyProfile = (userId) => ({
   type: MODIFY_PROFILE,
   userId,
 });
+
+// action type CLOSE_MODIFY_CITY_MODAL
+export const CLOSE_MODIFY_CITY_MODAL = 'CLOSE_MODIFY_CITY_MODAL';
+
+// action creator closeModifyCityModal
+export const closeModifyCityModal = () => ({
+  type: CLOSE_MODIFY_CITY_MODAL,
+});
+
+// action type OPEN_MODIFY_CITY_MODAL
+export const OPEN_MODIFY_CITY_MODAL = 'OPEN_MODIFY_CITY_MODAL';
+
+// action creator openModifyCityModal
+export const openModifyCityModal = () => ({
+  type: OPEN_MODIFY_CITY_MODAL,
+});

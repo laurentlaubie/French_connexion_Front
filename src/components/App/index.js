@@ -1,11 +1,9 @@
+/* eslint-disable no-console */
 // == Import npm
 import React, { useEffect } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
-
-// == Import style
-//import 'semantic-ui-css/semantic.min.css';
 
 // == Import Locaux
 import Footer from 'src/components/Footer';
@@ -43,33 +41,29 @@ import './styles.css';
 
 // == Composant
 const App = ({ saveConnectedUserData, isConnected }) => {
-
   const pathName = useLocation().pathname;
   console.log(pathName);
   const userToken = localStorage.getItem('token');
 
   useEffect(() => {
-    // async function tatata() {
-      if (userToken != null) {
-        const decodedToken = jwt_decode(userToken);
-        console.log(decodedToken);
-        const dateNow = Math.round(Date.now() / 1000);
-        console.log(dateNow);
+    if (userToken != null) {
+      const decodedToken = jwt_decode(userToken);
+      console.log(decodedToken);
+      const dateNow = Math.round(Date.now() / 1000);
+      console.log(dateNow);
 
-        if (decodedToken.exp - 600 > dateNow) {
-          saveConnectedUserData(decodedToken);
-          console.log('je suis déjà connecté');
-        }
-        else {
-          console.log('Token expiré');
-          localStorage.removeItem('token');
-        }
+      if (decodedToken.exp - 600 > dateNow) {
+        saveConnectedUserData(decodedToken);
+        console.log('je suis déjà connecté');
       }
       else {
-        console.log('je ne suis pas encore connecté');
+        console.log('Token expiré');
+        localStorage.removeItem('token');
       }
-    // }
-    // tatata();
+    }
+    else {
+      console.log('je ne suis pas encore connecté');
+    }
   }, []);
 
   return (
