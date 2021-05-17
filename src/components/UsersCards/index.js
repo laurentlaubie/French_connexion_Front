@@ -1,11 +1,12 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Loading from 'src/components/Loading';
 
 import UserCard from 'src/containers/UserCard';
 import './usersCards.scss';
 
-const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList}) => {
+const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, isLoading}) => {
   useEffect(
     loadUsersCards,
     [],
@@ -31,6 +32,8 @@ const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList}) => 
   };
 
   return (
+    <>  {isLoading && (<Loading />)}
+        {!isLoading && (
     <div className="usersCards">
       <h1 className="usersCards__title">Notre réseau</h1>
       <form className="usersCards__form" onSubmit={handleInputValueChange}>
@@ -41,10 +44,13 @@ const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList}) => 
         {newUserList ? newUserList.map((userCard) => <UserCard key={userCard.id} {...userCard} />) : usersList.map((userCard) => <UserCard key={userCard.id} {...userCard} />)}
       </ul>
     </div>
+    )}
+    </>
   );
 };
 
 UsersCards.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   loadUsersCards: PropTypes.func.isRequired,
   usersList: PropTypes.arrayOf(
     PropTypes.shape({

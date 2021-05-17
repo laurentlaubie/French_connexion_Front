@@ -122,6 +122,9 @@ export default (store) => (next) => (action) => {
 
     case LOAD_USERS_CARDS:
       // affichage de tous les profils sous forme de cards
+      
+      // -- gestion loader for profilPage
+      store.dispatch(setLoading(true));
 
       api
         .get('user')
@@ -132,6 +135,9 @@ export default (store) => (next) => (action) => {
         }).catch((error) => {
         // eslint-disable-next-line no-console
           console.log(error);
+        })
+        // -- gestion loader for profilPage
+        .finally(() => {store.dispatch(setLoading(false))
         });
 
       // puis on décide si on la laisse filer ou si on la bloque
