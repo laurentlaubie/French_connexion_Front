@@ -12,7 +12,7 @@ import HomePageHeader from 'src/components/HomePageHeader';
 // import SearchBar from 'src/components/SearchBar';
 import HomePageFonctionnalities from 'src/components/HomePageFonctionnalities';
 import HomePageMap from 'src/components/HomePageMap';
-import UsersReviews from 'src/components/UsersReviews';
+import UsersReviews from 'src/containers/UsersReviews';
 import ProfilesResults from 'src/components/ProfilesResults';
 import MapResults from 'src/containers/MapResults';
 import Page404 from 'src/components/Page404';

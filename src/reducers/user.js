@@ -9,6 +9,9 @@ import {
   OPEN_MODIFY_CITY_MODAL,
   RENDER_NEW_LIST,
   SET_LOADING,
+  LOAD_USERS_REVIEWS,
+
+
 } from 'src/actions/user';
 
 import { SET_ADRESS, SET_CENTER } from 'src/actions/map';
@@ -29,6 +32,7 @@ const initialState = {
   userCityCenter: '',
   isLoading: false,
   newUserList: null,
+  usersReviewList: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -91,6 +95,11 @@ export default (state = initialState, action = {}) => {
      return {
       ...state,
       isLoading: action.value,
+    };
+    case LOAD_USERS_REVIEWS:
+     return {
+      ...state,
+      usersReviewList: action.usersReviewList,
     };
 
     default:

@@ -74,6 +74,17 @@ export const saveUsersCards = (usersList) => ({
 });
 
 
+// action type LOAD_USERS_REVIEWS
+export const LOAD_USERS_REVIEWS = 'LOAD_USERS_REVIEWS';
+
+// action creator loadUsersCards
+export const loadUsersReviews = (usersList) => ({
+  type: LOAD_USERS_REVIEWS,
+  usersList,
+});
+
+
+
 // action type RENDER_NEW_LIST
 export const RENDER_NEW_LIST = 'RENDER_NEW_LIST';
 

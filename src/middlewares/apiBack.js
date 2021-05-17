@@ -2,7 +2,7 @@
 import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
-import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, setLoading } from 'src/actions/user';
+import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, setLoading, LOAD_USERS_REVIEWS, loadUsersReviews} from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
 
 
@@ -143,6 +143,26 @@ export default (store) => (next) => (action) => {
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
+
+
+      case LOAD_USERS_REVIEWS:
+      // affichage de tous les profils sur la HP
+      
+      api
+        .get('/user')
+        .then((response) => {
+          console.log(response);
+          const usersReviewList = response.data;
+          store.dispatch(loadUsersReviews(usersReviewList));
+        }).catch((error) => {
+        // eslint-disable-next-line no-console
+          console.log(error);
+        })
+      
+      // puis on décide si on la laisse filer ou si on la bloque
+      next(action);
+      break;
+
 
     case MODIFY_PROFILE: {
       // on récupère l'ID de la personne connectée

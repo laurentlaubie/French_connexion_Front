@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import PropTypes from 'prop-types';
 // import Carousel from 'react-multi-carousel';
 
@@ -7,11 +8,17 @@ import UserReview from 'src/components/UserReview';
 import './usersReviews.scss';
 import 'react-multi-carousel/lib/styles.css';
 
-const UsersReviews = ({ users }) => (
+const UsersReviews = ({ loadUsersReviews, usersReviewList }) => (
+  //useEffect(() => {
+  //loadUsersReviews,
+   //[]
+  //},
+
+
   <div className="usersReviews">
     <h3 className="usersReviews__title"> Notre communauté s'aggrandit </h3>
     <div className="usersReviews__list">
-      {users.map((user) => (
+      {usersReviewList.map((user) => (
         <UserReview key={user.id} {...user} />
       ))}
     </div>
@@ -71,13 +78,9 @@ const UsersReviews = ({ users }) => (
 // } 
 
 UsersReviews.propTypes = {
-  users: PropTypes.arrayOf(
-    PropTypes.shape(
-      {
-        id: PropTypes.number.isRequired,
-      },
-    ),
-  ).isRequired,
+  loadUsersReviews: PropTypes.func.isRequired
+    
+ 
 };
 
 export default UsersReviews;
