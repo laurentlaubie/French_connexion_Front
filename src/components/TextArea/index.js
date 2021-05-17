@@ -1,16 +1,14 @@
-
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
-import './field.scss';
+import './textArea.scss';
 
 // == Composant
-const Field = ({
+const TextArea = ({
   className,
   value,
-  type,
   name,
   placeholder,
   onChange,
@@ -22,22 +20,19 @@ const Field = ({
   const inputId = `${className}-${name}`;
 
   return (
-    <input
+    <textarea
       className={className}
       value={value}
       onChange={handleChange}
       id={inputId}
-      type={type}
       placeholder={placeholder}
       name={name}
-      autoComplete="off"
     />
   );
 };
 
-Field.propTypes = {
+TextArea.propTypes = {
   value: PropTypes.string,
-  type: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
@@ -45,10 +40,9 @@ Field.propTypes = {
 };
 
 // Valeurs par défaut pour les props
-Field.defaultProps = {
+TextArea.defaultProps = {
   value: '',
-  type: 'text',
 };
 
 // == Export
-export default Field;
+export default TextArea;

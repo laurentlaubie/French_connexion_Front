@@ -1,5 +1,11 @@
 import { connect } from 'react-redux';
-import { loadUserProfile, changeProfileFormFieldValue } from 'src/actions/user';
+import {
+  loadUserProfile,
+  changeProfileFormFieldValue,
+  changePasswordProfileFormFieldValue,
+  modifyProfile,
+  openModifyCityModal,
+} from 'src/actions/user';
 
 import ModifyProfile from 'src/components/ModifyProfile';
 
@@ -8,6 +14,8 @@ import ModifyProfile from 'src/components/ModifyProfile';
 const mapStateToProps = (state, ownProps) => ({
   userInfos: state.user.userInfos,
   connectedUserData: state.log.connectedUserData,
+  newPassword: state.user.newPassword,
+  confirmedNewPassword: state.user.confirmedNewPassword,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -19,6 +27,16 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   changeField: (value, name) => {
     dispatch(changeProfileFormFieldValue(value, name));
   },
+  changePasswordField: (value, name) => {
+    dispatch(changePasswordProfileFormFieldValue(value, name));
+  },
+  handleModifyProfile: (userId) => {
+    dispatch(modifyProfile(userId));
+  },
+  openModal: () => {
+    dispatch(openModifyCityModal());
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModifyProfile);

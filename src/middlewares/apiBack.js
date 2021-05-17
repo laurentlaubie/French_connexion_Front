@@ -2,7 +2,7 @@
 import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
-import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards } from 'src/actions/user';
+import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE } from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
 
 const api = axios.create({
@@ -21,8 +21,9 @@ export default (store) => (next) => (action) => {
         .post(
           '/login',
           {
-            username: 'leon@gmail.com',
-            password: 'leonleon',
+            username: 'leonie@gmail.com',
+            password: 'salut',
+
           },
         )
         .then((response) => {
@@ -54,7 +55,6 @@ export default (store) => (next) => (action) => {
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
       const idParam = (action.userId);
       console.log(idParam);
-
       // on récupère le token stocké dans le localStorage
       const userToken = localStorage.getItem('token');
       console.log(userToken);
@@ -67,23 +67,28 @@ export default (store) => (next) => (action) => {
         })
         .then((response) => {
           // l'API nous retourne les infos de l'utilisateur
+          console.log(response.status);
           console.log(response.data);
           const userInfos = response.data;
-
+          console.log(response.headers);
           // on sauvegarde ces infos
           store.dispatch(saveUserProfile(userInfos));
         }).catch((error) => {
           // eslint-disable-next-line no-console
-          console.log(error);
+          const errorStatus = error.response.status;
+          console.log(error.response.status);
+          console.log('vous ne passerez pas');
+          if (errorStatus === 401) {
+            window.location.href = '/403';
+          }
         });
 
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
     }
-    case ADD_NEW_USER:
+    case ADD_NEW_USER: {
       // Création d'un nouvel utilisateur (inscription)
-      
       const state = store.getState();
       const { firstname, lastname, email, password, confirmedPassword } = state.user;
       api
@@ -106,6 +111,7 @@ export default (store) => (next) => (action) => {
         });
       next(action);
       break;
+    }
 
     case LOAD_USERS_CARDS:
       // affichage de tous les profils sous forme de cards
@@ -124,6 +130,54 @@ export default (store) => (next) => (action) => {
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
+
+    case MODIFY_PROFILE: {
+      // on récupère l'ID de la personne connectée
+      const { userId } = action;
+      console.log(userId);
+
+      // on récupère le token stocké dans le localStorage
+      const userToken = localStorage.getItem('token');
+      console.log(userToken);
+
+      // on récupère les nouvelles données de la personne connectée, ainsi que celle non modifiée
+      const state = store.getState();
+      const { userInfos } = state.user;
+      const { email, firstname, lastname, phoneNumber, biography } = userInfos;
+      const { newPassword: password, confirmedNewPassword: confirmedPassword } = state.user;
+
+      api
+        .put(`/user/${userId}`,
+          {
+            lastname,
+            firstname,
+            email,
+            password,
+            confirmedPassword,
+            biography,
+            // phoneNumber,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+            },
+          })
+        .then((response) => {
+          console.log(response);
+          // const usersList = response.data;
+          // store.dispatch(saveUsersCards(usersList));
+        }).catch((error) => {
+          // eslint-disable-next-line no-console
+          const errorStatus = error.response.status;
+          console.log(errorStatus);
+          console.log('vous ne passerez pas');
+          // if (errorStatus === 401) {
+          //   window.location.href = '/403';
+          // }
+        });
+      next(action);
+      break;
+    }
 
     case LOG_OUT:
       delete api.defaults.headers.common.Authorization;

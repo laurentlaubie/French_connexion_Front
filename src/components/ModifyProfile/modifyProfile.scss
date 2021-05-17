@@ -2,39 +2,138 @@
 
 .modifyProfile{
   
-  width: 100%;
-  overflow-x: hidden;
-  margin:auto;
+  width:90%;
+  margin:5rem auto;
 
   @media (min-width:vars.$max-width){
     width:vars.$max-width;
   }
 
-  &__title{
-    font-size:3rem;
-    padding-top: 2em;
-    margin-bottom: 1.5em;
+  &__title {
+    font-weight: 700;
+    font-size: 1.5em;
+    //padding-top: 6em;
+    padding-bottom: 3rem;
+    text-align: center;
+    width: 100%;
+   
+    @media (min-width: vars.$breakpoint-tablet){
+      // margin-top: 2em;
+      font-weight: 700;
+      font-size: 2.5em;
+      text-align: left
+    }
   }
 
-    // &__mdp{
-    //   border-radius: 30px;
-    //   border: solid 0.1em vars.$dark-blue;
-    //   padding: 0.3em;
-    // }
+  &__content {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    width: 100%;
+    // border:1px solid blue;
+    position:relative;
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: start;
+      // margin-top: -120px;
+      // width:45%
+    }
+  }
+
+  &__principalInfos {
+    width: 100%;
+    background-color:vars.$light-blue;
+    border-radius:2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-bottom:2rem;
+    padding-top:2.5rem;
+    display:none;
+
+
+    @media (min-width: vars.$breakpoint-tablet){
+      width:48%;
+      display:block;
+    } 
+
+    @media (min-width: vars.$breakpoint-desktop){
+      width:38%;
+    } 
+  }
 
   &__form {
+    width:100%;
     display: flex;
     flex-direction: column;
-    
-    &--infos{
+    align-items:start;
+    border-radius: 30px;
+    margin-bottom:2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
-      width:100%;
+    @media (min-width: vars.$breakpoint-tablet){
+      width:48%;
+    }
+
+    @media (min-width: vars.$breakpoint-desktop){
+      width:58%;
+    } 
+    
+    &__section{
+
+      width:80%;
+      margin:2rem auto;
       // border:1px solid red;
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
+      position:relative;
+
+      &__title{
+        padding:1.5rem;
+        font-size:1.2rem;
+        border-bottom: 1px solid red;
+        color:vars.$dark-color;
+        margin-bottom:2rem;
+        
+      }
+
+      &__content{
+        width:100%;
+
+      }
+
+      // &--active{
+
+      //   .modifyProfile__form__section__title{
+      //     background-color:vars.$light-red;
+      //     color:vars.$light-color;
+      //   }
+
+      //   .modifyProfile__form__section__content{
+      //     display:block;
+      //   }
+
+      // }
+
+      &__fieldGroup{
+        display:flex;
+        flex-direction:row;
+        justify-content:start;
+        // background-color:red;
+
+      }
     }
+
+    
+    &__textarea{
+      width:100%;
+      height:50vh;
+      resize:none;
+
+    }  
+    
 
     &__label{
       display:flex;
@@ -46,7 +145,7 @@
 
       &__name{
         padding-bottom:0.5rem;
-        font-size:1.2rem;
+        font-size:1rem;
         
       }
     }
