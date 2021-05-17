@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
-import { SAVE_USER_PROFILE, SAVE_USERS_CARDS, CHANGE_SIGN_IN_FIELD_VALUE, CHANGE_PROFILE_FORM_FIELD_VALUE } from 'src/actions/user';
+import { SAVE_USER_PROFILE, SAVE_USERS_CARDS, CHANGE_SIGN_IN_FIELD_VALUE, CHANGE_PROFILE_FORM_FIELD_VALUE, RENDER_NEW_LIST } from 'src/actions/user';
+import { CHANGE_USER_FIELD_VALUE} from 'src/actions/log';
+
 
 const initialState = {
   isHelper: false,
@@ -10,6 +12,7 @@ const initialState = {
   password: '',
   confirmedPassword: '',
   usersList: [],
+  newUserList: null,
 
 };
 
@@ -30,13 +33,18 @@ export default (state = initialState, action = {}) => {
         ...state,
         usersList: action.usersList,
       };
+
+    case RENDER_NEW_LIST:
+      return {
+        ...state,
+        newUserList: action.result,
+      };
     case CHANGE_PROFILE_FORM_FIELD_VALUE:
       return {
         ...state,
         userInfos: {
           ...state.userInfos,
           [action.name]: action.value,
-        },
       };
     default:
       return state;

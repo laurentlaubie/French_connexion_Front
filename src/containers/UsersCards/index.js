@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 
 import UsersCards from 'src/components/UsersCards';
-import { loadUsersCards } from 'src/actions/user';
+import { loadUsersCards, RenderNewList } from 'src/actions/user';
 
 
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   usersList: state.user.usersList,
+  newUserList: state.user.newUserList,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -15,6 +16,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   loadUsersCards: () => {
     dispatch(loadUsersCards());
+  },
+  RenderNewList: (result) =>{
+    dispatch(RenderNewList(result));
   },
 });
 
