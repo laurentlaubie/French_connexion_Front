@@ -93,8 +93,8 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, o
 };
 
 Profile.propTypes = {
-  isMyProfile: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  isMyProfile: PropTypes.bool.isRequired,
   userInfos: PropTypes.arrayOf(
     PropTypes.shape(
       {
@@ -109,7 +109,7 @@ Profile.propTypes = {
     },
   ).isRequired,
   openLogOut: PropTypes.func.isRequired,
-
+ 
 };
 
 export default Profile;
