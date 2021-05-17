@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { SAVE_USER_PROFILE, SAVE_USERS_CARDS } from 'src/actions/user';
+import { SAVE_USER_PROFILE, SAVE_USERS_CARDS, RENDER_NEW_LIST } from 'src/actions/user';
 import { CHANGE_USER_FIELD_VALUE} from 'src/actions/log';
 
 const initialState = {
@@ -42,6 +42,7 @@ const initialState = {
   password:'',
   confirmedPassword:'',
   usersList: [],
+  newUserList: null,
 
 
 };
@@ -62,6 +63,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         usersList: action.usersList,
+      };
+    case RENDER_NEW_LIST:
+      return {
+        ...state,
+        newUserList: action.result,
       };
     default:
       return state;

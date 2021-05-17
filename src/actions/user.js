@@ -73,3 +73,12 @@ export const saveUsersCards = (usersList) => ({
   type: SAVE_USERS_CARDS,
   usersList,
 });
+
+// action type RENDER_NEW_LIST
+export const RENDER_NEW_LIST = 'RENDER_NEW_LIST';
+
+// action creator RenderNewList
+export const RenderNewList = (result) => ({
+  type: RENDER_NEW_LIST,
+  result,
+});
