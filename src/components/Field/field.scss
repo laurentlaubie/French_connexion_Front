@@ -1,6 +1,14 @@
-.field{
+@use 'src/styles/vars';
 
-  &__input{
+.modifyProfile__form__field {
+  // background-color: #f7f7f7;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border: solid 1px vars.$light-blue;
+  font-weight:bold;
+} 
+
+.modal__form__field{
   border: none;
   box-shadow: none;
   border-bottom: 1px solid black;
@@ -9,5 +17,4 @@
   padding-left: 1rem;
   width:70%;
   margin:1rem auto;
-  }
 }

@@ -30,14 +30,12 @@ export const openLogIn = () => ({
   type: OPEN_LOG_IN,
 });
 
-// action type CHANGE_USER_FIELD_VALUE
-export const CHANGE_USER_FIELD_VALUE = 'CHANGE_USER_FIELD_VALUE';
+// action type CHANGE_LOG_IN_FIELD_VALUE
+export const CHANGE_LOG_IN_FIELD_VALUE = 'CHANGE_LOG_IN_FIELD_VALUE';
 
-// action creator changeUserFieldValue
-// on récupère le nom du champ et la valeur
-// et on construit un objet action qui contient ces informations
-export const changeUserFieldValue = (value, name) => ({
-  type: CHANGE_USER_FIELD_VALUE,
+// action creator changeLogInFieldValue
+export const changeLogInFieldValue = (value, name) => ({
+  type: CHANGE_LOG_IN_FIELD_VALUE,
   value,
   name,
 });
@@ -54,7 +52,39 @@ export const logIn = () => ({
 export const SAVE_CONNECTED_USER_DATA = 'SAVE_CONNECTED_USER_DATA';
 
 // action creator saveConnectedUserData
-export const saveConnectedUserData = (userData) => ({
+export const saveConnectedUserData = (decodedToken) => ({
   type: SAVE_CONNECTED_USER_DATA,
-  userData,
+  decodedToken,
+});
+
+// action type OPEN_LOG_OUT
+export const OPEN_LOG_OUT = 'OPEN_LOG_OUT';
+
+// action creator openLogOut
+export const openLogOut = () => ({
+  type: OPEN_LOG_OUT,
+});
+
+// action type CLOSE_LOG_OUT
+export const CLOSE_LOG_OUT = 'CLOSE_LOG_OUT';
+
+// action creator closeLogOut
+export const closeLogOut = () => ({
+  type: CLOSE_LOG_OUT,
+});
+
+// action type LOG_OUT
+export const LOG_OUT = 'LOG_OUT';
+
+// action creator logOut
+export const logOut = () => ({
+  type: LOG_OUT,
+});
+
+// action type SET_TO_CONNECTED
+export const SET_TO_CONNECTED = 'SET_TO_CONNECTED';
+
+// action creator setToConnected
+export const setToConnected = () => ({
+  type: SET_TO_CONNECTED,
 });

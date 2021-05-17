@@ -10,7 +10,7 @@
 
   @media (min-width: vars.$breakpoint-tablet) { /* You can edit the max-width value to match what you need */
     .banner{
-      background-color: #346e93;
+      background-color: vars.$light-red;
       // position: absolute;
       top: 0;
       width: 100%;

@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//==import Local
+import MapProfile from 'src/containers/MapProfile';
+
+
 // == import style
 import './profileLocalisation.scss';
 import colombie from 'src/assets/images/colombie.png';
+//import MapProfile from '../MapProfile';
 
 const ProfileLocalisation = ({ name, longitude, latitude, country }) => {
   let countryName = '';
@@ -17,7 +22,7 @@ const ProfileLocalisation = ({ name, longitude, latitude, country }) => {
   return (
     <div className="profileLocalisation">
       <div className="profileLocalisation__title"> {name}, {countryName} </div>
-      <div className="profileLocalisation__map"> <img className="map" src={colombie} alt="carte de Colombie" /> </div>
+      <div className="profileLocalisation__map"> <MapProfile latProp={latitude} lngProp={longitude} /> </div>
     </div>
   );
 };

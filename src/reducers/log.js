@@ -1,13 +1,19 @@
 import {
-  CLOSE_LOG_IN, OPEN_LOG_IN, CLOSE_SIGN_IN, OPEN_SIGN_IN, CHANGE_USER_FIELD_VALUE, SAVE_CONNECTED_USER_DATA
+  CLOSE_LOG_IN, OPEN_LOG_IN,
+  CLOSE_SIGN_IN, OPEN_SIGN_IN,
+  CHANGE_LOG_IN_FIELD_VALUE,
+  SAVE_CONNECTED_USER_DATA,
+  OPEN_LOG_OUT, CLOSE_LOG_OUT, LOG_OUT,
 } from 'src/actions/log';
 
 const initialState = {
   isConnected: false,
   isLogInOpen: false,
   isSignInOpen: false,
+  isLogOutOpen: false,
   email: '',
   password: '',
+  connectedUserData: '',
 };
 
 export default (state = initialState, action = {}) => {
@@ -15,9 +21,11 @@ export default (state = initialState, action = {}) => {
     case SAVE_CONNECTED_USER_DATA:
       return {
         ...state,
-        token: action.userData.token,
+        connectedUserData: action.decodedToken,
         isConnected: true,
         isLogInOpen: false,
+        email: '',
+        password: '',
       };
     case CLOSE_LOG_IN:
       return {
@@ -41,10 +49,27 @@ export default (state = initialState, action = {}) => {
         isSignInOpen: true,
         isLogInOpen: false,
       };
-    case CHANGE_USER_FIELD_VALUE:
+    case CHANGE_LOG_IN_FIELD_VALUE:
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case OPEN_LOG_OUT:
+      return {
+        ...state,
+        isLogOutOpen: true,
+      };
+    case CLOSE_LOG_OUT:
+      return {
+        ...state,
+        isLogOutOpen: false,
+      };
+    case LOG_OUT:
+      return {
+        ...state,
+        isConnected: false,
+        isLogOutOpen: false,
+        connectedUserData: '',
       };
     default:
       return state;

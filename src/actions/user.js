@@ -52,9 +52,9 @@ export const saveUserProfile = (userInfos) => ({
 export const ADD_NEW_USER = 'ADD_NEW_USER';
 
 // action creator addNewUser
-export const addNewUser = (newUser) => ({
+export const addNewUser = () => ({
   type: ADD_NEW_USER,
-  newUser,
+  
 });
 
 // action type LOAD_USERS_CARDS
@@ -74,6 +74,7 @@ export const saveUsersCards = (usersList) => ({
   usersList,
 });
 
+
 // action type RENDER_NEW_LIST
 export const RENDER_NEW_LIST = 'RENDER_NEW_LIST';
 
@@ -81,4 +82,24 @@ export const RENDER_NEW_LIST = 'RENDER_NEW_LIST';
 export const RenderNewList = (result) => ({
   type: RENDER_NEW_LIST,
   result,
+});
+
+// action type CHANGE_SIGN_IN_FIELD_VALUE
+export const CHANGE_SIGN_IN_FIELD_VALUE = 'CHANGE_SIGN_IN_FIELD_VALUE';
+
+// action creator changeSignInFieldValue
+export const changeSignInFieldValue = (value, name) => ({
+  type: CHANGE_SIGN_IN_FIELD_VALUE,
+  value,
+  name,
+});
+
+// action type CHANGE_PROFILE_FORM_FIELD_VALUE
+export const CHANGE_PROFILE_FORM_FIELD_VALUE = 'CHANGE_PROFILE_FORM_FIELD_VALUE';
+
+// action creator changeProfileFormFieldValue
+export const changeProfileFormFieldValue = (value, name) => ({
+  type: CHANGE_PROFILE_FORM_FIELD_VALUE,
+  value,
+  name,
 });

@@ -8,6 +8,7 @@ import './field.scss';
 
 // == Composant
 const Field = ({
+  className,
   value,
   type,
   name,
@@ -21,19 +22,15 @@ const Field = ({
   const inputId = `field-${name}`;
 
   return (
-    <div className={value.length > 0 ? 'field field--has-content' : 'field'}>
-      <input
-        // React - state
-        value={value}
-        onChange={handleChange}
-        // infos de base
-        id={inputId}
-        type={type}
-        className="field__input"
-        placeholder={placeholder}
-        name={name}
-      />
-    </div>
+    <input
+      className={className}
+      value={value}
+      onChange={handleChange}
+      id={inputId}
+      type={type}
+      placeholder={placeholder}
+      name={name}
+    />
   );
 };
 
@@ -43,6 +40,7 @@ Field.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 // Valeurs par défaut pour les props

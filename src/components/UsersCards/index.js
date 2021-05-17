@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import UserCard from 'src/components/UserCard';
+import UserCard from 'src/containers/UserCard';
 import './usersCards.scss';
 
 const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList}) => {
