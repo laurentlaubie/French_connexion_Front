@@ -23,6 +23,7 @@ export default (store) => (next) => (action) => {
           {
             username: 'leonie@gmail.com',
             password: 'salut',
+
           },
         )
         .then((response) => {

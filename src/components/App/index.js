@@ -24,6 +24,8 @@ import ModifyProfile from 'src/containers/ModifyProfile';
 import LegalsMentions from 'src/components/LegalsMentions';
 import SiteMap from 'src/components/SiteMap';
 import AboutUs from 'src/components/AboutUs';
+import Loading from 'src/components/Loading';
+
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/containers/LogIn';
@@ -41,6 +43,8 @@ import './styles.css';
 
 // == Composant
 const App = ({ saveConnectedUserData, isConnected }) => {
+const App = ({ saveConnectedUserData, isConnected, loading }) => {
+
   const pathName = useLocation().pathname;
   console.log(pathName);
   const userToken = localStorage.getItem('token');
@@ -68,6 +72,20 @@ const App = ({ saveConnectedUserData, isConnected }) => {
     // }
     // tatata();
   }, []);
+
+    //-- gestion du scroll
+    const location = useLocation();
+    useEffect (
+      () => {
+        window.scrollTo({ top:0, behavior: 'smooth'})
+      },
+      [location],
+    )
+
+    //-- gestion du loader
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="app">
@@ -129,7 +147,12 @@ const App = ({ saveConnectedUserData, isConnected }) => {
 App.propTypes = {
   saveConnectedUserData: PropTypes.func.isRequired,
   isConnected: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
 };
+
+App.defaultProps = {
+  loading: false,
+}
 
 // == Export
 export default App;

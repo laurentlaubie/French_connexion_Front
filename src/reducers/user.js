@@ -7,6 +7,7 @@ import {
   CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE,
   CLOSE_MODIFY_CITY_MODAL,
   OPEN_MODIFY_CITY_MODAL,
+  RENDER_NEW_LIST,
 } from 'src/actions/user';
 
 import { SET_ADRESS, SET_CENTER } from 'src/actions/map';
@@ -25,7 +26,8 @@ const initialState = {
   isModifyCityModalOpen: false,
   userAdress: '',
   userCityCenter: '',
-
+  isLoading: false,
+  newUserList: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -45,13 +47,18 @@ export default (state = initialState, action = {}) => {
         ...state,
         usersList: action.usersList,
       };
+
+    case RENDER_NEW_LIST:
+      return {
+        ...state,
+        newUserList: action.result,
+      };
     case CHANGE_PROFILE_FORM_FIELD_VALUE:
       return {
         ...state,
         userInfos: {
           ...state.userInfos,
           [action.name]: action.value,
-        },
       };
     case CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE:
       return {

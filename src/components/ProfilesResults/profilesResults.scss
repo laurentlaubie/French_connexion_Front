@@ -11,6 +11,11 @@
     display: grid;
     place-items: center;
   }
+
+  &__List{
+    height: 13em;
+    overflow-y: scroll;
+  }
 }
 
 @media only screen and (min-width: 601px) {
@@ -19,9 +24,12 @@
     //display:flex;
     margin-top: 3em;
     width: 50%;
-    
-    
     padding-bottom:0em;
+
+    &__List{
+      height: initial;
+      overflow-y: unset;
+    }
 
   &__Title{
     
