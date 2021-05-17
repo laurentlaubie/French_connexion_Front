@@ -25,8 +25,12 @@ const libraries = ['places'];
 
 const MapResults = ({ center, markers, handleSelected, markerSelected }) => {
   const mapContainerStyle = {
-    height: '50vh',
-    width: '50vw',
+    height: '95%',
+    width: '100%',
+    position: 'relative',
+    overflow: 'hidden',
+    minHeight: '50vh',
+    marginTop: '5%',
   };
   const options = {
     styles: mapStyles,
@@ -58,9 +62,11 @@ const MapResults = ({ center, markers, handleSelected, markerSelected }) => {
       <GoogleMap
         id='map'
         mapContainerStyle={mapContainerStyle}
+        classname="mapResults__map"
         zoom={8}
         center={center}
         options={options}
+        resetBoundsOnResize = {true}
         onClick={(event) => {
           console.log(event);
         }}
