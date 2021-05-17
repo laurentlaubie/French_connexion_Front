@@ -2,8 +2,9 @@
 import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
-import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE } from 'src/actions/user';
+import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, setLoading } from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
+import { truncate } from 'fs';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -58,6 +59,9 @@ export default (store) => (next) => (action) => {
       // on récupère le token stocké dans le localStorage
       const userToken = localStorage.getItem('token');
       console.log(userToken);
+
+      // -- gestion loader for profilPage
+      //store.dispatch(setLoading(true));
 
       api
         .get(`/user/${idParam}`, {
