@@ -1,3 +1,4 @@
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -6,36 +7,44 @@ import hands from 'src/assets/images/hands.png';
 import defaultAvatar from 'src/assets/images/defaultAvatar.jpg';
 import ProfileLocalisation from 'src/components/ProfileLocalisation';
 
-
 // == import style
 import './profilePrincipalInfos.scss';
 
 const ProfilePrincipalInfos = ({
   isMyProfile, helper, nickname, createdAt, avatar, cities, firstname, lastname,
-}) => (
+}) => {
+  
+  console.log(createdAt);
+  // eslint-disable-next-line react/prop-types
+  let test = new Date(createdAt);
+  test = `${test.getDate()}/${test.getMonth() + 1}/${test.getFullYear()}`;
+  console.log(test);
 
-  <div className="profilePrincipalInfos">
-    <div className="profilePrincipalInfos__status">
-      <div className={helper ? 'profilePrincipalInfos__status__name--helper' : 'hidden'}>
-        HELPER
-        <img className="profilePrincipalInfos__status__logo--helper" src={hands} alt="Logo du helpeur" />
+  return (
+
+    <div className="profilePrincipalInfos">
+      <div className="profilePrincipalInfos__status">
+        <div className={helper ? 'profilePrincipalInfos__status__name--helper' : 'hidden'}>
+          HELPER
+          <img className="profilePrincipalInfos__status__logo--helper" src={hands} alt="Logo du helpeur" />
+        </div>
+        <div className={(!helper && isMyProfile) ? 'profilePrincipalInfos__status__name' : 'hidden'}>
+          <a href="mon-profil/modifier"> Je deviens helper</a>
+          <img className="profilePrincipalInfos__status__logo" src={question} alt="Logo question" />
+        </div>
+
       </div>
-      <div className={(!helper && isMyProfile) ? 'profilePrincipalInfos__status__name' : 'hidden'}>
-        <a href="mon-profil/modifier"> Je deviens helper</a>
-        <img className="profilePrincipalInfos__status__logo" src={question} alt="Logo question" />
+      <div className="profilePrincipalInfos__username">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
+      <div className="profilePrincipalInfos__date"> {`Membre depuis le ${test}`} </div>
+      <div className="profilePrincipalInfos__image">
+        <img className="jose" alt="image__profile" src={avatar != null ? avatar : defaultAvatar} />
       </div>
-
+      <div className={isMyProfile ? 'profilePrincipalInfos__update' : 'hidden'}>Mettre à jour ma photo</div>
+      <ProfileLocalisation {...cities} />
     </div>
-    <div className="profilePrincipalInfos__username">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
-    <div className="profilePrincipalInfos__date"> Membre depuis {createdAt} </div>
-    <div className="profilePrincipalInfos__image">
-      <img className="jose" alt="image__profile" src={avatar != null ? avatar : defaultAvatar} />
-    </div>
-    <div className={isMyProfile ? 'profilePrincipalInfos__update' : 'hidden'}>Mettre à jour ma photo</div>
-    <ProfileLocalisation {...cities} />
-  </div>
 
-);
+  );
+};
 
 ProfilePrincipalInfos.propTypes = {
   isMyProfile: PropTypes.bool.isRequired,
@@ -50,7 +59,7 @@ ProfilePrincipalInfos.propTypes = {
   //   latitude: PropTypes.number.isRequired,
   // }),
   // country: PropTypes.string,
-  // createdAt: PropTypes.string.isRequired,
+  createdAt: PropTypes.string,
   // firstname: PropTypes.string.isRequired,
   // lastname: PropTypes.string.isRequired,
 };
@@ -60,6 +69,7 @@ ProfilePrincipalInfos.defaultProps = {
   nickname: '',
   // cities: [],
   // country: [],
+  createdAt: '2021-05-11T07:33:18+00:00',
 };
 
 export default ProfilePrincipalInfos;
