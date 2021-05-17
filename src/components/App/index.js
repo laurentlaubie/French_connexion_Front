@@ -119,7 +119,8 @@ const App = ({ saveConnectedUserData, isConnected, loading }) => {
           <Profile isMyProfile />
         </Route>
         <Route path="/mon-profil/modifier" exact>
-          {isConnected ? <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices} /> : <Redirect to="/403" />}
+          {/* {isConnected ? <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices} /> : <Redirect to="/403" />} */}
+          <ModifyProfile />
         </Route>
         <Route path="/plan-du-site">
           <SiteMap />

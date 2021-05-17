@@ -7,6 +7,9 @@ import {
   openModifyCityModal,
 } from 'src/actions/user';
 
+import { loadHobbiesList } from 'src/actions/hobbies';
+import { loadServicesList } from 'src/actions/services';
+
 import ModifyProfile from 'src/components/ModifyProfile';
 
 // connection de props en lecture sur le state
@@ -16,6 +19,9 @@ const mapStateToProps = (state, ownProps) => ({
   connectedUserData: state.log.connectedUserData,
   newPassword: state.user.newPassword,
   confirmedNewPassword: state.user.confirmedNewPassword,
+  userAddress: state.user.userAddress,
+  hobbiesList: state.hobbies.hobbiesList,
+  servicesList: state.services.servicesList,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -35,6 +41,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   openModal: () => {
     dispatch(openModifyCityModal());
+  },
+  loadHobbiesList: () => {
+    dispatch(loadHobbiesList());
+  },
+  loadServicesList: () => {
+    dispatch(loadServicesList());
   },
 
 });

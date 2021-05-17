@@ -6,7 +6,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 
 import './modifyCity.scss';
 
-const ModifyCity = ({ isOpen, close, userAdress, setUserAdress, setUserCityCenter }) => {
+const ModifyCity = ({ isOpen, close, address, setAddress, saveUserAddress }) => {
   // const handleSubmit = (evt) => {
   //   evt.preventDefault();
   //   console.log('j\'enregistre ma nouvelle ville');
@@ -15,6 +15,8 @@ const ModifyCity = ({ isOpen, close, userAdress, setUserAdress, setUserCityCente
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
+    setAddress(value);
+
     console.log(results);
     const addressComponents = results[0].address_components;
     console.log(addressComponents);
@@ -29,24 +31,11 @@ const ModifyCity = ({ isOpen, close, userAdress, setUserAdress, setUserCityCente
     const countryName = country.long_name;
     console.log(countryName);
 
-    // const resultatAffines = results[0];
-    // console.log(resultatAffines);
-    // const addressComp = resultatAffines.address_components;
-    // console.log(addressComp);
-    // const city = addressComp.find(
-    //   (component) => component.types.includes('locality'),
-    // );
-    // console.log(city.long_name);
-    // const country = addressComp.find(
-    //   (component) => component.types.includes('country'),
-    // );
-    // console.log(country.long_name);
-
-    // const address = results[address_components];
-    // console.log(address);
     const latLng = await getLatLng(results[0]);
-    setUserAdress(value);
-    setUserCityCenter(latLng);
+    const { lat, lng } = { ...latLng };
+    console.log(lat);
+    console.log(lng);
+    saveUserAddress(cityName, countryName, lat, lng);
   };
 
   const handleSubmitClick = (evt) => {
@@ -54,11 +43,9 @@ const ModifyCity = ({ isOpen, close, userAdress, setUserAdress, setUserCityCente
     // On force le changement d'url vers /resultats
     // history.push('/resultats');
     console.log('j\'enregistre ma nouvelle ville');
+    close();
+    // saveUserAddress(cityName, countryName, lat, lng);
   };
-
-  // const searchOptions = {
-  //   types: ['locality', 'country'],
-  // };
 
   return (
     <div className={isOpen ? 'modifyCity' : 'modifyCity__close'}>
@@ -67,8 +54,8 @@ const ModifyCity = ({ isOpen, close, userAdress, setUserAdress, setUserCityCente
         <button className="modifyCity__modal__closeButton" type="button" onClick={close}> X </button>
         <div className="SearchBar">
           <PlacesAutocomplete
-            value={userAdress}
-            onChange={setUserAdress}
+            value={address}
+            onChange={setAddress}
             onSelect={handleSelect}
             searchOptions={{ types: ['geocode'] }}
           >
@@ -105,9 +92,10 @@ const ModifyCity = ({ isOpen, close, userAdress, setUserAdress, setUserCityCente
 ModifyCity.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
-  // openSignIn: PropTypes.func.isRequired,
-  // changeField: PropTypes.func.isRequired,
-  handlemodifyCity: PropTypes.func.isRequired,
+  address: PropTypes.string.isRequired,
+  setAddress: PropTypes.func.isRequired,
+  saveUserAddress: PropTypes.func.isRequired,
+  // handlemodifyCity: PropTypes.func.isRequired,
 };
 
 export default ModifyCity;
