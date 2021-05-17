@@ -12,7 +12,6 @@ const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, isLo
     [],
   );
 
-
   const handleInputValueChange = (evt) => {
     evt.preventDefault();
     const inputValue = document.querySelector(".usersCards__search").value;

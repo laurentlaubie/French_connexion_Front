@@ -9,7 +9,6 @@ import {
   OPEN_MODIFY_CITY_MODAL,
   RENDER_NEW_LIST,
   SET_LOADING,
-  SAVE_USER_ADDRESS,
 } from 'src/actions/user';
 
 import { SET_ADRESS } from 'src/actions/map';
@@ -29,7 +28,7 @@ const initialState = {
   address: '',
   userAddress: '',
   userCityCenter: '',
-  isLoading: false,
+  isLoading: true,
   newUserList: null,
 };
 

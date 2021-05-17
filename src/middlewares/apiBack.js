@@ -17,7 +17,6 @@ import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions
 import { LOAD_HOBBIES_LIST, saveHobbiesList } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList } from 'src/actions/services';
 
-
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
 });
@@ -64,7 +63,7 @@ export default (store) => (next) => (action) => {
     }
     case LOAD_USER_PROFILE: {
       // CETTE REQUETE N'EST ACCESSIBLE QUE POUR UN UTILISATEUR CONNECTE
-      
+  
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
       const idParam = (action.userId);
       console.log(idParam);
@@ -72,8 +71,8 @@ export default (store) => (next) => (action) => {
       const userToken = localStorage.getItem('token');
       console.log(userToken);
 
-      // -- gestion loader for profilPage
-      store.dispatch(setLoading(true));
+      // // -- gestion loader for profilPage
+      // store.dispatch(setLoading(true));
 
       api
         .get(`/user/${idParam}`, {
@@ -89,6 +88,9 @@ export default (store) => (next) => (action) => {
           console.log(response.headers);
           // on sauvegarde ces infos
           store.dispatch(saveUserProfile(userInfos));
+          // gestion du loader dans la page profil
+          store.dispatch(setLoading(false));
+          console.log('la requête seffectue');
         }).catch((error) => {
           // eslint-disable-next-line no-console
           const errorStatus = error.response.status;
@@ -97,11 +99,7 @@ export default (store) => (next) => (action) => {
           if (errorStatus === 401) {
             window.location.href = '/403';
           }
-        })
-        // -- gestion loader for profilPage
-        .finally(() => {store.dispatch(setLoading(false))
         });
-       
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
@@ -135,8 +133,8 @@ export default (store) => (next) => (action) => {
     case LOAD_USERS_CARDS:
       // affichage de tous les profils sous forme de cards
       
-      // -- gestion loader for profilPage
-      store.dispatch(setLoading(true));
+      // // -- gestion loader for profilPage
+      // store.dispatch(setLoading(true));
 
       api
         .get('user')
@@ -216,6 +214,9 @@ export default (store) => (next) => (action) => {
       const userToken = localStorage.getItem('token');
       console.log(userToken);
 
+      // // gestion du loader
+      // store.dispatch(setLoading(true));
+
       api
         .get('hobby',
           {
@@ -228,14 +229,20 @@ export default (store) => (next) => (action) => {
           const hobbiesList = response.data;
           store.dispatch(saveHobbiesList(hobbiesList));
         }).catch((error) => {
-        // eslint-disable-next-line no-console
           console.log(error);
+        }).finally(() => {
+          // gestion du loader
+          // store.dispatch(setLoading(false));
         });
       break;
     }
     case LOAD_SERVICES_LIST: {
       const userToken = localStorage.getItem('token');
       console.log(userToken);
+
+      // // gestion du loader
+      // store.dispatch(setLoading(true));
+
       api
         .get('service',
           {
@@ -250,6 +257,9 @@ export default (store) => (next) => (action) => {
         }).catch((error) => {
         // eslint-disable-next-line no-console
           console.log(error);
+        }).finally(() => {
+          // gestion du loader
+          // store.dispatch(setLoading(false));
         });
       break;
     }

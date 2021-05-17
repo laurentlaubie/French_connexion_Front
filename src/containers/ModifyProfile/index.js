@@ -5,6 +5,7 @@ import {
   changePasswordProfileFormFieldValue,
   modifyProfile,
   openModifyCityModal,
+  setLoading,
 } from 'src/actions/user';
 
 import { loadHobbiesList } from 'src/actions/hobbies';
@@ -22,6 +23,8 @@ const mapStateToProps = (state, ownProps) => ({
   userAddress: state.user.userAddress,
   hobbiesList: state.hobbies.hobbiesList,
   servicesList: state.services.servicesList,
+  isLoading: state.user.isLoading,
+
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -47,6 +50,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   loadServicesList: () => {
     dispatch(loadServicesList());
+  },
+  setLoading: (value) => {
+    dispatch(setLoading(value));
   },
 
 });
