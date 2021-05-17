@@ -19,12 +19,32 @@ const ModifyProfile = ({
   confirmedNewPassword,
   handleModifyProfile,
   openModal,
+  userAddress,
 }) => {
   const userId = connectedUserData.id;
 
+  // const localisationMessage = () => {
+  //   if (userInfos.cities != null && userAddress == null) {
+  //     console.log('cas1');
+  //     return (`Votre ville de résidence est :  ${userInfos.cities.name}`);
+  //   }
+  //   if (userAddress != null) {
+  //     console.log('cas2');
+  //     return (`Votre ville de résidence est :  ${userAddress[0]}`);
+  //   }
+  //   if (userInfos.cities == null && userAddress == null) {
+  //     console.log('cas3');
+  //     return ('Votre ville de résidence n\'est pas renseignée');
+  //   }
+  // };
+
+  // let message = '';
+  // let cityAddress = null;
   console.log(userInfos);
   useEffect(() => {
     loadUserProfile(userId);
+    // message = localisationMessage();
+    // console.log(message);
   }, []);
 
   const handleSubmit = (evt) => {
@@ -128,9 +148,11 @@ const ModifyProfile = ({
               </label>
               <div className="modifyProfile__form__label">
                 <div className="modifyProfile__form__city">
-                  {userInfos.cities != null ? `Votre ville de résidence est : ${userInfos.cities.name}` : 'Vous n\'avez pas renseigné votre ville de résidence.' }
+                  {userInfos.cities != null && userAddress === '' ? `Votre ville de résidence est ${userInfos.cities}` : ''}
+                  {userAddress !== '' ? `Votre ville de résidence est ${userAddress[0]}, ${userAddress[1]}` : ''}
+                  {userAddress === '' && userInfos.cities === null ? 'Vous n\'avez pas renseigné votre ville de résidence' : ''}
                 </div>
-                <button type="button" onClick={openModal}> Chercher une ville </button>
+                <button className="modifyProfile__form__city__button" type="button" onClick={openModal}> Chercher une ville </button>
                 <ModifyCity />
               </div>
 

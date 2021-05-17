@@ -8,9 +8,10 @@ import {
   CLOSE_MODIFY_CITY_MODAL,
   OPEN_MODIFY_CITY_MODAL,
   RENDER_NEW_LIST,
+  SAVE_USER_ADDRESS,
 } from 'src/actions/user';
 
-import { SET_ADRESS, SET_CENTER } from 'src/actions/map';
+import { SET_ADRESS } from 'src/actions/map';
 
 const initialState = {
   isHelper: false,
@@ -24,7 +25,8 @@ const initialState = {
   newPassword: '',
   confirmedNewPassword: '',
   isModifyCityModalOpen: false,
-  userAdress: '',
+  address: '',
+  userAddress: '',
   userCityCenter: '',
   isLoading: false,
   newUserList: null,
@@ -47,7 +49,6 @@ export default (state = initialState, action = {}) => {
         ...state,
         usersList: action.usersList,
       };
-
     case RENDER_NEW_LIST:
       return {
         ...state,
@@ -70,6 +71,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isModifyCityModalOpen: false,
+        address: '',
       };
     case OPEN_MODIFY_CITY_MODAL:
       return {
@@ -79,12 +81,12 @@ export default (state = initialState, action = {}) => {
     case SET_ADRESS:
       return {
         ...state,
-        userAdress: action.adress,
+        address: action.adress,
       };
-    case SET_CENTER:
+    case SAVE_USER_ADDRESS:
       return {
         ...state,
-        userCityCenter: action.center,
+        userAddress: [action.cityName, action.countryName, action.lat, action.lng],
       };
     default:
       return state;

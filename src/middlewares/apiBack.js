@@ -144,7 +144,7 @@ export default (store) => (next) => (action) => {
       const state = store.getState();
       const { userInfos } = state.user;
       const { email, firstname, lastname, phoneNumber, biography } = userInfos;
-      const { newPassword: password, confirmedNewPassword: confirmedPassword } = state.user;
+      const { newPassword: password, confirmedNewPassword: confirmedPassword, userAddress } = state.user;
 
       api
         .put(`/user/${userId}`,
@@ -155,6 +155,7 @@ export default (store) => (next) => (action) => {
             password,
             confirmedPassword,
             biography,
+            userAddress,
             // phoneNumber,
           },
           {

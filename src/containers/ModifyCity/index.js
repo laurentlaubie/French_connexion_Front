@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 
 import ModifyCity from 'src/components/ModifyCity';
-import { closeModifyCityModal } from 'src/actions/user';
-import { setNewAdress, setNewCenter } from 'src/actions/map';
-
+import { closeModifyCityModal, saveUserAddress } from 'src/actions/user';
+import { setNewAdress } from 'src/actions/map';
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   isOpen: state.user.isModifyCityModalOpen,
-  userAdress: state.user.userAdress,
+  // userAddress: state.user.userAdress,
+  address: state.user.address,
+  userAddress: state.user.userAddress,
 
 });
 
@@ -18,13 +19,17 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   close: () => {
     dispatch(closeModifyCityModal());
   },
-  setUserAdress: (adress) => {
+  setAddress: (adress) => {
     dispatch(setNewAdress(adress));
   },
-  // center doit etre un objet composé de lat et lng
-  setUserCityCenter: (center) => {
-    dispatch(setNewCenter(center));
+  saveUserAddress: (cityName, countryName, lat, lng) => {
+    dispatch(saveUserAddress(cityName, countryName, lat, lng));
   },
+
+  // // center doit etre un objet composé de lat et lng
+  // setUserCityCenter: (center) => {
+  //   dispatch(setNewCenter(center));
+  // },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModifyCity);
