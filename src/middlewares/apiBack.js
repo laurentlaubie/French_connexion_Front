@@ -2,7 +2,7 @@
 import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
-import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, setLoading, LOAD_USERS_REVIEWS, loadUsersReviews} from 'src/actions/user';
+import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, setLoading, LOAD_USERS_REVIEWS, saveUsersReviews} from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
 
 
@@ -149,11 +149,11 @@ export default (store) => (next) => (action) => {
       // affichage de tous les profils sur la HP
       
       api
-        .get('/user')
+        .get('/user/home')
         .then((response) => {
           console.log(response);
           const usersReviewList = response.data;
-          store.dispatch(loadUsersReviews(usersReviewList));
+          store.dispatch(saveUsersReviews(usersReviewList));
         }).catch((error) => {
         // eslint-disable-next-line no-console
           console.log(error);

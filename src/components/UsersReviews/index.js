@@ -9,10 +9,11 @@ import './usersReviews.scss';
 import 'react-multi-carousel/lib/styles.css';
 
 const UsersReviews = ({ loadUsersReviews, usersReviewList }) => (
-  //useEffect(() => {
-  //loadUsersReviews,
-   //[]
-  //},
+    useEffect(
+    loadUsersReviews,
+    [],
+    ),
+    
 
 
   <div className="usersReviews">

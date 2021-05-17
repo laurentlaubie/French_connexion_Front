@@ -9,7 +9,7 @@ import {
   OPEN_MODIFY_CITY_MODAL,
   RENDER_NEW_LIST,
   SET_LOADING,
-  LOAD_USERS_REVIEWS,
+  SAVE_USERS_REVIEWS,
 
 
 } from 'src/actions/user';
@@ -96,7 +96,7 @@ export default (state = initialState, action = {}) => {
       ...state,
       isLoading: action.value,
     };
-    case LOAD_USERS_REVIEWS:
+    case SAVE_USERS_REVIEWS:
      return {
       ...state,
       usersReviewList: action.usersReviewList,
