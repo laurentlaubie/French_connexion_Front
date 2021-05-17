@@ -8,6 +8,7 @@ import {
   CLOSE_MODIFY_CITY_MODAL,
   OPEN_MODIFY_CITY_MODAL,
   RENDER_NEW_LIST,
+  SET_LOADING,
 } from 'src/actions/user';
 
 import { SET_ADRESS, SET_CENTER } from 'src/actions/map';
@@ -86,6 +87,12 @@ export default (state = initialState, action = {}) => {
         ...state,
         userCityCenter: action.center,
       };
+    case SET_LOADING:
+     return {
+      ...state,
+      isLoading: action.value,
+    };
+
     default:
       return state;
   }

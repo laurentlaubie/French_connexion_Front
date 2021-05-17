@@ -137,3 +137,12 @@ export const OPEN_MODIFY_CITY_MODAL = 'OPEN_MODIFY_CITY_MODAL';
 export const openModifyCityModal = () => ({
   type: OPEN_MODIFY_CITY_MODAL,
 });
+
+// action type SET_LOADING
+export const SET_LOADING = 'SET_LOADING';
+
+// action creator setLoading
+export const setLoading = (value) => ({
+  type: SET_LOADING,
+  value,
+});

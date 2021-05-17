@@ -2,8 +2,9 @@
 import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
-import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE } from 'src/actions/user';
+import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, setLoading } from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
+
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -59,6 +60,9 @@ export default (store) => (next) => (action) => {
       const userToken = localStorage.getItem('token');
       console.log(userToken);
 
+      // -- gestion loader for profilPage
+      store.dispatch(setLoading(true));
+
       api
         .get(`/user/${idParam}`, {
           headers: {
@@ -81,8 +85,11 @@ export default (store) => (next) => (action) => {
           if (errorStatus === 401) {
             window.location.href = '/403';
           }
+        })
+        // -- gestion loader for profilPage
+        .finally(() => {store.dispatch(setLoading(false))
         });
-
+       
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
@@ -115,6 +122,9 @@ export default (store) => (next) => (action) => {
 
     case LOAD_USERS_CARDS:
       // affichage de tous les profils sous forme de cards
+      
+      // -- gestion loader for profilPage
+      store.dispatch(setLoading(true));
 
       api
         .get('user')
@@ -125,6 +135,9 @@ export default (store) => (next) => (action) => {
         }).catch((error) => {
         // eslint-disable-next-line no-console
           console.log(error);
+        })
+        // -- gestion loader for profilPage
+        .finally(() => {store.dispatch(setLoading(false))
         });
 
       // puis on décide si on la laisse filer ou si on la bloque
