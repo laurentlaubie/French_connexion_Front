@@ -22,33 +22,20 @@ const ModifyProfile = ({
   userAddress,
   loadHobbiesList,
   loadServicesList,
+  hobbiesList,
+  servicesList,
+
 }) => {
   const userId = connectedUserData.id;
-
-  // const localisationMessage = () => {
-  //   if (userInfos.cities != null && userAddress == null) {
-  //     console.log('cas1');
-  //     return (`Votre ville de résidence est :  ${userInfos.cities.name}`);
-  //   }
-  //   if (userAddress != null) {
-  //     console.log('cas2');
-  //     return (`Votre ville de résidence est :  ${userAddress[0]}`);
-  //   }
-  //   if (userInfos.cities == null && userAddress == null) {
-  //     console.log('cas3');
-  //     return ('Votre ville de résidence n\'est pas renseignée');
-  //   }
-  // };
-
-  // let message = '';
-  // let cityAddress = null;
-  console.log(userInfos);
+  console.log(hobbiesList);
+  console.log(servicesList);
+  
   useEffect(() => {
     loadUserProfile(userId);
     loadHobbiesList();
+    console.log(Array.isArray(hobbiesList));
+    // console.log(servicesList);
     loadServicesList();
-    // message = localisationMessage();
-    // console.log(message);
   }, []);
 
   const handleSubmit = (evt) => {
@@ -57,13 +44,6 @@ const ModifyProfile = ({
     handleModifyProfile(userId);
   };
 
-  const displaySection = (evt) => {
-    console.log(evt.target);
-    document.querySelector
-  };
-
-  // console.log(dataHobbies);
-  // console.log(dataServices);
   console.log(userInfos);
 
   return (
@@ -94,7 +74,7 @@ const ModifyProfile = ({
                     value={userInfos.firstname}
                   />
                 </div>
-                <label className="modifyProfile__form__label" htmlFor="lastname">
+                <div className="modifyProfile__form__label" htmlFor="lastname">
                   <div className="modifyProfile__form__label__name">Nom </div>
                   <Field
                     className="modifyProfile__form__field"
@@ -103,9 +83,9 @@ const ModifyProfile = ({
                     onChange={changeField}
                     value={userInfos.lastname}
                   />
-                </label>
+                </div>
               </div>
-              <label className="modifyProfile__form__label" htmlFor="nickname">
+              <div className="modifyProfile__form__label" htmlFor="nickname">
                 <div className="modifyProfile__form__label__name"> Nom d'utilisateur </div>
                 <Field
                   className="modifyProfile__form__field"
@@ -114,8 +94,8 @@ const ModifyProfile = ({
                   onChange={changeField}
                   value={userInfos.nickname}
                 />
-              </label>
-              <label className="modifyProfile__form__label" htmlFor="email">
+              </div>
+              <div className="modifyProfile__form__label" htmlFor="email">
                 <div className="modifyProfile__form__label__name"> Email </div>
                 <Field
                   className="modifyProfile__form__field"
@@ -125,9 +105,9 @@ const ModifyProfile = ({
                   value={userInfos.email}
                   type="email"
                 />
-              </label>
+              </div>
               <div className="modifyProfile__form__section__fieldGroup">
-                <label className="modifyProfile__form__label" htmlFor="password">
+                <div className="modifyProfile__form__label" htmlFor="password">
                   <div className="modifyProfile__form__label__name"> Mot de passe </div>
                   <Field
                     className="modifyProfile__form__field"
@@ -137,8 +117,8 @@ const ModifyProfile = ({
                     value={newPassword}
                     type="password"
                   />
-                </label>
-                <label className="modifyProfile__form__label" htmlFor="password">
+                </div>
+                <div className="modifyProfile__form__label" htmlFor="password">
                   <div className="modifyProfile__form__label__name"> Confirmer le mot de passe </div>
                   <Field
                     className="modifyProfile__form__field"
@@ -148,10 +128,10 @@ const ModifyProfile = ({
                     value={confirmedNewPassword}
                     type="password"
                   />
-                </label>
+                </div>
               </div>
 
-              <label className="modifyProfile__form__label" htmlFor="phoneNumber">
+              <div className="modifyProfile__form__label" htmlFor="phoneNumber">
                 <div className="modifyProfile__form__label__name">Numéro de téléphone </div>
                 <Field
                   className="modifyProfile__form__field"
@@ -160,7 +140,7 @@ const ModifyProfile = ({
                   onChange={changeField}
                   value={userInfos.phoneNumber}
                 />
-              </label>
+              </div>
               <div className="modifyProfile__form__label">
                 <div className="modifyProfile__form__city">
                   {userInfos.cities != null && userAddress === '' ? `Votre ville de résidence est ${userInfos.cities}` : ''}
@@ -178,7 +158,7 @@ const ModifyProfile = ({
             <div className="modifyProfile__form__section__title"> A propos de moi </div>
             <div className="modifyProfile__form__section__content">
 
-              <label className="modifyProfile__form__label" htmlFor="biography">
+              <div className="modifyProfile__form__label" htmlFor="biography">
                 <div className="modifyProfile__form__label__name"> Je raconte ma life sur Internet </div>
                 <TextArea
                   className="modifyProfile__form__textarea"
@@ -187,7 +167,14 @@ const ModifyProfile = ({
                   onChange={changeField}
                   value={userInfos.biography}
                 />
-              </label>
+              </div>
+
+              <div className="modifyProfile__form__hobbiesList">
+                {hobbiesList.map((hobby) => (
+                  console.log(hobby)
+                ))}
+              </div>
+
             </div>
           </div>
 
@@ -198,15 +185,15 @@ const ModifyProfile = ({
             </div>
           </div>
 
-          {/* <div className="modifyProfile__form__hobbies">
+           {/* <div className="modifyProfile__form__hobbies">
             <h2 className="modifyProfile__form__hobbies__title">Mes centres d'interet</h2>
             {dataHobbies.map((Hobby) => {
               <React.Fragment key={Hobby.id}>
                 <input className="modifyProfile__form__input" type="checkbox" id={Hobby.id} name={Hobby.hobby} />
                 <label className="modifyProfile__form__label" for={Hobby.id} >{Hobby.hobby}</label>
-              </React.Fragment>
+              <React.Fragment key={Hobby.id}>
             })}
-          </div>
+          </div> 
 
           <div className="modifyProfile__form__services">
             <h2 className="modifymyprofile__all__title"> Mes services </h2>
@@ -266,6 +253,14 @@ ModifyProfile.propTypes = {
   openModal: PropTypes.func.isRequired,
   loadHobbiesList: PropTypes.func.isRequired,
   loadServicesList: PropTypes.func.isRequired,
+  hobbiesList: PropTypes.arrayOf(
+    PropTypes.shape(
+      {
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      },
+    ).isRequired,
+  ).isRequired,
   // isSearchBarVisible: PropTypes.bool.isRequired,
 
 };

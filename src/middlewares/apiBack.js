@@ -209,7 +209,7 @@ export default (store) => (next) => (action) => {
             },
           })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           const hobbiesList = response.data;
           store.dispatch(saveHobbiesList(hobbiesList));
         }).catch((error) => {
@@ -229,7 +229,7 @@ export default (store) => (next) => (action) => {
             },
           })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           const servicesList = response.data;
           store.dispatch(saveServicesList(servicesList));
         }).catch((error) => {
