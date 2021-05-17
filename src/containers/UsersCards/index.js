@@ -9,6 +9,7 @@ import { loadUsersCards, RenderNewList } from 'src/actions/user';
 const mapStateToProps = (state, ownProps) => ({
   usersList: state.user.usersList,
   newUserList: state.user.newUserList,
+  isLoading: state.user.isLoading,
 });
 
 // connection de props fonctions qui déclenchent des actions

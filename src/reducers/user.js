@@ -8,6 +8,7 @@ import {
   CLOSE_MODIFY_CITY_MODAL,
   OPEN_MODIFY_CITY_MODAL,
   RENDER_NEW_LIST,
+  SET_LOADING,
   SAVE_USER_ADDRESS,
 } from 'src/actions/user';
 
@@ -83,6 +84,12 @@ export default (state = initialState, action = {}) => {
         ...state,
         address: action.adress,
       };
+    case SET_LOADING:
+     return {
+      ...state,
+      isLoading: action.value,
+    };
+
     default:
       return state;
   }
