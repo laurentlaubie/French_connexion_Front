@@ -20,6 +20,8 @@ const ModifyProfile = ({
   handleModifyProfile,
   openModal,
   userAddress,
+  loadHobbiesList,
+  loadServicesList,
 }) => {
   const userId = connectedUserData.id;
 
@@ -43,6 +45,8 @@ const ModifyProfile = ({
   console.log(userInfos);
   useEffect(() => {
     loadUserProfile(userId);
+    loadHobbiesList();
+    loadServicesList();
     // message = localisationMessage();
     // console.log(message);
   }, []);
@@ -51,6 +55,11 @@ const ModifyProfile = ({
     evt.preventDefault();
     console.log('je souhaite envoyer mon formulaire');
     handleModifyProfile(userId);
+  };
+
+  const displaySection = (evt) => {
+    console.log(evt.target);
+    document.querySelector
   };
 
   // console.log(dataHobbies);
@@ -65,11 +74,17 @@ const ModifyProfile = ({
           <ProfilePrincipalInfos {...userInfos} isMyProfile />
         </div>
         <form className="modifyProfile__form" onSubmit={handleSubmit}>
+          {/* <div className="modifyProfile__form__navbar">
+            <div className="modifyProfile__form__navbar__item" onClick={displaySection}> Informations personnelles </div>
+            <div className="modifyProfile__form__navbar__item" onClick={displaySection}> A propos de moi </div>
+            <div className="modifyProfile__form__navbar__item" onClick={displaySection}> Devenir helper </div>
+          </div> */}
+
           <div className="modifyProfile__form__section">
-            <div className="modifyProfile__form__section__title"> Informations personnelles </div>
+            <div className="modifyProfile__form__section__title modifyProfile__form__section__title"> Informations personnelles </div>
             <div className="modifyProfile__form__section__content">
               <div className="modifyProfile__form__section__fieldGroup">
-                <label className="modifyProfile__form__label" htmlFor="firstname">
+                <div className="modifyProfile__form__label">
                   <div className="modifyProfile__form__label__name"> Prénom </div>
                   <Field
                     className="modifyProfile__form__field"
@@ -78,7 +93,7 @@ const ModifyProfile = ({
                     onChange={changeField}
                     value={userInfos.firstname}
                   />
-                </label>
+                </div>
                 <label className="modifyProfile__form__label" htmlFor="lastname">
                   <div className="modifyProfile__form__label__name">Nom </div>
                   <Field
@@ -124,7 +139,7 @@ const ModifyProfile = ({
                   />
                 </label>
                 <label className="modifyProfile__form__label" htmlFor="password">
-                  <div className="modifyProfile__form__label__name"> Confirmer votre mot de passe </div>
+                  <div className="modifyProfile__form__label__name"> Confirmer le mot de passe </div>
                   <Field
                     className="modifyProfile__form__field"
                     name="confirmedNewPassword"
@@ -159,7 +174,7 @@ const ModifyProfile = ({
             </div>
           </div>
 
-          <div className="modifyProfile__form__section modifyProfile__form__section--active">
+          <div className="modifyProfile__form__section">
             <div className="modifyProfile__form__section__title"> A propos de moi </div>
             <div className="modifyProfile__form__section__content">
 
@@ -249,6 +264,8 @@ ModifyProfile.propTypes = {
   newPassword: PropTypes.string.isRequired,
   confirmedNewPassword: PropTypes.string.isRequired,
   openModal: PropTypes.func.isRequired,
+  loadHobbiesList: PropTypes.func.isRequired,
+  loadServicesList: PropTypes.func.isRequired,
   // isSearchBarVisible: PropTypes.bool.isRequired,
 
 };

@@ -2,8 +2,18 @@
 import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
-import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE } from 'src/actions/user';
+import {
+  LOAD_USER_PROFILE,
+  saveUserProfile,
+  ADD_NEW_USER,
+  LOAD_USERS_CARDS,
+  saveUsersCards,
+  MODIFY_PROFILE,
+} from 'src/actions/user';
+
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
+import { LOAD_HOBBIES_LIST, saveHobbiesList } from 'src/actions/hobbies';
+import { LOAD_SERVICES_LIST, saveServicesList } from 'src/actions/services';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -133,7 +143,7 @@ export default (store) => (next) => (action) => {
 
     case MODIFY_PROFILE: {
       // on récupère l'ID de la personne connectée
-      const { userId } = action;
+      const userId = action.userId;
       console.log(userId);
 
       // on récupère le token stocké dans le localStorage
@@ -144,7 +154,7 @@ export default (store) => (next) => (action) => {
       const state = store.getState();
       const { userInfos } = state.user;
       const { email, firstname, lastname, phoneNumber, biography } = userInfos;
-      const { newPassword: password, confirmedNewPassword: confirmedPassword, userAddress } = state.user;
+      const { newPassword: password, confirmedNewPassword: confirmedPassword, userAddress : userAdress } = state.user;
 
       api
         .put(`/user/${userId}`,
@@ -155,8 +165,8 @@ export default (store) => (next) => (action) => {
             password,
             confirmedPassword,
             biography,
-            userAddress,
             // phoneNumber,
+            userAdress,
           },
           {
             headers: {
@@ -186,6 +196,48 @@ export default (store) => (next) => (action) => {
       console.log('je me déconnecte');
       next(action);
       break;
+
+    case LOAD_HOBBIES_LIST: {
+      const userToken = localStorage.getItem('token');
+      console.log(userToken);
+
+      api
+        .get('hobby',
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+            },
+          })
+        .then((response) => {
+          console.log(response.data);
+          const hobbiesList = response.data;
+          store.dispatch(saveHobbiesList(hobbiesList));
+        }).catch((error) => {
+        // eslint-disable-next-line no-console
+          console.log(error);
+        });
+      break;
+    }
+    case LOAD_SERVICES_LIST: {
+      const userToken = localStorage.getItem('token');
+      console.log(userToken);
+      api
+        .get('service',
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+            },
+          })
+        .then((response) => {
+          console.log(response.data);
+          const servicesList = response.data;
+          store.dispatch(saveServicesList(servicesList));
+        }).catch((error) => {
+        // eslint-disable-next-line no-console
+          console.log(error);
+        });
+      break;
+    }
     default:
       next(action);
   }

@@ -83,11 +83,6 @@ export default (state = initialState, action = {}) => {
         ...state,
         address: action.adress,
       };
-    case SAVE_USER_ADDRESS:
-      return {
-        ...state,
-        userAddress: [action.cityName, action.countryName, action.lat, action.lng],
-      };
     default:
       return state;
   }
