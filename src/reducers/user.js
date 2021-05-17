@@ -59,6 +59,7 @@ export default (state = initialState, action = {}) => {
         userInfos: {
           ...state.userInfos,
           [action.name]: action.value,
+        },
       };
     case CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE:
       return {
