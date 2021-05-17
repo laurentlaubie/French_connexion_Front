@@ -4,6 +4,7 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE } from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
+import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -178,7 +179,42 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
     }
+    case LOAD_USERS_BY_COUNTRY: {
+      // on récupère le pays
+      const state = store.getState();
+      console.log(state);
+      const country = state.map.userAddress[1];
+      api
+        .get(`/user/search?country=${country}`)
+        .then((response) => {
+          console.log(response);
+          const usersList = response.data;
+          console.log(usersList[0].cities);
+          let userCountCity = [];
+        
+          usersList[0].cities.map((city) => {
+            console.log(city.users);
+            userCountCity = [...userCountCity, city.users];
+            console.log(userCountCity);
+          });
+          console.log(userCountCity);
 
+          let userCount = [];
+          userCountCity.map((userArray) =>
+          {
+            userCount = userCount.concat(userArray);
+          });
+          console.log(userCount);
+          //Object.values(userCount);
+          console.log(userCount);
+          store.dispatch(saveUsersList(userCount));
+        }).catch((error) => {
+          // eslint-disable-next-line no-console
+          console.log(error);
+        });
+      next(action);
+      break;
+    }
     case LOG_OUT:
       delete api.defaults.headers.common.Authorization;
       localStorage.removeItem('token');
