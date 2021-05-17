@@ -21,7 +21,7 @@ export default (store) => (next) => (action) => {
         .post(
           '/login',
           {
-            username: 'leon@leon.com',
+            username: 'leon@gmail.com',
             password: 'leonleon',
           },
         )

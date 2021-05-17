@@ -1,0 +1,23 @@
+
+/*
+.loading {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: blue;
+  font-size: 2em;
+  animation: fade .75s infinite alternate;
+
+  &::after {
+    content: "";
+    height: 30%;
+    width: 100%;
+    background-color: blue;
+    opacity: .3;
+    position: absolute;
+    top: 70%;
+    left: 0;
+    animation: load 1.5s infinite;
+  }
+*/

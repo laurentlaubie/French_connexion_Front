@@ -12,8 +12,8 @@ const initialState = {
   password: '',
   confirmedPassword: '',
   usersList: [],
+  isLoading: false,
   newUserList: null,
-
 };
 
 export default (state = initialState, action = {}) => {

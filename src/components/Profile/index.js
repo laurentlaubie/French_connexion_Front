@@ -13,12 +13,14 @@ import ProfileDescription from 'src/components/ProfileDescription';
 // import BecomeHelperButton from 'src/components/BecomeHelperButton';
 import ContactMe from 'src/components/ContactMe';
 import ProfileButton from 'src/components/ProfileButton';
+import Loading from 'src/components/Loading';
+
 
 
 // == import style
 import './profile.scss';
 
-const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, openLogOut }) => {
+const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, openLogOut, isLoading }) => {
   // let userInfos = null;
   // // console.log(connectedUserInfos);
   // if (isMyProfile) {
@@ -53,7 +55,12 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, o
     console.log('l\'url a changé');
   }, [pathName]);
 
+  
+
   return (
+    <>  {isLoading && (<Loading />)}
+        {!isLoading && (
+
     <div className="profile">
       <LogOut />
       <h1 className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </h1>
@@ -80,10 +87,13 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, o
 
       </div>
     </div>
+    )}
+    </>
   );
 };
 
 Profile.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   isMyProfile: PropTypes.bool.isRequired,
   userInfos: PropTypes.arrayOf(
     PropTypes.shape(
@@ -99,7 +109,7 @@ Profile.propTypes = {
     },
   ).isRequired,
   openLogOut: PropTypes.func.isRequired,
-
+ 
 };
 
 export default Profile;
