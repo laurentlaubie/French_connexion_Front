@@ -42,45 +42,44 @@ import DataTeam from 'src/data/DataTeam';
 import './styles.css';
 
 // == Composant
-const App = ({ saveConnectedUserData, isConnected }) => {
-const App = ({ saveConnectedUserData, isConnected, loading }) => {
 
+const App = ({ saveConnectedUserData, isConnected, loading }) => {
   const pathName = useLocation().pathname;
   console.log(pathName);
   const userToken = localStorage.getItem('token');
 
   useEffect(() => {
     // async function tatata() {
-      if (userToken != null) {
-        const decodedToken = jwt_decode(userToken);
-        console.log(decodedToken);
-        const dateNow = Math.round(Date.now() / 1000);
-        console.log(dateNow);
+    if (userToken != null) {
+      const decodedToken = jwt_decode(userToken);
+      console.log(decodedToken);
+      const dateNow = Math.round(Date.now() / 1000);
+      console.log(dateNow);
 
-        if (decodedToken.exp - 600 > dateNow) {
-          saveConnectedUserData(decodedToken);
-          console.log('je suis déjà connecté');
-        }
-        else {
-          console.log('Token expiré');
-          localStorage.removeItem('token');
-        }
+      if (decodedToken.exp - 600 > dateNow) {
+        saveConnectedUserData(decodedToken);
+        console.log('je suis déjà connecté');
       }
       else {
-        console.log('je ne suis pas encore connecté');
+        console.log('Token expiré');
+        localStorage.removeItem('token');
       }
+    }
+    else {
+      console.log('je ne suis pas encore connecté');
+    }
     // }
     // tatata();
   }, []);
 
-    //-- gestion du scroll
-    const location = useLocation();
-    useEffect (
-      () => {
-        window.scrollTo({ top:0, behavior: 'smooth'})
-      },
-      [location],
-    )
+  //-- gestion du scroll
+  const location = useLocation();
+  useEffect(
+    () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    [location],
+  );
 
     //-- gestion du loader
   if (loading) {
@@ -109,7 +108,6 @@ const App = ({ saveConnectedUserData, isConnected, loading }) => {
           </div>
         </Route>
         <Route path="/notre-reseau" exact>
-          <SearchBar />
           <UsersCards networkProfiles={DataProfile} />
         </Route>
         <Route path="/notre-reseau/utilisateur/:id" exact>
@@ -152,7 +150,7 @@ App.propTypes = {
 
 App.defaultProps = {
   loading: false,
-}
+};
 
 // == Export
 export default App;
