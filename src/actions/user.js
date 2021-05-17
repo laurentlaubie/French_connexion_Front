@@ -139,10 +139,10 @@ export const openModifyCityModal = () => ({
 });
 
 // action type SET_LOADING
-//export const SET_LOADING = 'SET_LOADING';
+export const SET_LOADING = 'SET_LOADING';
 
 // action creator openModifyCityModal
-//export const setLoading = (value) => ({
-//  type: SET_LOADING,
- // value,
-//});
+export const setLoading = (value) => ({
+  type: SET_LOADING,
+  value,
+});

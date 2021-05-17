@@ -87,11 +87,12 @@ export default (state = initialState, action = {}) => {
         ...state,
         userCityCenter: action.center,
       };
-    //case SET_LOADING:
-     // return {
-      //  ...state,
-      //  isLoading: action.value,
-      //};
+    case SET_LOADING:
+     return {
+      ...state,
+      isLoading: action.value,
+    };
+
     default:
       return state;
   }
