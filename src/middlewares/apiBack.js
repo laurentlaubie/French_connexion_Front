@@ -12,7 +12,7 @@ import {
   MODIFY_PROFILE,
 } from 'src/actions/user';
 
-import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
+import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn, saveTokenInState } from 'src/actions/log';
 import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
@@ -47,6 +47,9 @@ export default (store) => (next) => (action) => {
           // on stocke le token dans le localStorage
           localStorage.setItem('token', (userToken));
 
+          // on stocke le token dans le state
+          store.dispatch(saveTokenInState(userToken));
+
           console.log(userToken);
           // api.defaults.headers.common.Authorization = `Bearer ${userToken}`;
 
@@ -57,7 +60,7 @@ export default (store) => (next) => (action) => {
           // const connectedUserData = decodedToken.username;
           // console.log(connectedUserData);
           store.dispatch(saveConnectedUserData(decodedToken));
-          window.location.href = '/';
+          // window.location.href = '/';
         }).catch((error) => {
           console.log(error);
         });

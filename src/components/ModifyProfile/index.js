@@ -7,7 +7,6 @@ import ModifyCity from 'src/containers/ModifyCity';
 import Loading from 'src/components/Loading';
 import ModifyMyHobbies from 'src/containers/ModifyMyHobbies';
 import ModifyMyServices from 'src/containers/ModifyMyServices';
-
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
 
 // == Import style
@@ -27,10 +26,6 @@ const ModifyProfile = ({
   hobbiesList,
   servicesList,
   isLoaded,
-  // setLoading,
-  // toggleCheckBox,
-  // saveMyHobbiesInState,
-  // hobbiesListForCheckbox,
   loadHobbiesList,
   loadServicesList,
 

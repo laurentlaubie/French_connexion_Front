@@ -43,38 +43,88 @@ import './styles.css';
 // == Composant
 
 const App = ({
-  saveConnectedUserData, setIsConnected, isConnected, loadHobbiesList, loadServicesList,
+  saveConnectedUserData, setIsConnected, isConnected, loadHobbiesList, loadServicesList, tokenFromState, saveTokenInState
 }) => {
   // récupération du chemin
   const pathName = useLocation().pathname;
   console.log(pathName);
 
-  // récupération du token
-  const userToken = localStorage.getItem('token');
+  // useEffect(() => {
+  //   // if no token in the state
+  //   if (!jwtFromState) {
+  //     // check the cookie
+  //     const jwtFromCookie = cookies.jwt;
+  //     // if token in the cookie, save it in the state
+  //     if (jwtFromCookie) {
+  //       saveJWT(jwtFromCookie);
+  //     }
+  //   }
+  //   // if token in the state
+  //   else {
+  //     // save it in the cookie
+  //     setCookie('jwt', jwtFromState);
+  //     // load user data
+  //     loadUserData();
+  //   }
+  // }, [jwtFromState]);
+
+  // useEffect(() => {
+  //   if (userToken != null) {
+  //     const decodedToken = jwt_decode(userToken);
+  //     console.log(decodedToken);
+  //     const dateNow = Math.round(Date.now() / 1000);
+  //     console.log(dateNow);
+
+  //     if (decodedToken.exp - 600 > dateNow) {
+  //       saveConnectedUserData(decodedToken);
+  //       console.log('je suis déjà connecté');
+  //       setIsConnected(true);
+  //     }
+  //     else {
+  //       console.log('Token expiré');
+  //       localStorage.removeItem('token');
+  //       setIsConnected(false);
+  //     }
+  //   }
+  //   else {
+  //     console.log('je ne suis pas encore connecté');
+  //   }
+  //   console.log('on set le loading à false');
+  // }, []);
 
   useEffect(() => {
-    if (userToken != null) {
-      const decodedToken = jwt_decode(userToken);
-      console.log(decodedToken);
-      const dateNow = Math.round(Date.now() / 1000);
-      console.log(dateNow);
-
-      if (decodedToken.exp - 600 > dateNow) {
-        saveConnectedUserData(decodedToken);
-        console.log('je suis déjà connecté');
-        setIsConnected(true);
-      }
-      else {
-        console.log('Token expiré');
-        localStorage.removeItem('token');
-        setIsConnected(false);
+    const userTokenFromLocalStorage = localStorage.getItem('token');
+    const decodedToken = jwt_decode(userTokenFromLocalStorage);
+    // if no token in the state
+    if (!tokenFromState) {
+      // check LocalStorage
+      // const userTokenFromLocalStorage = localStorage.getItem('token');
+      // if token in LocalStorage
+      if (userTokenFromLocalStorage) {
+        // check if not outdated
+        console.log(decodedToken);
+        const dateNow = Math.round(Date.now() / 1000);
+        console.log(dateNow);
+        // if not outdated
+        if (decodedToken.exp - 600 > dateNow) {
+          saveTokenInState(userTokenFromLocalStorage);
+          saveConnectedUserData(decodedToken);
+          console.log('je suis déjà connecté');
+          // setIsConnected(true);
+        }
+        else {
+          console.log('Token expiré');
+          localStorage.removeItem('token');
+          // setIsConnected(false);
+        }
       }
     }
+    // if token in the state
     else {
-      console.log('je ne suis pas encore connecté');
+      // save it in the localStorage
+      localStorage.setItem('token', (tokenFromState));
     }
-    console.log('on set le loading à false');
-  }, []);
+  }, [tokenFromState]);
 
   // -- gestion du scroll
   const location = useLocation();

@@ -5,6 +5,7 @@ import {
   SAVE_CONNECTED_USER_DATA,
   OPEN_LOG_OUT, CLOSE_LOG_OUT, LOG_OUT,
   SET_IS_CONNECTED,
+  SAVE_TOKEN_IN_STATE,
 } from 'src/actions/log';
 
 const initialState = {
@@ -20,6 +21,11 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case SAVE_TOKEN_IN_STATE:
+      return {
+        ...state,
+        token: action.userToken,
+      };
     case SAVE_CONNECTED_USER_DATA:
       return {
         ...state,
