@@ -11,14 +11,14 @@ import PropTypes from 'prop-types';
 // == Import style
 import './modifyMyHobbies.scss';
 
-const ModifyMyHobbies = ({ myHobbies, hobbiesList }) => {
+const ModifyMyHobbies = ({ myHobbies, hobbiesList, myHobbiesList }) => {
 
-  // let myHobbiesList = [];
-  // userInfos.hobbies.map((hobbies) => {
-  //   myHobbiesList = [...myHobbiesList, hobbies.id];
-  // });
+  console.log(myHobbies);
 
-  // console.log(myHobbiesList);
+  const handleSelect = (evt) => {
+    console.log(evt.target.value);
+    console.log(evt.target.name);
+  };
 
   // const myHobbies = {};
   // hobbiesList.map((hobby) => {
@@ -82,13 +82,13 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList }) => {
 
     <div className="modifyMyHobbies">
       <div className="modifyMyHobbies__title"> Mes centres d'intérêts </div>
-      <div className="modifyMyHobbies__hobbiesList">
+      <select className="modifyMyHobbies__hobbiesList" onChange={handleSelect}>
         {hobbiesList.map((hobby) => (
-          <div className="modifyMyHobbies__hobbiesList_item">
+          <option key={hobby.id} className="modifyMyHobbies__hobbiesList_item" value={[hobby.id, hobby.name]}>
             {hobby.name}
-          </div>
+          </option>
         ))}
-      </div>
+      </select>
       {/* <div className="modifyProfile__form__label__name"> Ajouter un centre d'interêt </div> */}
       {/* <div>
         {hobbies.map((hobby) => (

@@ -14,8 +14,6 @@ import './modifyProfile.scss';
 
 const ModifyProfile = ({
   connectedUserData,
-  // loadUserProfile,
-  userInfos,
   changeField,
   changePasswordField,
   newPassword,
@@ -23,8 +21,6 @@ const ModifyProfile = ({
   handleModifyProfile,
   openModal,
   userAddress,
-  hobbiesList,
-  servicesList,
   isLoaded,
   loadHobbiesList,
   loadServicesList,
@@ -43,7 +39,6 @@ const ModifyProfile = ({
     loadServicesList();
   }, []);
 
-  console.log(userInfos);
 
   return (
     <div className="modifyProfile">
@@ -102,7 +97,7 @@ const ModifyProfile = ({
                   name="email"
                   placeholder="Email@exemple.com"
                   onChange={changeField}
-                  value={connectedUserData.email}
+                  value={connectedUserData.username}
                   type="email"
                 />
               </div>
@@ -143,8 +138,8 @@ const ModifyProfile = ({
               </div>
               <div className="modifyProfile__form__label">
                 <div className="modifyProfile__form__city">
-                  {/* {userInfos.cities != null && userAddress === '' ? `Votre ville de résidence est ${userInfos.cities.name}, ${userInfos.cities.country.frenchName}.` : ''}
-                  {userAddress !== '' ? `Votre ville de résidence est ${userAddress[0]}, ${userAddress[1]}.` : ''}
+                  {connectedUserData.cities != null && userAddress === '' ? `Votre ville de résidence est ${connectedUserData.cities.name}, ${connectedUserData.countries.frenchName}.` : ''}
+                  {/* {userAddress !== '' ? `Votre ville de résidence est ${userAddress[0]}, ${userAddress[1]}.` : ''}
                   {userAddress === '' && userInfos.cities === null ? 'Vous n\'avez pas renseigné votre ville de résidence.' : ''} */}
                 </div>
                 <button className="modifyProfile__form__city__button" type="button" onClick={openModal}> Chercher une ville </button>
@@ -165,7 +160,7 @@ const ModifyProfile = ({
                   name="biography"
                   placeholder="Ecrivez-ici un petit texte de présentation, pour que nos utilisateurs apprennent à vous connaitre"
                   onChange={changeField}
-                  value={userInfos.biography}
+                  value={connectedUserData.biography}
                 />
               </div>
             </div>
