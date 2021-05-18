@@ -11,7 +11,7 @@ import ProfileDescription from 'src/components/ProfileDescription';
 // import ProfileServices from 'src/components/ProfileServices';
 // import ModifyButton from 'src/components/ModifyButton';
 // import BecomeHelperButton from 'src/components/BecomeHelperButton';
-import ContactMe from 'src/components/ContactMe';
+import ContactMe from 'src/containers/ContactMe';
 import ProfileButton from 'src/components/ProfileButton';
 import Loading from 'src/components/Loading';
 

@@ -2,11 +2,11 @@ import React from 'react';
 
 import './contactMe.scss';
 
-const ContactMe = () => (
+const ContactMe = ({userMail}) => (
 
  
   <div className="contactMe">
-    <a href="mailto:daval.clemence@gmail.com">
+    <a href={`mailTo:${userMail}`} >
       <button type="button" className="contactMe__button" >Contactez-moi !</button>
     </a>
   </div>
