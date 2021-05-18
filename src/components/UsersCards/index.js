@@ -6,19 +6,9 @@ import Loading from 'src/components/Loading';
 import UserCard from 'src/containers/UserCard';
 import './usersCards.scss';
 
-<<<<<<< HEAD
+
 const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, inputValue, ChangeInputValue}) => {
-=======
-const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, isLoading}) => {
->>>>>>> 219711ab4b255ba8de3c9bc6b67d355971b69a18
-  useEffect(
-    loadUsersCards,
-    [],
-  );
-<<<<<<< HEAD
-  
-=======
->>>>>>> 219711ab4b255ba8de3c9bc6b67d355971b69a18
+
 
   const handleInputValueChange = (evt) => {
     evt.preventDefault();
