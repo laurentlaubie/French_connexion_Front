@@ -6,7 +6,7 @@ import PlacesAutocomplete, {
 import { withRouter, useHistory } from 'react-router-dom';
 import './searchBar.scss';
 
-const SearchBar = ({adress, setAdress, setCenter}) => {
+const SearchBar = ({adress, setAdress, setCenter, saveUserAddress, loadUsersByCountry}) => {
   // Methode gérant le clic sur une suggestion
   // on transforme le nom saisi en coordonées
   // on met à jour la valeur de l'input dans le state
@@ -14,6 +14,24 @@ const SearchBar = ({adress, setAdress, setCenter}) => {
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
+    const addressComponents = results[0].address_components;
+    console.log(addressComponents);
+    const city = addressComponents.find(
+      (component) => component.types.includes('locality'),
+    );
+    const cityName = city.long_name;
+    console.log(cityName);
+    const country = addressComponents.find(
+      (component) => component.types.includes('country'),
+    );
+    const countryName = country.long_name;
+    console.log(countryName);
+
+
+    const userAddress = [cityName, countryName];
+    console.log(userAddress);
+
+    saveUserAddress(userAddress);
     setAdress(value);
     setCenter(latLng);
   };
@@ -24,6 +42,9 @@ const SearchBar = ({adress, setAdress, setCenter}) => {
   const handleSubmitClick = (evt) => {
     evt.preventDefault();
     // On force le changement d'url vers /resultats
+    
+    
+    loadUsersByCountry();
     history.push('/resultats');
   };
 

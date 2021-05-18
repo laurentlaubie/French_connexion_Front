@@ -14,6 +14,7 @@ import {
 } from 'src/actions/user';
 
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
+import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
 import { LOAD_HOBBIES_LIST, saveHobbiesList } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList } from 'src/actions/services';
 
@@ -206,7 +207,42 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
     }
+    case LOAD_USERS_BY_COUNTRY: {
+      // on récupère le pays
+      const state = store.getState();
+      console.log(state);
+      const country = state.map.userAddress[1];
+      api
+        .get(`/user/search?country=${country}`)
+        .then((response) => {
+          console.log(response);
+          const usersList = response.data;
+          console.log(usersList[0].cities);
+          let userCountCity = [];
+        
+          usersList[0].cities.map((city) => {
+            console.log(city.users);
+            userCountCity = [...userCountCity, city.users];
+            console.log(userCountCity);
+          });
+          console.log(userCountCity);
 
+          let userCount = [];
+          userCountCity.map((userArray) =>
+          {
+            userCount = userCount.concat(userArray);
+          });
+          console.log(userCount);
+          //Object.values(userCount);
+          console.log(userCount);
+          store.dispatch(saveUsersList(userCount));
+        }).catch((error) => {
+          // eslint-disable-next-line no-console
+          console.log(error);
+        });
+      next(action);
+      break;
+    }
     case LOG_OUT:
       delete api.defaults.headers.common.Authorization;
       localStorage.removeItem('token');

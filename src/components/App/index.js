@@ -13,7 +13,7 @@ import HomePageHeader from 'src/components/HomePageHeader';
 import HomePageFonctionnalities from 'src/components/HomePageFonctionnalities';
 import HomePageMap from 'src/components/HomePageMap';
 import UsersReviews from 'src/components/UsersReviews';
-import ProfilesResults from 'src/components/ProfilesResults';
+import ProfilesResults from 'src/containers/ProfilesResults';
 import MapResults from 'src/containers/MapResults';
 import Page404 from 'src/components/Page404';
 import Page403 from 'src/components/Page403';
