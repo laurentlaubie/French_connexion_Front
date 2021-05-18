@@ -161,7 +161,7 @@ const App = ({
           <UsersCards />
         </Route>
         <Route path="/notre-reseau/utilisateur/:id" exact>
-          <Profile isLoading />
+          <Profile />
         </Route>
         <Route path="/mon-profil" exact>
           <MyProfile />

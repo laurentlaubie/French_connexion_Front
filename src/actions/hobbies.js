@@ -32,3 +32,13 @@ export const setLoadingHobbies = (value) => ({
   type: SET_LOADING_HOBBIES,
   value,
 });
+
+// action type TOGGLE_CHECKBOX_HOBBIES
+export const TOGGLE_CHECKBOX_HOBBIES = 'TOGGLE_CHECKBOX_HOBBIES';
+
+// action creator toggleCheckboxHobbies
+export const toggleCheckboxHobbies = (value, checked) => ({
+  type: TOGGLE_CHECKBOX_HOBBIES,
+  value,
+  checked,
+});

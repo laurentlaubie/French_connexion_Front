@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Checkbox from 'src/components/Checkbox';
+
 // import Field from 'src/components/Field';
 // import TextArea from 'src/components/TextArea';
 // import ModifyCity from 'src/containers/ModifyCity';
@@ -11,14 +13,19 @@ import PropTypes from 'prop-types';
 // == Import style
 import './modifyMyHobbies.scss';
 
-const ModifyMyHobbies = ({ myHobbies, hobbiesList, myHobbiesList }) => {
+const ModifyMyHobbies = ({ myHobbies, hobbiesList, myHobbiesList, toggleCheckbox, selectedHobbies}) => {
 
-  console.log(myHobbies);
+  let myHobbiesArray = [];
+  myHobbies.map((hobby) => {
+    myHobbiesArray = [...myHobbiesArray, hobby.id];
+  });
+  console.log(myHobbiesArray);
+  // console.log(myServices);  // console.log(myHobbies);
 
-  const handleSelect = (evt) => {
-    console.log(evt.target.value);
-    console.log(evt.target.name);
-  };
+  // const handleSelect = (evt) => {
+  //   console.log(evt.target.value);
+  //   console.log(evt.target.name);
+  // };
 
   // const myHobbies = {};
   // hobbiesList.map((hobby) => {
@@ -28,6 +35,7 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, myHobbiesList }) => {
   //   }
   // });
 
+  // useEffect()
   // console.log(myHobbies);
 
   // saveMyHobbiesInState(myHobbies);
@@ -62,8 +70,8 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, myHobbiesList }) => {
   //   }
   // });
 
-  console.log(myHobbies);
-  console.log(hobbiesList);
+  // console.log(myHobbies);
+  // console.log(hobbiesList);
 
   // saveMyHobbiesInState(myHobbies);
 
@@ -82,13 +90,25 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, myHobbiesList }) => {
 
     <div className="modifyMyHobbies">
       <div className="modifyMyHobbies__title"> Mes centres d'intérêts </div>
-      <select className="modifyMyHobbies__hobbiesList" onChange={handleSelect}>
+      {hobbiesList.map((hobby) => (
+        <Checkbox
+          key={hobby.id}
+          className="logIn__modal__form__field"
+          type="checkbox"
+          name={hobby.name}
+          onChange={toggleCheckbox}
+          value={hobby.id}
+          defaultCheck={myHobbiesArray.includes(hobby.id) ? 'checked' : false}
+        />
+      ))};
+
+      {/* <select className="modifyMyHobbies__hobbiesList" onChange={handleSelect}>
         {hobbiesList.map((hobby) => (
-          <option key={hobby.id} className="modifyMyHobbies__hobbiesList_item" value={[hobby.id, hobby.name]}>
+          <option key={hobby.id} className="modifyMyHobbies__hobbiesList_item" value={`${hobby.id}-${hobby.name}`}>
             {hobby.name}
           </option>
         ))}
-      </select>
+      </select> */}
       {/* <div className="modifyProfile__form__label__name"> Ajouter un centre d'interêt </div> */}
       {/* <div>
         {hobbies.map((hobby) => (
