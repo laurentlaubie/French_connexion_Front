@@ -21,7 +21,7 @@ const initialState = {
   },
   ],
   markerSelected: null,
-  adress: 'Paris, France',
+  adress: '',
 };
 
 export default (state = initialState, action = {}) => {

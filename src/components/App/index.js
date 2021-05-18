@@ -112,8 +112,8 @@ const App = ({ saveConnectedUserData, loadHobbiesList, loadServicesList, setLoad
           <Profile isLoading />
         </Route>
         <Route path="/mon-profil" exact>
-          {isConnected ? <MyProfile /> : <Redirect to="/403" />}
-          {/* <MyProfile /> */}
+          {/* {isConnected ? <MyProfile /> : <Redirect to="/403" />} */}
+          <MyProfile isLoading />
         </Route>
         <Route path="/mon-profil/modifier" exact>
           {/* {isConnected ? <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices} /> : <Redirect to="/403" />} */}

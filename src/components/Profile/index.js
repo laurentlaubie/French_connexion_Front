@@ -55,7 +55,7 @@ Profile.propTypes = {
   userInfos: PropTypes.arrayOf(
     PropTypes.shape(
       {
-        helper: PropTypes.bool.isRequired,
+        // helper: PropTypes.bool.isRequired,
         firstname: PropTypes.string.isRequired,
         lastname: PropTypes.string.isRequired,
         nickname: PropTypes.string,

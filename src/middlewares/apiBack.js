@@ -55,6 +55,7 @@ export default (store) => (next) => (action) => {
           // const connectedUserData = decodedToken.username;
           // console.log(connectedUserData);
           store.dispatch(saveConnectedUserData(decodedToken));
+          window.location.href = '/';
         }).catch((error) => {
           console.log(error);
         });
@@ -98,6 +99,9 @@ export default (store) => (next) => (action) => {
           console.log('vous ne passerez pas');
           if (errorStatus === 401) {
             window.location.href = '/403';
+          }
+          if (errorStatus === 404) {
+            window.location.href = '/404';
           }
         });
       // puis on décide si on la laisse filer ou si on la bloque
@@ -175,8 +179,8 @@ export default (store) => (next) => (action) => {
             lastname,
             firstname,
             email,
-            password,
-            confirmedPassword,
+            // password,
+            // confirmedPassword,
             biography,
             // phoneNumber,
             userAdress,

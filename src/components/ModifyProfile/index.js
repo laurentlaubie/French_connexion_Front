@@ -139,9 +139,9 @@ const ModifyProfile = ({
                   </div>
                   <div className="modifyProfile__form__label">
                     <div className="modifyProfile__form__city">
-                      {userInfos.cities != null && userAddress === '' ? `Votre ville de résidence est ${userInfos.cities}` : ''}
-                      {userAddress !== '' ? `Votre ville de résidence est ${userAddress[0]}, ${userAddress[1]}` : ''}
-                      {userAddress === '' && userInfos.cities === null ? 'Vous n\'avez pas renseigné votre ville de résidence' : ''}
+                      {userInfos.cities != null && userAddress === '' ? `Votre ville de résidence est ${userInfos.cities.name}, ${userInfos.cities.country.frenchName}.` : ''}
+                      {userAddress !== '' ? `Votre ville de résidence est ${userAddress[0]}, ${userAddress[1]}.` : ''}
+                      {userAddress === '' && userInfos.cities === null ? 'Vous n\'avez pas renseigné votre ville de résidence.' : ''}
                     </div>
                     <button className="modifyProfile__form__city__button" type="button" onClick={openModal}> Chercher une ville </button>
                     <ModifyCity />
@@ -167,7 +167,10 @@ const ModifyProfile = ({
 
                   <div className="modifyProfile__form__hobbiesList">
                     {hobbiesList.map((hobby) => (
-                    console.log(hobby)
+                      <label htmlFor={hobby.id}>
+                        {hobby.name}
+                        <input type="checkbox" id={hobby.id} name={hobby.id} value={hobby.name} />
+                      </label>
                     ))}
                   </div>
 
