@@ -10,6 +10,7 @@ import {
 
 import { loadHobbiesList } from 'src/actions/hobbies';
 import { loadServicesList } from 'src/actions/services';
+import { toggleCheckBox, saveMyHobbiesInState } from 'src/actions/modifyForm';
 
 import ModifyProfile from 'src/components/ModifyProfile';
 
@@ -24,6 +25,7 @@ const mapStateToProps = (state, ownProps) => ({
   hobbiesList: state.hobbies.hobbiesList,
   servicesList: state.services.servicesList,
   isLoading: state.user.isLoading,
+  hobbiesListForCheckbox: state.user.myHobbies,
 
 });
 
@@ -53,6 +55,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   setLoading: (value) => {
     dispatch(setLoading(value));
+  },
+  toggleCheckBox: (value) => {
+    dispatch(toggleCheckBox(value));
+  },
+  saveMyHobbiesInState: (myHobbies) => {
+    dispatch(saveMyHobbiesInState(myHobbies));
   },
 
 });

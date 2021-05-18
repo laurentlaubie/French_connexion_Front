@@ -13,6 +13,8 @@ import {
 
 import { SET_ADRESS } from 'src/actions/map';
 
+import { SAVE_MY_HOBBIES_IN_STATE } from 'src/actions/modifyForm';
+
 const initialState = {
   isHelper: false,
   userInfos: [],
@@ -30,6 +32,7 @@ const initialState = {
   userCityCenter: '',
   isLoading: true,
   newUserList: null,
+  myHobbies: {},
 };
 
 export default (state = initialState, action = {}) => {
@@ -84,11 +87,15 @@ export default (state = initialState, action = {}) => {
         address: action.adress,
       };
     case SET_LOADING:
-     return {
-      ...state,
-      isLoading: action.value,
-    };
-
+      return {
+        ...state,
+        isLoading: action.value,
+      };
+    case SAVE_MY_HOBBIES_IN_STATE:
+      return {
+        ...state,
+        myHobbies: action.value,
+      };
     default:
       return state;
   }

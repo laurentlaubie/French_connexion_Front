@@ -40,7 +40,7 @@ import './styles.css';
 
 // == Composant
 
-const App = ({ saveConnectedUserData, loadHobbiesList, loadServicesList, setLoading, setIsConnected, isConnected }) => {
+const App = ({ saveConnectedUserData,  setLoading, setIsConnected, isConnected, loadHobbiesList, loadServicesList }) => {
   // récupération du chemin
   const pathName = useLocation().pathname;
   console.log(pathName);
@@ -70,6 +70,7 @@ const App = ({ saveConnectedUserData, loadHobbiesList, loadServicesList, setLoad
     }
     loadHobbiesList();
     loadServicesList();
+    // setLoading(false);
     console.log('on set le loading à false');
   }, []);
 

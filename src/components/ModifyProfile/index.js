@@ -24,6 +24,12 @@ const ModifyProfile = ({
   hobbiesList,
   servicesList,
   isLoading,
+  setLoading,
+  toggleCheckBox,
+  saveMyHobbiesInState,
+  hobbiesListForCheckbox,
+  // loadHobbiesList, 
+  // loadServicesList,
 
 }) => {
   const userId = connectedUserData.id;
@@ -37,6 +43,36 @@ const ModifyProfile = ({
   };
 
   console.log(userInfos);
+
+  let myHobbiesList = [];
+  userInfos.hobbies.map((hobbies) => {
+    myHobbiesList = [...myHobbiesList, hobbies.id];
+  });
+
+  console.log(myHobbiesList);
+
+  const myHobbies = {};
+  hobbiesList.map((hobby) => {
+    myHobbies[hobby.id] = false;
+    if (myHobbiesList.includes(hobby.id)) {
+      myHobbies[hobby.id] = true;
+    }
+  });
+
+  console.log(myHobbies);
+
+  saveMyHobbiesInState(myHobbies);
+
+  // console.log(myHobbies);
+  // console.log(hobbies);
+  // useEffect(() => {
+  // }, []);
+
+  // let myServices = [];
+  // userInfos.services.map((service) => {
+  //   myServices = [...myServices, service.id];
+  // });
+  // console.log(myServices);
 
   return (
     // <>
@@ -169,7 +205,7 @@ const ModifyProfile = ({
                     {hobbiesList.map((hobby) => (
                       <label htmlFor={hobby.id}>
                         {hobby.name}
-                        <input type="checkbox" id={hobby.id} name={hobby.id} value={hobby.name} />
+                        <input type="checkbox" id={hobby.id} name={`hobby-${hobby.id}`} value={hobby.name} defaultChecked={myHobbiesList.includes(hobby.id)} />
                       </label>
                     ))}
                   </div>
@@ -208,8 +244,8 @@ const ModifyProfile = ({
           </div>
 
         </div>
-  //     )};
-  //   </>
+    //   )};
+    // </>
   );
 };
 

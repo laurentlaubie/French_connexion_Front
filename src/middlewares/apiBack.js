@@ -268,6 +268,7 @@ export default (store) => (next) => (action) => {
           // console.log(response.data);
           const hobbiesList = response.data;
           store.dispatch(saveHobbiesList(hobbiesList));
+          store.dispatch(setLoading(false));
         }).catch((error) => {
           console.log(error);
         }).finally(() => {
@@ -294,6 +295,7 @@ export default (store) => (next) => (action) => {
           // console.log(response.data);
           const servicesList = response.data;
           store.dispatch(saveServicesList(servicesList));
+          store.dispatch(setLoading(false));
         }).catch((error) => {
         // eslint-disable-next-line no-console
           console.log(error);

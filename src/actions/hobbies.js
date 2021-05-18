@@ -14,3 +14,13 @@ export const saveHobbiesList = (hobbiesList) => ({
   type: SAVE_HOBBIES_LIST,
   hobbiesList,
 });
+
+// action type SAVE_MY_HOBBIES_IN_STATE
+export const SAVE_MY_HOBBIES_IN_STATE = 'SAVE_MY_HOBBIES_IN_STATE';
+
+// action creator saveMyHobbiesInState
+export const saveMyHobbiesInState = (value) => ({
+  type: SAVE_MY_HOBBIES_IN_STATE,
+  value,
+});
+
