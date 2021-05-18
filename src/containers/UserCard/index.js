@@ -5,9 +5,10 @@ import UserCard from 'src/components/UserCard';
 import { openLogIn } from 'src/actions/log';
 
 // connection de props en lecture sur le state
-// ces props seront des tableaux, objets, booléens, numériques, string
+// ces props seront des ta+bleaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   isConnected: state.log.isConnected,
+  //isLoading: state.user.isLoading,
   // isSignInOpen: state.log.isSignInOpen,
 });
 
@@ -17,6 +18,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   openModal: () => {
     dispatch(openLogIn());
   },
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserCard);

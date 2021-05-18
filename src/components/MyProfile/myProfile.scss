@@ -1,0 +1,96 @@
+@use 'src/styles/_vars';
+
+.myProfile{
+  width:90%;
+  margin:5rem auto;
+  position:relative;
+
+  @media (min-width:vars.$max-width){
+    width:vars.$max-width;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.5em;
+    //padding-top: 6em;
+    padding-bottom: 3rem;
+    text-align: center;
+    width: 100%;
+   
+    @media (min-width: vars.$breakpoint-tablet){
+      // margin-top: 2em;
+      font-weight: 700;
+      font-size: 2.5em;
+      text-align: left
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    width: 100%;
+    // border:1px solid blue;
+    position:relative;
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: start;
+      // margin-top: -120px;
+      // width:45%
+    }
+
+    &__left {
+      width: 100%;
+      background-color:vars.$light-blue;
+      border-radius:2rem;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      margin-bottom:2rem;
+      padding-top:2.5rem;
+
+
+      @media (min-width: vars.$breakpoint-tablet){
+        width:48%;
+      } 
+
+      @media (min-width: vars.$breakpoint-desktop){
+        width:38%;
+      } 
+    }
+
+    &__right {
+      width: 100%;
+      // border:2px solid green;
+
+      @media (min-width: vars.$breakpoint-tablet){
+        width:48%;
+      }
+
+      @media (min-width: vars.$breakpoint-desktop){
+        width:58%;
+      } 
+    }
+  }
+
+  &__buttons{
+    display:flex;
+    flex-direction: column;
+    margin-bottom:2rem;
+    // border:1px solid red;
+
+    @media (min-width: vars.$breakpoint-tablet){
+      flex-direction:row;
+      width:100%;
+      position:absolute;
+      bottom:-5rem;
+      right:0;
+    }
+
+    @media (min-width: vars.$breakpoint-desktop){
+      width:65%;
+      justify-content: flex-end;      
+    }
+
+  }
+}
