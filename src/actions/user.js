@@ -137,3 +137,12 @@ export const OPEN_MODIFY_CITY_MODAL = 'OPEN_MODIFY_CITY_MODAL';
 export const openModifyCityModal = () => ({
   type: OPEN_MODIFY_CITY_MODAL,
 });
+
+// action type CHANGE_INPUTVALUE
+export const CHANGE_INPUTVALUE = 'CHANGE_INPUTVALUE';
+
+// action creator changeInputValue
+export const changeInputValue = (inputValue) => ({
+  type: CHANGE_INPUTVALUE,
+  inputValue,
+});

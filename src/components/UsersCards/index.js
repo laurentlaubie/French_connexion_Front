@@ -5,29 +5,30 @@ import PropTypes from 'prop-types';
 import UserCard from 'src/containers/UserCard';
 import './usersCards.scss';
 
-const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList}) => {
+const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, inputValue, ChangeInputValue}) => {
   useEffect(
     loadUsersCards,
     [],
   );
-
+  
 
   const handleInputValueChange = (evt) => {
     evt.preventDefault();
-    const inputValue = document.querySelector(".usersCards__search").value;
-    console.log(inputValue);
+    // eslint-disable-next-line no-param-reassign
+    inputValue = document.querySelector(".usersCards__search").value;
+    console.log(inputValue.toLowerCase());
 
  
-    let searchResult = usersList.filter((user) => user.nickname === inputValue);
-    if (searchResult.length === 0) {
-      searchResult = usersList.filter((user) =>
-        (user.firstname === inputValue && user.nickname === null) || user.lastname === inputValue && user.nickname === null);
-    }
+    let searchResult = usersList.filter((user) => user.nickname.toLowerCase().startsWith(inputValue.toLowerCase()));
+    // if (searchResult.length === 0) {
+    //   searchResult = usersList.filter((user) => (user.firstname.toLowerCase().startsWith(inputValue.toLowerCase()) && user.nickname === null) || user.lastname.toLowerCase() === inputValue.toLowerCase() && user.nickname === null);
+    // }
     if (searchResult.length === 0) {
       searchResult = null;
     }
     console.log(searchResult);
     RenderNewList(searchResult);
+    ChangeInputValue(inputValue);
   };
 
   return (

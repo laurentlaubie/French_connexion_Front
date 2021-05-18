@@ -8,6 +8,7 @@ import {
   CLOSE_MODIFY_CITY_MODAL,
   OPEN_MODIFY_CITY_MODAL,
   RENDER_NEW_LIST,
+  CHANGE_INPUTVALUE,
 } from 'src/actions/user';
 
 import { SET_ADRESS, SET_CENTER } from 'src/actions/map';
@@ -28,6 +29,7 @@ const initialState = {
   userCityCenter: '',
   isLoading: false,
   newUserList: null,
+  inputValue: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -85,6 +87,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         userCityCenter: action.center,
+      };
+    case CHANGE_INPUTVALUE:
+      return {
+        ...state,
+        inputValue: action.inputValue,
       };
     default:
       return state;
