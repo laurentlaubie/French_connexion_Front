@@ -21,8 +21,13 @@ const UserReview = ({ id, avatar, nickname, cities,  }) => (
 UserReview.propTypes = {
   avatar: PropTypes.string.isRequired,
   nickname: PropTypes.string.isRequired,
-  // comment: PropTypes.string.isRequired,
-  //cities: PropTypes.arrayOf,
+  cities: PropTypes.arrayOf( 
+    PropTypes.shape(
+      {
+        name: PropTypes.string.isRequired,
+      },
+    ),
+  ),
   //country: PropTypes.string.isRequired,
 };
 
