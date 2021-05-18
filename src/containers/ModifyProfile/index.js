@@ -24,9 +24,8 @@ const mapStateToProps = (state, ownProps) => ({
   userAddress: state.user.userAddress,
   hobbiesList: state.hobbies.hobbiesList,
   servicesList: state.services.servicesList,
-  isLoading: state.user.isLoading,
+  isLoading: state.hobbies.isLoading,
   hobbiesListForCheckbox: state.user.myHobbies,
-
 });
 
 // connection de props fonctions qui déclenchent des actions

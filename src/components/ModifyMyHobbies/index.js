@@ -13,6 +13,24 @@ import './modifyMyHobbies.scss';
 
 const ModifyMyHobbies = ({ myHobbies, hobbiesList }) => {
 
+  // let myHobbiesList = [];
+  // userInfos.hobbies.map((hobbies) => {
+  //   myHobbiesList = [...myHobbiesList, hobbies.id];
+  // });
+
+  // console.log(myHobbiesList);
+
+  // const myHobbies = {};
+  // hobbiesList.map((hobby) => {
+  //   myHobbies[hobby.id] = false;
+  //   if (myHobbiesList.includes(hobby.id)) {
+  //     myHobbies[hobby.id] = true;
+  //   }
+  // });
+
+  // console.log(myHobbies);
+
+  // saveMyHobbiesInState(myHobbies);
   // useEffect(() => {
   //   loadHobbiesList(),
   //   // loadServicesList(),
@@ -63,16 +81,16 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList }) => {
   return (
 
     <div className="modifyMyHobbies">
-      {/* <div className="modifyMyHobbies__title"> Mes centres d'intérêts </div>                    
+      <div className="modifyMyHobbies__title"> Mes centres d'intérêts </div>
       <div className="modifyMyHobbies__hobbiesList">
-        {hobbies.map((hobby) => (
-          <div className={`modifyProfile__form__hobbiesList_item hobbies-${hobby.id}`}>
+        {hobbiesList.map((hobby) => (
+          <div className="modifyMyHobbies__hobbiesList_item">
             {hobby.name}
           </div>
         ))}
       </div>
-      <div className="modifyProfile__form__label__name"> Ajouter un centre d'interêt </div>
-      <div>
+      {/* <div className="modifyProfile__form__label__name"> Ajouter un centre d'interêt </div> */}
+      {/* <div>
         {hobbies.map((hobby) => (
             <div className={`modifyProfile__form__hobbiesList_item hobbies-${hobby.id}`}>
               {hobby.name}
@@ -84,6 +102,7 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList }) => {
 };
 
 // ModifyMyHobbies.propTypes = {
+//   myHobbies: Pro
  
 // };
 

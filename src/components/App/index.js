@@ -73,8 +73,6 @@ const App = ({
     else {
       console.log('je ne suis pas encore connecté');
     }
-    loadHobbiesList();
-    loadServicesList();
     console.log('on set le loading à false');
   }, []);
 

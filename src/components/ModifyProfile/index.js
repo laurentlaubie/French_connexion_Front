@@ -27,11 +27,11 @@ const ModifyProfile = ({
   servicesList,
   isLoading,
   setLoading,
-  toggleCheckBox,
-  saveMyHobbiesInState,
-  hobbiesListForCheckbox,
+  // toggleCheckBox,
+  // saveMyHobbiesInState,
+  // hobbiesListForCheckbox,
   loadHobbiesList,
-  loadServicesList,
+  // loadServicesList,
 
 }) => {
   const userId = connectedUserData.id;
@@ -44,32 +44,11 @@ const ModifyProfile = ({
     handleModifyProfile(userId);
   };
 
-  // useEffect(() => {
-  //   loadHobbiesList(),
-  //   // loadServicesList(),
-  //   // isLoading(false);
-  // }, []);
+  useEffect(() => {
+    loadHobbiesList();
+  }, []);
 
   console.log(userInfos);
-
-  let myHobbiesList = [];
-  userInfos.hobbies.map((hobbies) => {
-    myHobbiesList = [...myHobbiesList, hobbies.id];
-  });
-
-  console.log(myHobbiesList);
-
-  const myHobbies = {};
-  hobbiesList.map((hobby) => {
-    myHobbies[hobby.id] = false;
-    if (myHobbiesList.includes(hobby.id)) {
-      myHobbies[hobby.id] = true;
-    }
-  });
-
-  console.log(myHobbies);
-
-  saveMyHobbiesInState(myHobbies);
 
   // console.log(myHobbies);
   // console.log(hobbies);
@@ -83,7 +62,7 @@ const ModifyProfile = ({
   // console.log(myServices);
 
   return (
-
+    
       <div className="modifyProfile">
         <h1 className="modifyProfile__title"> Modifier mon profil </h1>
         <div className="modifyProfile__content">
@@ -207,7 +186,7 @@ const ModifyProfile = ({
                   />
                 </div>
               </div>
-              <ModifyMyHobbies />
+              {!isLoading && <ModifyMyHobbies />}
               <div className="modifyProfile__form__section modifyProfile__form__section">
                 <div className="modifyProfile__form__section__title"> Je deviens helpeur </div>
                 <div className="modifyProfile__form__section__content">

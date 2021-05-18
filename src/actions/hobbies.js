@@ -23,4 +23,3 @@ export const saveMyHobbiesInState = (value) => ({
   type: SAVE_MY_HOBBIES_IN_STATE,
   value,
 });
-
