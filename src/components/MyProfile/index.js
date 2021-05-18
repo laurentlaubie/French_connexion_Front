@@ -12,20 +12,20 @@ import Loading from 'src/components/Loading';
 // == import style
 import './myProfile.scss';
 
-const MyProfile = ({ connectedUserData, loadUserProfile, isLoading, userInfos, openLogOut }) => {
-  console.log(connectedUserData);
-  const connectedUserId = connectedUserData.id;
-  console.log(connectedUserId);
+const MyProfile = ({ connectedUserData, isLoading, openLogOut }) => {
+  // console.log(connectedUserData);
+  // const connectedUserId = connectedUserData.id;
+  // console.log(connectedUserId);
 
-  useEffect(() => {
-    loadUserProfile(connectedUserId);
-    console.log(userInfos);
-  }, []);
+  // useEffect(() => {
+  //   loadUserProfile(connectedUserId);
+  //   console.log(userInfos);
+  // }, [connectedUserData]);
 
   return (
-    <>
-      {isLoading && (<Loading />)}
-      {!isLoading && (
+    // <>
+    //   {isLoading && (<Loading />)}
+    //   {!isLoading && (
 
         <div className="myProfile">
           <LogOut />
@@ -33,11 +33,11 @@ const MyProfile = ({ connectedUserData, loadUserProfile, isLoading, userInfos, o
 
           <div className="myProfile__content">
             <div className="myProfile__content__left">
-              <ProfilePrincipalInfos {...userInfos} isMyProfile />
-              <ProfilePersonalInfos {...userInfos} />
+              <ProfilePrincipalInfos {...connectedUserData} isMyProfile />
+              <ProfilePersonalInfos {...connectedUserData} />
             </div>
             <div className="myProfile__content__right">
-              <ProfileDescription {...userInfos} />
+              <ProfileDescription {...connectedUserData} />
             </div>
           </div>
 
@@ -47,8 +47,8 @@ const MyProfile = ({ connectedUserData, loadUserProfile, isLoading, userInfos, o
             <ProfileButton textContent="Modifier mon profil" color="red" linkTo="/mon-profil/modifier" />
           </div>
         </div>
-      )}
-    </>
+      // )}
+  //   </>
   );
 };
 

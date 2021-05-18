@@ -14,7 +14,7 @@ import './modifyProfile.scss';
 
 const ModifyProfile = ({
   connectedUserData,
-  loadUserProfile,
+  // loadUserProfile,
   userInfos,
   changeField,
   changePasswordField,
@@ -50,7 +50,7 @@ const ModifyProfile = ({
       <h1 className="modifyProfile__title"> Modifier mon profil </h1>
       <div className="modifyProfile__content">
         <div className="modifyProfile__principalInfos">
-          <ProfilePrincipalInfos {...userInfos} isMyProfile />
+          <ProfilePrincipalInfos {...connectedUserData} isMyProfile />
         </div>
         <form className="modifyProfile__form" onSubmit={handleSubmit}>
 
@@ -71,7 +71,7 @@ const ModifyProfile = ({
                     name="firstname"
                     placeholder="Ex: Martin"
                     onChange={changeField}
-                    value={userInfos.firstname}
+                    value={connectedUserData.firstname}
                   />
                 </div>
                 <div className="modifyProfile__form__label" htmlFor="lastname">
@@ -81,7 +81,7 @@ const ModifyProfile = ({
                     name="lastname"
                     placeholder="Ex: Dupont"
                     onChange={changeField}
-                    value={userInfos.lastname}
+                    value={connectedUserData.lastname}
                   />
                 </div>
               </div>
@@ -92,7 +92,7 @@ const ModifyProfile = ({
                   name="nickname"
                   placeholder="Ex: Martin88"
                   onChange={changeField}
-                  value={userInfos.nickname}
+                  value={connectedUserData.nickname}
                 />
               </div>
               <div className="modifyProfile__form__label" htmlFor="email">
@@ -102,7 +102,7 @@ const ModifyProfile = ({
                   name="email"
                   placeholder="Email@exemple.com"
                   onChange={changeField}
-                  value={userInfos.email}
+                  value={connectedUserData.email}
                   type="email"
                 />
               </div>
@@ -138,14 +138,14 @@ const ModifyProfile = ({
                   name="phoneNumber"
                   placeholder="Ex: 06 34 34 34 34"
                   onChange={changeField}
-                  value={userInfos.phoneNumber}
+                  value={connectedUserData.phoneNumber}
                 />
               </div>
               <div className="modifyProfile__form__label">
                 <div className="modifyProfile__form__city">
-                  {userInfos.cities != null && userAddress === '' ? `Votre ville de résidence est ${userInfos.cities.name}, ${userInfos.cities.country.frenchName}.` : ''}
+                  {/* {userInfos.cities != null && userAddress === '' ? `Votre ville de résidence est ${userInfos.cities.name}, ${userInfos.cities.country.frenchName}.` : ''}
                   {userAddress !== '' ? `Votre ville de résidence est ${userAddress[0]}, ${userAddress[1]}.` : ''}
-                  {userAddress === '' && userInfos.cities === null ? 'Vous n\'avez pas renseigné votre ville de résidence.' : ''}
+                  {userAddress === '' && userInfos.cities === null ? 'Vous n\'avez pas renseigné votre ville de résidence.' : ''} */}
                 </div>
                 <button className="modifyProfile__form__city__button" type="button" onClick={openModal}> Chercher une ville </button>
                 <ModifyCity />

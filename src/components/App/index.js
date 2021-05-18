@@ -164,7 +164,7 @@ const App = ({
           <Profile isLoading />
         </Route>
         <Route path="/mon-profil" exact>
-          <MyProfile isLoading />
+          <MyProfile />
         </Route>
         <Route path="/mon-profil/modifier" exact>
           <ModifyProfile />
