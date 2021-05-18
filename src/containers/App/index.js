@@ -14,7 +14,7 @@ import App from 'src/components/App';
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   isConnected: state.log.isConnected,
-  isLoading: state.user.isLoading,
+  isLoading: state.log.isLoading,
 });
 
 // connection de props fonctions qui déclenchent des actions

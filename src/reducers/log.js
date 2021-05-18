@@ -15,6 +15,7 @@ const initialState = {
   email: '',
   password: '',
   connectedUserData: '',
+  isLoading: true,
 };
 
 export default (state = initialState, action = {}) => {
@@ -76,6 +77,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isConnected: action.value,
+        isLoading: false,
       };
     default:
       return state;

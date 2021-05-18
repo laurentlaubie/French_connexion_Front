@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 // == Import npm
 import React, { useEffect } from 'react';
-import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
+import {
+  Route, Switch, Redirect, useLocation,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
 
@@ -25,7 +27,7 @@ import ModifyProfile from 'src/containers/ModifyProfile';
 import LegalsMentions from 'src/components/LegalsMentions';
 import SiteMap from 'src/components/SiteMap';
 import AboutUs from 'src/components/AboutUs';
-// import Loading from 'src/components/Loading';
+import Loading from 'src/components/Loading';
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/containers/LogIn';
@@ -40,7 +42,9 @@ import './styles.css';
 
 // == Composant
 
-const App = ({ saveConnectedUserData,  setLoading, setIsConnected, isConnected, loadHobbiesList, loadServicesList }) => {
+const App = ({
+  saveConnectedUserData, setLoading, setIsConnected, isConnected, loadHobbiesList, loadServicesList, isLoading,
+}) => {
   // récupération du chemin
   const pathName = useLocation().pathname;
   console.log(pathName);
@@ -63,6 +67,7 @@ const App = ({ saveConnectedUserData,  setLoading, setIsConnected, isConnected, 
       else {
         console.log('Token expiré');
         localStorage.removeItem('token');
+        setIsConnected(false);
       }
     }
     else {
@@ -74,7 +79,7 @@ const App = ({ saveConnectedUserData,  setLoading, setIsConnected, isConnected, 
     console.log('on set le loading à false');
   }, []);
 
-  //-- gestion du scroll
+  // -- gestion du scroll
   const location = useLocation();
   useEffect(
     () => {
@@ -86,57 +91,63 @@ const App = ({ saveConnectedUserData,  setLoading, setIsConnected, isConnected, 
   );
 
   return (
-    <div className="app">
-      <Footer />
-      <Header />
-      <LogIn />
-      <SignIn />
-      <Switch>
-        <Route path="/" exact>
-          <HomePageHeader />
-          <HomePageFonctionnalities />
-          <HomePageMap />
-          <UsersReviews users={users} />
-          <LogIn />
-        </Route>
-        <Route path="/resultats" exact>
-          <SearchBar />
-          <div className="app__ResultDesktop">
-            <MapResults />
-            <ProfilesResults data={DataFile} />
-          </div>
-        </Route>
-        <Route path="/notre-reseau" exact>
-          <UsersCards />
-        </Route>
-        <Route path="/notre-reseau/utilisateur/:id" exact>
-          <Profile isLoading />
-        </Route>
-        <Route path="/mon-profil" exact>
-          {/* {isConnected ? <MyProfile /> : <Redirect to="/403" />} */}
-          <MyProfile isLoading />
-        </Route>
-        <Route path="/mon-profil/modifier" exact>
-          {/* {isConnected ? <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices} /> : <Redirect to="/403" />} */}
-          <ModifyProfile />
-        </Route>
-        <Route path="/plan-du-site">
-          <SiteMap />
-        </Route>
-        <Route path="/mentions-legales">
-          <LegalsMentions />
-        </Route>
-        <Route path="/a-propos">
-          <AboutUs dataTeam={DataTeam} />
-        </Route>
-        <Route path="/403">
-          <Page403 />
-        </Route>
-        <Route>
-          <Page404 />
-        </Route>
-      </Switch>
-    </div>
+    <>
+      {isLoading && (<Loading />)}
+      {!isLoading && (
+
+      <div className="app">
+        <Footer />
+        <Header />
+        <LogIn />
+        <SignIn />
+        <Switch>
+          <Route path="/" exact>
+            <HomePageHeader />
+            <HomePageFonctionnalities />
+            <HomePageMap />
+            <UsersReviews users={users} />
+            <LogIn />
+          </Route>
+          <Route path="/resultats" exact>
+            <SearchBar />
+            <div className="app__ResultDesktop">
+              <MapResults />
+              <ProfilesResults data={DataFile} />
+            </div>
+          </Route>
+          <Route path="/notre-reseau" exact>
+            <UsersCards />
+          </Route>
+          <Route path="/notre-reseau/utilisateur/:id" exact>
+            <Profile isLoading />
+          </Route>
+          <Route path="/mon-profil" exact>
+            {/* {isConnected ? <MyProfile /> : <Redirect to="/403" />} */}
+            <MyProfile isLoading />
+          </Route>
+          {/* <Route path="/mon-profil/modifier" exact> */}
+            {/* {isConnected ? <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices} /> : <Redirect to="/403" />} */}
+            {/* <ModifyProfile />
+          </Route> */}
+          <Route path="/plan-du-site">
+            <SiteMap />
+          </Route>
+          <Route path="/mentions-legales">
+            <LegalsMentions />
+          </Route>
+          <Route path="/a-propos">
+            <AboutUs dataTeam={DataTeam} />
+          </Route>
+          <Route path="/403">
+            <Page403 />
+          </Route>
+          <Route>
+            <Page404 />
+          </Route>
+        </Switch>
+      </div>
+      )}
+    </>
   );
 };
 
