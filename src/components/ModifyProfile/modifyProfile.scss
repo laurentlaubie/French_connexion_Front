@@ -32,6 +32,7 @@
     width: 100%;
     // border:1px solid blue;
     position:relative;
+    
 
     @media (min-width: vars.$breakpoint-tablet) {
       flex-direction: row;
@@ -70,6 +71,8 @@
     border-radius: 30px;
     margin-bottom:2rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    // border:1px solid red;
+    // position:relative;
 
     @media (min-width: vars.$breakpoint-tablet){
       width:48%;
@@ -79,6 +82,28 @@
       width:58%;
     } 
     
+    // &__navbar{
+    //   width:100%;
+    //   display:none;
+    //   border-bottom: 1px solid red;
+
+    //   @media (min-width: vars.$breakpoint-desktop){
+    //     display:flex;
+    //   } 
+
+    //   &__item{
+    //     padding:1.5rem;
+    //     font-size:1.2rem;
+    //     color:vars.$dark-color;
+    //     margin-right:1rem;
+    //   }
+    // }
+
+    &__hobbiesList{
+      display:flex;
+      flex-direction:column;
+    }
+
     &__section{
 
       width:80%;
@@ -88,34 +113,38 @@
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      position:relative;
+      // position:relative;
+
+     
 
       &__title{
         padding:1.5rem;
         font-size:1.2rem;
-        border-bottom: 1px solid red;
+        border-bottom: 2px solid vars.$light-red;
         color:vars.$dark-color;
         margin-bottom:2rem;
+
+        // @media (min-width: vars.$breakpoint-desktop){
+        //   display:none;
+        // } 
+        // &--active {
+        //   background-color:vars.$light-red;
+        // }
         
       }
 
       &__content{
         width:100%;
 
-      }
+        // &--aboutMe{
 
-      // &--active{
-
-      //   .modifyProfile__form__section__title{
-      //     background-color:vars.$light-red;
-      //     color:vars.$light-color;
-      //   }
-
-      //   .modifyProfile__form__section__content{
-      //     display:block;
-      //   }
-
-      // }
+        //   position:absolute;
+        //   top:1rem;
+        //   right:2rem;
+        //   background-color:red;
+        //   }
+  
+        }
 
       &__fieldGroup{
         display:flex;
@@ -124,18 +153,18 @@
         // background-color:red;
 
       }
+
+      
     }
 
-    
-    &__textarea{
-      width:100%;
-      height:50vh;
-      resize:none;
+    &__city {
+      margin-bottom:1rem;
+    }
 
-    }  
-    
+  
 
     &__label{
+      width:100%;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -150,34 +179,6 @@
       }
     }
 
-     
-
-
-
-    // &__password{
-    // height: 4em;
-    // border-radius: 0px;
-    // color: black;
-    // background: #db286d7d;
-    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
-    // }
-
-    // &__input{
-    // transform: scale(4);
-    // display: inline-block;
-    // width: 45%;
-    // margin: auto;
-    // margin-bottom: 4em;
-    // }
-
-    // &__label{
-    //   font-size: 1.5em;
-    //   display: inline-block;
-    //   width: 55%;
-    //   text-align: left;
-    //   margin-bottom: 1em;
-
-    // }
   }
 
 }

@@ -9,9 +9,10 @@ import {
   OPEN_MODIFY_CITY_MODAL,
   RENDER_NEW_LIST,
   CHANGE_INPUTVALUE,
+  SET_LOADING,
 } from 'src/actions/user';
 
-import { SET_ADRESS, SET_CENTER } from 'src/actions/map';
+import { SET_ADRESS } from 'src/actions/map';
 
 const initialState = {
   isHelper: false,
@@ -25,9 +26,10 @@ const initialState = {
   newPassword: '',
   confirmedNewPassword: '',
   isModifyCityModalOpen: false,
-  userAdress: '',
+  address: '',
+  userAddress: '',
   userCityCenter: '',
-  isLoading: false,
+  isLoading: true,
   newUserList: null,
   inputValue: null,
 };
@@ -49,7 +51,6 @@ export default (state = initialState, action = {}) => {
         ...state,
         usersList: action.usersList,
       };
-
     case RENDER_NEW_LIST:
       return {
         ...state,
@@ -72,6 +73,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isModifyCityModalOpen: false,
+        address: '',
       };
     case OPEN_MODIFY_CITY_MODAL:
       return {
@@ -81,18 +83,22 @@ export default (state = initialState, action = {}) => {
     case SET_ADRESS:
       return {
         ...state,
-        userAdress: action.adress,
+        address: action.adress,
       };
-    case SET_CENTER:
-      return {
-        ...state,
-        userCityCenter: action.center,
-      };
+<<<<<<< HEAD
     case CHANGE_INPUTVALUE:
       return {
         ...state,
         inputValue: action.inputValue,
       };
+=======
+    case SET_LOADING:
+     return {
+      ...state,
+      isLoading: action.value,
+    };
+
+>>>>>>> 219711ab4b255ba8de3c9bc6b67d355971b69a18
     default:
       return state;
   }

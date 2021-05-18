@@ -146,3 +146,22 @@ export const changeInputValue = (inputValue) => ({
   type: CHANGE_INPUTVALUE,
   inputValue,
 });
+// action type SET_LOADING
+export const SET_LOADING = 'SET_LOADING';
+
+// action creator setLoading
+export const setLoading = (value) => ({
+  type: SET_LOADING,
+  value,
+});
+// action type SAVE_USER_ADDRESS
+export const SAVE_USER_ADDRESS = 'SAVE_USER_ADDRESS';
+
+// action creator saveUserAddress
+export const saveUserAddress = (cityName, countryName, lat, lng) => ({
+  type: SAVE_USER_ADDRESS,
+  cityName,
+  countryName,
+  lat,
+  lng,
+});

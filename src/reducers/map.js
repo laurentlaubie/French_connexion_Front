@@ -21,9 +21,9 @@ const initialState = {
   },
   ],
   markerSelected: null,
-  adress: 'Rome, Italie',
   userAddress: [],
   usersList: [],
+  adress: '',
 };
 
 export default (state = initialState, action = {}) => {
