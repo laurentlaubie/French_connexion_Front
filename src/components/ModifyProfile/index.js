@@ -5,6 +5,7 @@ import Field from 'src/components/Field';
 import TextArea from 'src/components/TextArea';
 import ModifyCity from 'src/containers/ModifyCity';
 import Loading from 'src/components/Loading';
+import ModifyMyHobbies from 'src/containers/ModifyMyHobbies';
 
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
 
@@ -205,43 +206,15 @@ const ModifyProfile = ({
                     value={userInfos.biography}
                   />
                 </div>
-
-                {/* <div className="modifyProfile__form__hobbiesList">
-                  {hobbiesList.map((hobby) => (
-                    <label htmlFor={hobby.id}>
-                      {hobby.name}
-                      <input type="checkbox" id={hobby.id} name={`hobby-${hobby.id}`} value={hobby.name} defaultChecked={myHobbiesList.includes(hobby.id)} />
-                    </label>
-                  ))}
-                </div> */}
-                  <div className="modifyProfile__form__hobbies">
-                    <div className="modifyProfile__form__label__name"> Mes centres d'intérêts </div>                    
-                    <div className="modifyProfile__form__hobbiesList">
-                      {userInfos.hobbies.map((hobby) => (
-                        <div className={`modifyProfile__form__hobbiesList_item hobbies-${hobby.id}`}>
-                          {hobby.name}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="modifyProfile__form__label__name"> Ajouter un centre d'interêt </div>
-                    <div>                    
-                      {userInfos.hobbies.map((hobby) => (
-                          <div className={`modifyProfile__form__hobbiesList_item hobbies-${hobby.id}`}>
-                            {hobby.name}
-                          </div>
-                        ))}
-                  </div>
-
+              </div>
+              <ModifyMyHobbies />
+              <div className="modifyProfile__form__section modifyProfile__form__section">
+                <div className="modifyProfile__form__section__title"> Je deviens helpeur </div>
+                <div className="modifyProfile__form__section__content">
+                  blablabla services
+                </div>
               </div>
             </div>
-
-            <div className="modifyProfile__form__section modifyProfile__form__section">
-              <div className="modifyProfile__form__section__title"> Je deviens helpeur </div>
-              <div className="modifyProfile__form__section__content">
-                blablabla services
-              </div>
-            </div>
-            </div> 
             <button type="submit"> Enregistrez vos modifications </button>
           </form>
         </div>

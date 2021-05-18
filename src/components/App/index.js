@@ -43,7 +43,7 @@ import './styles.css';
 // == Composant
 
 const App = ({
-  saveConnectedUserData, setLoading, setIsConnected, isConnected, loadHobbiesList, loadServicesList, isLoading,
+  saveConnectedUserData, setIsConnected, isConnected, loadHobbiesList, loadServicesList,
 }) => {
   // récupération du chemin
   const pathName = useLocation().pathname;
@@ -75,7 +75,6 @@ const App = ({
     }
     loadHobbiesList();
     loadServicesList();
-    // setLoading(false);
     console.log('on set le loading à false');
   }, []);
 
@@ -84,70 +83,61 @@ const App = ({
   useEffect(
     () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      setLoading(true);
       console.log('le pathname a changé');
     },
     [pathName],
   );
 
   return (
-    <>
-      {isLoading && (<Loading />)}
-      {!isLoading && (
-
-      <div className="app">
-        <Footer />
-        <Header />
-        <LogIn />
-        <SignIn />
-        <Switch>
-          <Route path="/" exact>
-            <HomePageHeader />
-            <HomePageFonctionnalities />
-            <HomePageMap />
-            <UsersReviews users={users} />
-            <LogIn />
-          </Route>
-          <Route path="/resultats" exact>
-            <SearchBar />
-            <div className="app__ResultDesktop">
-              <MapResults />
-              <ProfilesResults data={DataFile} />
-            </div>
-          </Route>
-          <Route path="/notre-reseau" exact>
-            <UsersCards />
-          </Route>
-          <Route path="/notre-reseau/utilisateur/:id" exact>
-            <Profile isLoading />
-          </Route>
-          <Route path="/mon-profil" exact>
-            {/* {isConnected ? <MyProfile /> : <Redirect to="/403" />} */}
-            <MyProfile isLoading />
-          </Route>
-          {/* <Route path="/mon-profil/modifier" exact> */}
-            {/* {isConnected ? <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices} /> : <Redirect to="/403" />} */}
-            {/* <ModifyProfile />
-          </Route> */}
-          <Route path="/plan-du-site">
-            <SiteMap />
-          </Route>
-          <Route path="/mentions-legales">
-            <LegalsMentions />
-          </Route>
-          <Route path="/a-propos">
-            <AboutUs dataTeam={DataTeam} />
-          </Route>
-          <Route path="/403">
-            <Page403 />
-          </Route>
-          <Route>
-            <Page404 />
-          </Route>
-        </Switch>
-      </div>
-      )}
-    </>
+    <div className="app">
+      <Footer />
+      <Header />
+      <LogIn />
+      <SignIn />
+      <Switch>
+        <Route path="/" exact>
+          <HomePageHeader />
+          <HomePageFonctionnalities />
+          <HomePageMap />
+          <UsersReviews users={users} />
+          <LogIn />
+        </Route>
+        <Route path="/resultats" exact>
+          <SearchBar />
+          <div className="app__ResultDesktop">
+            <MapResults />
+            <ProfilesResults data={DataFile} />
+          </div>
+        </Route>
+        <Route path="/notre-reseau" exact>
+          <UsersCards />
+        </Route>
+        <Route path="/notre-reseau/utilisateur/:id" exact>
+          <Profile isLoading />
+        </Route>
+        <Route path="/mon-profil" exact>
+          <MyProfile isLoading />
+        </Route>
+        <Route path="/mon-profil/modifier" exact>
+          <ModifyProfile />
+        </Route>
+        <Route path="/plan-du-site">
+          <SiteMap />
+        </Route>
+        <Route path="/mentions-legales">
+          <LegalsMentions />
+        </Route>
+        <Route path="/a-propos">
+          <AboutUs dataTeam={DataTeam} />
+        </Route>
+        <Route path="/403">
+          <Page403 />
+        </Route>
+        <Route>
+          <Page404 />
+        </Route>
+      </Switch>
+    </div>
   );
 };
 
