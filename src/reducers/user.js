@@ -84,28 +84,18 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         address: action.adress,
-<<<<<<< HEAD
+
       };
-<<<<<<< HEAD
     case CHANGE_INPUTVALUE:
       return {
         ...state,
         inputValue: action.inputValue,
       };
-=======
-=======
-      };
->>>>>>> 219711ab4b255ba8de3c9bc6b67d355971b69a18
     case SET_LOADING:
-     return {
-      ...state,
-      isLoading: action.value,
-    };
-
-<<<<<<< HEAD
->>>>>>> 219711ab4b255ba8de3c9bc6b67d355971b69a18
-=======
->>>>>>> 219711ab4b255ba8de3c9bc6b67d355971b69a18
+      return {
+        ...state,
+        isLoading: action.value,
+      };
     default:
       return state;
   }
