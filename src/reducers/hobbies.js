@@ -1,9 +1,8 @@
-import { SAVE_HOBBIES_LIST } from 'src/actions/hobbies';
-import { SET_LOADING } from 'src/actions/loading';
+import { SAVE_HOBBIES_LIST, SET_LOADING_HOBBIES } from 'src/actions/hobbies';
 
 const initialState = {
   hobbiesList: '',
-  isLoading: true,
+  isLoaded: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -13,10 +12,10 @@ export default (state = initialState, action = {}) => {
         ...state,
         hobbiesList: action.hobbiesList,
       };
-    case SET_LOADING:
+    case SET_LOADING_HOBBIES:
       return {
         ...state,
-        isLoading: action.value,
+        isLoaded: action.value,
       };
     default:
       return state;

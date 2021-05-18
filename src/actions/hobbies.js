@@ -15,11 +15,20 @@ export const saveHobbiesList = (hobbiesList) => ({
   hobbiesList,
 });
 
-// action type SAVE_MY_HOBBIES_IN_STATE
-export const SAVE_MY_HOBBIES_IN_STATE = 'SAVE_MY_HOBBIES_IN_STATE';
+// // action type SAVE_MY_HOBBIES_IN_STATE
+// export const SAVE_MY_HOBBIES_IN_STATE = 'SAVE_MY_HOBBIES_IN_STATE';
 
-// action creator saveMyHobbiesInState
-export const saveMyHobbiesInState = (value) => ({
-  type: SAVE_MY_HOBBIES_IN_STATE,
+// // action creator saveMyHobbiesInState
+// export const saveMyHobbiesInState = (value) => ({
+//   type: SAVE_MY_HOBBIES_IN_STATE,
+//   value,
+// });
+
+// action type SET_LOADING
+export const SET_LOADING_HOBBIES = 'SET_LOADING_HOBBIES';
+
+// action creator setLoadingHobbies
+export const setLoadingHobbies = (value) => ({
+  type: SET_LOADING_HOBBIES,
   value,
 });

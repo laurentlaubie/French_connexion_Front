@@ -14,8 +14,8 @@ import {
 
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
 import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
-import { LOAD_HOBBIES_LIST, saveHobbiesList } from 'src/actions/hobbies';
-import { LOAD_SERVICES_LIST, saveServicesList } from 'src/actions/services';
+import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
+import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
 import { setLoading } from 'src/actions/loading';
 
@@ -253,9 +253,6 @@ export default (store) => (next) => (action) => {
       const userToken = localStorage.getItem('token');
       console.log(userToken);
 
-      // // gestion du loader
-      // store.dispatch(setLoading(true));
-
       api
         .get('hobby',
           {
@@ -267,7 +264,7 @@ export default (store) => (next) => (action) => {
           // console.log(response.data);
           const hobbiesList = response.data;
           store.dispatch(saveHobbiesList(hobbiesList));
-          store.dispatch(setLoading(false));
+          store.dispatch(setLoadingHobbies(true));
         }).catch((error) => {
           console.log(error);
         }).finally(() => {
@@ -280,9 +277,6 @@ export default (store) => (next) => (action) => {
       const userToken = localStorage.getItem('token');
       console.log(userToken);
 
-      // // gestion du loader
-      // store.dispatch(setLoading(true));
-
       api
         .get('service',
           {
@@ -294,7 +288,7 @@ export default (store) => (next) => (action) => {
           // console.log(response.data);
           const servicesList = response.data;
           store.dispatch(saveServicesList(servicesList));
-          store.dispatch(setLoading(false));
+          store.dispatch(setLoadingServices(true));
         }).catch((error) => {
         // eslint-disable-next-line no-console
           console.log(error);
