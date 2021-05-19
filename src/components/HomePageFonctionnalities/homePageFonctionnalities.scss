@@ -1,10 +1,12 @@
 @use 'src/styles/vars';
 
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 .homePageFonctionnalities{
   
   display:flex;
   flex-flow: column wrap;
-  background-color:#f3f3f3;
+  background-color:vars.$light-grey;
   margin-top:1.5rem;
 
   @media (min-width: vars.$breakpoint-tablet) {
@@ -46,6 +48,8 @@
         .homePageFonctionnalities__item__text__title{
           color:vars.$light-color;
           text-shadow: none;
+          
+
         }
       }
 
@@ -61,15 +65,17 @@
 
     &__text{
       &__title{
-        font-size: 1.8rem;
+        font-size: 2rem;
         color: vars.$light-red;
         margin-bottom: 1.5rem;
         text-decoration: underline;
+        font-family: 'Quattrocento Sans', sans-serif;
       }
   
       &__content{
-        font-size: 1.2rem;
-        text-align: center;
+        font-size: 1.4rem;
+        text-align: justify;
+        font-family: 'EB Garamond', serif;
 
       }
 

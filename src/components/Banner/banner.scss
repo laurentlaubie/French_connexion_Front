@@ -10,30 +10,16 @@
 
   @media (min-width: vars.$breakpoint-tablet) { /* You can edit the max-width value to match what you need */
     .banner{
-      background-color: vars.$light-red;
-      // position: absolute;
       top: 0;
       width: 100%;
-      height: 12em;
-      margin-top:-1rem;
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      margin-top: -1rem;
+      z-index: 150;
+      position: relative;
+      
 
       &__logo__desktop{
-        display:flex;
-        justify-content:start;
-        padding-top: 2rem;
-        padding-left:2rem;
-        // border:1px solid black;
-        // margin:none;
-        // left: 1rem;
-
-        // margin: 2em 2em;
-        // width: 200px;
-        // position: relative;
-        // top: 3%;
-        // margin: auto;
-        // width: 50px;
-        // left: 40%;
+        padding: 1em;
+        
       }
      
     }
