@@ -8,15 +8,34 @@ import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
 import ProfileDescription from 'src/components/ProfileDescription';
 // import ProfileHobbies from 'src/components/ProfileHobbies';
 // import ProfileServices from 'src/components/ProfileServices';
-import ContactMe from 'src/components/ContactMe';
+
+// import ModifyButton from 'src/components/ModifyButton';
+// import BecomeHelperButton from 'src/components/BecomeHelperButton';
+import ContactMe from 'src/containers/ContactMe';
+import ProfileButton from 'src/components/ProfileButton';
+
 import Loading from 'src/components/Loading';
 
 // == import style
 import './profile.scss';
 
-const Profile = ({ loadUserProfile, userInfos, isLoading }) => {
-  // on récupère l'id de l'utilisateur à charger dans l'url
-  console.log(isLoading);
+
+const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, openLogOut, isLoading, saveAvatar }) => {
+  // let userInfos = null;
+  // // console.log(connectedUserInfos);
+  // if (isMyProfile) {
+  //   userInfos = { ...connectedUserInfos };
+  //   // console.log(userInfos);
+  // } else {
+  //   userInfos = { ...otherUserInfos };
+  //   // console.log(userInfos);
+  // }
+
+  // let gaga = location.query.id; 
+  // console.log(gaga);
+
+  let userId = '';
+
   const params = useParams();
   const userId = params.id;
   const pathName = useLocation().pathname;
@@ -28,22 +47,25 @@ const Profile = ({ loadUserProfile, userInfos, isLoading }) => {
   }, [pathName]);
 
   return (
-    <>
-      {isLoading && (<Loading />)}
-      {!isLoading && (
 
-        <div className="profile">
-          <h1 className="profile__title"> {userInfos.nickname != null ? `Profil de ${userInfos.nickname}` : `Profil de ${userInfos.firstname} ${userInfos.lastname}`} </h1>
+    <>  {isLoading && (<Loading />)}
+        {!isLoading && (
 
-          <div className="profile__content">
-            <div className="profile__content__left">
-              <ProfilePrincipalInfos {...userInfos} isMyProfile={false} />
-              <ContactMe />
-            </div>
-            <div className="profile__content__right">
-              <ProfileDescription {...userInfos} />
-            </div>
-          </div>
+    <div className="profile">
+      <LogOut />
+      <h1 className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </h1>
+      <div className="profile__content">
+        <div className="profile__content__left">
+          <ProfilePrincipalInfos {...userInfos} isMyProfile={isMyProfile} saveAvatar={saveAvatar} />
+          { isMyProfile && <ProfilePersonalInfos {...userInfos} /> }
+          { !isMyProfile && <ContactMe /> }
+        </div>
+
+        <div className="profile__content__right">
+          <ProfileDescription {...userInfos} />
+          {/* <ProfileHobbies {...userInfos} /> */}
+          {/* {(userInfos.isHelper) && <ProfileServices {...userInfos} />} */}
+
         </div>
       )}
     </>

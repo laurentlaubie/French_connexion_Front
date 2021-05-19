@@ -73,6 +73,28 @@ export const saveUsersCards = (usersList) => ({
   usersList,
 });
 
+
+
+// action type SAVE_USERS_REVIEWS
+export const SAVE_USERS_REVIEWS = 'SAVE_USERS_REVIEWS';
+
+// action creator saveUsersReviews
+export const saveUsersReviews = (usersReviewList) => ({
+  type: SAVE_USERS_REVIEWS,
+  usersReviewList,
+});
+
+// action type LOAD_USERS_REVIEWS
+export const LOAD_USERS_REVIEWS = 'LOAD_USERS_REVIEWS';
+
+// action creator loadUsersCards
+export const loadUsersReviews = () => ({
+  type: LOAD_USERS_REVIEWS,
+});
+
+
+
+
 // action type RENDER_NEW_LIST
 export const RENDER_NEW_LIST = 'RENDER_NEW_LIST';
 
@@ -153,6 +175,18 @@ export const setLoading = (value) => ({
   type: SET_LOADING,
   value,
 });
+
+
+
+// action type SAVE_AVATAR
+export const SAVE_AVATAR = 'SAVE_AVATAR';
+
+// action creator setLoading
+export const saveAvatar = (avatarData) => ({
+  type: SAVE_AVATAR,
+  avatarData,
+  
+
 // action type SAVE_USER_ADDRESS
 export const SAVE_USER_ADDRESS = 'SAVE_USER_ADDRESS';
 
@@ -163,4 +197,5 @@ export const saveUserAddress = (cityName, countryName, lat, lng) => ({
   countryName,
   lat,
   lng,
+
 });

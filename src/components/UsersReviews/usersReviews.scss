@@ -21,7 +21,8 @@
     flex-direction:column;
     justify-content:center ;
     flex-wrap: wrap;
-
+    width: 60%;
+    
     @media (min-width: vars.$breakpoint-tablet) {
       flex-direction:row;
     }

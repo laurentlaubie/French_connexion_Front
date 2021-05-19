@@ -1,6 +1,9 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+
 import PropTypes from 'prop-types';
+
+import axios from 'axios';
 
 import question from 'src/assets/images/question.png';
 import hands from 'src/assets/images/hands.png';
@@ -11,27 +14,43 @@ import ProfileLocalisation from 'src/components/ProfileLocalisation';
 import './profilePrincipalInfos.scss';
 
 const ProfilePrincipalInfos = ({
-  isMyProfile, helper, nickname, createdAt, avatar, cities, firstname, lastname,
+
+  isMyProfile, helper, nickname, createdAt, avatar, cities, firstname, lastname, id, saveAvatar,
 }) => {
   
-  console.log(createdAt);
-  // eslint-disable-next-line react/prop-types
-  let test = new Date(createdAt);
-  test = `${test.getDate()}/${test.getMonth() + 1}/${test.getFullYear()}`;
-  console.log(test);
+  const [seeAvatar, setAvatar] = useState("");
+
+  const manageSubmit = (event) => {
+    event.preventDefault();
+    console.log(seeAvatar);
+
+    
+      const fd = new FormData();
+      fd.append("avatar", seeAvatar);
+    
+    axios.post(`http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/user/avatar/${id}`, fd, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then((response) => {
+      store.dispatch(saveAvatar(response.data.avatar));
+    }).catch((error) => {
+      const errorStatus = error.response.status;
+      if (errorStatus === 401) {
+        window.location.href = '/403';
+      }
+
+    })
+  };
 
   return (
-
-    <div className="profilePrincipalInfos">
-      <div className="profilePrincipalInfos__status">
-        <div className={helper ? 'profilePrincipalInfos__status__name--helper' : 'hidden'}>
-          HELPER
-          <img className="profilePrincipalInfos__status__logo--helper" src={hands} alt="Logo du helpeur" />
-        </div>
-        <div className={(!helper && isMyProfile) ? 'profilePrincipalInfos__status__name' : 'hidden'}>
-          <a href="mon-profil/modifier"> Je deviens helper</a>
-          <img className="profilePrincipalInfos__status__logo" src={question} alt="Logo question" />
-        </div>
+  <div className="profilePrincipalInfos">
+    <div className="profilePrincipalInfos__status">
+      <div className={helper ? 'profilePrincipalInfos__status__name--helper' : 'hidden'}>
+        HELPER
+        <img className="profilePrincipalInfos__status__logo--helper" src={hands} alt="Logo du helpeur" />
 
       </div>
       <div className="profilePrincipalInfos__username">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
@@ -39,9 +58,22 @@ const ProfilePrincipalInfos = ({
       <div className="profilePrincipalInfos__image">
         <img className="jose" alt="image__profile" src={avatar != null ? avatar : defaultAvatar} />
       </div>
-      <div className={isMyProfile ? 'profilePrincipalInfos__update' : 'hidden'}>Mettre à jour ma photo</div>
-      <ProfileLocalisation {...cities} />
+
+
     </div>
+    <div className="profilePrincipalInfos__username">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
+    <div className="profilePrincipalInfos__date"> Membre depuis {createdAt} </div>
+    <div className="profilePrincipalInfos__image">
+      <img className="jose" alt="image__profile" src={`http://ec2-34-239-254-34.compute-1.amazonaws.com/images/avatars/${avatar}`} />
+    </div>
+     {/* <div className={isMyProfile ? 'profilePrincipalInfos__update' : 'hidden'}>Mettre à jour ma photo </div> */}
+    <form onSubmit={manageSubmit} >
+      <input type="file" name="avatar" onChange = {() => {setAvatar(event.target.files[0])}}/>
+      <button> clic ici</button>
+    </form>
+
+    <ProfileLocalisation {...cities} />
+  </div>
 
   );
 };

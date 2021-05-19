@@ -1,27 +1,43 @@
 import React from 'react';
+import defaultAvatar from 'src/assets/images/defaultAvatar.jpg';
+
 
 import PropTypes from 'prop-types';
 
 import './userReview.scss';
 
-const UserReview = ({ avatar, username, city, country }) => (
+const UserReview = ({ id, avatar, nickname, cities,  }) => (
   <div className="userReview">
-    <img className="userReview__image" src={avatar} alt={`Avatar de ${username}`} />
+    <img className="userReview__image" src={`http://ec2-34-239-254-34.compute-1.amazonaws.com/images/avatars/${avatar}`} alt={`Avatar de ${nickname}`} />
     <div className="userReview__text">
-      <p className="userReview__text__username">{username}</p>
-      <p className="userReview__text__city"> {city}</p>
-      <p className="userReview__text__country"> {country}</p>
+      <p className="userReview__text__username">{nickname}</p>
+      
+      { cities ? <> <p className="userReview__text__city">  {cities.name} </p> 
+      <p className="userReview__text__country"> {cities.country.name}</p> </> : <> <p className="userReview__text__city">Non renseigné</p> <p className="userReview__text__country">Non renseigné</p> </> }
+      
+      
+      
+      
+      
 
     </div>
   </div>
 );
 
 UserReview.propTypes = {
-  avatar: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  // comment: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
+  nickname: PropTypes.string.isRequired,
+  cities: PropTypes.arrayOf( 
+    PropTypes.shape(
+      {
+        name: PropTypes.string.isRequired,
+      },
+    ),
+  ),
+  //country: PropTypes.string.isRequired,
+};
+UserReview.defaultProps = {
+  avatar: defaultAvatar,
 };
 
 export default UserReview;

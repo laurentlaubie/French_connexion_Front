@@ -10,6 +10,10 @@ import {
   RENDER_NEW_LIST,
   CHANGE_INPUTVALUE,
   SET_LOADING,
+  SAVE_USERS_REVIEWS,
+  SAVE_AVATAR,
+
+
 } from 'src/actions/user';
 
 import { SET_ADRESS } from 'src/actions/map';
@@ -33,8 +37,12 @@ const initialState = {
   userCityCenter: '',
   isLoading: true,
   newUserList: null,
+
+  usersReviewList: [],
+
   myHobbies: {},
   inputValue: null,
+
 };
 
 export default (state = initialState, action = {}) => {
@@ -95,6 +103,23 @@ export default (state = initialState, action = {}) => {
         inputValue: action.inputValue,
       };
     case SET_LOADING:
+
+     return {
+      ...state,
+      isLoading: action.value,
+    };
+    case SAVE_USERS_REVIEWS:
+     return {
+      ...state,
+      usersReviewList: action.usersReviewList,
+    };
+    case SAVE_AVATAR:
+     return {
+      ...state,
+      [userInfos.avatar]: action.avatar.data,
+    };
+
+
       return {
         ...state,
         isLoading: action.value,
@@ -104,6 +129,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         myHobbies: action.value,
       };
+
     default:
       return state;
   }
