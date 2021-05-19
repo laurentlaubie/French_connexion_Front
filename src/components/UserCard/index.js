@@ -20,7 +20,7 @@ const UserCard = ({
     
     <Link to={isConnected ? `/notre-reseau/utilisateur/${id}` : 'notre-reseau'} className="userCard" onClick={isConnected ? '' : openModal}>
       <div className="userCard__picture">
-        <img alt={`Profil de ${firstname} ${lastname}`} src={avatar != null ? avatar : defaultAvatar} />
+        <img alt={`Profil de ${firstname} ${lastname}`} src={`http://ec2-34-239-254-34.compute-1.amazonaws.com/images/avatars/${avatar}`} />
       </div>
       <div className="userCard__text">
         <div className={helper ? 'userCard__text__role' : 'userCard__text__role userCard__text__role--hidden'}> HELPER </div>

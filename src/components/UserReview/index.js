@@ -8,7 +8,7 @@ import './userReview.scss';
 
 const UserReview = ({ id, avatar, nickname, cities,  }) => (
   <div className="userReview">
-    <img className="userReview__image" src={avatar ? avatar : defaultAvatar} alt={`Avatar de ${nickname}`} />
+    <img className="userReview__image" src={`http://ec2-34-239-254-34.compute-1.amazonaws.com/images/avatars/${avatar}`} alt={`Avatar de ${nickname}`} />
     <div className="userReview__text">
       <p className="userReview__text__username">{nickname}</p>
       
