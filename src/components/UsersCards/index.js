@@ -7,8 +7,12 @@ import UserCard from 'src/containers/UserCard';
 import './usersCards.scss';
 
 
-const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, inputValue, ChangeInputValue}) => {
+const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, inputValue, isLoading, ChangeInputValue}) => {
 
+  useEffect(
+    loadUsersCards,
+    [],
+  );
 
   const handleInputValueChange = (evt) => {
     evt.preventDefault();

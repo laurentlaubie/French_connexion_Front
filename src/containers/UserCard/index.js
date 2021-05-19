@@ -8,7 +8,7 @@ import { openLogIn } from 'src/actions/log';
 // ces props seront des ta+bleaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   isConnected: state.log.isConnected,
-  //isLoading: state.user.isLoading,
+  isLoading: state.user.isLoading,
   // isSignInOpen: state.log.isSignInOpen,
 });
 
