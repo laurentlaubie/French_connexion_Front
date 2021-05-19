@@ -25,17 +25,22 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHo
     console.log(evt.currentTarget.value);
     const { value } = evt.currentTarget;
     const splitValue = value.split('-');
-    const hobbyId = splitValue[0];
+    const hobbyId = parseInt(splitValue[0], 10);
     const hobbyName = splitValue[1];
     console.log(hobbyName);
     console.log(hobbyId);
     saveSelectedHobby(hobbyId, hobbyName);
   };
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  // const handleSubmit = (evt) => {
+  //   evt.preventDefault();
+  //   addSelectedHobby(selectedHobby);
+  //   // console.log(evt.currentTarget.);
+  // };
+
+  const onClick = (evt) => {
     addSelectedHobby(selectedHobby);
-    // console.log(evt.currentTarget.);
+    // evt.currentTarget();
   };
 
   // console.log(myServices);  // console.log(myHobbies);
@@ -117,15 +122,18 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHo
         ))}
       </ul>
       {/* <div className="modifyMyHobbies__subtitle"> Ajouter un centre d'intérêt </div> */}
-      <form className="modifyMyHobbies__form" onSubmit={handleSubmit}>
+      {/* <form className="modifyMyHobbies__form" onSubmit={handleSubmit}> */}
+      <div className="modifyMyHobbies__form">
+
         <select onChange={onChange}>
           <option> Choisissez un centre d'interêt</option> 
           {hobbiesList.map((hobby) => (
             <option value={`${hobby.id}-${hobby.name}`}> {hobby.name} </option>
           ))};
         </select>
-        <button type="submit">Ajouter</button>
-      </form>
+        <button type="button" onClick={onClick}>Ajouter</button>
+      </div>
+      {/* </form> */}
 
       {/* <select className="modifyMyHobbies__hobbiesList" onChange={handleSelect}>
         {hobbiesList.map((hobby) => (

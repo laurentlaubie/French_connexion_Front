@@ -39,8 +39,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   changePasswordField: (value, name) => {
     dispatch(changePasswordProfileFormFieldValue(value, name));
   },
-  handleModifyProfile: (userId) => {
-    dispatch(modifyProfile(userId));
+  handleModifyProfile: (userId, myHobbiesList) => {
+    dispatch(modifyProfile(userId, myHobbiesList));
   },
   openModal: () => {
     dispatch(openModifyCityModal());
@@ -54,9 +54,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   // setLoading: (value) => {
   //   dispatch(setLoading(value));
   // },
-  toggleCheckBox: (value) => {
-    dispatch(toggleCheckBox(value));
-  },
+  // toggleCheckBox: (value) => {
+  //   dispatch(toggleCheckBox(value));
+  // },
   saveMyHobbiesInState: (myHobbies) => {
     dispatch(saveMyHobbiesInState(myHobbies));
   },

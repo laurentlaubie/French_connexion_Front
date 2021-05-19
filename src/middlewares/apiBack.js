@@ -163,7 +163,8 @@ export default (store) => (next) => (action) => {
 
     case MODIFY_PROFILE: {
       // on récupère l'ID de la personne connectée
-      const userId = action.userId;
+      const {userId} = action;
+      const hobbies = action.myHobbiesList;
       console.log(userId);
 
       // on récupère le token stocké dans le localStorage
@@ -184,9 +185,10 @@ export default (store) => (next) => (action) => {
             email,
             // password,
             // confirmedPassword,
-            biography,
+            // biography,
             // phoneNumber,
-            userAdress,
+            // userAdress,
+            hobbies,
           },
           {
             headers: {

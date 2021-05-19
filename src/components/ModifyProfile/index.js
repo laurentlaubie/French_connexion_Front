@@ -31,7 +31,12 @@ const ModifyProfile = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('je souhaite envoyer mon formulaire');
-    handleModifyProfile(userId);
+    let myHobbiesList = [];
+    connectedUserData.hobbies.map((hobby) => {
+      myHobbiesList = [...myHobbiesList, hobby.id];
+    });
+    console.log(myHobbiesList);
+    handleModifyProfile(userId, myHobbiesList);
   };
 
   useEffect(() => {
@@ -47,7 +52,6 @@ const ModifyProfile = ({
         <div className="modifyProfile__principalInfos">
           <ProfilePrincipalInfos {...connectedUserData} isMyProfile />
         </div>
-        <div className="modifyProfile__right">
         <form className="modifyProfile__form" onSubmit={handleSubmit}>
 
           {/* <div className="modifyProfile__form__navbar">
@@ -148,9 +152,7 @@ const ModifyProfile = ({
               </div>
 
             </div>
-          </div>
           <button type="submit"> Enregistrez vos modifications </button>
-        </form>
 
           <div className="modifyProfile__form__section">
             <div className="modifyProfile__form__section__title"> A propos de moi </div>
@@ -177,9 +179,9 @@ const ModifyProfile = ({
             </div>
           </div>
         </div>
-      </div>
-
+      </form>
     </div>
+  </div>
   );
 };
 
