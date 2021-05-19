@@ -120,6 +120,27 @@ export default (store) => (next) => (action) => {
       break;
     }
 
+    //case LOAD_USERS_AVATAR:
+      // modification Avatar de l'utilisateur
+      
+      //api
+       // .get('/user/avatar')
+       // .then((response) => {
+       //   console.log(response);
+       //   const avatar = response.data;
+       //   store.dispatch(saveUsersReviews(usersReviewList));
+       // }).catch((error) => {
+        // eslint-disable-next-line no-console
+          //console.log(error);
+       // })
+      
+      // puis on décide si on la laisse filer ou si on la bloque
+     // next(action);
+      //break;
+
+
+
+
     case LOAD_USERS_CARDS:
       // affichage de tous les profils sous forme de cards
       
