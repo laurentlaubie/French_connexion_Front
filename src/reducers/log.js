@@ -4,6 +4,7 @@ import {
   CHANGE_LOG_IN_FIELD_VALUE,
   SAVE_CONNECTED_USER_DATA,
   OPEN_LOG_OUT, CLOSE_LOG_OUT, LOG_OUT,
+  SET_IS_CONNECTED,
 } from 'src/actions/log';
 
 const initialState = {
@@ -70,6 +71,11 @@ export default (state = initialState, action = {}) => {
         isConnected: false,
         isLogOutOpen: false,
         connectedUserData: '',
+      };
+    case SET_IS_CONNECTED:
+      return {
+        ...state,
+        isConnected: action.value,
       };
     default:
       return state;

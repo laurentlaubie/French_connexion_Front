@@ -99,6 +99,11 @@
     //   }
     // }
 
+    &__hobbiesList{
+      display:flex;
+      flex-direction:column;
+    }
+
     &__section{
 
       width:80%;
@@ -148,6 +153,8 @@
         // background-color:red;
 
       }
+
+      
     }
 
     &__city {
