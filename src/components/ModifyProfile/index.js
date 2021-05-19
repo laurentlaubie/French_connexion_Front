@@ -15,15 +15,14 @@ import './modifyProfile.scss';
 const ModifyProfile = ({
   connectedUserData,
   changeField,
-  changePasswordField,
-  newPassword,
-  confirmedNewPassword,
   handleModifyProfile,
   openModal,
   userAddress,
   isLoaded,
   loadHobbiesList,
   loadServicesList,
+  // newPassword,
+  // confirmedNewPassword,
 
 }) => {
   const userId = connectedUserData.id;
@@ -99,7 +98,7 @@ const ModifyProfile = ({
                 <div className="modifyProfile__form__label__name"> Email </div>
                 <Field
                   className="modifyProfile__form__field"
-                  name="email"
+                  name="username"
                   placeholder="Email@exemple.com"
                   onChange={changeField}
                   value={connectedUserData.username}
@@ -113,8 +112,8 @@ const ModifyProfile = ({
                     className="modifyProfile__form__field"
                     name="newPassword"
                     placeholder="Nouveau mot de passe"
-                    onChange={changePasswordField}
-                    value={newPassword}
+                    onChange={changeField}
+                    value={connectedUserData.newPassword}
                     type="password"
                   />
                 </div>
@@ -124,8 +123,8 @@ const ModifyProfile = ({
                     className="modifyProfile__form__field"
                     name="confirmedNewPassword"
                     placeholder="Confirmez votre mot de passe"
-                    onChange={changePasswordField}
-                    value={confirmedNewPassword}
+                    onChange={changeField}
+                    value={connectedUserData.confirmedNewPassword}
                     type="password"
                   />
                 </div>

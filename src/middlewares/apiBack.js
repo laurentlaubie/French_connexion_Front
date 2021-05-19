@@ -10,6 +10,7 @@ import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actio
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
 import { setLoading } from 'src/actions/loading';
+import { setIsConnected, resetPassword } from '../actions/log';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -21,15 +22,16 @@ export default (store) => (next) => (action) => {
       // connexion de l'utilisateur
       // on extrait l'email et le password du state
       const state = store.getState();
-      const { email: username, password } = state.user;
+      const { email: username, password } = state.log;
+      console.log(username);
+      console.log(password);
 
       api
         .post(
           '/login',
           {
-            username: 'leonie@gmail.com',
-            password: 'salut',
-
+            username,
+            password,
           },
         )
         .then((response) => {
@@ -48,6 +50,7 @@ export default (store) => (next) => (action) => {
           // on décode notre token pour récupérer les données de l'utilisateur connecté
           // et on les sauvegardes dans le state
           const decodedToken = jwt_decode(userToken);
+          console.log('je me connecte');
           console.log(decodedToken);
           // const connectedUserData = decodedToken.username;
           // console.log(connectedUserData);
@@ -123,6 +126,7 @@ export default (store) => (next) => (action) => {
           console.log(response);
           console.log('Vous êtes inscrit');
           store.dispatch(closeSignIn());
+          // store.dispatch(setIsConnected(true));
         }).catch((error) => {
           console.log(error);
         });
@@ -196,8 +200,9 @@ export default (store) => (next) => (action) => {
 
     case MODIFY_PROFILE: {
       // on récupère l'ID de la personne connectée
-      const {userId} = action;
+      const { userId } = action;
       const hobbies = action.myHobbiesList;
+      console.log(hobbies);
       console.log(userId);
 
       // on récupère le token stocké dans le localStorage
@@ -206,9 +211,18 @@ export default (store) => (next) => (action) => {
 
       // on récupère les nouvelles données de la personne connectée, ainsi que celle non modifiée
       const state = store.getState();
-      const { userInfos } = state.user;
-      const { email, firstname, lastname, phoneNumber, biography } = userInfos;
-      const { newPassword: password, confirmedNewPassword: confirmedPassword, userAddress : userAdress } = state.user;
+      const { connectedUserData } = state.log;
+      console.log(connectedUserData);
+      const {
+        username: email,
+        nickname,
+        firstname,
+        lastname,
+        phoneNumber,
+        biography,
+        newPassword: password,
+        confirmedNewPassword: confirmedPassword,
+      } = connectedUserData;
 
       api
         .put(`/user/${userId}`,
@@ -216,10 +230,11 @@ export default (store) => (next) => (action) => {
             lastname,
             firstname,
             email,
-            // password,
-            // confirmedPassword,
-            // biography,
-            // phoneNumber,
+            password,
+            confirmedPassword,
+            nickname,
+            biography,
+            phoneNumber,
             // userAdress,
             hobbies,
           },
@@ -230,6 +245,8 @@ export default (store) => (next) => (action) => {
           })
         .then((response) => {
           console.log(response);
+          store.dispatch(resetPassword());
+          // window.location.href = '/mon-profil';
           // const usersList = response.data;
           // store.dispatch(saveUsersCards(usersList));
         }).catch((error) => {

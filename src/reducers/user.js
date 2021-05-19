@@ -29,8 +29,6 @@ const initialState = {
   password: '',
   confirmedPassword: '',
   usersList: [],
-  newPassword: '',
-  confirmedNewPassword: '',
   isModifyCityModalOpen: false,
   address: '',
   userAddress: '',
@@ -75,11 +73,7 @@ export default (state = initialState, action = {}) => {
           [action.name]: action.value,
         },
       };
-    case CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE:
-      return {
-        ...state,
-        [action.name]: action.value,
-      };
+    
     case CLOSE_MODIFY_CITY_MODAL:
       return {
         ...state,
