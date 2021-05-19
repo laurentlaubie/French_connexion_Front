@@ -14,3 +14,12 @@ export const saveServicesList = (servicesList) => ({
   type: SAVE_SERVICES_LIST,
   servicesList,
 });
+
+// action type SET_LOADING
+export const SET_LOADING_SERVICES = 'SET_LOADING_SERVICES';
+
+// action creator setLoadingServices
+export const setLoadingServices = (value) => ({
+  type: SET_LOADING_SERVICES,
+  value,
+});

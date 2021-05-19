@@ -89,3 +89,12 @@ export const setIsConnected = (value) => ({
   type: SET_IS_CONNECTED,
   value,
 });
+
+// action type SAVE_TOKEN_IN_STATE
+export const SAVE_TOKEN_IN_STATE = 'SAVE_TOKEN_IN_STATE';
+
+// action creator saveTokenInState
+export const saveTokenInState = (userToken) => ({
+  type: SAVE_TOKEN_IN_STATE,
+  userToken,
+});

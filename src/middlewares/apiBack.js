@@ -10,13 +10,14 @@ import {
   LOAD_USERS_CARDS,
   saveUsersCards,
   MODIFY_PROFILE,
-  setLoading,
 } from 'src/actions/user';
 
-import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
+import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn, saveTokenInState } from 'src/actions/log';
 import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
-import { LOAD_HOBBIES_LIST, saveHobbiesList } from 'src/actions/hobbies';
-import { LOAD_SERVICES_LIST, saveServicesList } from 'src/actions/services';
+import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
+import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
+
+import { setLoading } from 'src/actions/loading';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -46,6 +47,9 @@ export default (store) => (next) => (action) => {
           // on stocke le token dans le localStorage
           localStorage.setItem('token', (userToken));
 
+          // on stocke le token dans le state
+          store.dispatch(saveTokenInState(userToken));
+
           console.log(userToken);
           // api.defaults.headers.common.Authorization = `Bearer ${userToken}`;
 
@@ -56,7 +60,7 @@ export default (store) => (next) => (action) => {
           // const connectedUserData = decodedToken.username;
           // console.log(connectedUserData);
           store.dispatch(saveConnectedUserData(decodedToken));
-          window.location.href = '/';
+          // window.location.href = '/';
         }).catch((error) => {
           console.log(error);
         });
@@ -65,7 +69,6 @@ export default (store) => (next) => (action) => {
     }
     case LOAD_USER_PROFILE: {
       // CETTE REQUETE N'EST ACCESSIBLE QUE POUR UN UTILISATEUR CONNECTE
-  
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
       const idParam = (action.userId);
       console.log(idParam);
@@ -137,7 +140,6 @@ export default (store) => (next) => (action) => {
 
     case LOAD_USERS_CARDS:
       // affichage de tous les profils sous forme de cards
-      
       // // -- gestion loader for profilPage
       // store.dispatch(setLoading(true));
 
@@ -254,9 +256,6 @@ export default (store) => (next) => (action) => {
       const userToken = localStorage.getItem('token');
       console.log(userToken);
 
-      // // gestion du loader
-      // store.dispatch(setLoading(true));
-
       api
         .get('hobby',
           {
@@ -268,6 +267,7 @@ export default (store) => (next) => (action) => {
           // console.log(response.data);
           const hobbiesList = response.data;
           store.dispatch(saveHobbiesList(hobbiesList));
+          store.dispatch(setLoadingHobbies(true));
         }).catch((error) => {
           console.log(error);
         }).finally(() => {
@@ -280,9 +280,6 @@ export default (store) => (next) => (action) => {
       const userToken = localStorage.getItem('token');
       console.log(userToken);
 
-      // // gestion du loader
-      // store.dispatch(setLoading(true));
-
       api
         .get('service',
           {
@@ -294,6 +291,7 @@ export default (store) => (next) => (action) => {
           // console.log(response.data);
           const servicesList = response.data;
           store.dispatch(saveServicesList(servicesList));
+          store.dispatch(setLoadingServices(true));
         }).catch((error) => {
         // eslint-disable-next-line no-console
           console.log(error);

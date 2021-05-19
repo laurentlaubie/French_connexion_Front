@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { saveConnectedUserData, setIsConnected } from 'src/actions/log';
+import { saveConnectedUserData, setIsConnected, saveTokenInState } from 'src/actions/log';
 
 import { loadHobbiesList } from 'src/actions/hobbies';
 
@@ -14,7 +14,8 @@ import App from 'src/components/App';
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   isConnected: state.log.isConnected,
-  isLoading: state.user.isLoading,
+  isLoading: state.log.isLoading,
+  tokenFromState: state.log.token,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -34,6 +35,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   setIsConnected: (value) => {
     dispatch(setIsConnected(value));
+  },
+  saveTokenInState: (value) => {
+    dispatch(saveTokenInState(value));
   },
 });
 

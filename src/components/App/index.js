@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 // == Import npm
 import React, { useEffect } from 'react';
-import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
+import {
+  Route, Switch, Redirect, useLocation,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
 
@@ -25,7 +27,7 @@ import ModifyProfile from 'src/containers/ModifyProfile';
 import LegalsMentions from 'src/components/LegalsMentions';
 import SiteMap from 'src/components/SiteMap';
 import AboutUs from 'src/components/AboutUs';
-// import Loading from 'src/components/Loading';
+import Loading from 'src/components/Loading';
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/containers/LogIn';
@@ -40,17 +42,18 @@ import './styles.css';
 
 // == Composant
 
-const App = ({ saveConnectedUserData, loadHobbiesList, loadServicesList, setLoading, setIsConnected, isConnected }) => {
+const App = ({
+  saveConnectedUserData, setIsConnected, isConnected, loadHobbiesList, loadServicesList, tokenFromState, saveTokenInState
+}) => {
   // récupération du chemin
   const pathName = useLocation().pathname;
   console.log(pathName);
 
-  // récupération du token
-  const userToken = localStorage.getItem('token');
-
   useEffect(() => {
-    if (userToken != null) {
-      const decodedToken = jwt_decode(userToken);
+    const userTokenFromLocalStorage = localStorage.getItem('token');
+
+    if (userTokenFromLocalStorage != null) {
+      const decodedToken = jwt_decode(userTokenFromLocalStorage);
       console.log(decodedToken);
       const dateNow = Math.round(Date.now() / 1000);
       console.log(dateNow);
@@ -58,7 +61,6 @@ const App = ({ saveConnectedUserData, loadHobbiesList, loadServicesList, setLoad
       if (decodedToken.exp - 600 > dateNow) {
         saveConnectedUserData(decodedToken);
         console.log('je suis déjà connecté');
-        setIsConnected(true);
       }
       else {
         console.log('Token expiré');
@@ -68,17 +70,14 @@ const App = ({ saveConnectedUserData, loadHobbiesList, loadServicesList, setLoad
     else {
       console.log('je ne suis pas encore connecté');
     }
-    loadHobbiesList();
-    loadServicesList();
     console.log('on set le loading à false');
   }, []);
 
-  //-- gestion du scroll
+  // -- gestion du scroll
   const location = useLocation();
   useEffect(
     () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      setLoading(true);
       console.log('le pathname a changé');
     },
     [pathName],
@@ -109,14 +108,12 @@ const App = ({ saveConnectedUserData, loadHobbiesList, loadServicesList, setLoad
           <UsersCards />
         </Route>
         <Route path="/notre-reseau/utilisateur/:id" exact>
-          <Profile isLoading />
+          <Profile />
         </Route>
         <Route path="/mon-profil" exact>
-          {/* {isConnected ? <MyProfile /> : <Redirect to="/403" />} */}
-          <MyProfile isLoading />
+          <MyProfile />
         </Route>
         <Route path="/mon-profil/modifier" exact>
-          {/* {isConnected ? <ModifyProfile dataHobbies={DataHobbies} dataServices={DataServices} /> : <Redirect to="/403" />} */}
           <ModifyProfile />
         </Route>
         <Route path="/plan-du-site">

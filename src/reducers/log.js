@@ -5,7 +5,12 @@ import {
   SAVE_CONNECTED_USER_DATA,
   OPEN_LOG_OUT, CLOSE_LOG_OUT, LOG_OUT,
   SET_IS_CONNECTED,
+  SAVE_TOKEN_IN_STATE,
 } from 'src/actions/log';
+
+import {
+  ADD_SELECTED_HOBBY, SAVE_SELECTED_HOBBY,
+} from 'src/actions/hobbies';
 
 const initialState = {
   isConnected: false,
@@ -15,10 +20,17 @@ const initialState = {
   email: '',
   password: '',
   connectedUserData: '',
+  isLoading: true,
+  selectedHobby:'',
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case SAVE_TOKEN_IN_STATE:
+      return {
+        ...state,
+        token: action.userToken,
+      };
     case SAVE_CONNECTED_USER_DATA:
       return {
         ...state,
@@ -76,6 +88,33 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isConnected: action.value,
+        isLoading: false,
+      };
+    case SAVE_SELECTED_HOBBY:
+      return {
+        ...state,
+        selectedHobby: {
+          ...state.selectedHobby,
+          id: action.hobbyId,
+          name: action.hobbyName,
+        },
+      };
+    // case ADD_SELECTED_HOBBY:
+    //   return {
+    //     ...state,
+    //     connectedUserData: {
+    //       ...state.connectedUserData,
+    //       hobbies: {
+    //         ...state.hobbies, true },
+    //     },
+      // };
+    case ADD_SELECTED_HOBBY:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          hobbies: [...state.connectedUserData.hobbies, action.selectedHobby],
+        },
       };
     default:
       return state;

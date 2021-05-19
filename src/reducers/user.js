@@ -14,6 +14,8 @@ import {
 
 import { SET_ADRESS } from 'src/actions/map';
 
+import { SAVE_MY_HOBBIES_IN_STATE } from 'src/actions/modifyForm';
+
 const initialState = {
   isHelper: false,
   userInfos: [],
@@ -31,6 +33,7 @@ const initialState = {
   userCityCenter: '',
   isLoading: true,
   newUserList: null,
+  myHobbies: {},
   inputValue: null,
 };
 
@@ -95,6 +98,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isLoading: action.value,
+      };
+    case SAVE_MY_HOBBIES_IN_STATE:
+      return {
+        ...state,
+        myHobbies: action.value,
       };
     default:
       return state;

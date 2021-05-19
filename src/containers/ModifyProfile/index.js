@@ -5,11 +5,11 @@ import {
   changePasswordProfileFormFieldValue,
   modifyProfile,
   openModifyCityModal,
-  setLoading,
 } from 'src/actions/user';
 
 import { loadHobbiesList } from 'src/actions/hobbies';
 import { loadServicesList } from 'src/actions/services';
+import { toggleCheckBox, saveMyHobbiesInState } from 'src/actions/modifyForm';
 
 import ModifyProfile from 'src/components/ModifyProfile';
 
@@ -23,8 +23,8 @@ const mapStateToProps = (state, ownProps) => ({
   userAddress: state.user.userAddress,
   hobbiesList: state.hobbies.hobbiesList,
   servicesList: state.services.servicesList,
-  isLoading: state.user.isLoading,
-
+  isLoaded: state.hobbies.isLoaded && state.services.isLoaded,
+  hobbiesListForCheckbox: state.user.myHobbies,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -51,8 +51,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   loadServicesList: () => {
     dispatch(loadServicesList());
   },
-  setLoading: (value) => {
-    dispatch(setLoading(value));
+  // setLoading: (value) => {
+  //   dispatch(setLoading(value));
+  // },
+  toggleCheckBox: (value) => {
+    dispatch(toggleCheckBox(value));
+  },
+  saveMyHobbiesInState: (myHobbies) => {
+    dispatch(saveMyHobbiesInState(myHobbies));
   },
 
 });
