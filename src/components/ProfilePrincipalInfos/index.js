@@ -45,24 +45,19 @@ const ProfilePrincipalInfos = ({
     })
   };
 
+  let creationDate = new Date(createdAt);
+  creationDate = `${creationDate.getDate()}/${creationDate.getMonth() + 1}/${creationDate.getFullYear()}`;
+  console.log(creationDate);
+
   return (
   <div className="profilePrincipalInfos">
     <div className="profilePrincipalInfos__status">
       <div className={helper ? 'profilePrincipalInfos__status__name--helper' : 'hidden'}>
         HELPER
         <img className="profilePrincipalInfos__status__logo--helper" src={hands} alt="Logo du helpeur" />
-
-      </div>
-      <div className="profilePrincipalInfos__username">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
-      <div className="profilePrincipalInfos__date"> {`Membre depuis le ${test}`} </div>
-      <div className="profilePrincipalInfos__image">
-        <img className="jose" alt="image__profile" src={avatar != null ? avatar : defaultAvatar} />
-      </div>
-
-
     </div>
     <div className="profilePrincipalInfos__username">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
-    <div className="profilePrincipalInfos__date"> Membre depuis {createdAt} </div>
+    <div className="profilePrincipalInfos__date"> {`Membre depuis le ${creationDate}`} </div>
     <div className="profilePrincipalInfos__image">
       <img className="jose" alt="image__profile" src={`http://ec2-34-239-254-34.compute-1.amazonaws.com/images/avatars/${avatar}`} />
     </div>
@@ -73,6 +68,7 @@ const ProfilePrincipalInfos = ({
     </form>
 
     <ProfileLocalisation {...cities} />
+    </div>
   </div>
 
   );
