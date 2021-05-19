@@ -8,6 +8,7 @@ import {
   CLOSE_MODIFY_CITY_MODAL,
   OPEN_MODIFY_CITY_MODAL,
   RENDER_NEW_LIST,
+  CHANGE_INPUTVALUE,
   SET_LOADING,
 } from 'src/actions/user';
 
@@ -33,6 +34,7 @@ const initialState = {
   isLoading: true,
   newUserList: null,
   myHobbies: {},
+  inputValue: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -85,6 +87,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         address: action.adress,
+
+      };
+    case CHANGE_INPUTVALUE:
+      return {
+        ...state,
+        inputValue: action.inputValue,
       };
     case SET_LOADING:
       return {
