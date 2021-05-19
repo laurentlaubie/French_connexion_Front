@@ -34,7 +34,7 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, o
   // let gaga = location.query.id; 
   // console.log(gaga);
 
-  let userId = '';
+  //let userId = '';
 
   const params = useParams();
   const userId = params.id;
@@ -67,6 +67,8 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, o
           {/* {(userInfos.isHelper) && <ProfileServices {...userInfos} />} */}
 
         </div>
+      </div>
+    </div>
       )}
     </>
   );

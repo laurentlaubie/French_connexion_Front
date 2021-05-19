@@ -185,6 +185,7 @@ export const SAVE_AVATAR = 'SAVE_AVATAR';
 export const saveAvatar = (avatarData) => ({
   type: SAVE_AVATAR,
   avatarData,
+});
   
 
 // action type SAVE_USER_ADDRESS

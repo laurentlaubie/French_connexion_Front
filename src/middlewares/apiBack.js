@@ -3,19 +3,7 @@ import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 
-import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, setLoading, LOAD_USERS_REVIEWS, saveUsersReviews} from 'src/actions/user';
-import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
-
-
-import {
-  LOAD_USER_PROFILE,
-  saveUserProfile,
-  ADD_NEW_USER,
-  LOAD_USERS_CARDS,
-  saveUsersCards,
-  MODIFY_PROFILE,
-} from 'src/actions/user';
-
+import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, LOAD_USERS_REVIEWS, saveUsersReviews} from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn, saveTokenInState } from 'src/actions/log';
 import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
