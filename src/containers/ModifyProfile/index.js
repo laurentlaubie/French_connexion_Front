@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import {
   loadUserProfile,
-  changeProfileFormFieldValue,
-  changePasswordProfileFormFieldValue,
+  
   modifyProfile,
   openModifyCityModal,
 } from 'src/actions/user';
+
+import { changePasswordProfileFormFieldValue, changeProfileFormFieldValue } from 'src/actions/log';
+
 
 import { loadHobbiesList } from 'src/actions/hobbies';
 import { loadServicesList } from 'src/actions/services';
@@ -16,15 +18,17 @@ import ModifyProfile from 'src/components/ModifyProfile';
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
-  userInfos: state.user.userInfos,
+  // userInfos: state.user.userInfos,
   connectedUserData: state.log.connectedUserData,
-  newPassword: state.user.newPassword,
-  confirmedNewPassword: state.user.confirmedNewPassword,
+  // newPassword: state.log.connectedUserData.newPassword,
+  // confirmedNewPassword: state.log.confirmedNewPassword,
   userAddress: state.user.userAddress,
   hobbiesList: state.hobbies.hobbiesList,
   servicesList: state.services.servicesList,
   isLoaded: state.hobbies.isLoaded && state.services.isLoaded,
-  hobbiesListForCheckbox: state.user.myHobbies,
+  // newPassword: state.log.newPassword,
+  // confirmedNewPassword: state.log.confirmedNewPassword,
+  // hobbiesListForCheckbox: state.user.myHobbies,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -36,9 +40,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   changeField: (value, name) => {
     dispatch(changeProfileFormFieldValue(value, name));
   },
-  changePasswordField: (value, name) => {
-    dispatch(changePasswordProfileFormFieldValue(value, name));
-  },
+  // changePasswordField: (value, name) => {
+  //   dispatch(changePasswordProfileFormFieldValue(value, name));
+  // },
   handleModifyProfile: (userId, myHobbiesList) => {
     dispatch(modifyProfile(userId, myHobbiesList));
   },
@@ -57,9 +61,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   // toggleCheckBox: (value) => {
   //   dispatch(toggleCheckBox(value));
   // },
-  saveMyHobbiesInState: (myHobbies) => {
-    dispatch(saveMyHobbiesInState(myHobbies));
-  },
+  // saveMyHobbiesInState: (myHobbies) => {
+  //   dispatch(saveMyHobbiesInState(myHobbies));
+  // },
 
 });
 

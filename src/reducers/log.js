@@ -6,6 +6,9 @@ import {
   OPEN_LOG_OUT, CLOSE_LOG_OUT, LOG_OUT,
   SET_IS_CONNECTED,
   SAVE_TOKEN_IN_STATE,
+  CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE,
+  CHANGE_PROFILE_FORM_FIELD_VALUE,
+  RESET_PASSWORD,
 } from 'src/actions/log';
 
 import {
@@ -21,7 +24,9 @@ const initialState = {
   password: '',
   connectedUserData: '',
   isLoading: true,
-  selectedHobby:'',
+  selectedHobby: '',
+  newPassword: '',
+  confirmedNewPassword: '',
 };
 
 export default (state = initialState, action = {}) => {
@@ -99,21 +104,37 @@ export default (state = initialState, action = {}) => {
           name: action.hobbyName,
         },
       };
-    // case ADD_SELECTED_HOBBY:
-    //   return {
-    //     ...state,
-    //     connectedUserData: {
-    //       ...state.connectedUserData,
-    //       hobbies: {
-    //         ...state.hobbies, true },
-    //     },
-      // };
+    case CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          [action.name]: action.value,
+        },
+      };
+    case CHANGE_PROFILE_FORM_FIELD_VALUE:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          [action.name]: action.value,
+        },
+      };
     case ADD_SELECTED_HOBBY:
       return {
         ...state,
         connectedUserData: {
           ...state.connectedUserData,
           hobbies: [...state.connectedUserData.hobbies, action.selectedHobby],
+        },
+      };
+    case RESET_PASSWORD:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          newPassword: '',
+          confirmedNewPassword: '',
         },
       };
     default:

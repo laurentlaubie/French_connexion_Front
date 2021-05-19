@@ -1,17 +1,28 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import Field from 'src/components/Field';
-// import TextArea from 'src/components/TextArea';
-// import ModifyCity from 'src/containers/ModifyCity';
-// import Loading from 'src/components/Loading';
-
-// import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
 
 // == Import style
 import './modifyMyServices.scss';
 
-const ModifyMyServices = ({ myServices, servicesList }) => {
+const ModifyMyServices = ({ myServices, servicesList, saveSelectedService, selectedService, addSelectedService }) => {
+
+  // let myServicesArray = [];
+  // myServices.map((service) => {
+  //   myServicesArray = [...myServicesArray, service.id];
+  // });
+  // console.log(myServicesArray);
+
+  // const onChange = (evt) => {
+  //   console.log(evt.currentTarget.value);
+  //   const { value } = evt.currentTarget;
+  //   const splitValue = value.split('-');
+  //   const serviceId = parseInt(splitValue[0], 10);
+  //   const serviceName = splitValue[1];
+  //   console.log(serviceName);
+  //   console.log(serviceId);
+  //   saveSelectedService(serviceId, serviceName);
+  // };
 
   // let myHobbiesList = [];
   // userInfos.hobbies.map((hobbies) => {

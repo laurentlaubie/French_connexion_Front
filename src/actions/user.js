@@ -92,26 +92,6 @@ export const changeSignInFieldValue = (value, name) => ({
   name,
 });
 
-// action type CHANGE_PROFILE_FORM_FIELD_VALUE
-export const CHANGE_PROFILE_FORM_FIELD_VALUE = 'CHANGE_PROFILE_FORM_FIELD_VALUE';
-
-// action creator changeProfileFormFieldValue
-export const changeProfileFormFieldValue = (value, name) => ({
-  type: CHANGE_PROFILE_FORM_FIELD_VALUE,
-  value,
-  name,
-});
-
-// action type CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE
-export const CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE = 'CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE';
-
-// action creator changePasswordProfileFormFieldValue
-export const changePasswordProfileFormFieldValue = (value, name) => ({
-  type: CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE,
-  value,
-  name,
-});
-
 // action type MODIFY_PROFILE
 export const MODIFY_PROFILE = 'MODIFY_PROFILE';
 

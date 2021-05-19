@@ -98,3 +98,31 @@ export const saveTokenInState = (userToken) => ({
   type: SAVE_TOKEN_IN_STATE,
   userToken,
 });
+
+// action type CHANGE_PROFILE_FORM_FIELD_VALUE
+export const CHANGE_PROFILE_FORM_FIELD_VALUE = 'CHANGE_PROFILE_FORM_FIELD_VALUE';
+
+// action creator changeProfileFormFieldValue
+export const changeProfileFormFieldValue = (value, name) => ({
+  type: CHANGE_PROFILE_FORM_FIELD_VALUE,
+  value,
+  name,
+});
+
+// action type CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE
+export const CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE = 'CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE';
+
+// action creator changePasswordProfileFormFieldValue
+export const changePasswordProfileFormFieldValue = (value, name) => ({
+  type: CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE,
+  value,
+  name,
+});
+
+// action type RESET_PASSWORD
+export const RESET_PASSWORD = 'RESET_PASSWORD';
+
+// action creator resetPassword
+export const resetPassword = () => ({
+  type: RESET_PASSWORD,
+});
