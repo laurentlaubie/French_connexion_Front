@@ -20,7 +20,7 @@ import Loading from 'src/components/Loading';
 // == import style
 import './profile.scss';
 
-const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, openLogOut, isLoading }) => {
+const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, openLogOut, isLoading, saveAvatar }) => {
   // let userInfos = null;
   // // console.log(connectedUserInfos);
   // if (isMyProfile) {
@@ -31,7 +31,7 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, o
   //   // console.log(userInfos);
   // }
 
-  // let gaga = location.query.id;
+  // let gaga = location.query.id; 
   // console.log(gaga);
 
   let userId = '';
@@ -66,7 +66,7 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, o
       <h1 className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </h1>
       <div className="profile__content">
         <div className="profile__content__left">
-          <ProfilePrincipalInfos {...userInfos} isMyProfile={isMyProfile} />
+          <ProfilePrincipalInfos {...userInfos} isMyProfile={isMyProfile} saveAvatar={saveAvatar} />
           { isMyProfile && <ProfilePersonalInfos {...userInfos} /> }
           { !isMyProfile && <ContactMe /> }
         </div>

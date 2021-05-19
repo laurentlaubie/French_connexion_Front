@@ -27,6 +27,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   openLogOut: () => {
     dispatch(openLogOut());
   },
+  saveAvatar: (avatarData) => {
+    dispatch(saveAvatar(avatarData));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

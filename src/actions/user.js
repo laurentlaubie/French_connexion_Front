@@ -164,3 +164,14 @@ export const setLoading = (value) => ({
   type: SET_LOADING,
   value,
 });
+
+
+// action type SAVE_AVATAR
+export const SAVE_AVATAR = 'SAVE_AVATAR';
+
+// action creator setLoading
+export const saveAvatar = (avatarData) => ({
+  type: SAVE_AVATAR,
+  avatarData,
+  
+});

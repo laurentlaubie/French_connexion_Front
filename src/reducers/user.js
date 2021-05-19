@@ -10,6 +10,7 @@ import {
   RENDER_NEW_LIST,
   SET_LOADING,
   SAVE_USERS_REVIEWS,
+  SAVE_AVATAR,
 
 
 } from 'src/actions/user';
@@ -100,6 +101,11 @@ export default (state = initialState, action = {}) => {
      return {
       ...state,
       usersReviewList: action.usersReviewList,
+    };
+    case SAVE_AVATAR:
+     return {
+      ...state,
+      [userInfos.avatar]: action.avatar.data,
     };
 
     default:
