@@ -51,9 +51,9 @@ const App = ({
 
   useEffect(() => {
     const userTokenFromLocalStorage = localStorage.getItem('token');
-    const decodedToken = jwt_decode(userTokenFromLocalStorage);
 
     if (userTokenFromLocalStorage != null) {
+      const decodedToken = jwt_decode(userTokenFromLocalStorage);
       console.log(decodedToken);
       const dateNow = Math.round(Date.now() / 1000);
       console.log(dateNow);

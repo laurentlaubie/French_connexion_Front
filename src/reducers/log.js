@@ -8,6 +8,10 @@ import {
   SAVE_TOKEN_IN_STATE,
 } from 'src/actions/log';
 
+import {
+  ADD_SELECTED_HOBBY, SAVE_SELECTED_HOBBY,
+} from 'src/actions/hobbies';
+
 const initialState = {
   isConnected: false,
   isLogInOpen: false,
@@ -17,6 +21,7 @@ const initialState = {
   password: '',
   connectedUserData: '',
   isLoading: true,
+  selectedHobby:'',
 };
 
 export default (state = initialState, action = {}) => {
@@ -84,6 +89,32 @@ export default (state = initialState, action = {}) => {
         ...state,
         isConnected: action.value,
         isLoading: false,
+      };
+    case SAVE_SELECTED_HOBBY:
+      return {
+        ...state,
+        selectedHobby: {
+          ...state.selectedHobby,
+          id: action.hobbyId,
+          name: action.hobbyName,
+        },
+      };
+    // case ADD_SELECTED_HOBBY:
+    //   return {
+    //     ...state,
+    //     connectedUserData: {
+    //       ...state.connectedUserData,
+    //       hobbies: {
+    //         ...state.hobbies, true },
+    //     },
+      // };
+    case ADD_SELECTED_HOBBY:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          hobbies: [...state.connectedUserData.hobbies, action.selectedHobby],
+        },
       };
     default:
       return state;

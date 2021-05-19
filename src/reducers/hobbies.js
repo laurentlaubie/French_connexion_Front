@@ -1,9 +1,10 @@
-import { SAVE_HOBBIES_LIST, SET_LOADING_HOBBIES, TOGGLE_CHECKBOX_HOBBIES } from 'src/actions/hobbies';
+import { SAVE_HOBBIES_LIST, SET_LOADING_HOBBIES, SAVE_SELECTED_HOBBY, ADD_SELECTED_HOBBY } from 'src/actions/hobbies';
 
 const initialState = {
   hobbiesList: '',
   isLoaded: false,
   selectedHobbies: '',
+  myHobbies:'',
 };
 
 export default (state = initialState, action = {}) => {
@@ -18,14 +19,15 @@ export default (state = initialState, action = {}) => {
         ...state,
         isLoaded: action.value,
       };
-    case TOGGLE_CHECKBOX_HOBBIES:
-      return {
-        ...state,
-        selectedHobbies: {
-          ...state.selectedHobbies,
-          [action.value]: action.checked,
-        },
-      };
+    // case SAVE_SELECTED_HOBBY:
+    //   return {
+    //     ...state,
+    //     selectedHobbies: {
+    //       ...state.selectedHobbies,
+    //       id: action.hobbyId,
+    //       name: action.hobbyName,
+    //     },
+    //   };
     default:
       return state;
   }

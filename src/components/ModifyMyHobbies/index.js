@@ -13,13 +13,31 @@ import Checkbox from 'src/components/Checkbox';
 // == Import style
 import './modifyMyHobbies.scss';
 
-const ModifyMyHobbies = ({ myHobbies, hobbiesList, myHobbiesList, toggleCheckbox, selectedHobbies}) => {
+const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHobby, addSelectedHobby}) => {
 
   let myHobbiesArray = [];
   myHobbies.map((hobby) => {
     myHobbiesArray = [...myHobbiesArray, hobby.id];
   });
   console.log(myHobbiesArray);
+
+  const onChange = (evt) => {
+    console.log(evt.currentTarget.value);
+    const { value } = evt.currentTarget;
+    const splitValue = value.split('-');
+    const hobbyId = splitValue[0];
+    const hobbyName = splitValue[1];
+    console.log(hobbyName);
+    console.log(hobbyId);
+    saveSelectedHobby(hobbyId, hobbyName);
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    addSelectedHobby(selectedHobby);
+    // console.log(evt.currentTarget.);
+  };
+
   // console.log(myServices);  // console.log(myHobbies);
 
   // const handleSelect = (evt) => {
@@ -90,17 +108,24 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, myHobbiesList, toggleCheckbox
 
     <div className="modifyMyHobbies">
       <div className="modifyMyHobbies__title"> Mes centres d'intérêts </div>
-      {hobbiesList.map((hobby) => (
-        <Checkbox
-          key={hobby.id}
-          className="logIn__modal__form__field"
-          type="checkbox"
-          name={hobby.name}
-          onChange={toggleCheckbox}
-          value={hobby.id}
-          defaultCheck={myHobbiesArray.includes(hobby.id) ? 'checked' : false}
-        />
-      ))};
+      <ul className="modifyMyHobbies__list">
+        {myHobbies.map((hobby) => (
+          <li className="modifyMyHobbies__list__item">
+            <div className={`modifyMyHobbies__list__item__text hobbies-${hobby.id}`}> {hobby.name} </div>
+            <button className="modifyMyHobbies__list__item__removeButton" type="button"> X </button>
+          </li>
+        ))}
+      </ul>
+      {/* <div className="modifyMyHobbies__subtitle"> Ajouter un centre d'intérêt </div> */}
+      <form className="modifyMyHobbies__form" onSubmit={handleSubmit}>
+        <select onChange={onChange}>
+          <option> Choisissez un centre d'interêt</option> 
+          {hobbiesList.map((hobby) => (
+            <option value={`${hobby.id}-${hobby.name}`}> {hobby.name} </option>
+          ))};
+        </select>
+        <button type="submit">Ajouter</button>
+      </form>
 
       {/* <select className="modifyMyHobbies__hobbiesList" onChange={handleSelect}>
         {hobbiesList.map((hobby) => (

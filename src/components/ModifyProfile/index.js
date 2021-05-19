@@ -47,6 +47,7 @@ const ModifyProfile = ({
         <div className="modifyProfile__principalInfos">
           <ProfilePrincipalInfos {...connectedUserData} isMyProfile />
         </div>
+        <div className="modifyProfile__right">
         <form className="modifyProfile__form" onSubmit={handleSubmit}>
 
           {/* <div className="modifyProfile__form__navbar">
@@ -148,6 +149,8 @@ const ModifyProfile = ({
 
             </div>
           </div>
+          <button type="submit"> Enregistrez vos modifications </button>
+        </form>
 
           <div className="modifyProfile__form__section">
             <div className="modifyProfile__form__section__title"> A propos de moi </div>
@@ -173,8 +176,7 @@ const ModifyProfile = ({
               </div>
             </div>
           </div>
-          <button type="submit"> Enregistrez vos modifications </button>
-        </form>
+        </div>
       </div>
 
     </div>

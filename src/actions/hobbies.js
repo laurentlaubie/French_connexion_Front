@@ -33,12 +33,31 @@ export const setLoadingHobbies = (value) => ({
   value,
 });
 
-// action type TOGGLE_CHECKBOX_HOBBIES
-export const TOGGLE_CHECKBOX_HOBBIES = 'TOGGLE_CHECKBOX_HOBBIES';
+// // action type TOGGLE_CHECKBOX_HOBBIES
+// export const TOGGLE_CHECKBOX_HOBBIES = 'TOGGLE_CHECKBOX_HOBBIES';
 
-// action creator toggleCheckboxHobbies
-export const toggleCheckboxHobbies = (value, checked) => ({
-  type: TOGGLE_CHECKBOX_HOBBIES,
-  value,
-  checked,
+// // action creator toggleCheckboxHobbies
+// export const toggleCheckboxHobbies = (value, checked) => ({
+//   type: TOGGLE_CHECKBOX_HOBBIES,
+//   value,
+//   checked,
+// });
+
+// action type SAVE_SELECTED_HOBBY
+export const SAVE_SELECTED_HOBBY = 'SAVE_SELECTED_HOBBY';
+
+// action creator saveSelectedHobby
+export const saveSelectedHobby = (hobbyId, hobbyName) => ({
+  type: SAVE_SELECTED_HOBBY,
+  hobbyId,
+  hobbyName,
+});
+
+// action type ADD_SELECTED_HOBBY
+export const ADD_SELECTED_HOBBY = 'ADD_SELECTED_HOBBY';
+
+// action creator addSelectedHobby
+export const addSelectedHobby = (selectedHobby) => ({
+  type: ADD_SELECTED_HOBBY,
+  selectedHobby,
 });
