@@ -1,4 +1,6 @@
+
 import React, { useState } from 'react';
+
 import PropTypes from 'prop-types';
 
 import axios from 'axios';
@@ -8,11 +10,11 @@ import hands from 'src/assets/images/hands.png';
 import defaultAvatar from 'src/assets/images/defaultAvatar.jpg';
 import ProfileLocalisation from 'src/components/ProfileLocalisation';
 
-
 // == import style
 import './profilePrincipalInfos.scss';
 
 const ProfilePrincipalInfos = ({
+
   isMyProfile, helper, nickname, createdAt, avatar, cities, firstname, lastname, id, saveAvatar,
 }) => {
   
@@ -49,11 +51,14 @@ const ProfilePrincipalInfos = ({
       <div className={helper ? 'profilePrincipalInfos__status__name--helper' : 'hidden'}>
         HELPER
         <img className="profilePrincipalInfos__status__logo--helper" src={hands} alt="Logo du helpeur" />
+
       </div>
-      <div className={(!helper && isMyProfile) ? 'profilePrincipalInfos__status__name' : 'hidden'}>
-        <a href="mon-profil/modifier"> Je deviens helper</a>
-        <img className="profilePrincipalInfos__status__logo" src={question} alt="Logo question" />
+      <div className="profilePrincipalInfos__username">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
+      <div className="profilePrincipalInfos__date"> {`Membre depuis le ${test}`} </div>
+      <div className="profilePrincipalInfos__image">
+        <img className="jose" alt="image__profile" src={avatar != null ? avatar : defaultAvatar} />
       </div>
+
 
     </div>
     <div className="profilePrincipalInfos__username">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
@@ -69,6 +74,7 @@ const ProfilePrincipalInfos = ({
 
     <ProfileLocalisation {...cities} />
   </div>
+
   );
 };
 
@@ -85,7 +91,7 @@ ProfilePrincipalInfos.propTypes = {
   //   latitude: PropTypes.number.isRequired,
   // }),
   // country: PropTypes.string,
-  // createdAt: PropTypes.string.isRequired,
+  createdAt: PropTypes.string,
   // firstname: PropTypes.string.isRequired,
   // lastname: PropTypes.string.isRequired,
 };
@@ -95,6 +101,7 @@ ProfilePrincipalInfos.defaultProps = {
   nickname: '',
   // cities: [],
   // country: [],
+  createdAt: '2021-05-11T07:33:18+00:00',
 };
 
 export default ProfilePrincipalInfos;

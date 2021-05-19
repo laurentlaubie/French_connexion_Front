@@ -25,3 +25,23 @@ export const setNewCenter = (center) => ({
   type: SET_CENTER,
   center,
 });
+
+export const SAVE_USER_ADDRESS = 'SAVE_USER_ADDRESS';
+
+export const saveUserAddress = (address) => ({
+  type: SAVE_USER_ADDRESS,
+  address,
+});
+
+export const LOAD_USERS_BY_COUNTRY = 'LOAD_USERS_BY_COUNTRY';
+
+export const loadUsersByCountry = () => ({
+  type: LOAD_USERS_BY_COUNTRY,
+});
+
+export const SAVE_USER_LIST = 'SAVE_USER_LIST';
+
+export const saveUsersList = (usersList) => ({
+  type: SAVE_USER_LIST,
+  usersList,
+});

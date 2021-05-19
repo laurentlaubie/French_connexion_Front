@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Field from 'src/components/Field';
 
 import './signIn.scss';
 
-const SignIn = ({ isOpen, close, openLogIn, firstname, lastname, email, password, confirmedPassword, changeField, handleSignIn }) => {
+const SignIn = ({
+  isOpen, close, openLogIn, firstname, lastname, email, password, confirmedPassword, changeField, handleSignIn,
+}) => {
+  const [errorMessage, setErrorMessage] = useState('');
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleSignIn();
+    if (password === confirmedPassword) {
+      handleSignIn();
+    }
+    else {
+      setErrorMessage('Les mots de passe ne correspondent pas');
+    }
   };
 
   return (
-    <div className={isOpen ? 'signIn' : 'signIn__close' }>
+    <div className={isOpen ? 'signIn' : 'signIn__close'}>
       <div className="signIn__modal">
         <h1 className="signIn__modal__title"> Créez votre compte </h1>
         <button className="signIn__modal__closeButton" type="button" onClick={close}> X </button>
         <form className="signIn__modal__form" onSubmit={handleSubmit}>
+          {errorMessage && (
+            <p className="error"> {errorMessage} </p>
+          )}
           <Field
-            className="signIn__form__field"
+            className="signIn__modal__form__field"
             name="firstname"
             placeholder="Prénom"
             onChange={changeField}
@@ -55,7 +67,7 @@ const SignIn = ({ isOpen, close, openLogIn, firstname, lastname, email, password
             value={confirmedPassword}
           />
 
-          <button className="signIn__modal__form__button" type="submit" > S'inscrire </button>
+          <button className="signIn__modal__form__button" type="submit"> S'inscrire </button>
         </form>
 
         <button type="button" className="signIn__modal__openLogInButton" onClick={openLogIn}> Vous avez déjà un compte ?</button>
@@ -63,7 +75,6 @@ const SignIn = ({ isOpen, close, openLogIn, firstname, lastname, email, password
     </div>
   );
 };
-
 
 SignIn.propTypes = {
   isOpen: PropTypes.bool.isRequired,

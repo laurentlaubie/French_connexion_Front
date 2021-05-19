@@ -8,6 +8,7 @@ import {
   CLOSE_MODIFY_CITY_MODAL,
   OPEN_MODIFY_CITY_MODAL,
   RENDER_NEW_LIST,
+  CHANGE_INPUTVALUE,
   SET_LOADING,
   SAVE_USERS_REVIEWS,
   SAVE_AVATAR,
@@ -15,7 +16,9 @@ import {
 
 } from 'src/actions/user';
 
-import { SET_ADRESS, SET_CENTER } from 'src/actions/map';
+import { SET_ADRESS } from 'src/actions/map';
+
+import { SAVE_MY_HOBBIES_IN_STATE } from 'src/actions/modifyForm';
 
 const initialState = {
   isHelper: false,
@@ -29,11 +32,17 @@ const initialState = {
   newPassword: '',
   confirmedNewPassword: '',
   isModifyCityModalOpen: false,
-  userAdress: '',
+  address: '',
+  userAddress: '',
   userCityCenter: '',
-  isLoading: false,
+  isLoading: true,
   newUserList: null,
+
   usersReviewList: [],
+
+  myHobbies: {},
+  inputValue: null,
+
 };
 
 export default (state = initialState, action = {}) => {
@@ -53,7 +62,6 @@ export default (state = initialState, action = {}) => {
         ...state,
         usersList: action.usersList,
       };
-
     case RENDER_NEW_LIST:
       return {
         ...state,
@@ -76,6 +84,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isModifyCityModalOpen: false,
+        address: '',
       };
     case OPEN_MODIFY_CITY_MODAL:
       return {
@@ -85,14 +94,16 @@ export default (state = initialState, action = {}) => {
     case SET_ADRESS:
       return {
         ...state,
-        userAdress: action.adress,
+        address: action.adress,
+
       };
-    case SET_CENTER:
+    case CHANGE_INPUTVALUE:
       return {
         ...state,
-        userCityCenter: action.center,
+        inputValue: action.inputValue,
       };
     case SET_LOADING:
+
      return {
       ...state,
       isLoading: action.value,
@@ -107,6 +118,17 @@ export default (state = initialState, action = {}) => {
       ...state,
       [userInfos.avatar]: action.avatar.data,
     };
+
+
+      return {
+        ...state,
+        isLoading: action.value,
+      };
+    case SAVE_MY_HOBBIES_IN_STATE:
+      return {
+        ...state,
+        myHobbies: action.value,
+      };
 
     default:
       return state;

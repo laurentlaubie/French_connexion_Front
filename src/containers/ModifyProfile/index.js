@@ -7,6 +7,10 @@ import {
   openModifyCityModal,
 } from 'src/actions/user';
 
+import { loadHobbiesList } from 'src/actions/hobbies';
+import { loadServicesList } from 'src/actions/services';
+import { toggleCheckBox, saveMyHobbiesInState } from 'src/actions/modifyForm';
+
 import ModifyProfile from 'src/components/ModifyProfile';
 
 // connection de props en lecture sur le state
@@ -16,6 +20,11 @@ const mapStateToProps = (state, ownProps) => ({
   connectedUserData: state.log.connectedUserData,
   newPassword: state.user.newPassword,
   confirmedNewPassword: state.user.confirmedNewPassword,
+  userAddress: state.user.userAddress,
+  hobbiesList: state.hobbies.hobbiesList,
+  servicesList: state.services.servicesList,
+  isLoaded: state.hobbies.isLoaded && state.services.isLoaded,
+  hobbiesListForCheckbox: state.user.myHobbies,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -30,11 +39,26 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   changePasswordField: (value, name) => {
     dispatch(changePasswordProfileFormFieldValue(value, name));
   },
-  handleModifyProfile: (userId) => {
-    dispatch(modifyProfile(userId));
+  handleModifyProfile: (userId, myHobbiesList) => {
+    dispatch(modifyProfile(userId, myHobbiesList));
   },
   openModal: () => {
     dispatch(openModifyCityModal());
+  },
+  loadHobbiesList: () => {
+    dispatch(loadHobbiesList());
+  },
+  loadServicesList: () => {
+    dispatch(loadServicesList());
+  },
+  // setLoading: (value) => {
+  //   dispatch(setLoading(value));
+  // },
+  // toggleCheckBox: (value) => {
+  //   dispatch(toggleCheckBox(value));
+  // },
+  saveMyHobbiesInState: (myHobbies) => {
+    dispatch(saveMyHobbiesInState(myHobbies));
   },
 
 });

@@ -8,11 +8,10 @@ import Profile from 'src/components/Profile';
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   // propName:  valueFromTheState,
-  isHelper: state.user.isHelper,
+  // isHelper: state.user.isHelper,
   // connectedUserInfos: state.connectedUserInfos,
   // otherUserInfos: state.otherUserInfos,
   userInfos: state.user.userInfos,
-  connectedUserData: state.log.connectedUserData,
   isLogOutOpen: state.log.isLogOutOpen,
   isLoading: state.user.isLoading,
 

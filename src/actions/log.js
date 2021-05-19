@@ -81,10 +81,20 @@ export const logOut = () => ({
   type: LOG_OUT,
 });
 
-// action type SET_TO_CONNECTED
-export const SET_TO_CONNECTED = 'SET_TO_CONNECTED';
+// action type SET_IS_CONNECTED
+export const SET_IS_CONNECTED = 'SET_IS_CONNECTED';
 
 // action creator setToConnected
-export const setToConnected = () => ({
-  type: SET_TO_CONNECTED,
+export const setIsConnected = (value) => ({
+  type: SET_IS_CONNECTED,
+  value,
+});
+
+// action type SAVE_TOKEN_IN_STATE
+export const SAVE_TOKEN_IN_STATE = 'SAVE_TOKEN_IN_STATE';
+
+// action creator saveTokenInState
+export const saveTokenInState = (userToken) => ({
+  type: SAVE_TOKEN_IN_STATE,
+  userToken,
 });

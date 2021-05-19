@@ -2,9 +2,26 @@
 import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
+
 import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, setLoading, LOAD_USERS_REVIEWS, saveUsersReviews} from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn } from 'src/actions/log';
 
+
+import {
+  LOAD_USER_PROFILE,
+  saveUserProfile,
+  ADD_NEW_USER,
+  LOAD_USERS_CARDS,
+  saveUsersCards,
+  MODIFY_PROFILE,
+} from 'src/actions/user';
+
+import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn, saveTokenInState } from 'src/actions/log';
+import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
+import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
+import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
+
+import { setLoading } from 'src/actions/loading';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -34,6 +51,9 @@ export default (store) => (next) => (action) => {
           // on stocke le token dans le localStorage
           localStorage.setItem('token', (userToken));
 
+          // on stocke le token dans le state
+          store.dispatch(saveTokenInState(userToken));
+
           console.log(userToken);
           // api.defaults.headers.common.Authorization = `Bearer ${userToken}`;
 
@@ -44,6 +64,7 @@ export default (store) => (next) => (action) => {
           // const connectedUserData = decodedToken.username;
           // console.log(connectedUserData);
           store.dispatch(saveConnectedUserData(decodedToken));
+          // window.location.href = '/';
         }).catch((error) => {
           console.log(error);
         });
@@ -52,7 +73,6 @@ export default (store) => (next) => (action) => {
     }
     case LOAD_USER_PROFILE: {
       // CETTE REQUETE N'EST ACCESSIBLE QUE POUR UN UTILISATEUR CONNECTE
-      
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
       const idParam = (action.userId);
       console.log(idParam);
@@ -60,8 +80,8 @@ export default (store) => (next) => (action) => {
       const userToken = localStorage.getItem('token');
       console.log(userToken);
 
-      // -- gestion loader for profilPage
-      store.dispatch(setLoading(true));
+      // // -- gestion loader for profilPage
+      // store.dispatch(setLoading(true));
 
       api
         .get(`/user/${idParam}`, {
@@ -77,6 +97,9 @@ export default (store) => (next) => (action) => {
           console.log(response.headers);
           // on sauvegarde ces infos
           store.dispatch(saveUserProfile(userInfos));
+          // gestion du loader dans la page profil
+          store.dispatch(setLoading(false));
+          console.log('la requête seffectue');
         }).catch((error) => {
           // eslint-disable-next-line no-console
           const errorStatus = error.response.status;
@@ -85,11 +108,10 @@ export default (store) => (next) => (action) => {
           if (errorStatus === 401) {
             window.location.href = '/403';
           }
-        })
-        // -- gestion loader for profilPage
-        .finally(() => {store.dispatch(setLoading(false))
+          if (errorStatus === 404) {
+            window.location.href = '/404';
+          }
         });
-       
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
@@ -143,9 +165,8 @@ export default (store) => (next) => (action) => {
 
     case LOAD_USERS_CARDS:
       // affichage de tous les profils sous forme de cards
-      
-      // -- gestion loader for profilPage
-      store.dispatch(setLoading(true));
+      // // -- gestion loader for profilPage
+      // store.dispatch(setLoading(true));
 
       api
         .get('user')
@@ -187,7 +208,8 @@ export default (store) => (next) => (action) => {
 
     case MODIFY_PROFILE: {
       // on récupère l'ID de la personne connectée
-      const { userId } = action;
+      const {userId} = action;
+      const hobbies = action.myHobbiesList;
       console.log(userId);
 
       // on récupère le token stocké dans le localStorage
@@ -198,7 +220,7 @@ export default (store) => (next) => (action) => {
       const state = store.getState();
       const { userInfos } = state.user;
       const { email, firstname, lastname, phoneNumber, biography } = userInfos;
-      const { newPassword: password, confirmedNewPassword: confirmedPassword } = state.user;
+      const { newPassword: password, confirmedNewPassword: confirmedPassword, userAddress : userAdress } = state.user;
 
       api
         .put(`/user/${userId}`,
@@ -206,10 +228,12 @@ export default (store) => (next) => (action) => {
             lastname,
             firstname,
             email,
-            password,
-            confirmedPassword,
-            biography,
+            // password,
+            // confirmedPassword,
+            // biography,
             // phoneNumber,
+            // userAdress,
+            hobbies,
           },
           {
             headers: {
@@ -232,13 +256,98 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
     }
+    case LOAD_USERS_BY_COUNTRY: {
+      // on récupère le pays
+      const state = store.getState();
+      console.log(state);
+      const country = state.map.userAddress[1];
+      api
+        .get(`/user/search?country=${country}`)
+        .then((response) => {
+          console.log(response);
+          const usersList = response.data;
+          console.log(usersList[0].cities);
+          let userCountCity = [];
+        
+          usersList[0].cities.map((city) => {
+            console.log(city.users);
+            userCountCity = [...userCountCity, city.users];
+            console.log(userCountCity);
+          });
+          console.log(userCountCity);
 
+          let userCount = [];
+          userCountCity.map((userArray) =>
+          {
+            userCount = userCount.concat(userArray);
+          });
+          console.log(userCount);
+          //Object.values(userCount);
+          console.log(userCount);
+          store.dispatch(saveUsersList(userCount));
+        }).catch((error) => {
+          // eslint-disable-next-line no-console
+          console.log(error);
+        });
+      next(action);
+      break;
+    }
     case LOG_OUT:
       delete api.defaults.headers.common.Authorization;
       localStorage.removeItem('token');
       console.log('je me déconnecte');
       next(action);
       break;
+
+    case LOAD_HOBBIES_LIST: {
+      const userToken = localStorage.getItem('token');
+      console.log(userToken);
+
+      api
+        .get('hobby',
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+            },
+          })
+        .then((response) => {
+          // console.log(response.data);
+          const hobbiesList = response.data;
+          store.dispatch(saveHobbiesList(hobbiesList));
+          store.dispatch(setLoadingHobbies(true));
+        }).catch((error) => {
+          console.log(error);
+        }).finally(() => {
+          // gestion du loader
+          // store.dispatch(setLoading(false));
+        });
+      break;
+    }
+    case LOAD_SERVICES_LIST: {
+      const userToken = localStorage.getItem('token');
+      console.log(userToken);
+
+      api
+        .get('service',
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+            },
+          })
+        .then((response) => {
+          // console.log(response.data);
+          const servicesList = response.data;
+          store.dispatch(saveServicesList(servicesList));
+          store.dispatch(setLoadingServices(true));
+        }).catch((error) => {
+        // eslint-disable-next-line no-console
+          console.log(error);
+        }).finally(() => {
+          // gestion du loader
+          // store.dispatch(setLoading(false));
+        });
+      break;
+    }
     default:
       next(action);
   }

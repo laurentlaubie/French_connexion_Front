@@ -74,6 +74,7 @@ export const saveUsersCards = (usersList) => ({
 });
 
 
+
 // action type SAVE_USERS_REVIEWS
 export const SAVE_USERS_REVIEWS = 'SAVE_USERS_REVIEWS';
 
@@ -90,6 +91,8 @@ export const LOAD_USERS_REVIEWS = 'LOAD_USERS_REVIEWS';
 export const loadUsersReviews = () => ({
   type: LOAD_USERS_REVIEWS,
 });
+
+
 
 
 // action type RENDER_NEW_LIST
@@ -156,6 +159,14 @@ export const openModifyCityModal = () => ({
   type: OPEN_MODIFY_CITY_MODAL,
 });
 
+// action type CHANGE_INPUTVALUE
+export const CHANGE_INPUTVALUE = 'CHANGE_INPUTVALUE';
+
+// action creator changeInputValue
+export const changeInputValue = (inputValue) => ({
+  type: CHANGE_INPUTVALUE,
+  inputValue,
+});
 // action type SET_LOADING
 export const SET_LOADING = 'SET_LOADING';
 
@@ -166,6 +177,7 @@ export const setLoading = (value) => ({
 });
 
 
+
 // action type SAVE_AVATAR
 export const SAVE_AVATAR = 'SAVE_AVATAR';
 
@@ -174,4 +186,16 @@ export const saveAvatar = (avatarData) => ({
   type: SAVE_AVATAR,
   avatarData,
   
+
+// action type SAVE_USER_ADDRESS
+export const SAVE_USER_ADDRESS = 'SAVE_USER_ADDRESS';
+
+// action creator saveUserAddress
+export const saveUserAddress = (cityName, countryName, lat, lng) => ({
+  type: SAVE_USER_ADDRESS,
+  cityName,
+  countryName,
+  lat,
+  lng,
+
 });
