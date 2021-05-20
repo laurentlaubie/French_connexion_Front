@@ -3,13 +3,15 @@ import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 
+import { useHistory } from 'react-router-dom';
+
 import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, LOAD_USERS_REVIEWS, saveUsersReviews} from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn, saveTokenInState } from 'src/actions/log';
 import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
-import { MODIFY_PROFILE } from 'src/actions/modifyForm' ;
+import { MODIFY_PROFILE, redirectToMyProfile } from 'src/actions/modifyForm';
 
 import { setLoading } from 'src/actions/loading';
 import { setIsConnected, resetPassword } from '../actions/log';
@@ -251,6 +253,7 @@ export default (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(resetPassword());
+          store.dispatch(redirectToMyProfile(true));
           // window.location.href = '/mon-profil';
           // const usersList = response.data;
           // store.dispatch(saveUsersCards(usersList));

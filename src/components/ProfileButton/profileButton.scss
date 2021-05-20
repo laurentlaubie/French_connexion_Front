@@ -27,6 +27,12 @@
     background-color: vars.$light-blue;
   }
 
+  &--gray{
+    background-color: vars.$light-grey;
+    color: vars.$dark-color;
+    text-shadow: none;
+  }
+
   &__title {
 
     font-size: 30px;

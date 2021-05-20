@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ModifyMyServices from 'src/containers/ModifyMyServices';
 
-const ModifyHelperSection = ({ helper, toggleHelperCheckbox, isLoaded, becomeHelper }) => {
+const ModifyHelperSection = ({ helper, toggleHelperCheckbox, isLoaded, becomeHelper, removeHelperStatus }) => {
 
   const handleChange = (evt) => {
     console.log(evt.target.value);
@@ -35,7 +35,8 @@ const ModifyHelperSection = ({ helper, toggleHelperCheckbox, isLoaded, becomeHel
           {isLoaded && <ModifyMyServices />}
         </div>
 
-        <button type="button" className="modifyProfile__form__resetHelperButton"> Je ne souhaite plus être helper </button>
+        <button type="button" className={helper ? 'modifyProfile__form__resetHelperButton' : 'hidden'} onClick={removeHelperStatus}> Je ne souhaite plus être helper </button>
+        
       </div>
     </div>
   );

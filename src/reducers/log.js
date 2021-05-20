@@ -19,7 +19,11 @@ import {
   ADD_SELECTED_SERVICE, SAVE_SELECTED_SERVICE,
 } from 'src/actions/services';
 
-import { TOGGLE_HELPER_CHECKBOX, BECOME_HELPER } from 'src/actions/modifyForm';
+import {
+  BECOME_HELPER,
+  REMOVE_HELPER_STATUS,
+  REDIRECT_TO_MY_PROFILE,
+} from 'src/actions/modifyForm';
 
 const initialState = {
   isConnected: false,
@@ -33,6 +37,8 @@ const initialState = {
   selectedHobby: '',
   newPassword: '',
   confirmedNewPassword: '',
+  redirectionToMyProfile: false,
+
 };
 
 export default (state = initialState, action = {}) => {
@@ -94,6 +100,7 @@ export default (state = initialState, action = {}) => {
         isConnected: false,
         isLogOutOpen: false,
         connectedUserData: '',
+        token: '',
       };
     case SET_IS_CONNECTED:
       return {
@@ -176,6 +183,20 @@ export default (state = initialState, action = {}) => {
           ...state.connectedUserData,
           helper: true,
         },
+      };
+    case REMOVE_HELPER_STATUS:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          helper: false,
+          services: [],
+        },
+      };
+    case REDIRECT_TO_MY_PROFILE:
+      return {
+        ...state,
+        redirectionToMyProfile: action.value,
       };
     default:
       return state;

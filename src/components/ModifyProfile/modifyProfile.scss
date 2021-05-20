@@ -208,4 +208,24 @@
     }
   }
 
+  &__buttons{
+    // border:1px solid black;
+    display:flex;
+    flex-direction: column;
+    margin-bottom:2rem;
+    width:100%;
+
+    @media (min-width: vars.$breakpoint-tablet){
+      flex-direction:row;
+      width:100%;
+      right:0;
+    }
+
+    @media (min-width: vars.$breakpoint-desktop){
+      width:100%;
+      justify-content: flex-end;      
+    }
+
+  }
+
 }

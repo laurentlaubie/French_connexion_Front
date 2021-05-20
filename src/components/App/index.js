@@ -2,7 +2,7 @@
 // == Import npm
 import React, { useEffect } from 'react';
 import {
-  Route, Switch, Redirect, useLocation,
+  Route, Switch, Redirect, useLocation, useHistory,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
@@ -53,6 +53,8 @@ const App = ({
   // récupération du chemin
   const pathName = useLocation().pathname;
   console.log(pathName);
+
+  const history = useHistory();
 
   useEffect(() => {
     const userTokenFromLocalStorage = localStorage.getItem('token');

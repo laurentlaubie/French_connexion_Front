@@ -12,7 +12,12 @@ import Loading from 'src/components/Loading';
 // == import style
 import './myProfile.scss';
 
-const MyProfile = ({ connectedUserData, isLoading, openLogOut }) => {
+const MyProfile = ({ connectedUserData, isLoading, openLogOut, redirect }) => {
+
+  useEffect(() => {
+    console.log('useEffect');
+    redirect(false);
+  }, []);
   // console.log(connectedUserData);
   // const connectedUserId = connectedUserData.id;
   // console.log(connectedUserId);

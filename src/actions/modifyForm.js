@@ -25,3 +25,21 @@ export const modifyProfile = (userId, myHobbiesList, myServicesList) => ({
   myHobbiesList,
   myServicesList,
 });
+
+
+// action type REMOVE_HELPER_STATUS
+export const REMOVE_HELPER_STATUS = 'REMOVE_HELPER_STATUS';
+
+// action creator removeHelperStatus
+export const removeHelperStatus = () => ({
+  type: REMOVE_HELPER_STATUS,
+});
+
+// action type REDIRECT_TO_PROFILE
+export const REDIRECT_TO_MY_PROFILE = 'REDIRECT_TO_PROFILE';
+
+// action creator redirectToMyProfile
+export const redirectToMyProfile = (value) => ({
+  type: REDIRECT_TO_MY_PROFILE,
+  value,
+});
