@@ -11,7 +11,8 @@
   @media (min-width: vars.$breakpoint-tablet) { /* You can edit the max-width value to match what you need */
     .banner{
       top: 0;
-      width: 100%;
+      width: fit-content;
+      margin: auto;
       margin-top: -1rem;
       z-index: 150;
       position: relative;
