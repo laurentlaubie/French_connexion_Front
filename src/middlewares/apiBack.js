@@ -9,6 +9,7 @@ import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
+import { toast } from 'react-toastify';
 import { setLoading } from 'src/actions/loading';
 import { setIsConnected, resetPassword } from '../actions/log';
 
@@ -55,6 +56,7 @@ export default (store) => (next) => (action) => {
           // const connectedUserData = decodedToken.username;
           // console.log(connectedUserData);
           store.dispatch(saveConnectedUserData(decodedToken));
+          toast.info('tu es connecté');
           // window.location.href = '/';
         }).catch((error) => {
           console.log(error);
