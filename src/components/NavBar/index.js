@@ -9,7 +9,7 @@ import search from 'src/assets/pictures/search.png';
 
 const NavBar = ({ isConnected, openModal }) => (
   <div className="navBar">
-    <div className="navBar__rounded">.</div>
+    
     <ul className="navBar__list">
       <li className={isConnected ? 'navBar__item__hidden' : 'navBar__item'} onClick={openModal}>
         <button type="button" className="navBar__item__button">
