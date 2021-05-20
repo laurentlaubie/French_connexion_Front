@@ -15,8 +15,8 @@ const MapProfile = ({ latProp, lngProp }) => {
   const center = {lat: latProp, lng: lngProp}
 
   const mapContainerStyle = {
-    height: '22vh',
-    width: '22vw',
+    height: '30vh',
+    //width: '22vw',
   };
   const options = {
     disableDefaultUI: true,
