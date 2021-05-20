@@ -4,7 +4,7 @@ import ProfilesResults from 'src/components/ProfilesResults';
 
 const mapStateToProps = (state, ownProps) => ({
   usersList: state.map.usersList,
-
+  usersByCity: state.map.usersCity,
 });
 
 // connection de props fonctions qui déclenchent des actions
