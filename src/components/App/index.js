@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 // == Import npm
 import React, { useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Route, Switch, Redirect, useLocation,
 } from 'react-router-dom';
@@ -137,6 +139,7 @@ const App = ({
           <Page404 />
         </Route>
       </Switch>
+      <ToastContainer autoClose={2000} />
     </div>
   );
 };
