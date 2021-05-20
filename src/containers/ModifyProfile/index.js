@@ -25,6 +25,7 @@ const mapStateToProps = (state, ownProps) => ({
   servicesList: state.services.servicesList,
   isLoaded: state.hobbies.isLoaded && state.services.isLoaded,
   redirection: state.log.redirectionToMyProfile,
+  isConnected: state.log.isConnected,
   // newPassword: state.log.newPassword,
   // confirmedNewPassword: state.log.confirmedNewPassword,
   // hobbiesListForCheckbox: state.user.myHobbies,

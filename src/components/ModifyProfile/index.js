@@ -24,6 +24,7 @@ const ModifyProfile = ({
   loadHobbiesList,
   loadServicesList,
   redirection,
+  isConnected,
   // newPassword,
   // confirmedNewPassword,
 
@@ -57,7 +58,8 @@ const ModifyProfile = ({
 
   return (
     <>
-      {redirection && <Redirect to="/mon-profil" /> }
+      {!isConnected && <Redirect to="/" />}
+      {redirection && <Redirect to="/mon-profil" />}
 
       <div className="modifyProfile">
         <h1 className="modifyProfile__title"> Modifier mon profil </h1>
