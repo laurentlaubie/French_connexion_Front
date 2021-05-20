@@ -114,15 +114,6 @@ export const changeSignInFieldValue = (value, name) => ({
   name,
 });
 
-// action type MODIFY_PROFILE
-export const MODIFY_PROFILE = 'MODIFY_PROFILE';
-
-// action creator modifyProfile
-export const modifyProfile = (userId) => ({
-  type: MODIFY_PROFILE,
-  userId,
-});
-
 // action type CLOSE_MODIFY_CITY_MODAL
 export const CLOSE_MODIFY_CITY_MODAL = 'CLOSE_MODIFY_CITY_MODAL';
 

@@ -15,6 +15,10 @@ import {
   ADD_SELECTED_HOBBY, SAVE_SELECTED_HOBBY,
 } from 'src/actions/hobbies';
 
+import {
+  ADD_SELECTED_SERVICE, SAVE_SELECTED_SERVICE,
+} from 'src/actions/services';
+
 import { TOGGLE_HELPER_CHECKBOX, BECOME_HELPER } from 'src/actions/modifyForm';
 
 const initialState = {
@@ -97,15 +101,7 @@ export default (state = initialState, action = {}) => {
         isConnected: action.value,
         isLoading: false,
       };
-    case SAVE_SELECTED_HOBBY:
-      return {
-        ...state,
-        selectedHobby: {
-          ...state.selectedHobby,
-          id: action.hobbyId,
-          name: action.hobbyName,
-        },
-      };
+   
     case CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE:
       return {
         ...state,
@@ -122,12 +118,38 @@ export default (state = initialState, action = {}) => {
           [action.name]: action.value,
         },
       };
+    case SAVE_SELECTED_HOBBY:
+      return {
+        ...state,
+        selectedHobby: {
+          ...state.selectedHobby,
+          id: action.hobbyId,
+          name: action.hobbyName,
+        },
+      };
     case ADD_SELECTED_HOBBY:
       return {
         ...state,
         connectedUserData: {
           ...state.connectedUserData,
           hobbies: [...state.connectedUserData.hobbies, action.selectedHobby],
+        },
+      };
+    case SAVE_SELECTED_SERVICE:
+      return {
+        ...state,
+        selectedService: {
+          ...state.selectedService,
+          id: action.serviceId,
+          name: action.serviceName,
+        },
+      };
+    case ADD_SELECTED_SERVICE:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          services: [...state.connectedUserData.services, action.selectedService],
         },
       };
     case RESET_PASSWORD:
@@ -139,14 +161,14 @@ export default (state = initialState, action = {}) => {
           confirmedNewPassword: '',
         },
       };
-    case TOGGLE_HELPER_CHECKBOX:
-      return {
-        ...state,
-        connectedUserData: {
-          ...state.connectedUserData,
-          helper: !action.helper,
-        },
-      };
+    // case TOGGLE_HELPER_CHECKBOX:
+    //   return {
+    //     ...state,
+    //     connectedUserData: {
+    //       ...state.connectedUserData,
+    //       helper: !action.helper,
+    //     },
+    //   };
     case BECOME_HELPER:
       return {
         ...state,

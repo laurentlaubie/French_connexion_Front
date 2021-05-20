@@ -31,12 +31,20 @@ const ModifyProfile = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('je souhaite envoyer mon formulaire');
+
     let myHobbiesList = [];
     connectedUserData.hobbies.map((hobby) => {
       myHobbiesList = [...myHobbiesList, hobby.id];
     });
     console.log(myHobbiesList);
-    handleModifyProfile(userId, myHobbiesList);
+
+    let myServicesList = [];
+    connectedUserData.services.map((service) => {
+      myServicesList = [...myServicesList, service.id];
+    });
+    console.log(myServicesList);
+
+    handleModifyProfile(userId, myHobbiesList, myServicesList);
   };
 
   useEffect(() => {

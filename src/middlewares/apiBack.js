@@ -3,14 +3,17 @@ import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 
-import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, LOAD_USERS_REVIEWS, saveUsersReviews} from 'src/actions/user';
+import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, LOAD_USERS_REVIEWS, saveUsersReviews} from 'src/actions/user';
 import { LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn, saveTokenInState } from 'src/actions/log';
 import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
+import { MODIFY_PROFILE } from 'src/actions/modifyForm' ;
+
 import { setLoading } from 'src/actions/loading';
 import { setIsConnected, resetPassword } from '../actions/log';
+
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -200,7 +203,8 @@ export default (store) => (next) => (action) => {
 
     case MODIFY_PROFILE: {
       // on récupère l'ID de la personne connectée
-      const { userId } = action;
+      const { userId, myHobbiesList: hobbies, myServicesList: services } = action;
+      // const {  } = action ;
       console.log(userId);
 
       // on récupère le token stocké dans le localStorage
@@ -221,7 +225,6 @@ export default (store) => (next) => (action) => {
         newPassword: password,
         confirmedNewPassword: confirmedPassword,
         helper,
-        hobbies,
       } = connectedUserData;
 
       api
@@ -238,6 +241,7 @@ export default (store) => (next) => (action) => {
             // userAdress,
             hobbies,
             helper,
+            services,
           },
           {
             headers: {

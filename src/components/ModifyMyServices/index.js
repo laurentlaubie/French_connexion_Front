@@ -7,15 +7,16 @@ import './modifyMyServices.scss';
 
 const ModifyMyServices = ({ helper, myServices, servicesList, saveSelectedService, selectedService, addSelectedService }) => {
 
-  let myServicesArray = [];
-  if (myServices !== '') {
-    myServices.map((hobby) => {
-      myServicesArray = [...myServicesArray, hobby.id];
-  });
-  }
+  // let myServicesArray = [];
+  // console.log(`myServices = ${myServices}`);
+  // if (myServices !== '') {
+  //   myServices.map((service) => {
+  //     myServicesArray = [...myServicesArray, service.id];
+  //   });
+  // }
 
   console.log(myServices);
-  console.log(myServicesArray);
+  // console.log(myServicesArray);
 
   const onChange = (evt) => {
     console.log(evt.currentTarget.value);
@@ -29,6 +30,7 @@ const ModifyMyServices = ({ helper, myServices, servicesList, saveSelectedServic
   };
 
   const onClick = (evt) => {
+    console.log(selectedService);
     addSelectedService(selectedService);
     // evt.currentTarget();
   };
@@ -40,8 +42,7 @@ const ModifyMyServices = ({ helper, myServices, servicesList, saveSelectedServic
 
     <div className={helper ? 'modifyProfile__form__subsection' : 'hidden'}>
       <div className="modifyProfile__form__subsection__title"> Les services que vous proposez aux voyageurs </div>
-      { myServices === '' ? "vous n'avez pas de centres d'intérêt enregistrés" : ''}
-      { myServices !== '' && (
+      { myServices.length === 0 ? "vous n'avez pas de centres d'intérêt enregistrés" : ''}
         <ul className="modifyMyServices__list">
           {myServices.map((service) => (
             <li className="modifyMyServices__list__item">
@@ -50,7 +51,6 @@ const ModifyMyServices = ({ helper, myServices, servicesList, saveSelectedServic
             </li>
           ))}
         </ul>
-      )}
       <div className="modifyMyServices__select">
         <select onChange={onChange}>
           <option> Choisissez un service</option>

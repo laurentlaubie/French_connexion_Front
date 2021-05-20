@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import {
   loadUserProfile,
-  
-  modifyProfile,
   openModifyCityModal,
 } from 'src/actions/user';
 
@@ -11,7 +9,7 @@ import { changePasswordProfileFormFieldValue, changeProfileFormFieldValue } from
 
 import { loadHobbiesList } from 'src/actions/hobbies';
 import { loadServicesList } from 'src/actions/services';
-import { toggleCheckBox, saveMyHobbiesInState } from 'src/actions/modifyForm';
+import { modifyProfile } from 'src/actions/modifyForm';
 
 import ModifyProfile from 'src/components/ModifyProfile';
 
@@ -43,8 +41,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   // changePasswordField: (value, name) => {
   //   dispatch(changePasswordProfileFormFieldValue(value, name));
   // },
-  handleModifyProfile: (userId, myHobbiesList) => {
-    dispatch(modifyProfile(userId, myHobbiesList));
+  handleModifyProfile: (userId, myHobbiesList, myServicesList) => {
+    dispatch(modifyProfile(userId, myHobbiesList, myServicesList));
   },
   openModal: () => {
     dispatch(openModifyCityModal());
