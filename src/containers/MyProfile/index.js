@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { openLogOut } from 'src/actions/log';
 import { loadUserProfile } from 'src/actions/user';
+import { redirectToMyProfile } from 'src/actions/modifyForm';
 
 import MyProfile from 'src/components/MyProfile';
 
@@ -10,6 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
   connectedUserData: state.log.connectedUserData,
   isLoading: state.user.isLoading,
   userInfos: state.user.userInfos,
+  isConnected: state.log.isConnected,
 
 });
 
@@ -21,6 +23,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   loadUserProfile: (userId) => {
     dispatch(loadUserProfile(userId));
+  },
+  redirect: (value) => {
+    dispatch(redirectToMyProfile(value));
   },
 });
 

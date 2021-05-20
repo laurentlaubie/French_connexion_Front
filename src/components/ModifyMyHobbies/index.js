@@ -7,15 +7,15 @@ import './modifyMyHobbies.scss';
 
 const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHobby, addSelectedHobby}) => {
 
-  let myHobbiesArray = [];
-  if (myHobbies !== '') {
-    myHobbies.map((hobby) => {
-      myHobbiesArray = [...myHobbiesArray, hobby.id];
-  });
-  }
+  // let myHobbiesArray = [];
+  // if (myHobbies !== '') {
+  //   myHobbies.map((hobby) => {
+  //     myHobbiesArray = [...myHobbiesArray, hobby.id];
+  // });
+  // }
 
   console.log(myHobbies);
-  console.log(myHobbiesArray);
+  // console.log(myHobbiesArray);
 
   const onChange = (evt) => {
     console.log(evt.currentTarget.value);
@@ -35,6 +35,7 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHo
   // };
 
   const onClick = (evt) => {
+    console.log(selectedHobby);
     addSelectedHobby(selectedHobby);
     // evt.currentTarget();
   };

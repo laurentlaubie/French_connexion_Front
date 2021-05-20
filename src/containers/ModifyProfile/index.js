@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import {
   loadUserProfile,
-  
-  modifyProfile,
   openModifyCityModal,
 } from 'src/actions/user';
 
@@ -11,7 +9,7 @@ import { changePasswordProfileFormFieldValue, changeProfileFormFieldValue } from
 
 import { loadHobbiesList } from 'src/actions/hobbies';
 import { loadServicesList } from 'src/actions/services';
-import { toggleCheckBox, saveMyHobbiesInState } from 'src/actions/modifyForm';
+import { modifyProfile } from 'src/actions/modifyForm';
 
 import ModifyProfile from 'src/components/ModifyProfile';
 
@@ -26,6 +24,8 @@ const mapStateToProps = (state, ownProps) => ({
   hobbiesList: state.hobbies.hobbiesList,
   servicesList: state.services.servicesList,
   isLoaded: state.hobbies.isLoaded && state.services.isLoaded,
+  redirection: state.log.redirectionToMyProfile,
+  isConnected: state.log.isConnected,
   // newPassword: state.log.newPassword,
   // confirmedNewPassword: state.log.confirmedNewPassword,
   // hobbiesListForCheckbox: state.user.myHobbies,
@@ -40,11 +40,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   changeField: (value, name) => {
     dispatch(changeProfileFormFieldValue(value, name));
   },
-  // changePasswordField: (value, name) => {
-  //   dispatch(changePasswordProfileFormFieldValue(value, name));
-  // },
-  handleModifyProfile: (userId, myHobbiesList) => {
-    dispatch(modifyProfile(userId, myHobbiesList));
+  handleModifyProfile: (userId, myHobbiesList, myServicesList) => {
+    dispatch(modifyProfile(userId, myHobbiesList, myServicesList));
   },
   openModal: () => {
     dispatch(openModifyCityModal());
@@ -55,6 +52,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   loadServicesList: () => {
     dispatch(loadServicesList());
   },
+  
   // setLoading: (value) => {
   //   dispatch(setLoading(value));
   // },

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { saveConnectedUserData, setIsConnected, saveTokenInState } from 'src/actions/log';
+import { loadConnectedUserData, setIsConnected, saveTokenInState } from 'src/actions/log';
 
 import { loadHobbiesList } from 'src/actions/hobbies';
 
@@ -21,8 +21,8 @@ const mapStateToProps = (state, ownProps) => ({
 // connection de props fonctions qui déclenchent des actions
 // ces props seraont des fonctions
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  saveConnectedUserData: (decodedToken) => {
-    dispatch(saveConnectedUserData(decodedToken));
+  loadConnectedUserData: (id) => {
+    dispatch(loadConnectedUserData(id));
   },
   loadHobbiesList: () => {
     dispatch(loadHobbiesList());

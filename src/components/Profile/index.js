@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Redirect } from 'react-router-dom';
 
 // == import local
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
@@ -18,7 +18,6 @@ import Loading from 'src/components/Loading';
 
 // == import style
 import './profile.scss';
-
 
 const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, openLogOut, isLoading, saveAvatar }) => {
   // let userInfos = null;
@@ -47,27 +46,26 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, o
   }, [pathName]);
 
   return (
+    <>
+      {isLoading && <Loading />}
+      {!isLoading && (
+        <div className="profile">
+          <h1 className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </h1>
+          <div className="profile__content">
+            <div className="profile__content__left">
+              <ProfilePrincipalInfos {...userInfos} isMyProfile={isMyProfile} saveAvatar={saveAvatar} />
+              { isMyProfile && <ProfilePersonalInfos {...userInfos} /> }
+              { !isMyProfile && <ContactMe /> }
+            </div>
 
-    <>  {isLoading && (<Loading />)}
-        {!isLoading && (
+            <div className="profile__content__right">
+              <ProfileDescription {...userInfos} />
+              {/* <ProfileHobbies {...userInfos} /> */}
+              {/* {(userInfos.isHelper) && <ProfileServices {...userInfos} />} */}
 
-    <div className="profile">
-      <h1 className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </h1>
-      <div className="profile__content">
-        <div className="profile__content__left">
-          <ProfilePrincipalInfos {...userInfos} isMyProfile={isMyProfile} saveAvatar={saveAvatar} />
-          { isMyProfile && <ProfilePersonalInfos {...userInfos} /> }
-          { !isMyProfile && <ContactMe /> }
+            </div>
+          </div>
         </div>
-
-        <div className="profile__content__right">
-          <ProfileDescription {...userInfos} />
-          {/* <ProfileHobbies {...userInfos} /> */}
-          {/* {(userInfos.isHelper) && <ProfileServices {...userInfos} />} */}
-
-        </div>
-      </div>
-    </div>
       )}
     </>
   );
