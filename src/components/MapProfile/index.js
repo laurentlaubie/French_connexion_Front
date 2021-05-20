@@ -5,6 +5,7 @@ import {
 } from '@react-google-maps/api';
 
 
+import  './mapProfile.scss';
 
 import '@reach/combobox/styles.css';
 
@@ -37,7 +38,7 @@ const MapProfile = ({ latProp, lngProp }) => {
       <GoogleMap
         id='map'
         mapContainerStyle={mapContainerStyle}
-        zoom={10}
+        zoom={8}
         center={center}
         options={options}
         onLoad={onMapLoad}
