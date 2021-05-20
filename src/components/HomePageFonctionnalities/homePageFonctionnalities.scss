@@ -69,13 +69,13 @@
         color: vars.$light-red;
         margin-bottom: 1.5rem;
         text-decoration: underline;
-        font-family: 'Quattrocento Sans', sans-serif;
+        font-family: vars.$font-title;
       }
   
       &__content{
         font-size: 1.4rem;
         text-align: justify;
-        font-family: 'EB Garamond', serif;
+        font-family: vars.$font-text;
 
       }
 

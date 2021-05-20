@@ -1,6 +1,6 @@
 @use 'src/styles/vars';
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 
 .homePageHeader{
   // border:1px solid green;
@@ -52,14 +52,14 @@
     &__title{
       font-size:1em;
       text-shadow: 1px 1px 1px black;
-      font-family: 'Quattrocento Sans', sans-serif;
+      font-family: vars.$font-title;
       text-align: center;
 
     }
 
     &__subtitle{
       font-size: .6em;
-      font-family: "Quattrocento Sans",sans-serif;
+      font-family: vars.$font-title;
       font-style: italic;
       text-shadow: 0.5px 0.5px 0.5px #000;
       text-align: center;
