@@ -52,7 +52,6 @@ const Profile = ({ isMyProfile, loadUserProfile, userInfos, connectedUserData, o
         {!isLoading && (
 
     <div className="profile">
-      <LogOut />
       <h1 className="profile__title"> {isMyProfile ? 'Mon profil' : 'Le nom du helpeur/voyageur'} </h1>
       <div className="profile__content">
         <div className="profile__content__left">
