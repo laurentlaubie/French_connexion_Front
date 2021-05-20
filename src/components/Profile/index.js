@@ -38,24 +38,30 @@ const Profile = ({
     console.log('l\'url a changé');
   }, [pathName]);
 
+  let name = '';
+  if (userInfos.nickname != null) {
+    name = userInfos.nickname;
+  }
+  else {
+    name = userInfos.firstname + userInfos.lastname;
+  }
+
   return (
     <>
       {isLoading && <Loading />}
       {!isLoading && (
         <div className="profile">
-          <h1 className="profile__title">
-            { userInfos.nickname != null ? `Profil de ${userInfos.nickname}` : `Profil de ${userInfos.firstname} ${userInfos.lastname}`}
-          </h1>
+          <h1 className="profile__title"> Profil de {name} </h1>
           <div className="profile__content">
             <div className="profile__content__left">
-              <ProfilePrincipalInfos {...userInfos} isMyProfile={false} saveAvatar={saveAvatar} />
+              <ProfilePrincipalInfos {...userInfos} name={name} isMyProfile={false} saveAvatar={saveAvatar} />
               <ContactMe />
             </div>
 
             <div className="profile__content__right">
-              <ProfileDescription {...userInfos} />
-              <ProfileHobbies {...userInfos} />
-              {(userInfos.helper) && <ProfileServices {...userInfos} />}
+              <ProfileDescription {...userInfos} name={name} />
+              <ProfileHobbies {...userInfos} name={name} />
+              {(userInfos.helper) && <ProfileServices {...userInfos} name={name} />}
 
             </div>
           </div>

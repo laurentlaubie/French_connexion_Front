@@ -122,6 +122,10 @@
     flex-wrap: wrap; 
     padding: 0.5rem 2rem 2rem;
     // border:1px solid blue;
+
+    &__emptyCard{
+      text-align:justify;
+    }
   }
 
   &__item {
@@ -141,11 +145,14 @@
     &--red {
       background-color: vars.$light-red;
       color: vars.$light-color;
+      font-weight:500;
+
     }
 
     &--grey {
       background-color: vars.$light-grey;
       color: vars.$dark-color;
+
     }
   }
 
