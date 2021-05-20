@@ -112,6 +112,7 @@ export default (store) => (next) => (action) => {
       // CETTE REQUETE N'EST ACCESSIBLE QUE POUR UN UTILISATEUR CONNECTE
       // Récupération des infos d'un utilisateur (page mon-profil ou notre-reseau/utilisateur/id)
       const idParam = (action.userId);
+      store.dispatch(setLoading(true));
       console.log(idParam);
       // on récupère le token stocké dans le localStorage
       const userToken = localStorage.getItem('token');
