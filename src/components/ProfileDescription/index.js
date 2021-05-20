@@ -2,8 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './profileDescription.scss';
-
 const ProfileDescription = ({ biography }) => (
 
   <div className="profileDescription card">

@@ -4,21 +4,24 @@ import PropTypes from 'prop-types';
 
 // import './profileHobbies.scss';
 
-const ProfileHobbies = ({ hobbiesList }) => (
+const ProfileHobbies = ({ hobbies }) => {
+  console.log(hobbies);
+  return (
 
   <div className="profileHobbies card">
     <div className="card__title">Mes centres d'interets </div>
     <div className="card__list">
-      {hobbiesList.map((hobby) => (
-        <div className="card__item">{hobby}</div>
+      {hobbies.map((hobby) => (
+        <div className="card__item card__item--grey">{hobby.name}</div>
       ))}
     </div>
   </div>
 
 );
+    };
 
 ProfileHobbies.propTypes = {
-  hobbiesList: PropTypes.string.isRequired,
+  hobbies: PropTypes.array.isRequired,
 };
 
 export default ProfileHobbies;
