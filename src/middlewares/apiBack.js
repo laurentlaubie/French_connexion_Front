@@ -62,7 +62,7 @@ export default (store) => (next) => (action) => {
           // // console.log(connectedUserData);
           // store.dispatch(saveConnectedUserData(decodedToken));
           // // window.location.href = '/';
-          toast.info('tu es connecté');
+          toast.info('Vous êtes maintenant connectés');
           // window.location.href = '/';
         }).catch((error) => {
           console.log(error);
@@ -167,8 +167,9 @@ export default (store) => (next) => (action) => {
         )
         .then((response) => {
           console.log(response);
-          console.log('Vous êtes inscrit');
+          console.log('Vous êtes inscrits');
           store.dispatch(closeSignIn());
+          toast.info('Inscription réussie. Veuillez vous connecter');
           // store.dispatch(setIsConnected(true));
         }).catch((error) => {
           console.log(error);

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -20,14 +21,13 @@ import Loading from 'src/components/Loading';
 import './profile.scss';
 
 const Profile = ({
-  isMyProfile,
   isConnected,
   loadUserProfile,
   userInfos,
   connectedUserData,
   openLogOut,
   saveAvatar,
-  isLoading = true,
+  isLoading,
 }) => {
   const params = useParams();
   const userId = params.id;
@@ -45,7 +45,7 @@ const Profile = ({
     name = userInfos.nickname;
   }
   else {
-    name = userInfos.firstname + userInfos.lastname;
+    name = `${userInfos.firstname} ${userInfos.lastname}`;
   }
 
   return (
