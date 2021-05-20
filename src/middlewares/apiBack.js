@@ -10,7 +10,7 @@ import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actio
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
 import { MODIFY_PROFILE, redirectToMyProfile } from 'src/actions/modifyForm';
-
+import { toast } from 'react-toastify';
 import { setLoading } from 'src/actions/loading';
 
 const api = axios.create({
@@ -62,6 +62,8 @@ export default (store) => (next) => (action) => {
           // // console.log(connectedUserData);
           // store.dispatch(saveConnectedUserData(decodedToken));
           // // window.location.href = '/';
+          toast.info('tu es connecté');
+          // window.location.href = '/';
         }).catch((error) => {
           console.log(error);
         });

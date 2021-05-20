@@ -54,11 +54,9 @@
 @media only screen and (min-width: vars.$breakpoint-tablet) {
   .navBar {
     position: absolute;
-    top: 2%;
-    bottom: unset;
+    bottom: 19%;
     right: 0;
     padding: 1em;
-    //width: 35%;
     
 
     &__title{
