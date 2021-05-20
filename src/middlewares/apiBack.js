@@ -9,7 +9,7 @@ import {
 import {
   LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn, saveTokenInState, 
  setIsConnected, resetPassword } from 'src/actions/log';
-import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
+import { LOAD_USERS_BY_COUNTRY, saveUsersList, saveUsersCities, loadingCities } from 'src/actions/map';
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
@@ -296,6 +296,8 @@ export default (store) => (next) => (action) => {
           // Object.values(userCount);
           console.log(userCount);
           store.dispatch(saveUsersList(userCount));
+          store.dispatch(saveUsersCities(response.data));
+          store.dispatch(loadingCities(false));
         }).catch((error) => {
           // eslint-disable-next-line no-console
           console.log(error);

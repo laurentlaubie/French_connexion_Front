@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
   center: state.map.center,
   markers: state.map.markers,
   markerSelected: state.map.markerSelected,
-
+  usersCities: state.map.usersCities,
+  listLoading: state.map.listLoading,
 });
 
 // connection de props fonctions qui déclenchent des actions

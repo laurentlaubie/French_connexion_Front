@@ -45,3 +45,17 @@ export const saveUsersList = (usersList) => ({
   type: SAVE_USER_LIST,
   usersList,
 });
+
+export const SAVE_USERS_CITIES = 'SAVE_USERS_CITIES';
+
+export const saveUsersCities = (cities) => ({
+  type: SAVE_USERS_CITIES,
+  cities,
+});
+
+export const LOADING_CITIES = 'LOADING_CITIES';
+
+export const loadingCities = (value) => ({
+  type: LOADING_CITIES,
+  value,
+});
