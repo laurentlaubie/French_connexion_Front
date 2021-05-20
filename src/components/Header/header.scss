@@ -3,8 +3,15 @@
   width:100%;
 }
 
+.header{
+  margin-top: unset;
+  position: static;
+}
+
 @media only screen and (min-width: 601px) {
-  .otherPagesHeader {
-    
+  .header{
+ 
+    margin-top: -1em;
+    position: relative;
   }
 }
