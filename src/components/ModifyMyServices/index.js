@@ -7,113 +7,59 @@ import './modifyMyServices.scss';
 
 const ModifyMyServices = ({ myServices, servicesList, saveSelectedService, selectedService, addSelectedService }) => {
 
-  // let myServicesArray = [];
-  // myServices.map((service) => {
-  //   myServicesArray = [...myServicesArray, service.id];
-  // });
-  // console.log(myServicesArray);
+  let myServicesArray = [];
+  if (myServices !== '') {
+    myServices.map((hobby) => {
+      myServicesArray = [...myServicesArray, hobby.id];
+  });
+  }
 
-  // const onChange = (evt) => {
-  //   console.log(evt.currentTarget.value);
-  //   const { value } = evt.currentTarget;
-  //   const splitValue = value.split('-');
-  //   const serviceId = parseInt(splitValue[0], 10);
-  //   const serviceName = splitValue[1];
-  //   console.log(serviceName);
-  //   console.log(serviceId);
-  //   saveSelectedService(serviceId, serviceName);
-  // };
+  console.log(myServices);
+  console.log(myServicesArray);
 
-  // let myHobbiesList = [];
-  // userInfos.hobbies.map((hobbies) => {
-  //   myHobbiesList = [...myHobbiesList, hobbies.id];
-  // });
+  const onChange = (evt) => {
+    console.log(evt.currentTarget.value);
+    const { value } = evt.currentTarget;
+    const splitValue = value.split('-');
+    const serviceId = parseInt(splitValue[0], 10);
+    const serviceName = splitValue[1];
+    console.log(serviceName);
+    console.log(serviceId);
+    saveSelectedService(serviceId, serviceName);
+  };
 
-  // let myServices = [];
-  // userInfos.services.map((service) => {
-  //   myServices = [...myServices, service.id];
-  // });
-  // console.log(myServices);
-
-  // console.log(myHobbiesList);
-
-  // const myHobbies = {};
-  // hobbiesList.map((hobby) => {
-  //   myHobbies[hobby.id] = false;
-  //   if (myHobbiesList.includes(hobby.id)) {
-  //     myHobbies[hobby.id] = true;
-  //   }
-  // });
-
-  // console.log(myHobbies);
-
-  // saveMyHobbiesInState(myHobbies);
-  // useEffect(() => {
-  //   loadHobbiesList(),
-  //   // loadServicesList(),
-  //   // isLoading(false);
-  // }, []);
-
-  {/* <div className="modifyProfile__form__hobbiesList">
-                  {hobbiesList.map((hobby) => (
-                    <label htmlFor={hobby.id}>
-                      {hobby.name}
-                      <input type="checkbox" id={hobby.id} name={`hobby-${hobby.id}`} value={hobby.name} defaultChecked={myHobbiesList.includes(hobby.id)} />
-                    </label>
-                  ))}
-                </div> */}
-  // console.log(userInfos);
-
-  // let myHobbiesList = [];
-  // hobbies.map((hobby) => {
-  //   myHobbiesList = [...myHobbiesList, hobbies.id];
-  // });
-
-  // console.log(myHobbiesList);
-
-  // const myHobbies = {};
-  // hobbiesList.map((hobby) => {
-  //   myHobbies[hobby.id] = false;
-  //   if (myHobbiesList.includes(hobby.id)) {
-  //     myHobbies[hobby.id] = true;
-  //   }
-  // });
+  const onClick = (evt) => {
+    addSelectedService(selectedService);
+    // evt.currentTarget();
+  };
 
   console.log(myServices);
   console.log(servicesList);
 
-  // saveMyHobbiesInState(myHobbies);
-
-  // console.log(myHobbies);
-  // console.log(hobbies);
-  // useEffect(() => {
-  // }, []);
-
-  // let myServices = [];
-  // userInfos.services.map((service) => {
-  //   myServices = [...myServices, service.id];
-  // });
-  // console.log(myServices);
-
   return (
 
-    <div className="modifyMyServices">
-      <div className="modifyMyServices__title"> Mes centres d'intérêts </div>
-      <div className="modifyMyServices__servicesList">
-        {servicesList.map((service) => (
-          <div className="modifyMyServices__servicesList_item">
-            {service.name}
-          </div>
-        ))}
+    <div className="modifyProfile__form__subsection">
+      <div className="modifyProfile__form__subsection__title"> Les services que vous proposez aux voyageurs </div>
+      { myServices === '' ? "vous n'avez pas de centres d'intérêt enregistrés" : ''}
+      { myServices !== '' && (
+        <ul className="modifyMyServices__list">
+          {myServices.map((service) => (
+            <li className="modifyMyServices__list__item">
+              <div className={`modifyMyServices__list__item__text services-${service.id}`}> {service.name} </div>
+              <button className="modifyMyServices__list__item__removeButton" type="button"> Retirer </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      <div className="modifyMyServices__select">
+        <select onChange={onChange}>
+          <option> Choisissez un service</option>
+          {servicesList.map((service) => (
+            <option value={`${service.id}-${service.name}`}> {service.name} </option>
+          ))};
+        </select>
+        <button className="modifyMyServices__select__addButton" type="button" onClick={onClick}>Ajouter</button>
       </div>
-      {/* <div className="modifyProfile__form__label__name"> Ajouter un centre d'interêt </div> */}
-      {/* <div>
-        {hobbies.map((hobby) => (
-            <div className={`modifyProfile__form__hobbiesList_item hobbies-${hobby.id}`}>
-              {hobby.name}
-            </div>
-        ))}
-      </div> */}
     </div>
   );
 };

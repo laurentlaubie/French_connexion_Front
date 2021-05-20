@@ -65,12 +65,6 @@
 
   &__form {
     width:100%;
-    display: flex;
-    flex-direction: column;
-    align-items:start;
-    border-radius: 30px;
-    margin-bottom:2rem;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     // border:1px solid red;
     // position:relative;
 
@@ -81,6 +75,10 @@
     @media (min-width: vars.$breakpoint-desktop){
       width:58%;
     } 
+
+    &__text{
+
+    }
     
     // &__navbar{
     //   width:100%;
@@ -105,34 +103,35 @@
     }
 
     &__section{
-
-      width:80%;
-      margin:2rem auto;
-      // border:1px solid red;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
+      padding:2rem;
+      width:100%;
+      display: flex;
+      flex-direction: column;
+      align-items:start;
+      border-radius: 30px;
+      margin-bottom:2rem;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      // width:80%;
+      // margin:2rem auto;
+      // // border:1px solid red;
+      // display:flex;
+      // flex-direction:column;
+      // justify-content:center;
+      // align-items:center;
       // position:relative;
 
      
 
       &__title{
-        padding:1.5rem;
-        font-size:1.2rem;
+        padding:1.5rem 0.2rem;
+        font-size:1.4rem;
         border-bottom: 2px solid vars.$light-red;
-        color:vars.$dark-color;
-        margin-bottom:2rem;
-
-        // @media (min-width: vars.$breakpoint-desktop){
-        //   display:none;
-        // } 
-        // &--active {
-        //   background-color:vars.$light-red;
-        // }
-        
+        color:vars.$light-red;
+        margin-bottom:3rem;
+        text-transform: uppercase;
       }
 
+      
       &__content{
         width:100%;
 
@@ -157,11 +156,24 @@
       
     }
 
+    &__subsection{
+      margin-bottom:2rem;
+
+      &__title{
+        font-size:1.2rem;
+        font-weight:bold;
+        font-style:italic;
+        padding-bottom: 1.5rem;
+        text-align: left;
+      }
+
+    }
+
     &__city {
       margin-bottom:1rem;
     }
 
-  
+
 
     &__label{
       width:100%;
@@ -181,4 +193,25 @@
 
   }
 
+}
+
+.helperCheckbox{
+
+  &__label{
+    display: flex;
+    margin:2rem auto;
+    justify-content: center;
+    background-color:vars.$light-blue;
+    padding:2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius:0.5rem;
+
+    &__name{
+      padding-right:2rem;
+      font-weight:bold;
+      font-size:1.2rem;
+      color:vars.$light-color;
+
+    }
+  }
 }

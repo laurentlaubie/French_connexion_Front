@@ -15,6 +15,8 @@ import {
   ADD_SELECTED_HOBBY, SAVE_SELECTED_HOBBY,
 } from 'src/actions/hobbies';
 
+import { TOGGLE_HELPER_CHECKBOX } from 'src/actions/modifyForm';
+
 const initialState = {
   isConnected: false,
   isLogInOpen: false,
@@ -135,6 +137,14 @@ export default (state = initialState, action = {}) => {
           ...state.connectedUserData,
           newPassword: '',
           confirmedNewPassword: '',
+        },
+      };
+    case TOGGLE_HELPER_CHECKBOX:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          helper: !action.helper,
         },
       };
     default:
