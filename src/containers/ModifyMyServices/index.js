@@ -7,6 +7,7 @@ import ModifyMyServices from 'src/components/ModifyMyServices';
 const mapStateToProps = (state, ownProps) => ({
   servicesList: state.services.servicesList,
   myServices: state.log.connectedUserData.services,
+  helper: state.log.connectedUserData.helper,
 });
 
 // connection de props fonctions qui déclenchent des actions

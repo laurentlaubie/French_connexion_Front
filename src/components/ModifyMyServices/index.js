@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // == Import style
 import './modifyMyServices.scss';
 
-const ModifyMyServices = ({ myServices, servicesList, saveSelectedService, selectedService, addSelectedService }) => {
+const ModifyMyServices = ({ helper, myServices, servicesList, saveSelectedService, selectedService, addSelectedService }) => {
 
   let myServicesArray = [];
   if (myServices !== '') {
@@ -38,7 +38,7 @@ const ModifyMyServices = ({ myServices, servicesList, saveSelectedService, selec
 
   return (
 
-    <div className="modifyProfile__form__subsection">
+    <div className={helper ? 'modifyProfile__form__subsection' : 'hidden'}>
       <div className="modifyProfile__form__subsection__title"> Les services que vous proposez aux voyageurs </div>
       { myServices === '' ? "vous n'avez pas de centres d'intérêt enregistrés" : ''}
       { myServices !== '' && (

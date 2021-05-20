@@ -201,35 +201,35 @@ export default (store) => (next) => (action) => {
     case MODIFY_PROFILE: {
       // on récupère l'ID de la personne connectée
       const { userId } = action;
-      const hobbies = action.myHobbiesList;
-      console.log(hobbies);
       console.log(userId);
 
       // on récupère le token stocké dans le localStorage
       const userToken = localStorage.getItem('token');
       console.log(userToken);
 
-      // on récupère les nouvelles données de la personne connectée, ainsi que celle non modifiée
+      // on récupère les nouvelles données de la personne connectée, ainsi que celles non modifiées
       const state = store.getState();
       const { connectedUserData } = state.log;
       console.log(connectedUserData);
       const {
         username: email,
-        nickname,
         firstname,
         lastname,
+        nickname,
         phoneNumber,
         biography,
         newPassword: password,
         confirmedNewPassword: confirmedPassword,
+        helper,
+        hobbies,
       } = connectedUserData;
 
       api
         .put(`/user/${userId}`,
           {
+            email,
             lastname,
             firstname,
-            email,
             password,
             confirmedPassword,
             nickname,
@@ -237,6 +237,7 @@ export default (store) => (next) => (action) => {
             phoneNumber,
             // userAdress,
             hobbies,
+            helper,
           },
           {
             headers: {

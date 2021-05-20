@@ -6,3 +6,11 @@ export const toggleHelperCheckbox = (helper) => ({
   type: TOGGLE_HELPER_CHECKBOX,
   helper,
 });
+
+// action type BECOME_HELPER
+export const BECOME_HELPER = 'BECOME_HELPER';
+
+// action creator becomeHelper
+export const becomeHelper = () => ({
+  type: BECOME_HELPER,
+});
