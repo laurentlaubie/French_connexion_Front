@@ -126,3 +126,12 @@ export const RESET_PASSWORD = 'RESET_PASSWORD';
 export const resetPassword = () => ({
   type: RESET_PASSWORD,
 });
+
+// action type LOAD_CONNECTED_USER_DATA
+export const LOAD_CONNECTED_USER_DATA = 'LOAD_CONNECTED_USER_DATA';
+
+// action creator loadConnectedUserData
+export const loadConnectedUserData = (id) => ({
+  type: LOAD_CONNECTED_USER_DATA,
+  id,
+});

@@ -55,12 +55,9 @@ const ModifyProfile = ({
     loadServicesList();
   }, []);
 
-
-
-
   return (
     <>
-      {redirection && <Redirect to="/mon-profil"/> }
+      {redirection && <Redirect to="/mon-profil" /> }
 
       <div className="modifyProfile">
         <h1 className="modifyProfile__title"> Modifier mon profil </h1>
@@ -160,7 +157,7 @@ const ModifyProfile = ({
                 <h3 className="modifyProfile__form__subsection__title"> Votre ville de résidence </h3>
                 <div className="modifyProfile__form__label">
                   <div className="modifyProfile__form__city">
-                    {connectedUserData.cities != null && userAddress === '' ? `Votre ville de résidence est ${connectedUserData.cities.name}, ${connectedUserData.countries.frenchName}.` : ''}
+                    {connectedUserData.cities != null && userAddress === '' ? `Votre ville de résidence est ${connectedUserData.cities.name}, ${connectedUserData.cities.country.frenchName}.` : ''}
                     {/* {userAddress !== '' ? `Votre ville de résidence est ${userAddress[0]}, ${userAddress[1]}.` : ''}
                     {userAddress === '' && userInfos.cities === null ? 'Vous n\'avez pas renseigné votre ville de résidence.' : ''} */}
                   </div>
