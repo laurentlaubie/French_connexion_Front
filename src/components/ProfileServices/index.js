@@ -2,8 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './profileServices.scss';
-
 const ProfileServices = ({ services, name }) => (
 
   <div className="card profileServices">
@@ -21,8 +19,12 @@ const ProfileServices = ({ services, name }) => (
 );
 
 ProfileServices.propTypes = {
-  services: PropTypes.array.isRequired,
+  services: PropTypes.array,
   name: PropTypes.string.isRequired,
+};
+
+ProfileServices.defaultProps = {
+  services: [],
 };
 
 export default ProfileServices;

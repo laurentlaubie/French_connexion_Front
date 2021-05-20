@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
@@ -14,8 +13,15 @@ import ProfileLocalisation from 'src/components/ProfileLocalisation';
 import './profilePrincipalInfos.scss';
 
 const ProfilePrincipalInfos = ({
-
-  isMyProfile, helper, nickname, createdAt, avatar, cities, firstname, lastname, id, saveAvatar,
+  isMyProfile,
+  helper,
+  nickname,
+  createdAt,
+  avatar,
+  cities,
+  name,
+  id,
+  saveAvatar,
 }) => {
   
   const [seeAvatar, setAvatar] = useState("");
@@ -46,30 +52,31 @@ const ProfilePrincipalInfos = ({
   };
 
   let creationDate = new Date(createdAt);
+  console.log(creationDate);
   creationDate = `${creationDate.getDate()}/${creationDate.getMonth() + 1}/${creationDate.getFullYear()}`;
   console.log(creationDate);
 
   return (
-  <div className="profilePrincipalInfos">
-    <div className="profilePrincipalInfos__status">
-      <div className={helper ? 'profilePrincipalInfos__status__name--helper' : 'hidden'}>
-        HELPER
-        <img className="profilePrincipalInfos__status__logo--helper" src={hands} alt="Logo du helpeur" />
-    </div>
-    <div className="profilePrincipalInfos__username">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
-    <div className="profilePrincipalInfos__date"> {`Membre depuis le ${creationDate}`} </div>
-    <div className="profilePrincipalInfos__image">
-      <img className="jose" alt="image__profile" src={`http://ec2-34-239-254-34.compute-1.amazonaws.com/images/avatars/${avatar}`} />
-    </div>
-     {/* <div className={isMyProfile ? 'profilePrincipalInfos__update' : 'hidden'}>Mettre à jour ma photo </div> */}
-    <form onSubmit={manageSubmit} >
-      <input type="file" name="avatar" onChange = {() => {setAvatar(event.target.files[0])}}/>
-      <button> clic ici</button>
-    </form>
+    <div className="profilePrincipalInfos">
+      <div className="profilePrincipalInfos__status">
+        <div className={helper ? 'profilePrincipalInfos__status__name--helper' : 'hidden'}>
+          HELPER
+          <img className="profilePrincipalInfos__status__logo--helper" src={hands} alt="Logo du helpeur" />
+      </div>
+      <div className="profilePrincipalInfos__username">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
+      <div className="profilePrincipalInfos__date"> {`Membre depuis le ${creationDate}`} </div>
+      <div className="profilePrincipalInfos__image">
+        <img className="jose" alt="image__profile" src={`http://ec2-34-239-254-34.compute-1.amazonaws.com/images/avatars/${avatar}`} />
+      </div>
+      {/* <div className={isMyProfile ? 'profilePrincipalInfos__update' : 'hidden'}>Mettre à jour ma photo </div> */}
+      <form onSubmit={manageSubmit} >
+        <input type="file" name="avatar" onChange = {() => {setAvatar(event.target.files[0])}}/>
+        <button> clic ici</button>
+      </form>
 
-    <ProfileLocalisation {...cities} />
+      <ProfileLocalisation {...cities} />
+      </div>
     </div>
-  </div>
 
   );
 };

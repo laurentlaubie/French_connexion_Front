@@ -116,10 +116,6 @@ export default (store) => (next) => (action) => {
       // on récupère le token stocké dans le localStorage
       const userToken = localStorage.getItem('token');
       console.log(userToken);
-
-      // // -- gestion loader for profilPage
-      // store.dispatch(setLoading(true));
-
       api
         .get(`/user/${idParam}`, {
           headers: {
@@ -128,7 +124,7 @@ export default (store) => (next) => (action) => {
         })
         .then((response) => {
           // l'API nous retourne les infos de l'utilisateur
-          console.log(response.status);
+          // console.log(response.status);
           console.log(response.data);
           const userInfos = response.data;
           console.log(response.headers);

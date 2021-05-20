@@ -21,12 +21,13 @@ import './profile.scss';
 
 const Profile = ({
   isMyProfile,
+  isConnected,
   loadUserProfile,
   userInfos,
   connectedUserData,
   openLogOut,
-  isLoading,
   saveAvatar,
+  isLoading = true,
 }) => {
   const params = useParams();
   const userId = params.id;
@@ -38,6 +39,7 @@ const Profile = ({
     console.log('l\'url a changé');
   }, [pathName]);
 
+  console.log('cacaca');
   let name = '';
   if (userInfos.nickname != null) {
     name = userInfos.nickname;

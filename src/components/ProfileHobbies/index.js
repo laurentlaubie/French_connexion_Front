@@ -20,8 +20,11 @@ const ProfileHobbies = ({ hobbies, name }) => (
 );
 
 ProfileHobbies.propTypes = {
-  hobbies: PropTypes.array.isRequired,
+  hobbies: PropTypes.array,
   name: PropTypes.string.isRequired,
 };
 
+ProfileHobbies.defaultProps = {
+  hobbies: [],
+};
 export default ProfileHobbies;
