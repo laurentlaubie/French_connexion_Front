@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import header1 from '../../assets/images/cherry-728.svg';
+
 import func3 from '../../assets/images/cherry-561.png';
 import func2 from '../../assets/images/cherry-come-back-later.png';
 import func1 from '../../assets/images/cherry-girl-on-the-beach-with-umbrella-wearing-medical-mask.png';

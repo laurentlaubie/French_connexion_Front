@@ -4,7 +4,7 @@
   z-index: 50;
   position: fixed;
   bottom:0;
-  background-color: #C4C4C4;
+  background-color: vars.$light-grey;
   width: 100%;
   color:#000000;
   text-align: center;
@@ -22,7 +22,7 @@
 
     &__button{
       border:none;
-      background-color: #C4C4C4;
+      background-color: vars.$light-grey;
     }
 
     &__hidden{
@@ -54,10 +54,12 @@
 @media only screen and (min-width: vars.$breakpoint-tablet) {
   .navBar {
     position: absolute;
-    top: 5%;
+    top: 2%;
     bottom: unset;
     right: 0;
-    width: 35%;
+    padding: 1em;
+    //width: 35%;
+    
 
     &__title{
       margin-top: 0.5em;
@@ -69,11 +71,45 @@
       display: block;
       position: absolute;
       left: -2em;
-      background-color: #c4c4c4;
+      background-color: vars.$light-grey;
       color:#c4c4c4 ;
       width: 4em;
       height: 100%;
       border-radius: 50%;
+    }
+    &__list{
+      display:flex;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+      align-items:center;
+      position: relative;
+      z-index: 5;
+    }
+    &__item{
+      margin:0 2em ;
+
+      &__button{
+        border:none;
+        background-color: vars.$light-grey;
+      }
+  
+      &__hidden{
+        display:none;
+      }
+  
+      &__title{
+        margin-top: 0.3em;
+        font-size:0.8rem;
+        color:vars.$dark-color;
+      }
+  
+      &__image{
+        display: block;
+        margin: auto;
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+      }
+  
     }
   }
 
@@ -81,6 +117,6 @@
 
 @media only screen and (min-width: vars.$max-width) {
   .navBar {
-    width:420px;
+    //width:420px;
   }
 }

@@ -36,23 +36,23 @@
     align-items: start;
 
     &__username{
-      color:vars.$light-color;
-      font-weight: bold;
+      color:vars.$dark-blue;
       font-size:1.2rem;
       padding-bottom:0.4rem;
+      font-family: vars.$font-title;
 
     }
   
     &__city{
       font-size:1rem;
       padding-bottom:0.3rem;
-
+      font-family: vars.$font-text;
     }
 
     &__country{
       font-size:1rem;
       font-style:italic;
-
+      font-family: vars.$font-text;
     }
 
   }
