@@ -7,15 +7,15 @@ import './modifyMyHobbies.scss';
 
 const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHobby, addSelectedHobby}) => {
 
-  let myHobbiesArray = [];
-  if (myHobbies !== '') {
-    myHobbies.map((hobby) => {
-      myHobbiesArray = [...myHobbiesArray, hobby.id];
-  });
-  }
+  // let myHobbiesArray = [];
+  // if (myHobbies !== '') {
+  //   myHobbies.map((hobby) => {
+  //     myHobbiesArray = [...myHobbiesArray, hobby.id];
+  // });
+  // }
 
   console.log(myHobbies);
-  console.log(myHobbiesArray);
+  // console.log(myHobbiesArray);
 
   const onChange = (evt) => {
     console.log(evt.currentTarget.value);
@@ -35,33 +35,34 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHo
   // };
 
   const onClick = (evt) => {
+    console.log(selectedHobby);
     addSelectedHobby(selectedHobby);
     // evt.currentTarget();
   };
 
   return (
 
-    <div className="modifyMyHobbies">
-      <div className="modifyMyHobbies__title"> Mes centres d'intérêts </div>
+    <div className="modifyProfile__form__subsection">
+      <div className="modifyProfile__form__subsection__title"> Mes centres d'intérêts </div>
       { myHobbies === '' ? "vous n'avez pas de centres d'intérêt enregistrés" : ''}
       { myHobbies !== '' && (
         <ul className="modifyMyHobbies__list">
           {myHobbies.map((hobby) => (
             <li className="modifyMyHobbies__list__item">
               <div className={`modifyMyHobbies__list__item__text hobbies-${hobby.id}`}> {hobby.name} </div>
-              <button className="modifyMyHobbies__list__item__removeButton" type="button"> X </button>
+              <button className="modifyMyHobbies__list__item__removeButton" type="button"> Retirer </button>
             </li>
           ))}
         </ul>
       )}
-      <div className="modifyMyHobbies__form">
+      <div className="modifyMyHobbies__select">
         <select onChange={onChange}>
-          <option> Choisissez un centre d'interêt</option> 
+          <option className="modifyMyHobbies__option"> Choisissez un centre d'interêt</option>
           {hobbiesList.map((hobby) => (
             <option value={`${hobby.id}-${hobby.name}`}> {hobby.name} </option>
           ))};
         </select>
-        <button type="button" onClick={onClick}>Ajouter</button>
+        <button className="modifyMyHobbies__select__addButton" type="button" onClick={onClick}>Ajouter</button>
       </div>
     </div>
   );

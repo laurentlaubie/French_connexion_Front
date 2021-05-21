@@ -2,15 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './profileServices.scss';
-
-const ProfileServices = ({ servicesList }) => (
+const ProfileServices = ({ services, name }) => (
 
   <div className="card profileServices">
     <div className="card__title">Mes services </div>
     <div className="card__list">
-      {servicesList.map((service) => (
-        <div className="card__item">{service}</div>
+      <div className="card__list__emptyCard">
+        {services.length === 0 ? `${name} n'a pas précisé de service dans son profil. Contactez ${name} pour en savoir plus !` : ''}
+      </div>
+      {services.map((service) => (
+        <div className="card__item card__item--red">{service.name}</div>
       ))}
     </div>
   </div>
@@ -18,7 +19,12 @@ const ProfileServices = ({ servicesList }) => (
 );
 
 ProfileServices.propTypes = {
-  servicesList: PropTypes.array.isRequired,
+  services: PropTypes.array,
+  name: PropTypes.string.isRequired,
+};
+
+ProfileServices.defaultProps = {
+  services: [],
 };
 
 export default ProfileServices;

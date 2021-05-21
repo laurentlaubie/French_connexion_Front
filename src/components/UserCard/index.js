@@ -27,7 +27,7 @@ const UserCard = ({
 
         <div className="userCard__text__name">{nickname != null ? nickname : `${firstname} ${lastname}`}</div>
         <div className="userCard__text__localisation">{localisation}</div>
-        <div className="userCard__text__link"> Voir le profil de {nickname != null ? nickname : `${firstname} ${lastname}`} </div>
+        <div className="userCard__text__link"> Voir le profil </div>
         {/* <div className="userCard__created_At">{created_at}</div> */}
         {/* <div className="userCard__text__hobbys">
           <ul>

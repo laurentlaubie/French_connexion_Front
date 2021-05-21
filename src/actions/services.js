@@ -23,3 +23,22 @@ export const setLoadingServices = (value) => ({
   type: SET_LOADING_SERVICES,
   value,
 });
+
+// action type SAVE_SELECTED_SERVICE
+export const SAVE_SELECTED_SERVICE = 'SAVE_SELECTED_SERVICE';
+
+// action creator saveSelectedService
+export const saveSelectedService = (serviceId, serviceName) => ({
+  type: SAVE_SELECTED_SERVICE,
+  serviceId,
+  serviceName,
+});
+
+// action type ADD_SELECTED_SERVICE
+export const ADD_SELECTED_SERVICE = 'ADD_SELECTED_SERVICE';
+
+// action creator addSelectedService
+export const addSelectedService = (selectedService) => ({
+  type: ADD_SELECTED_SERVICE,
+  selectedService,
+});

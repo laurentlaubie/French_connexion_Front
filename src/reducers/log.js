@@ -15,6 +15,16 @@ import {
   ADD_SELECTED_HOBBY, SAVE_SELECTED_HOBBY,
 } from 'src/actions/hobbies';
 
+import {
+  ADD_SELECTED_SERVICE, SAVE_SELECTED_SERVICE,
+} from 'src/actions/services';
+
+import {
+  BECOME_HELPER,
+  REMOVE_HELPER_STATUS,
+  REDIRECT_TO_MY_PROFILE,
+} from 'src/actions/modifyForm';
+
 const initialState = {
   isConnected: false,
   isLogInOpen: false,
@@ -27,6 +37,8 @@ const initialState = {
   selectedHobby: '',
   newPassword: '',
   confirmedNewPassword: '',
+  redirectionToMyProfile: false,
+
 };
 
 export default (state = initialState, action = {}) => {
@@ -88,6 +100,7 @@ export default (state = initialState, action = {}) => {
         isConnected: false,
         isLogOutOpen: false,
         connectedUserData: '',
+        token: '',
       };
     case SET_IS_CONNECTED:
       return {
@@ -95,15 +108,7 @@ export default (state = initialState, action = {}) => {
         isConnected: action.value,
         isLoading: false,
       };
-    case SAVE_SELECTED_HOBBY:
-      return {
-        ...state,
-        selectedHobby: {
-          ...state.selectedHobby,
-          id: action.hobbyId,
-          name: action.hobbyName,
-        },
-      };
+   
     case CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE:
       return {
         ...state,
@@ -120,12 +125,38 @@ export default (state = initialState, action = {}) => {
           [action.name]: action.value,
         },
       };
+    case SAVE_SELECTED_HOBBY:
+      return {
+        ...state,
+        selectedHobby: {
+          ...state.selectedHobby,
+          id: action.hobbyId,
+          name: action.hobbyName,
+        },
+      };
     case ADD_SELECTED_HOBBY:
       return {
         ...state,
         connectedUserData: {
           ...state.connectedUserData,
           hobbies: [...state.connectedUserData.hobbies, action.selectedHobby],
+        },
+      };
+    case SAVE_SELECTED_SERVICE:
+      return {
+        ...state,
+        selectedService: {
+          ...state.selectedService,
+          id: action.serviceId,
+          name: action.serviceName,
+        },
+      };
+    case ADD_SELECTED_SERVICE:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          services: [...state.connectedUserData.services, action.selectedService],
         },
       };
     case RESET_PASSWORD:
@@ -136,6 +167,36 @@ export default (state = initialState, action = {}) => {
           newPassword: '',
           confirmedNewPassword: '',
         },
+      };
+    // case TOGGLE_HELPER_CHECKBOX:
+    //   return {
+    //     ...state,
+    //     connectedUserData: {
+    //       ...state.connectedUserData,
+    //       helper: !action.helper,
+    //     },
+    //   };
+    case BECOME_HELPER:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          helper: true,
+        },
+      };
+    case REMOVE_HELPER_STATUS:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          helper: false,
+          services: [],
+        },
+      };
+    case REDIRECT_TO_MY_PROFILE:
+      return {
+        ...state,
+        redirectionToMyProfile: action.value,
       };
     default:
       return state;

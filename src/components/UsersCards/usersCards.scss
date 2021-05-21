@@ -2,7 +2,7 @@
 
 .usersCards{
   margin: 2em auto;
-  width:90%;
+  width:75%;
 
   @media (min-width: vars.$max-width) {
     width: vars.$max-width;
@@ -29,6 +29,14 @@
       justify-content:space-evenly;
 
     }
+
+    @media only screen and (min-width: 1024px) {
+      flex-direction: row;
+      flex-wrap:wrap;
+      justify-content:space-evenly;
+
+    }
+    
   }
 
   &__form{

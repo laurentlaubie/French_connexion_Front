@@ -1,8 +1,10 @@
 /* eslint-disable no-console */
 // == Import npm
 import React, { useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
-  Route, Switch, Redirect, useLocation,
+  Route, Switch, Redirect, useLocation, useHistory,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
@@ -48,11 +50,13 @@ import './styles.css';
 // == Composant
 
 const App = ({
-  saveConnectedUserData, setIsConnected, isConnected, loadHobbiesList, loadServicesList, tokenFromState, saveTokenInState
+  loadConnectedUserData, setIsConnected, isConnected, loadHobbiesList, loadServicesList, tokenFromState, saveTokenInState
 }) => {
   // récupération du chemin
   const pathName = useLocation().pathname;
   console.log(pathName);
+
+  const history = useHistory();
 
   useEffect(() => {
     const userTokenFromLocalStorage = localStorage.getItem('token');
@@ -64,7 +68,7 @@ const App = ({
       console.log(dateNow);
 
       if (decodedToken.exp - 600 > dateNow) {
-        saveConnectedUserData(decodedToken);
+        loadConnectedUserData(decodedToken.id);
         console.log('je suis déjà connecté');
       }
       else {
@@ -79,10 +83,9 @@ const App = ({
   }, []);
 
   // -- gestion du scroll
-  const location = useLocation();
   useEffect(
     () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0 });
       console.log('le pathname a changé');
     },
     [pathName],
@@ -137,6 +140,7 @@ const App = ({
           <Page404 />
         </Route>
       </Switch>
+      <ToastContainer autoClose={2000} />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { openLogOut } from 'src/actions/log';
 import { loadUserProfile } from 'src/actions/user';
+import { redirectToMyProfile } from 'src/actions/modifyForm';
 
 import MyProfile from 'src/components/MyProfile';
 
@@ -8,9 +9,8 @@ import MyProfile from 'src/components/MyProfile';
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   connectedUserData: state.log.connectedUserData,
-  isLoading: state.user.isLoading,
   userInfos: state.user.userInfos,
-
+  isConnected: state.log.isConnected,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   loadUserProfile: (userId) => {
     dispatch(loadUserProfile(userId));
+  },
+  redirect: (value) => {
+    dispatch(redirectToMyProfile(value));
   },
 });
 

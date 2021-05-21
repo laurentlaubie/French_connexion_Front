@@ -76,6 +76,7 @@
   &__buttons{
     display:flex;
     flex-direction: column;
+    
     // border:1px solid red;
 
     @media (min-width: vars.$breakpoint-tablet){
@@ -93,3 +94,67 @@
 
   }
 }
+
+.card {
+  
+  // background-color: white;
+  border-radius: 30px;
+  margin-bottom:2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  &__title {
+    font-weight: bold;
+    text-align: left;
+    padding: 2rem;
+    font-size: 1.5rem;
+   
+  }
+
+  &__text{
+    padding:0 2rem 2rem;
+    text-align:justify;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap; 
+    padding: 0.5rem 2rem 2rem;
+    // border:1px solid blue;
+
+    &__emptyCard{
+      text-align:justify;
+    }
+  }
+
+  &__item {
+    padding:1.2rem;
+    display:flex;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius:0.5rem;
+    position: relative;
+    font-size:1.1rem;
+    // font-weight:bold;
+    display:flex;
+    align-items:center;
+    margin-bottom:1rem;
+    color: vars.$light-color;
+    margin-right:2rem;
+
+    &--red {
+      background-color: vars.$light-red;
+      color: vars.$light-color;
+      font-weight:500;
+
+    }
+
+    &--grey {
+      background-color: vars.$light-grey;
+      color: vars.$dark-color;
+
+    }
+  }
+
+}
+
