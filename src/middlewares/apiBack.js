@@ -3,9 +3,15 @@ import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 
-import { LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, LOAD_USERS_REVIEWS, saveUsersReviews} from 'src/actions/user';
+
+import {
+  LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, LOAD_USERS_REVIEWS, saveUsersReviews
+} from 'src/actions/user';
 import { LOG_IN, LOAD_CONNECTED_USER_DATA, loadConnectedUserData, saveConnectedUserData, LOG_OUT, closeSignIn, saveTokenInState, setIsConnected, resetPassword } from 'src/actions/log';
-import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
+import {
+  LOAD_USERS_BY_COUNTRY, saveUsersList, saveUsersCities, loadingCities, saveUsersCity,
+} from 'src/actions/map';
+
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
@@ -153,7 +159,9 @@ export default (store) => (next) => (action) => {
     case ADD_NEW_USER: {
       // Création d'un nouvel utilisateur (inscription)
       const state = store.getState();
-      const { firstname, lastname, email, password, confirmedPassword } = state.user;
+      const {
+        firstname, lastname, email, password, confirmedPassword,
+      } = state.user;
       api
         .post(
           '/user',
@@ -178,26 +186,23 @@ export default (store) => (next) => (action) => {
       break;
     }
 
-    //case LOAD_USERS_AVATAR:
-      // modification Avatar de l'utilisateur
-      
-      //api
-       // .get('/user/avatar')
-       // .then((response) => {
-       //   console.log(response);
-       //   const avatar = response.data;
-       //   store.dispatch(saveUsersReviews(usersReviewList));
-       // }).catch((error) => {
-        // eslint-disable-next-line no-console
-          //console.log(error);
-       // })
-      
-      // puis on décide si on la laisse filer ou si on la bloque
-     // next(action);
-      //break;
+    // case LOAD_USERS_AVATAR:
+    // modification Avatar de l'utilisateur
 
+    // api
+    // .get('/user/avatar')
+    // .then((response) => {
+    //   console.log(response);
+    //   const avatar = response.data;
+    //   store.dispatch(saveUsersReviews(usersReviewList));
+    // }).catch((error) => {
+    // eslint-disable-next-line no-console
+    // console.log(error);
+    // })
 
-
+    // puis on décide si on la laisse filer ou si on la bloque
+    // next(action);
+    // break;
 
     case LOAD_USERS_CARDS:
       // affichage de tous les profils sous forme de cards
@@ -215,17 +220,17 @@ export default (store) => (next) => (action) => {
           console.log(error);
         })
         // -- gestion loader for profilPage
-        .finally(() => {store.dispatch(setLoading(false))
+        .finally(() => {
+          store.dispatch(setLoading(false));
         });
 
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
 
-
-      case LOAD_USERS_REVIEWS:
+    case LOAD_USERS_REVIEWS:
       // affichage de tous les profils sur la HP
-      
+
       api
         .get('/user/home')
         .then((response) => {
@@ -235,12 +240,11 @@ export default (store) => (next) => (action) => {
         }).catch((error) => {
         // eslint-disable-next-line no-console
           console.log(error);
-        })
-      
+        });
+
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
-
 
     case MODIFY_PROFILE: {
       // on récupère l'ID de la personne connectée
@@ -313,14 +317,20 @@ export default (store) => (next) => (action) => {
       const state = store.getState();
       console.log(state);
       const country = state.map.userAddress[1];
+
       api
         .get(`/user/search?country=${country}`)
         .then((response) => {
           console.log(response);
           const usersList = response.data;
+          let usersWithCity = [];
+          usersList[0].cities.forEach((city) => {
+            usersWithCity = usersWithCity.concat(city.users.map((user) => ({ ...user, city: city.name })));
+          });
+          console.log(usersWithCity);
           console.log(usersList[0].cities);
           let userCountCity = [];
-        
+
           usersList[0].cities.map((city) => {
             console.log(city.users);
             userCountCity = [...userCountCity, city.users];
@@ -329,14 +339,22 @@ export default (store) => (next) => (action) => {
           console.log(userCountCity);
 
           let userCount = [];
-          userCountCity.map((userArray) =>
-          {
+          userCountCity.map((userArray) => {
             userCount = userCount.concat(userArray);
           });
+
+          const address = state.map.userAddress;
+          const usersCity = (response.data[0].cities).find((city) => address.includes(city.name));
+
           console.log(userCount);
-          //Object.values(userCount);
+          // Object.values(userCount);
           console.log(userCount);
           store.dispatch(saveUsersList(userCount));
+          store.dispatch(saveUsersCities(response.data));
+          store.dispatch(loadingCities(false));
+          store.dispatch(saveUsersCity(usersCity.users, usersCity.name));
+
+          console.log(usersCity);
         }).catch((error) => {
           // eslint-disable-next-line no-console
           console.log(error);

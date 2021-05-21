@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import MapResults from 'src/components/MapResults';
-import { setSelected, setNewMarker } from 'src/actions/map';
+import { setSelected, setNewMarker, saveUsersCity, setNewCenter, setNewAdress } from 'src/actions/map';
  
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
   center: state.map.center,
   markers: state.map.markers,
   markerSelected: state.map.markerSelected,
-
+  usersCities: state.map.usersCities,
+  listLoading: state.map.listLoading,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -21,6 +22,15 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   // AddNewMarker(e)
   setMarker: (marker) => {
     dispatch(setNewMarker(marker));
+  },
+  selectCity: (users, cityName) => {
+    dispatch(saveUsersCity(users, cityName));
+  },
+  setCenter: (center) => {
+    dispatch(setNewCenter(center));
+  },
+  setAdress: (adress) => {
+    dispatch(setNewAdress(adress));
   },
 });
 
