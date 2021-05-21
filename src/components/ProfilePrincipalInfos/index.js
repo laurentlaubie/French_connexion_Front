@@ -38,7 +38,7 @@ const ProfilePrincipalInfos = ({
           <img alt="Avatar par défaut" className={avatar !== null ? 'hidden' : ''} src={defaultAvatar} />
         </div>
         {isMyProfile && <ModifyMyAvatar />}
-        <ProfileLocalisation {...cities} />
+        <ProfileLocalisation {...cities} isMyProfile={isMyProfile} />
       </div>
     </div>
 

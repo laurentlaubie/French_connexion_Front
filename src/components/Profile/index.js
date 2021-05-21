@@ -39,7 +39,6 @@ const Profile = ({
     console.log('l\'url a changé');
   }, [pathName]);
 
-  console.log('cacaca');
   let name = '';
   if (userInfos.nickname != null) {
     name = userInfos.nickname;

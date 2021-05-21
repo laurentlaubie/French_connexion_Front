@@ -9,6 +9,11 @@ import ProfilePersonalInfos from 'src/components/ProfilePersonalInfos';
 import ProfileDescription from 'src/components/ProfileDescription';
 import ProfileButton from 'src/components/ProfileButton';
 import Loading from 'src/components/Loading';
+import ProfileHobbies from 'src/components/ProfileHobbies';
+import ProfileServices from 'src/components/ProfileServices';
+
+
+
 
 // == import style
 import './myProfile.scss';
@@ -44,7 +49,10 @@ const MyProfile = ({ connectedUserData, openLogOut, redirect, isConnected }) => 
           </div>
           <div className="myProfile__content__right">
             <ProfileDescription {...connectedUserData} />
+            <ProfileHobbies {...connectedUserData} />
+            <ProfileServices {...connectedUserData} />
           </div>
+
         </div>
 
         <div className="myProfile__buttons">
