@@ -10,7 +10,7 @@ import './profileLocalisation.scss';
 import colombie from 'src/assets/images/colombie.png';
 //import MapProfile from '../MapProfile';
 
-const ProfileLocalisation = ({ name, longitude, latitude, country }) => {
+const ProfileLocalisation = ({ name, longitude, latitude, country, isMyProfile }) => {
   let countryName = '';
   if (country != null) {
     countryName = country.name;
