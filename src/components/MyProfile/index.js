@@ -7,6 +7,8 @@ import LogOut from 'src/containers/LogOut';
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
 import ProfilePersonalInfos from 'src/components/ProfilePersonalInfos';
 import ProfileDescription from 'src/components/ProfileDescription';
+import ProfileHobbies from 'src/components/ProfileHobbies';
+import ProfileServices from 'src/components/ProfileServices';
 import ProfileButton from 'src/components/ProfileButton';
 import Loading from 'src/components/Loading';
 
@@ -40,10 +42,12 @@ const MyProfile = ({ connectedUserData, openLogOut, redirect, isConnected }) => 
         <div className="myProfile__content">
           <div className="myProfile__content__left">
             <ProfilePrincipalInfos {...connectedUserData} name={name} isMyProfile />
-            <ProfilePersonalInfos {...connectedUserData} name={name} />
+            <ProfilePersonalInfos {...connectedUserData} />
           </div>
           <div className="myProfile__content__right">
             <ProfileDescription {...connectedUserData} name={name} />
+            <ProfileHobbies {...connectedUserData} name={name} />
+            <ProfileServices {...connectedUserData} name={name} />
           </div>
         </div>
 
