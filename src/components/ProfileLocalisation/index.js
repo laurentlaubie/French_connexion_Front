@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 //==import Local
 import MapProfile from 'src/containers/MapProfile';
 
-
 // == import style
 import './profileLocalisation.scss';
 import colombie from 'src/assets/images/colombie.png';
@@ -22,6 +21,7 @@ const ProfileLocalisation = ({ name, longitude, latitude, country, isMyProfile, 
   let emptyMessage = '';
   if (isMyProfile){
     emptyMessage = 'Vous n\'avez pas indiqué votre ville de résidence.' ;
+
   }
   else{
     emptyMessage = `${username} n'a pas indiqué sa ville de résidence.`;

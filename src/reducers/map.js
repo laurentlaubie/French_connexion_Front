@@ -1,5 +1,5 @@
 import {
-  SET_SELECTED, SET_NEW_MARKER, SET_ADRESS, SET_CENTER, SAVE_USER_ADDRESS, SAVE_USER_LIST,
+  SET_SELECTED, SET_NEW_MARKER, SET_ADRESS, SET_CENTER, SAVE_USER_ADDRESS, SAVE_USER_LIST, SAVE_USERS_CITIES, LOADING_CITIES, SAVE_USERS_CITY,
 } from 'src/actions/map';
 
 const initialState = {
@@ -24,6 +24,11 @@ const initialState = {
   userAddress: [],
   usersList: [],
   adress: '',
+  usersCities: [],
+  listLoading: true,
+  usersCity: [],
+  cityName: '',
+
 };
 
 export default (state = initialState, action = {}) => {
@@ -57,6 +62,22 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         usersList: action.usersList,
+      };
+    case SAVE_USERS_CITIES:
+      return {
+        ...state,
+        usersCities: action.cities,
+      };
+    case LOADING_CITIES:
+      return {
+        ...state,
+        listLoading: action.value,
+      };
+    case SAVE_USERS_CITY:
+      return {
+        ...state,
+        usersCity: action.users,
+        cityName: action.name,
       };
     default:
       return state;

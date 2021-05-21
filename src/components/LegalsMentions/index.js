@@ -8,29 +8,109 @@ const LegalsMentions = () => (
     <div className="legalsmention__title" > Mentions Legales</div>
     <div className="legalsmention__title__subtitle" > Informations legales et conditions d'utilisation</div>
     <div className="legalsmention__texts">
-      <p className="legalsmention__texts__bloc"> 
-      
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris cursus mattis molestie a iaculis at. Dui faucibus in ornare quam viverra orci sagittis. Malesuada pellentesque elit eget gravida cum sociis natoque penatibus et. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Tellus orci ac auctor augue mauris augue neque. Purus sit amet volutpat consequat. Eu mi bibendum neque egestas congue quisque egestas diam. Natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Fusce id velit ut tortor pretium. Ullamcorper morbi tincidunt ornare massa eget egestas purus viverra accumsan. Id leo in vitae turpis massa sed. Odio eu feugiat pretium nibh ipsum. Tincidunt dui ut ornare lectus sit amet est placerat. Eu ultrices vitae auctor eu augue ut. Arcu cursus euismod quis viverra nibh cras. Eget velit aliquet sagittis id consectetur purus ut. Nibh tellus molestie nunc non. Sapien et ligula ullamcorper malesuada proin libero. Velit laoreet id donec ultrices tincidunt arcu non sodales neque.
+      <div className="legalsmention__texts__bloc"> 
+          <div className="legalsmention__texts__part">
+          <p>Merci de lire avec attention les différentes modalités d’utilisation du présent site avant d’y parcourir ses pages. </p>
+          <p>En vous connectant sur ce site, vous acceptez, sans réserves, les présentes modalités.</p>
+          <p> Aussi, conformément à l’article n°6 de la Loi n°2004-575 du 21 Juin 2004 pour la confiance dans l’économie numérique, les responsables du présent site internet www.FrenchConnection sont :</p>
+          </div>
 
-       Morbi enim nunc faucibus a pellentesque sit. Adipiscing enim eu turpis egestas pretium aenean pharetra. Porta lorem mollis aliquam ut porttitor leo a. Nibh praesent tristique magna sit amet purus gravida. Elit sed vulputate mi sit. Sit amet luctus venenatis lectus magna fringilla urna porttitor. Penatibus et magnis dis parturient montes nascetur. Vulputate ut pharetra sit amet aliquam id diam maecenas. Ut enim blandit volutpat maecenas. Ipsum dolor sit amet consectetur adipiscing elit ut aliquam.
+          <div className="legalsmention__texts__part">
+          <p>Éditeur du Site : </p>
+          <p>SARL FrenchConnection Numéro de SIRET : 85321735600027 </p>
+          <p>Responsable éditorial : Hugo ESSIQUE </p>
+          <p>12 Rue du Huit Mai 1945, 60350 ATTICHY </p>
+          <p>Site Web : www.FrenchConnection.fr </p>
+          </div>
 
-       Mi ipsum faucibus vitae aliquet nec ullamcorper sit amet risus. Aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis. In iaculis nunc sed augue lacus viverra. Sit amet aliquam id diam maecenas ultricies mi. Nullam non nisi est sit amet facilisis magna etiam tempor. Suspendisse faucibus interdum posuere lorem. Turpis egestas sed tempus urna. Eu volutpat odio facilisis mauris sit amet massa. Quis lectus nulla at volutpat diam ut venenatis. Mi bibendum neque egestas congue quisque.
+          <div className="legalsmention__texts__part">
+          <p>Hébergement :</p>
+          <p>Hébergeur : </p>
+          <p>SARL FrenchConnection</p>
+          <p>12 Rue du Huit Mai 1945, 60350 ATTICHY</p>
+          <p>Site Web : www.FrenchConnection.fr</p>
+          <p>Développement :</p>
+          <p>SARL FrenchConnection</p>
+          <p>Adresse : 12 Rue du Huit Mai 1945, 60350 ATTICHY</p>
+          <p>Site Web : </p>
+          <p>www.FrenchConnection.fr</p>
+          </div>
 
-       Egestas sed sed risus pretium. Viverra maecenas accumsan lacus vel facilisis volutpat est. Erat imperdiet sed euismod nisi porta lorem mollis aliquam. Magnis dis parturient montes nascetur. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Pellentesque id nibh tortor id aliquet lectus. Arcu risus quis varius quam quisque id. Sodales neque sodales ut etiam sit amet nisl purus in. Gravida quis blandit turpis cursus. Est sit amet facilisis magna etiam tempor orci eu lobortis. Tellus orci ac auctor augue mauris augue neque gravida. Tincidunt arcu non sodales neque sodales ut. Enim neque volutpat ac tincidunt vitae. Sed euismod nisi porta lorem mollis aliquam ut porttitor. Purus sit amet luctus venenatis lectus magna fringilla urna. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Vel risus commodo viverra maecenas accumsan lacus vel.
+          <div className="legalsmention__texts__part">
+          <div className="legalsmention__texts__title">Conditions d’utilisation :</div>
+          <p>Ce site (www.FrenchConnection.fr) est proposé en différents langages web (HTML, HTML5, Javascript, CSS, etc…) pour un meilleur confort d’utilisation et un graphisme plus agréable.</p>
+          <p>Nous vous recommandons de recourir à des navigateurs modernes comme Internet explorer, Safari, Firefox, Google Chrome, etc…</p>
+          <p>L’agence web French connection met en œuvre tous les moyens dont elle dispose, pour assurer une information fiable et une mise à jour fiable de ses sites internet.</p>
+          <p>Toutefois, des erreurs ou omissions peuvent survenir. L’internaute devra donc s’assurer de l’exactitude des informations auprès de French Connection , et signaler toutes modifications du site qu’il jugerait utile. </p>
+          <p>French Connection n’est en aucun cas responsable de l’utilisation faite de ces informations, et de tout préjudice direct ou indirect pouvant en découler.</p>
+          </div>
 
-       Aliquam nulla facilisi cras fermentum odio eu feugiat pretium nibh. Viverra vitae congue eu consequat. Ut faucibus pulvinar elementum integer enim. Blandit libero volutpat sed cras. Egestas sed tempus urna et pharetra pharetra massa massa ultricies. Non tellus orci ac auctor augue mauris augue neque. Risus sed vulputate odio ut. Facilisi nullam vehicula ipsum a arcu cursus. Faucibus interdum posuere lorem ipsum dolor sit. Ut enim blandit volutpat maecenas. Fusce ut placerat orci nulla pellentesque dignissim enim sit. Dictum non consectetur a erat nam at lectus. Faucibus pulvinar elementum integer enim neque volutpat. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim.
+          <div className="legalsmention__texts__part">
+          <div className="legalsmention__texts__subtitle">Cookies : </div>
+          <p>Le site www.FRENCH CONNECTION.fr peut-être amené à vous demander l’acceptation des cookies pour des besoins de statistiques et d’affichage.</p>
+          <p>Un cookie est une information déposée sur votre disque dur par le serveur du site que vous visitez.</p>
+          <p>Il contient plusieurs données qui sont stockées sur votre ordinateur dans un simple fichier texte al un serveur accède pour lire et enregistrer des informations . </p>
+          <p>Certaines parties de ce site ne peuvent être fonctionnelles sans l’acceptation de cookies.</p>
+          </div>    
 
-       Turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet. Tincidunt eget nullam non nisi est. Vel pharetra vel turpis nunc eget lorem dolor sed. Viverra ipsum nunc aliquet bibendum enim facilisis. Nibh sit amet commodo nulla facilisi. Orci phasellus egestas tellus rutrum tellus pellentesque. Erat pellentesque adipiscing commodo elit. A erat nam at lectus urna duis convallis. Porttitor eget dolor morbi non. Tellus pellentesque eu tincidunt tortor. Nunc lobortis mattis aliquam faucibus purus in. Vel orci porta non pulvinar. Habitant morbi tristique senectus et netus et. Amet porttitor eget dolor morbi non arcu. Elit ut aliquam purus sit amet luctus venenatis lectus. Ipsum a arcu cursus vitae congue. Nisi lacus sed viverra tellus in hac habitasse platea. Arcu cursus euismod quis viverra nibh cras pulvinar. Vehicula ipsum a arcu cursus vitae congue.
+          <div className="legalsmention__texts__part">
+          <div className="legalsmention__texts__subtitle">Liens hypertextes : </div>
+          <p>Les sites internet de peuvent offrir des liens vers d’autres sites internet ou d’autres ressources disponibles sur Internet. SARL FRENCH CONNECTION ne dispose d’aucun moyen pour contrôler les sites en connexion avec ses sites internet.</p>
+          <p>FRENCH CONNECTION ne répond pas de la disponibilité de tels sites et sources externes, ni ne la garantit. Elle ne peut être tenue pour responsable de tout dommage, de quelque nature que ce soit, résultant du contenu de ces sites ou sources externes, et notamment des informations, produits ou services qu’ils proposent, ou de tout usage qui peut être fait de ces éléments. Les risques liés à cette utilisation incombent pleinement à l’internaute, qui doit se conformer à leurs conditions d’utilisation.</p>
+          <p>Les utilisateurs, les abonnés et les visiteurs des sites internet  ne peuvent pas mettre en place un hyperlien en direction de ce site sans l’autorisation expresse et préalable de SARL FRENCH CONNECTION.</p>
+          <p>Dans l’hypothèse où un utilisateur ou visiteur souhaiterait mettre en place un hyperlien en direction d’un des sites internet de SARL FRENCH CONNECTION, il lui appartiendra d’adresser un email accessible sur le site afin de formuler sa demande de mise en place d’un hyperlien.</p>
+          <p>La SARL FRENCH CONNECTION se réserve le droit d’accepter ou de refuser un hyperlien sans avoir à en justifier sa décision.</p>
+          </div>    
 
-       Nunc faucibus a pellentesque sit. Viverra ipsum nunc aliquet bibendum enim. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere. Eu volutpat odio facilisis mauris sit. Scelerisque felis imperdiet proin fermentum leo vel orci porta non. Nibh mauris cursus mattis molestie a. Gravida rutrum quisque non tellus orci ac auctor. Adipiscing tristique risus nec feugiat in fermentum posuere urna. Quisque sagittis purus sit amet volutpat consequat. Vitae purus faucibus ornare suspendisse sed nisi. Platea dictumst quisque sagittis purus sit. Vulputate dignissim suspendisse in est. Mi eget mauris pharetra et ultrices neque ornare aenean. Eu scelerisque felis imperdiet proin fermentum leo vel. Diam sit amet nisl suscipit.
+          <div className="legalsmention__texts__part">
+          <div className="legalsmention__texts__subtitle">Services fournis :  </div>
+          <p>L’ensemble des activités de la société ainsi que ses informations sont présentés sur notre site www.FrenchConnection.fr.</p>
+          <p>SARL FrenchConnection s’efforce de fournir sur le site www.FrenchConnection.fr des informations aussi précises que possible. </p>
+          <p>Les renseignements figurant sur le site www.FrenchConnection.fr ne sont pas exhaustifs et les photos non contractuelles.</p>
+          <p>Ils sont donnés sous réserve de modifications ayant été apportées depuis leur mise en ligne. Par ailleurs, tous les informations indiquées sur le site www.FrenchConnection.fr sont données à titre indicatif, et sont susceptibles de changer ou d’évoluer sans préavis.</p>
+          </div>    
 
-      </p>
+          <div className="legalsmention__texts__part">
+          <div className="legalsmention__texts__subtitle">Limitation contractuelles sur les données : </div>
+          <p>Les informations contenues sur ce site sont aussi précises que possible et le site remis à jour à différentes périodes de l’année, mais peut toutefois contenir des inexactitudes ou des omissions.</p>
+          <p>Si vous constatez une lacune, erreur ou ce qui parait être un dysfonctionnement, merci de bien vouloir le signaler par courriel, à l’adresse contact@FrenchConnection.fr, en décrivant le problème de la manière la plus précise possible (page posant problème, type d’ordinateur et de navigateur utilisé, …).</p>
+          <p>Tout contenu téléchargé se fait aux risques et périls de l’utilisateur et sous sa seule responsabilité. En conséquence, ne saurait être tenu responsable d’un quelconque dommage subi par l’ordinateur de l’utilisateur ou d’une quelconque perte de données consécutives au téléchargement.</p>
+          <p>De plus, l’utilisateur du site s’engage à accéder au site en utilisant un matériel récent, ne contenant pas de virus et avec un navigateur de dernière génération mis-à-jour.</p>
+          <p>Les liens hypertextes mis en place dans le cadre du présent site internet en direction d’autres ressources présentes sur le réseau Internet ne sauraient engager la responsabilité de SARL FrenchConnection.</p>
+          </div>    
 
-      
-     
-    
-    </div>
-</div>
+          <div className="legalsmention__texts__part">
+          <div className="legalsmention__texts__subtitle">Propriété intellectuelle : </div>
+          <p>Tout le contenu du présent site www.FrenchConnection.fr, incluant, de façon non limitative, les graphismes, images, textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de la société à l’exception des marques, logos ou contenus appartenant à d’autres sociétés partenaires ou auteurs.</p>
+          <p>Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l’accord exprès par écrit de SARL FrenchConnection. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle. </p>
+          <p>Le non-respect de cette interdiction constitue une contrefaçon pouvant engager la responsabilité civile et pénale du contrefacteur. </p>
+          <p>En outre, les propriétaires des Contenus copiés pourraient intenter une action en justice à votre encontre.</p>
+          </div>
+
+          <div className="legalsmention__texts__part">
+          <div className="legalsmention__texts__subtitle">Déclaration à la CNIL : </div>
+          <p>Conformément à la loi 78-17 du 6 janvier 1978 (modifiée par la loi 2004-801 du 6 août 2004 relative à la protection des personnes physiques à l’égard des traitements de données à caractère personnel) relative à l’informatique, aux fichiers et aux libertés, ce site a fait l’objet d’une déclaration 1656629 auprès de la Commission nationale de l’informatique et des libertés (www.cnil.fr).</p>
+          </div>
+
+          <div className="legalsmention__texts__part">
+          <div className="legalsmention__texts__subtitle">Litiges : </div>
+          <p>Les présentes conditions du site www.FrenchConnection.fr sont régies par les lois françaises et toute contestation ou litiges qui pourraient naître de l’interprétation ou de l’exécution de celles-ci seront de la compétence exclusive des tribunaux dont dépend le siège social de la société. La langue de référence, pour le règlement de contentieux éventuels, est le français.</p>
+          </div>
+
+          <div className="legalsmention__texts__part">
+          <div className="legalsmention__texts__subtitle">Données personnelles : </div>
+          <p>De manière générale, vous n’êtes pas tenu de nous communiquer vos données personnelles lorsque vous visitez notre site Internet www.FrenchConnection.fr.</p>
+          <p>Cependant, ce principe comporte certaines exceptions. En effet, pour certains services proposés par notre site, vous pouvez être amenés à nous communiquer certaines données telles que : votre nom, votre fonction, le nom de votre société, votre adresse électronique, et votre numéro de téléphone. Tel est le cas lorsque vous remplissez le formulaire qui vous est proposé en ligne, dans la rubrique « contact ».</p>
+          <p>Dans tous les cas, vous pouvez refuser de fournir vos données personnelles. Dans ce cas, vous ne pourrez pas utiliser les services du site, notamment celui de solliciter des renseignements sur notre société, ou de recevoir les lettres d’information.</p>
+          <p>Enfin, nous pouvons collecter de manière automatique certaines informations vous concernant lors d’une simple navigation sur notre site internet, notamment : des informations concernant l’utilisation de notre site, comme les zones que vous visitez et les services auxquels vous accédez, votre adresse IP, le type de votre navigateur, vos temps d’accès.</p>
+          <p>De telles informations sont utilisées exclusivement à des fins de statistiques internes, de manière à améliorer la qualité des services qui vous sont proposés. </p>
+          <p>Les bases de données sont protégées par les dispositions de la loi du 1er juillet 1998 transposant la directive 96/9 du 11 mars 1996 relative à la protection juridique des bases de données.</p>
+          </div>
+
+
+      </div>
+    </div>  
+  </div>
 
 );
 

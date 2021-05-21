@@ -11,6 +11,8 @@ import ProfileHobbies from 'src/components/ProfileHobbies';
 import ProfileServices from 'src/components/ProfileServices';
 import ProfileButton from 'src/components/ProfileButton';
 import Loading from 'src/components/Loading';
+import ProfileHobbies from 'src/components/ProfileHobbies';
+import ProfileServices from 'src/components/ProfileServices';
 
 // == import style
 import './myProfile.scss';

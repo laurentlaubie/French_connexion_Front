@@ -23,7 +23,9 @@ import './mapResults.scss';
 
 const libraries = ['places'];
 
-const MapResults = ({ center, markers, handleSelected, markerSelected }) => {
+const MapResults = ({
+  center, markers, handleSelected, markerSelected, usersCities, listLoading, selectCity, setCenter, setAdress
+}) => {
   const mapContainerStyle = {
     height: '95%',
     width: '100%',
@@ -58,29 +60,36 @@ const MapResults = ({ center, markers, handleSelected, markerSelected }) => {
 
   return (
     <div className="mapResults">
-
+      {!listLoading
+      && (
       <GoogleMap
-        id='map'
+        id="map"
         mapContainerStyle={mapContainerStyle}
         classname="mapResults__map"
         zoom={8}
         center={center}
         options={options}
-        resetBoundsOnResize = {true}
+        resetBoundsOnResize
         onClick={(event) => {
           console.log(event);
         }}
         onLoad={onMapLoad}
       >
-        {markers.map((marker) => (
+        {
+        usersCities[0].cities.map((city) => (
           <Marker
-            key={`${marker.lat}-${marker.lng}`}
-            position={{ lat: marker.lat, lng: marker.lng }}
+            key={`${city.latitude}-${city.longitude}`}
+            position={{ lat: city.latitude, lng: city.longitude }}
             onClick={() => {
-              handleSelected(marker);
+            // handleSelected(marker);
+              selectCity(city.users, city.name);
+              const latlng = { lat: city.latitude, lng: city.longitude };
+              setCenter(latlng);
+              setAdress('');
             }}
           />
-        ))}
+        ))
+        }
 
         {markerSelected ? (
           <InfoWindow
@@ -97,6 +106,7 @@ const MapResults = ({ center, markers, handleSelected, markerSelected }) => {
           </InfoWindow>
         ) : null}
       </GoogleMap>
+      )}
     </div>
   );
 };
@@ -129,24 +139,25 @@ function Search({ panTo }) {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
       panTo({ lat, lng });
-    } catch (error) {
+    }
+    catch (error) {
       console.log('😱 Error: ', error);
     }
   };
 
   return (
-    <div className='search'>
+    <div className="search">
       <Combobox onSelect={handleSelect}>
         <ComboboxInput
           value={value}
           onChange={handleInput}
           disabled={!ready}
-          placeholder='Saisissez une ville ou un pays'
+          placeholder="Saisissez une ville ou un pays"
         />
         <ComboboxPopover>
           <ComboboxList>
-            {status === 'OK' &&
-              data.map(({ id, description }) => (
+            {status === 'OK'
+              && data.map(({ id, description }) => (
                 <ComboboxOption key={id + description} value={description} />
               ))}
           </ComboboxList>

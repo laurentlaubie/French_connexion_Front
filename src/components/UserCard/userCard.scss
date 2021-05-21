@@ -1,30 +1,36 @@
 @use 'src/styles/_vars';
 
 .userCard{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   margin-bottom: 1.5rem;
-  background-color: #F0F0F0;
-  box-shadow: 6px 4px 4px rgba(0, 0, 0, 0.25);
-  width:100%;
-  justify-content:space-between;
+  background-color: #f0f0f0;
+  box-shadow: 4px 3px 9px rgba(0,0,0,.25);
+  width: 100%;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 
   @media only screen and (min-width: 601px) {
-
-    width: 32%;
-    flex-direction:row;
+    width: 31%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
   }
 
   &__picture{
-    background-color: vars.$dark-blue;
+    width: 100%;
     
   
     img{
-      object-fit: contain;
-      width: 45%;
-      height: 45%;
-      border-radius: 50%;
-      margin: 1rem 0 1rem 1rem;
+    width: 100%;
+    height: 100%;
     }
   }
 
@@ -116,8 +122,4 @@
 
 }
 
-.userCard:nth-of-type(even){
-  .userCard__picture{
-  background-color: vars.$light-red;
-  }
-}
+
