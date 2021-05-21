@@ -10,7 +10,7 @@
 
   &__status{
 
-    margin-bottom:2rem;
+    margin-bottom:1.5rem;
 
       &__name{
       font-size:1.2em;
@@ -49,17 +49,9 @@
           width:50px;
           top:0em;
           right:-1.9em;
-
-
         }
       }
-
-      // @media (min-width: vars.$breakpoint-desktop){
-      //   width:70px;
-      // }
-
     }
-
   }
 
   &__username {
@@ -77,7 +69,7 @@
     color: rgb(235, 235, 235);
     padding-bottom: 2rem; 
     color:vars.$dark-color;
-    font-size:1.5em;
+    font-size:1.3em;
     font-style:italic ;
     padding-top:0.8em; 
   }
@@ -87,7 +79,7 @@
     margin:auto;
 
     img{
-      object-fit:contain;
+      // object-fit:contain;
       width: 300px;
       height: 300px;
       border-radius:50%;
@@ -108,18 +100,11 @@
    
   }
 
-
   &__update {
     padding-top: 0.5rem;
     text-decoration: underline;
     font-weight:bold;
     
-  }
-
-  &__localisation{
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    font-size:1.5rem;
   }
 
 }

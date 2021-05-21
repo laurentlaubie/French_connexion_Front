@@ -1,7 +1,15 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware, compose } from 'redux';
 
-import reducer from 'src/reducers';
 import apiMiddleware from 'src/middlewares/apiBack';
+import reducer from 'src/reducers';
 
-export default createStore(reducer, composeWithDevTools(applyMiddleware(apiMiddleware)));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const enhancers = composeEnhancers(
+  // on branche notre middleware sur le store
+  applyMiddleware(apiMiddleware),
+);
+
+const store = createStore(reducer, enhancers);
+
+export default store;

@@ -1,69 +1,231 @@
 @use 'src/styles/_vars';
 
-.modifymyprofile{
+.modifyProfile{
   
-  width: 100%;
-  overflow-x: hidden;
-  &__all {
+  width:90%;
+  margin:5rem auto;
 
-    &__title{
-      font-size:3rem;
-      padding-top: 2em;
-      margin-bottom: 1.5em;
+  @media (min-width:vars.$max-width){
+    width:vars.$max-width;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.5em;
+    //padding-top: 6em;
+    padding-bottom: 3rem;
+    text-align: center;
+    width: 100%;
+   
+    @media (min-width: vars.$breakpoint-tablet){
+      // margin-top: 2em;
+      font-weight: 700;
+      font-size: 2.5em;
+      text-align: left
     }
+  }
 
-    &__mdp{
-      border-radius: 30px;
-      border: solid 0.1em vars.$dark-blue;
-      padding: 0.3em;
+  &__content {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    width: 100%;
+    // border:1px solid blue;
+    position:relative;
+    
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: start;
+      // margin-top: -120px;
+      // width:45%
     }
+  }
 
+  &__principalInfos {
+    width: 100%;
+    background-color:vars.$light-blue;
+    border-radius:2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-bottom:2rem;
+    padding-top:2.5rem;
+    display:none;
+
+
+    @media (min-width: vars.$breakpoint-tablet){
+      width:48%;
+      display:block;
+    } 
+
+    @media (min-width: vars.$breakpoint-desktop){
+      width:38%;
+    } 
   }
 
   &__form {
-    display: flex;
-    flex-direction: column;
+    width:100%;
+    // border:1px solid red;
+    // position:relative;
+
+    @media (min-width: vars.$breakpoint-tablet){
+      width:48%;
+    }
+
+    @media (min-width: vars.$breakpoint-desktop){
+      width:58%;
+    } 
+
+    &__text{
+      text-align:justify;
+
+    }
     
-    
-    &__field, &__password{
-    background-color: #f7f7f7;
-    width: 80%;
-    height: 3em;
-    font-size: 2em;
-    padding: 1em;
-    margin-top: 1em;
-    border-radius: 30px;
-    margin-bottom: 0.25em;
-    border: solid 0.1em vars.$light-blue;
+    // &__navbar{
+    //   width:100%;
+    //   display:none;
+    //   border-bottom: 1px solid red;
+
+    //   @media (min-width: vars.$breakpoint-desktop){
+    //     display:flex;
+    //   } 
+
+    //   &__item{
+    //     padding:1.5rem;
+    //     font-size:1.2rem;
+    //     color:vars.$dark-color;
+    //     margin-right:1rem;
+    //   }
+    // }
+
+    &__hobbiesList{
+      display:flex;
+      flex-direction:column;
+    }
+
+    &__section{
+      padding:2rem;
+      width:100%;
+      display: flex;
+      flex-direction: column;
+      align-items:start;
+      border-radius: 30px;
+      margin-bottom:2rem;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      // width:80%;
+      // margin:2rem auto;
+      // // border:1px solid red;
+      // display:flex;
+      // flex-direction:column;
+      // justify-content:center;
+      // align-items:center;
+      // position:relative;
+
+     
+
+      &__title{
+        padding:1.5rem 0.2rem;
+        font-size:1.4rem;
+        border-bottom: 2px solid vars.$light-red;
+        color:vars.$light-red;
+        margin-bottom:3rem;
+        text-transform: uppercase;
+      }
 
       
+      &__content{
+        width:100%;
+
+        // &--aboutMe{
+
+        //   position:absolute;
+        //   top:1rem;
+        //   right:2rem;
+        //   background-color:red;
+        //   }
+  
+        }
+
+      &__fieldGroup{
+        display:flex;
+        flex-direction:row;
+        justify-content:start;
+        // background-color:red;
+
+      }
+
       
     }
 
-    &__password{
-    height: 4em;
-    border-radius: 0px;
-    color: black;
-    background: #db286d7d;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+    &__subsection{
+      margin-bottom:2rem;
+
+      &__title{
+        font-size:1.2rem;
+        font-weight:bold;
+        font-style:italic;
+        padding-bottom: 1.5rem;
+        text-align: left;
+      }
+
     }
 
-    &__input{
-    transform: scale(4);
-    display: inline-block;
-    width: 45%;
-    margin: auto;
-    margin-bottom: 4em;
+    &__city {
+      margin-bottom:1rem;
     }
+
+
 
     &__label{
-      font-size: 1.5em;
-      display: inline-block;
-      width: 55%;
-      text-align: left;
-      margin-bottom: 1em;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:start;
+      // border:1px solid orange;
+      padding-bottom:1rem;
 
+      &__name{
+        padding-bottom:0.5rem;
+        font-size:1rem;
+        
+      }
     }
+
+    &__becomeHelperButton{
+      border:none;
+      margin:2rem auto;
+      justify-content: center;
+      background-color:vars.$light-blue;
+      padding:2rem;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      border-radius:0.5rem;
+      padding-right:2rem;
+      font-weight:bold;
+      font-size:1.2rem;
+      color:vars.$light-color;
+      width:100%;
+    }
+  }
+
+  &__buttons{
+    // border:1px solid black;
+    display:flex;
+    flex-direction: column;
+    margin-bottom:2rem;
+    width:100%;
+
+    @media (min-width: vars.$breakpoint-tablet){
+      flex-direction:row;
+      width:100%;
+      right:0;
+    }
+
+    @media (min-width: vars.$breakpoint-desktop){
+      width:100%;
+      justify-content: flex-end;      
+    }
+
   }
 
 }

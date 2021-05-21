@@ -1,0 +1,47 @@
+@use 'src/styles/_vars';
+
+.profileButton {
+
+  display: flex;
+  color: vars.$light-color;
+  font-size: 1.3rem;
+  border:none;
+  padding: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius:0.5rem;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  display:inline;
+  margin-bottom:1rem;
+  margin-left:2rem;
+
+  // @media (min-width: vars.$breakpoint-desktop){
+  //   padding: 1.3rem;
+  //   font-size: 1.1rem;
+  // } 
+
+  &--red{
+    background-color: vars.$light-red;
+  }
+
+  &--blue{
+    background-color: vars.$light-blue;
+  }
+
+  &--gray{
+    background-color: vars.$light-grey;
+    color: vars.$dark-color;
+    text-shadow: none;
+  }
+
+  &__title {
+
+    font-size: 30px;
+    font-weight: 700;
+    
+  }
+
+  
+  
+
+
+}

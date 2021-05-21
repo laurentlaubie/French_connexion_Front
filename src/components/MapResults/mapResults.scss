@@ -1,10 +1,17 @@
 .mapResults{
   text-align: center;
-  margin-top: 3em;
-  &__Map{
-    width: 250px;
+  // margin-top: 3em;
+  &__map{
+    height: 95%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    min-height: 50vh;
+    margin-top: 5%;
   }
 }
+
+
 
 @media only screen and (min-width: 601px) {
 

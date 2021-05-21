@@ -1,32 +1,92 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
+import Field from 'src/components/Field';
 
 import './signIn.scss';
 
-const SignIn = ({ isOpen, close, openLogIn }) => (
-  <div className={isOpen ? 'signIn' : 'signIn__close' }>
-    <div className="signIn__modal">
-      <h1 className="signIn__modal__title"> Créez votre compte </h1>
-      <button className="signIn__modal__closeButton" type="button" onClick={close}> X </button>
-      <form className="signIn__modal__form">
-        <input className="signIn__modal__form__field" type="firstName" name="firstName" placeholder="Prénom" />
-        <input className="signIn__modal__form__field" type="password" name="password" placeholder="Nom" />
-        <input className="signIn__modal__form__field" type="email" name="email" placeholder="Email" />
-        <input className="signIn__modal__form__field" type="password" name="password" placeholder="Mot de passe" />
-        <input className="signIn__modal__form__field" type="password" name="passwordConfirm" placeholder="Confirmez votre mot de passe" />
+const SignIn = ({
+  isOpen, close, openLogIn, firstname, lastname, email, password, confirmedPassword, changeField, handleSignIn,
+}) => {
+  const [errorMessage, setErrorMessage] = useState('');
 
-        <button className="signIn__modal__form__button" type="submit"> S'inscrire </button>
-      </form>
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    if (password === confirmedPassword) {
+      handleSignIn();
+    }
+    else {
+      setErrorMessage('Les mots de passe ne correspondent pas');
+    }
+  };
 
-      <button type="button" className="signIn__modal__openLogInButton" onClick={openLogIn}> Vous avez déjà un compte ?</button>
+  return (
+    <div className={isOpen ? 'signIn' : 'signIn__close'}>
+      <div className="signIn__modal">
+        <h1 className="signIn__modal__title"> Créez votre compte </h1>
+        <button className="signIn__modal__closeButton" type="button" onClick={close}> X </button>
+        <form className="signIn__modal__form" onSubmit={handleSubmit}>
+          {errorMessage && (
+            <p className="error"> {errorMessage} </p>
+          )}
+          <Field
+            className="signIn__modal__form__field"
+            name="firstname"
+            placeholder="Prénom"
+            onChange={changeField}
+            value={firstname}
+          />
+          <Field
+            className="signIn__modal__form__field"
+            name="lastname"
+            placeholder="Nom"
+            onChange={changeField}
+            value={lastname}
+          />
+          <Field
+            className="signIn__modal__form__field"
+            name="email"
+            placeholder="Email"
+            onChange={changeField}
+            value={email}
+          />
+          <Field
+            className="signIn__modal__form__field"
+            name="password"
+            type="password"
+            placeholder="Mot de passe"
+            onChange={changeField}
+            value={password}
+          />
+          <Field
+            className="signIn__modal__form__field"
+            name="confirmedPassword"
+            type="password"
+            placeholder="Confirmer votre mot de passe"
+            onChange={changeField}
+            value={confirmedPassword}
+          />
+
+          <button className="signIn__modal__form__button" type="submit"> S'inscrire </button>
+        </form>
+
+        <button type="button" className="signIn__modal__openLogInButton" onClick={openLogIn}> Vous avez déjà un compte ?</button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 SignIn.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   openLogIn: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  confirmedPassword: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleSignIn: PropTypes.func.isRequired,
 };
 
 export default SignIn;

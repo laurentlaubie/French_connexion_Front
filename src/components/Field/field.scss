@@ -1,0 +1,23 @@
+@use 'src/styles/vars';
+
+.modifyProfile__form__field {
+  // background-color: #f7f7f7;
+  font-size: 1rem;
+  padding: 1rem;
+  border: solid 1px vars.$light-blue;
+  font-weight:bold;
+  margin-right:1rem;
+  margin-bottom:1rem;
+}
+
+.signIn__modal__form__field, .logIn__modal__form__field{
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid black;
+  display:block;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  width:70%;
+  margin:1rem auto;
+  background-color:white!important;
+}

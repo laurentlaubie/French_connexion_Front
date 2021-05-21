@@ -1,15 +1,36 @@
+@use 'src/styles/_vars';
+
 .profilesResults{
-  padding-bottom:5em;
+  height: 50vh;
 
   
-  &__Title{
-    font-size: 1.75em;
+  &__Header{
+    margin-top: 0.5em;
+    padding: 0.5em;
+    
     width: 100%;
-    border-top: solid black 1px;
-    border-bottom: solid black 1px;
-    height: 2em;
-    display: grid;
-    place-items: center;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    margin-bottom: 0.5em;
+  }
+
+  &__List{
+    width: 80%;
+    margin: auto;
+    padding-bottom: 5em;
+  }
+
+  &__City{
+    font-family: vars.$font-title;
+    font-size: 1.25em;
+    margin-bottom: 0.5em;
+    text-decoration: underline;
+  }
+
+  &__SearchResult{
+    font-style: italic;
+    font-size: 1em;
+    font-family: vars.$font-title;
   }
 }
 
@@ -19,9 +40,12 @@
     //display:flex;
     margin-top: 3em;
     width: 50%;
-    
-    
     padding-bottom:0em;
+
+    &__List{
+      height: initial;
+      overflow-y: unset;
+    }
 
   &__Title{
     

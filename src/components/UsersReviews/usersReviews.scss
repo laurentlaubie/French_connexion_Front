@@ -1,17 +1,20 @@
 @use 'src/styles/vars';
 
 .usersReviews{
-  background-color:vars.$light-blue;
+  background-color: vars.$light-grey;
   margin-top: 5rem;
+  padding: 2em;
+  //margin-bottom: 5em;
   // padding: 2rem;
-  // border:1px solid blue;
+  //border:1px solid blue;
   
 
   &__title{
-    padding:2rem;
-    font-size:1.5rem;
-    font-weight: bold;
-    color:vars.$light-color;
+    padding: 2rem;
+    font-size: 2.5rem;
+    color: vars.$dark-blue;
+    font-family: vars.$font-title;
+    
   }
 
   &__list{
@@ -20,7 +23,8 @@
     flex-direction:column;
     justify-content:center ;
     flex-wrap: wrap;
-
+    width: 60%;
+    
     @media (min-width: vars.$breakpoint-tablet) {
       flex-direction:row;
     }

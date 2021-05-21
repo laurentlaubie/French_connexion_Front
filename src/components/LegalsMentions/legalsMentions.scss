@@ -1,0 +1,72 @@
+@use 'src/styles/vars';
+    
+.legalsmention{
+
+  @media only screen and (min-width: 601px){
+    font-size: 2em;
+  }
+
+  //background-color: vars.$light-red;
+  &__title{
+    font-size: 1.5em;
+    font-weight: 700;
+    //background-color: violet;
+    padding-top: 1em;
+    border-radius:0.5rem;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    background-color: vars.$light-blue;
+    width: 80%;
+    padding-bottom: 1em;
+    margin: auto;
+
+      &__subtitle{
+        font-size: 1em;
+        font-weight: 700;
+        //background-color: green;
+        padding-top: 2em;
+        padding-bottom: 2em;
+
+      }
+  }
+
+  &__texts{
+
+    //background-color: red;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    &__bloc{
+      text-justify: inter-word;
+      padding: 3em 2em 3em 2em;
+      font-size: 0.5em;
+      //border: solid black 1px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      border-radius:0.5rem;
+      text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+     // background-color: vars.$light-red;
+      
+
+    }
+
+    &__part{
+      //background-color: blue;
+      margin: 2em;
+      line-height: 1.5;
+
+    }
+
+    &__title{
+      padding-bottom: 2em;
+      padding-top: 2em;
+      border-top: solid  vars.$light-red 1px;
+      font-weight: bolder;
+    }
+    &__subtitle{
+      font-weight: bolder;
+    }
+    
+  }
+
+  
+}

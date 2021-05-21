@@ -1,0 +1,69 @@
+@use 'src/styles/vars';
+
+.logOut{
+
+  &__close{
+    display:none;
+  }
+
+  &__modal{
+    background-color:vars.$light-color;
+    width:80%;
+    top:25%;
+    left:10%;
+    padding-bottom:2rem;
+    border-radius:2rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    // position:relative;
+    position:fixed;
+    // display:none;
+    z-index:100;
+    
+
+    @media (min-width: vars.$breakpoint-tablet){
+      width: 50%;
+      left:25%;
+    }
+
+    &__title{
+
+      padding:3rem 0 3rem;
+      width:70%;
+      margin:auto;
+      font-size:1rem;
+
+      @media (min-width: vars.$breakpoint-tablet){
+        font-size:1.3rem;
+      }
+    }
+
+    &__buttons{
+
+      display:flex;
+      flex-direction: row;
+      justify-content:space-around;
+
+      &__item{
+        margin: 2rem auto;
+        background-color:vars.$light-red;
+        border:none;
+        padding:0.8rem 3rem;
+        color:vars.$light-color;
+        border-radius:0.5rem;
+        font-weight:bold;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        font-size:1rem;
+
+        &--cancel{
+          background-color:vars.$light-color;
+          color: vars.$dark-color;
+        }
+      }
+
+    }
+
+
+
+  }
+
+}

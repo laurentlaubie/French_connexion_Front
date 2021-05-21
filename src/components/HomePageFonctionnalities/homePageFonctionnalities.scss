@@ -1,10 +1,12 @@
 @use 'src/styles/vars';
 
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 .homePageFonctionnalities{
   
   display:flex;
   flex-flow: column wrap;
-  background-color:vars.$light-red;
+  background-color:vars.$light-grey;
   margin-top:1.5rem;
 
   @media (min-width: vars.$breakpoint-tablet) {
@@ -17,12 +19,18 @@
   }
 
   &__item{
-    // border:1px solid black;
-    width:100%;
-    padding:2rem;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    width: 100%;
+    padding: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 
     @media (min-width: vars.$breakpoint-tablet) {
       flex-direction:column;
@@ -35,35 +43,49 @@
     &:hover{
     
       @media (min-width: vars.$breakpoint-tablet) {
-        background-color:vars.$light-color;
+        background-color:vars.$light-red;
 
         .homePageFonctionnalities__item__text__title{
-          color:black;
+          color:vars.$light-color;
           text-shadow: none;
+          
+
         }
       }
 
     }
 
+   
     &__image{
-      width:40%;
-      margin-bottom:2rem;
+    max-width: 80%;
+    max-height: 200px;
+    margin-bottom: 2rem;
     }
+
 
     &__text{
       &__title{
-        font-size:1.8rem;
-        color:white;
-        text-shadow: 0.5px 0px 1px black;
-        margin-bottom:1.5rem;
+        font-size: 2rem;
+        color: vars.$light-red;
+        margin-bottom: 1.5rem;
+        text-decoration: underline;
+        font-family: vars.$font-title;
       }
   
       &__content{
-        font-size:1.2rem;
+        font-size: 1.4rem;
+        text-align: justify;
+        font-family: vars.$font-text;
 
       }
 
     }
 
+  }
+}
+
+@media (min-width: vars.$breakpoint-tablet) {
+  #minus__margin{
+    margin-top:-20px;
   }
 }
