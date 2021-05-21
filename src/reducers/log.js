@@ -27,6 +27,7 @@ import {
   SET_NEW_ADDRESS,
   SAVE_NEW_ADDRESS,
   SAVE_MODIFIED_CONNECTED_USER_DATA,
+  SAVE_AVATAR_IN_STATE,
 } from 'src/actions/modifyForm';
 
 import { SET_MY_PROFILE_LOADING } from 'src/actions/loading';
@@ -47,6 +48,7 @@ const initialState = {
   isMyProfileLoaded: false,
   newAddress: '',
   completeNewAddress: [],
+  avatarFile: null,
 
 };
 
@@ -233,6 +235,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         connectedUserData: action.modifiedData,
+      };
+    case SAVE_AVATAR_IN_STATE:
+      return {
+        ...state,
+        avatarFile: action.file,
       };
     default:
       return state;

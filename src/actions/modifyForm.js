@@ -106,3 +106,12 @@ export const saveModifiedConnectedUserData = (modifiedData) => ({
   type: SAVE_MODIFIED_CONNECTED_USER_DATA,
   modifiedData,
 });
+
+// action type SAVE_AVATAR_IN_STATE
+export const SAVE_AVATAR_IN_STATE = 'SAVE_AVATAR_IN_STATE';
+
+// action creator saveAvatarInState
+export const saveAvatarInState = (file) => ({
+  type: SAVE_AVATAR_IN_STATE,
+  file,
+});

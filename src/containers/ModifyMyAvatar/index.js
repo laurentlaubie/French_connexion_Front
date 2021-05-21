@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 
 import ModifyMyAvatar from 'src/components/ModifyMyAvatar';
 
-import { setAvatar, sendAvatar, saveAvatar } from 'src/actions/modifyForm';
+import { setAvatar, sendAvatar, saveAvatar, saveAvatarInState } from 'src/actions/modifyForm';
 
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   avatar: state.log.connectedUserData.avatar,
+  avatarFile: state.log.avatarFile,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -21,6 +22,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   // },
   saveAvatar: (avatarData) => {
     dispatch(saveAvatar(avatarData));
+  },
+  saveAvatarInState: (file) => {
+    dispatch(saveAvatarInState(file));
   },
 });
 
