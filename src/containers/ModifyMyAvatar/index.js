@@ -7,6 +7,7 @@ import { setAvatar, sendAvatar, saveAvatar } from 'src/actions/modifyForm';
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
+  avatar: state.log.connectedUserData.avatar,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -20,7 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   // },
   saveAvatar: (avatarData) => {
     dispatch(saveAvatar(avatarData));
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModifyMyAvatar);

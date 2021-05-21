@@ -149,25 +149,14 @@ export const setLoading = (value) => ({
 
 
 
-// action type SAVE_AVATAR
-export const SAVE_AVATAR = 'SAVE_AVATAR';
+// // action type SAVE_AVATAR
+// export const SAVE_AVATAR = 'SAVE_AVATAR';
 
-// action creator setLoading
-export const saveAvatar = (avatarData) => ({
-  type: SAVE_AVATAR,
-  avatarData,
-});
+// // action creator setLoading
+// export const saveAvatar = (avatarData) => ({
+//   type: SAVE_AVATAR,
+//   avatarData,
+// });
   
 
-// action type SAVE_USER_ADDRESS
-export const SAVE_USER_ADDRESS = 'SAVE_USER_ADDRESS';
 
-// action creator saveUserAddress
-export const saveUserAddress = (cityName, countryName, lat, lng) => ({
-  type: SAVE_USER_ADDRESS,
-  cityName,
-  countryName,
-  lat,
-  lng,
-
-});

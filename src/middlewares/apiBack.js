@@ -9,7 +9,13 @@ import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
-import { MODIFY_PROFILE, redirectToMyProfile, SEND_AVATAR, saveAvatar } from 'src/actions/modifyForm';
+import {
+  MODIFY_PROFILE,
+  redirectToMyProfile,
+  SEND_AVATAR,
+  saveAvatar,
+  saveModifiedConnectedUserData,
+} from 'src/actions/modifyForm';
 import { toast } from 'react-toastify';
 import { setLoading, setMyProfileLoading } from 'src/actions/loading';
 
@@ -200,26 +206,25 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
     }
-    case SEND_AVATAR: {
-      const { id, avatar } = action;
-      api
-        .post(`/user/avatar/${id}`, avatar, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-            'Content-Type': 'multipart/form-data',
-          },
-        })
-        .then((response) => {
-        // store.dispatch(saveAvatar(response.data.avatar));
-        console.log(response);
-        }).catch((error) => {
-          const errorStatus = error.response.status;
-          if (errorStatus === 401) {
-            window.location.href = '/403';
-          }
-
-        })
-    }
+    // case SEND_AVATAR: {
+    //   const { id, avatar } = action;
+    //   api
+    //     .post(`/user/avatar/${id}`, avatar, {
+    //       headers: {
+    //         Authorization: `Bearer ${localStorage.getItem('token')}`,
+    //         'Content-Type': 'multipart/form-data',
+    //       },
+    //     })
+    //     .then((response) => {
+    //       // store.dispatch(saveAvatar(response.data.avatar));
+    //       console.log(response);
+    //     }).catch((error) => {
+    //       const errorStatus = error.response.status;
+    //       if (errorStatus === 401) {
+    //         window.location.href = '/403';
+    //       }
+    //     });
+    // }
 
     case LOAD_USERS_REVIEWS:
     // affichage de tous les profils sur la HP
@@ -264,6 +269,8 @@ export default (store) => (next) => (action) => {
         helper,
       } = connectedUserData;
 
+      const { completeNewAddress: userAdress } = state.log;
+
       api
         .put(`/user/${userId}`,
           {
@@ -275,7 +282,7 @@ export default (store) => (next) => (action) => {
             nickname,
             biography,
             phoneNumber,
-            // userAdress,
+            userAdress,
             hobbies,
             helper,
             services,
@@ -289,6 +296,7 @@ export default (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(resetPassword());
           store.dispatch(redirectToMyProfile(true));
+          store.dispatch(saveModifiedConnectedUserData(response.data));
           // window.location.href = '/mon-profil';
           // const usersList = response.data;
           // store.dispatch(saveUsersCards(usersList));

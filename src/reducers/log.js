@@ -23,7 +23,10 @@ import {
   BECOME_HELPER,
   REMOVE_HELPER_STATUS,
   REDIRECT_TO_MY_PROFILE,
-  SET_AVATAR,
+  SAVE_AVATAR,
+  SET_NEW_ADDRESS,
+  SAVE_NEW_ADDRESS,
+  SAVE_MODIFIED_CONNECTED_USER_DATA,
 } from 'src/actions/modifyForm';
 
 import { SET_MY_PROFILE_LOADING } from 'src/actions/loading';
@@ -42,6 +45,8 @@ const initialState = {
   confirmedNewPassword: '',
   redirectionToMyProfile: false,
   isMyProfileLoaded: false,
+  newAddress: '',
+  completeNewAddress: [],
 
 };
 
@@ -112,7 +117,6 @@ export default (state = initialState, action = {}) => {
         isConnected: action.value,
         isLoading: false,
       };
-   
     case CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE:
       return {
         ...state,
@@ -207,13 +211,28 @@ export default (state = initialState, action = {}) => {
         ...state,
         isMyProfileLoaded: action.value,
       };
-    case SET_AVATAR:
+    case SAVE_AVATAR:
       return {
         ...state,
         connectedUserData: {
           ...state.connectedUserData,
-          avatar: action.avatar,
+          avatar: action.avatarData,
         },
+      };
+    case SET_NEW_ADDRESS:
+      return {
+        ...state,
+        newAddress: action.address,
+      };
+    case SAVE_NEW_ADDRESS:
+      return {
+        ...state,
+        completeNewAddress: action.completeAddress,
+      };
+    case SAVE_MODIFIED_CONNECTED_USER_DATA:
+      return {
+        ...state,
+        connectedUserData: action.modifiedData,
       };
     default:
       return state;
