@@ -214,26 +214,6 @@ export default (store) => (next) => (action) => {
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
-    }
-    // case SEND_AVATAR: {
-    //   const { id, avatar } = action;
-    //   api
-    //     .post(`/user/avatar/${id}`, avatar, {
-    //       headers: {
-    //         Authorization: `Bearer ${localStorage.getItem('token')}`,
-    //         'Content-Type': 'multipart/form-data',
-    //       },
-    //     })
-    //     .then((response) => {
-    //       // store.dispatch(saveAvatar(response.data.avatar));
-    //       console.log(response);
-    //     }).catch((error) => {
-    //       const errorStatus = error.response.status;
-    //       if (errorStatus === 401) {
-    //         window.location.href = '/403';
-    //       }
-    //     });
-    // }
 
     case LOAD_USERS_REVIEWS:
     // affichage de tous les profils sur la HP
