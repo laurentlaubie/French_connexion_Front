@@ -53,15 +53,15 @@ export const setAvatar = (avatar) => ({
   avatar,
 });
 
-// action type SAVE_AVATAR
-export const SAVE_AVATAR = 'SAVE_AVATAR';
+// // action type SAVE_AVATAR
+// export const SAVE_AVATAR = 'SAVE_AVATAR';
 
-// action creator saveAvatar
-export const saveAvatar = (id, avatar) => ({
-  type: SAVE_AVATAR,
-  id,
-  avatar,
-});
+// // action creator saveAvatar
+// export const saveAvatar = (id, avatar) => ({
+//   type: SAVE_AVATAR,
+//   id,
+//   avatar,
+// });
 
 // action type SEND_AVATAR
 export const SEND_AVATAR = 'SEND_AVATAR';
@@ -71,4 +71,13 @@ export const sendAvatar = (id, avatar) => ({
   type: SEND_AVATAR,
   id,
   avatar,
+});
+
+// action type SAVE_AVATAR
+export const SAVE_AVATAR = 'SAVE_AVATAR';
+
+// action creator setLoading
+export const saveAvatar = (avatarData) => ({
+  type: SAVE_AVATAR,
+  avatarData,
 });
