@@ -18,14 +18,14 @@ const MyProfile = ({ connectedUserData, openLogOut, redirect, isConnected }) => 
     console.log('useEffect');
     redirect(false);
   }, []);
-  // console.log(connectedUserData);
-  // const connectedUserId = connectedUserData.id;
-  // console.log(connectedUserId);
 
-  // useEffect(() => {
-  //   loadUserProfile(connectedUserId);
-  //   console.log(userInfos);
-  // }, [connectedUserData]);
+  let name = '';
+  if (connectedUserData.nickname != null) {
+    name = connectedUserData.nickname;
+  }
+  else {
+    name = `${connectedUserData.firstname} ${connectedUserData.lastname}`;
+  }
 
   return (
     <>
@@ -39,11 +39,11 @@ const MyProfile = ({ connectedUserData, openLogOut, redirect, isConnected }) => 
 
         <div className="myProfile__content">
           <div className="myProfile__content__left">
-            <ProfilePrincipalInfos {...connectedUserData} isMyProfile />
-            <ProfilePersonalInfos {...connectedUserData} />
+            <ProfilePrincipalInfos {...connectedUserData} name={name} isMyProfile />
+            <ProfilePersonalInfos {...connectedUserData} name={name} />
           </div>
           <div className="myProfile__content__right">
-            <ProfileDescription {...connectedUserData} />
+            <ProfileDescription {...connectedUserData} name={name} />
           </div>
         </div>
 
