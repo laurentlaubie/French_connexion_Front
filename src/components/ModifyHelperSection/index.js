@@ -30,13 +30,10 @@ const ModifyHelperSection = ({ helper, toggleHelperCheckbox, isLoaded, becomeHel
             Vos statut de helper vous permet de proposer divers services aux voyageurs. Vous pouvez ajouter ou retirer des services ci-dessous, ceux-ci seront visibles par les autres utilisateurs sur votre profil.
           </div>
         </div>
-
         <div className="modifyProfile__form__subsection">
           {isLoaded && <ModifyMyServices />}
         </div>
-
         <button type="button" className={helper ? 'modifyProfile__form__resetHelperButton' : 'hidden'} onClick={removeHelperStatus}> Je ne souhaite plus être helper </button>
-        
       </div>
     </div>
   );

@@ -19,8 +19,6 @@ import HomePageMap from 'src/components/HomePageMap';
 
 import UsersReviews from 'src/containers/UsersReviews';
 
-
-
 import ProfilesResults from 'src/containers/ProfilesResults';
 
 import MapResults from 'src/containers/MapResults';
@@ -94,7 +92,6 @@ const App = ({
 
   return (
     <div className="app">
-      <Footer />
       <Header />
       <LogIn />
       <SignIn />
@@ -142,6 +139,7 @@ const App = ({
         </Route>
       </Switch>
       <ToastContainer autoClose={2000} />
+      <Footer />
     </div>
   );
 };

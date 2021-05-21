@@ -189,18 +189,14 @@ const ModifyProfile = ({
                 {isLoaded && <ModifyMyHobbies />}
               </div>
             </div>
-
-            <ModifyHelperSection />
-
+            <div id="helperSection">
+              <ModifyHelperSection />
+            </div>
             <div className="modifyProfile__buttons">
-            <ProfileButton textContent="Annuler" color="gray" linkTo="/mon-profil" />
-            <ProfileButton textContent="Enregistrer mes modifications" color="blue" onClick={handleSubmit} />
-          </div>
-
+              <ProfileButton textContent="Annuler" color="gray" linkTo="/mon-profil" />
+              <ProfileButton textContent="Enregistrer mes modifications" color="blue" onClick={handleSubmit} />
+            </div>
           </form>
-
-          
-
         </div>
       </div>
     </>
