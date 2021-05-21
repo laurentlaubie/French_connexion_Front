@@ -12,7 +12,7 @@ const SearchBar = ({adress, setAdress, setCenter, saveUserAddress, loadUsersByCo
   // on met à jour la valeur de l'input dans le state
   // le center est utile pour /resultats
   const handleSelect = async (value) => {
-    const results = await geocodeByAddress(value);
+    const results = await geocodeByAddress(adress);
     const latLng = await getLatLng(results[0]);
     const addressComponents = results[0].address_components;
     console.log(addressComponents);
@@ -41,6 +41,8 @@ const SearchBar = ({adress, setAdress, setCenter, saveUserAddress, loadUsersByCo
 
   const handleSubmitClick = (evt) => {
     evt.preventDefault();
+    
+    
     // On force le changement d'url vers /resultats
     
     

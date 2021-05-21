@@ -27,6 +27,7 @@ const initialState = {
   usersCities: [],
   listLoading: true,
   usersCity: [],
+  cityName: '',
 
 };
 
@@ -76,6 +77,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         usersCity: action.users,
+        cityName: action.name,
       };
     default:
       return state;

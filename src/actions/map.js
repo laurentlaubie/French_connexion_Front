@@ -62,8 +62,9 @@ export const loadingCities = (value) => ({
 
 export const SAVE_USERS_CITY = 'SAVE_USERS_CITY';
 
-export const saveUsersCity = (users) => ({
+export const saveUsersCity = (users, name) => ({
   type: SAVE_USERS_CITY,
   users,
+  name,
 });
 

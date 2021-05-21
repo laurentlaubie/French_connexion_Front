@@ -24,7 +24,7 @@ import './mapResults.scss';
 const libraries = ['places'];
 
 const MapResults = ({
-  center, markers, handleSelected, markerSelected, usersCities, listLoading, selectCity,
+  center, markers, handleSelected, markerSelected, usersCities, listLoading, selectCity, setCenter, setAdress
 }) => {
   const mapContainerStyle = {
     height: '95%',
@@ -82,7 +82,10 @@ const MapResults = ({
             position={{ lat: city.latitude, lng: city.longitude }}
             onClick={() => {
             // handleSelected(marker);
-              selectCity(city.users);
+              selectCity(city.users, city.name);
+              const latlng = { lat: city.latitude, lng: city.longitude };
+              setCenter(latlng);
+              setAdress('');
             }}
           />
         ))

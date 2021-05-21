@@ -4,17 +4,19 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
 import {
-  LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, LOAD_USERS_REVIEWS, saveUsersReviews 
+  LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, MODIFY_PROFILE, LOAD_USERS_REVIEWS, saveUsersReviews
 } from 'src/actions/user';
 import {
-  LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn, saveTokenInState, 
- setIsConnected, resetPassword } from 'src/actions/log';
-import { LOAD_USERS_BY_COUNTRY, saveUsersList, saveUsersCities, loadingCities } from 'src/actions/map';
+  LOG_IN, saveConnectedUserData, LOG_OUT, closeSignIn, saveTokenInState,
+  setIsConnected, resetPassword,
+} from 'src/actions/log';
+import {
+  LOAD_USERS_BY_COUNTRY, saveUsersList, saveUsersCities, loadingCities, saveUsersCity,
+} from 'src/actions/map';
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
 import { setLoading } from 'src/actions/loading';
-
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -115,7 +117,7 @@ export default (store) => (next) => (action) => {
       // Création d'un nouvel utilisateur (inscription)
       const state = store.getState();
       const {
-        firstname, lastname, email, password, confirmedPassword, 
+        firstname, lastname, email, password, confirmedPassword,
       } = state.user;
       api
         .post(
@@ -268,6 +270,7 @@ export default (store) => (next) => (action) => {
       const state = store.getState();
       console.log(state);
       const country = state.map.userAddress[1];
+
       api
         .get(`/user/search?country=${country}`)
         .then((response) => {
@@ -292,12 +295,19 @@ export default (store) => (next) => (action) => {
           userCountCity.map((userArray) => {
             userCount = userCount.concat(userArray);
           });
+
+          const address = state.map.userAddress;
+          const usersCity = (response.data[0].cities).find((city) => address.includes(city.name));
+
           console.log(userCount);
           // Object.values(userCount);
           console.log(userCount);
           store.dispatch(saveUsersList(userCount));
           store.dispatch(saveUsersCities(response.data));
           store.dispatch(loadingCities(false));
+          store.dispatch(saveUsersCity(usersCity.users, usersCity.name));
+
+          console.log(usersCity);
         }).catch((error) => {
           // eslint-disable-next-line no-console
           console.log(error);
