@@ -3,14 +3,12 @@ import React from 'react';
 // import HomePageTitle from 'src/components/HomePageTitle';
 import SearchBar from 'src/containers/SearchBar';
 
-import header1 from '../../assets/images/cherry-728.svg';
 
 import './homePageHeader.scss';
 
 const HomePageHeader = () => (
   <div className="homePageHeader">
     <div className="homePageHeader__image">
-      <img src={header1} alt="Un vieux monsieur qui va prendre l'avion" />
     </div>
     <div className="homePageHeader__content">
       <h1 className="homePageHeader__content__title"> French connection</h1>
