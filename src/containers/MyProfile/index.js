@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
   connectedUserData: state.log.connectedUserData,
   userInfos: state.user.userInfos,
   isConnected: state.log.isConnected,
+  isMyProfileLoaded: state.log.isMyProfileLoaded,
 });
 
 // connection de props fonctions qui déclenchent des actions

@@ -3,7 +3,6 @@ import axios from 'axios';
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 
-
 import {
   LOAD_USER_PROFILE, saveUserProfile, ADD_NEW_USER, LOAD_USERS_CARDS, saveUsersCards, LOAD_USERS_REVIEWS, saveUsersReviews
 } from 'src/actions/user';
@@ -15,9 +14,15 @@ import {
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
-import { MODIFY_PROFILE, redirectToMyProfile } from 'src/actions/modifyForm';
+import {
+  MODIFY_PROFILE,
+  redirectToMyProfile,
+  SEND_AVATAR,
+  saveAvatar,
+  saveModifiedConnectedUserData,
+} from 'src/actions/modifyForm';
 import { toast } from 'react-toastify';
-import { setLoading } from 'src/actions/loading';
+import { setLoading, setMyProfileLoading } from 'src/actions/loading';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -95,7 +100,7 @@ export default (store) => (next) => (action) => {
           // on sauvegarde ces infos
           store.dispatch(saveConnectedUserData(connectedUserInfos));
           // gestion du loader dans la page profil
-          store.dispatch(setLoading(false));
+          store.dispatch(setMyProfileLoading(true));
           console.log('la requête seffectue');
         }).catch((error) => {
           // eslint-disable-next-line no-console
@@ -186,24 +191,6 @@ export default (store) => (next) => (action) => {
       break;
     }
 
-    // case LOAD_USERS_AVATAR:
-    // modification Avatar de l'utilisateur
-
-    // api
-    // .get('/user/avatar')
-    // .then((response) => {
-    //   console.log(response);
-    //   const avatar = response.data;
-    //   store.dispatch(saveUsersReviews(usersReviewList));
-    // }).catch((error) => {
-    // eslint-disable-next-line no-console
-    // console.log(error);
-    // })
-
-    // puis on décide si on la laisse filer ou si on la bloque
-    // next(action);
-    // break;
-
     case LOAD_USERS_CARDS:
       // affichage de tous les profils sous forme de cards
       // // -- gestion loader for profilPage
@@ -227,9 +214,29 @@ export default (store) => (next) => (action) => {
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
+    }
+    // case SEND_AVATAR: {
+    //   const { id, avatar } = action;
+    //   api
+    //     .post(`/user/avatar/${id}`, avatar, {
+    //       headers: {
+    //         Authorization: `Bearer ${localStorage.getItem('token')}`,
+    //         'Content-Type': 'multipart/form-data',
+    //       },
+    //     })
+    //     .then((response) => {
+    //       // store.dispatch(saveAvatar(response.data.avatar));
+    //       console.log(response);
+    //     }).catch((error) => {
+    //       const errorStatus = error.response.status;
+    //       if (errorStatus === 401) {
+    //         window.location.href = '/403';
+    //       }
+    //     });
+    // }
 
     case LOAD_USERS_REVIEWS:
-      // affichage de tous les profils sur la HP
+    // affichage de tous les profils sur la HP
 
       api
         .get('/user/home')
@@ -272,6 +279,8 @@ export default (store) => (next) => (action) => {
         helper,
       } = connectedUserData;
 
+      const { completeNewAddress: userAdress } = state.log;
+
       api
         .put(`/user/${userId}`,
           {
@@ -283,7 +292,7 @@ export default (store) => (next) => (action) => {
             nickname,
             biography,
             phoneNumber,
-            // userAdress,
+            userAdress,
             hobbies,
             helper,
             services,
@@ -297,6 +306,7 @@ export default (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(resetPassword());
           store.dispatch(redirectToMyProfile(true));
+          store.dispatch(saveModifiedConnectedUserData(response.data));
           // window.location.href = '/mon-profil';
           // const usersList = response.data;
           // store.dispatch(saveUsersCards(usersList));

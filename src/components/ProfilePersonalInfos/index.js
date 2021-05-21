@@ -5,36 +5,40 @@ import PropTypes from 'prop-types';
 import './profilePersonalInfos.scss';
 
 const ProfilePersonalInfos = ({
-  firstName, lastName, email, cityName, countryName, phoneNumber,
-}) => (
+  firstname, lastname, email, cities, country, phoneNumber,
+}) => {
+  let localisation='';
+  if (cities !== null){
+    localisation = `${cities.name}, ${cities.country.frenchName}`;
+  };
+  console.log(localisation);
 
-  <div className="profilePersonalInfos">
-    <div className="profilePersonalInfos__title"> Mes informations personnelles </div>
-    <div className="profilePersonalInfos__list">
-      <div className="profilePersonalInfos__item">{firstName} {lastName}</div>
-      <div className="profilePersonalInfos__item">{email}</div>
-      <div className="profilePersonalInfos__item">{cityName}</div>
-      <div className="profilePersonalInfos__item">{countryName}</div>
-      <div className="profilePersonalInfos__item">{phoneNumber}</div>
+  return(
+
+    <div className="profilePersonalInfos">
+      <div className="profilePersonalInfos__title"> Mes informations personnelles </div>
+      <div className="profilePersonalInfos__list">
+        <div className="profilePersonalInfos__item">{firstname} {lastname}</div>
+        <div className="profilePersonalInfos__item">{email}</div>
+        <div className={cities != '' ? 'profilePersonalInfos__item' : 'hiden'}>{localisation}</div>
+        <div className="profilePersonalInfos__item">{phoneNumber}</div>
+      </div>
     </div>
-  </div>
 
-);
+  );
+};
 
 ProfilePersonalInfos.propTypes = {
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  cityName: PropTypes.string,
-  countryName: PropTypes.string,
-  phoneNumber: PropTypes.string,
-
+  cities: PropTypes.object.isRequired,
+  country: PropTypes.object,
 };
 
 ProfilePersonalInfos.defaultProps = {
-  cityName: '',
-  countryName: '',
   phoneNumber: '',
+
 };
 
 export default ProfilePersonalInfos;

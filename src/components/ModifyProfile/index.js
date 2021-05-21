@@ -110,10 +110,10 @@ const ModifyProfile = ({
                     <div className="modifyProfile__form__label__name"> Email </div>
                     <Field
                       className="modifyProfile__form__field"
-                      name="username"
+                      name="email"
                       placeholder="Email@exemple.com"
                       onChange={changeField}
-                      value={connectedUserData.username}
+                      value={connectedUserData.email}
                       type="email"
                     />
                   </div>

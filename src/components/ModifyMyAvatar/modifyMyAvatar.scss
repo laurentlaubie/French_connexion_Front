@@ -1,0 +1,11 @@
+@use 'src/styles/vars';
+
+.modifyMyAvatar{
+  margin-top:2rem;
+
+  &__loadButton{
+    font-weight:bold;
+    text-decoration: underline;
+    font-style: italic;
+  }
+}

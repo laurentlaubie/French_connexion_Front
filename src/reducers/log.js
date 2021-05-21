@@ -23,7 +23,14 @@ import {
   BECOME_HELPER,
   REMOVE_HELPER_STATUS,
   REDIRECT_TO_MY_PROFILE,
+  SAVE_AVATAR,
+  SET_NEW_ADDRESS,
+  SAVE_NEW_ADDRESS,
+  SAVE_MODIFIED_CONNECTED_USER_DATA,
+  SAVE_AVATAR_IN_STATE,
 } from 'src/actions/modifyForm';
+
+import { SET_MY_PROFILE_LOADING } from 'src/actions/loading';
 
 const initialState = {
   isConnected: false,
@@ -38,6 +45,10 @@ const initialState = {
   newPassword: '',
   confirmedNewPassword: '',
   redirectionToMyProfile: false,
+  isMyProfileLoaded: false,
+  newAddress: '',
+  completeNewAddress: [],
+  avatarFile: null,
 
 };
 
@@ -108,7 +119,6 @@ export default (state = initialState, action = {}) => {
         isConnected: action.value,
         isLoading: false,
       };
-   
     case CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE:
       return {
         ...state,
@@ -197,6 +207,39 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         redirectionToMyProfile: action.value,
+      };
+    case SET_MY_PROFILE_LOADING:
+      return {
+        ...state,
+        isMyProfileLoaded: action.value,
+      };
+    case SAVE_AVATAR:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          avatar: action.avatarData,
+        },
+      };
+    case SET_NEW_ADDRESS:
+      return {
+        ...state,
+        newAddress: action.address,
+      };
+    case SAVE_NEW_ADDRESS:
+      return {
+        ...state,
+        completeNewAddress: action.completeAddress,
+      };
+    case SAVE_MODIFIED_CONNECTED_USER_DATA:
+      return {
+        ...state,
+        connectedUserData: action.modifiedData,
+      };
+    case SAVE_AVATAR_IN_STATE:
+      return {
+        ...state,
+        avatarFile: action.file,
       };
     default:
       return state;

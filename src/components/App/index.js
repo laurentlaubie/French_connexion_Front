@@ -70,6 +70,7 @@ const App = ({
       if (decodedToken.exp - 600 > dateNow) {
         loadConnectedUserData(decodedToken.id);
         console.log('je suis déjà connecté');
+        setIsConnected(true);
       }
       else {
         console.log('Token expiré');

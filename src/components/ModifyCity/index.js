@@ -6,7 +6,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 
 import './modifyCity.scss';
 
-const ModifyCity = ({ isOpen, close, address, setAddress, saveUserAddress }) => {
+const ModifyCity = ({ isOpen, close, address, setNewAddress, saveNewAddress }) => {
   // const handleSubmit = (evt) => {
   //   evt.preventDefault();
   //   console.log('j\'enregistre ma nouvelle ville');
@@ -15,7 +15,7 @@ const ModifyCity = ({ isOpen, close, address, setAddress, saveUserAddress }) => 
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
-    setAddress(value);
+    setNewAddress(value);
 
     console.log(results);
     const addressComponents = results[0].address_components;
@@ -35,16 +35,18 @@ const ModifyCity = ({ isOpen, close, address, setAddress, saveUserAddress }) => 
     const { lat, lng } = { ...latLng };
     console.log(lat);
     console.log(lng);
-    saveUserAddress(cityName, countryName, lat, lng);
+
+    const completeAddress = [cityName, countryName, lat, lng];
+    saveNewAddress(completeAddress);
   };
 
-  const handleSubmitClick = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     // On force le changement d'url vers /resultats
     // history.push('/resultats');
     console.log('j\'enregistre ma nouvelle ville');
     close();
-    // saveUserAddress(cityName, countryName, lat, lng);
+    // saveNewAddress(cityName, countryName, lat, lng);
   };
 
   return (
@@ -55,16 +57,16 @@ const ModifyCity = ({ isOpen, close, address, setAddress, saveUserAddress }) => 
         <div className="SearchBar">
           <PlacesAutocomplete
             value={address}
-            onChange={setAddress}
+            onChange={setNewAddress}
             onSelect={handleSelect}
             searchOptions={{ types: ['geocode'] }}
           >
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
               <div>
-                <form className="SearchBar__form">
+                <div className="SearchBar__form">
                   <input className="SearchBar__mainInput" {...getInputProps({ placeholder: 'Saisissez votre recherche' })} />
-                  <input type="submit" className="SearchBar__submit" value="" onClick={handleSubmitClick} />
-                </form>
+                  <input type="submit" className="SearchBar__submit" value="" onClick={handleSubmit} />
+                </div>
                 <div>
                   {loading ? <div>...loading</div> : null}
 
@@ -93,8 +95,8 @@ ModifyCity.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   address: PropTypes.string.isRequired,
-  setAddress: PropTypes.func.isRequired,
-  saveUserAddress: PropTypes.func.isRequired,
+  setNewAddress: PropTypes.func.isRequired,
+  saveNewAddress: PropTypes.func.isRequired,
   // handlemodifyCity: PropTypes.func.isRequired,
 };
 
