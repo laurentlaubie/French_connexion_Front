@@ -6,11 +6,33 @@
   width: 100%;
   //background-color: vars.$light-red;
  
-    
+  &__global{
+    width: 60%;
+    margin: auto;
+    text-justify: inter-word;
+    padding: 3em 2em 3em 2em;
+    font-size: 1em;
+    //border: solid black 1px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius:0.5rem;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+   // background-color: vars.$light-red;
+
+  }
+
+
   &__title{
     font-size: 1.5em;
     font-weight: 700;
+    //background-color: violet;
     padding-top: 1em;
+    border-radius:0.5rem;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    background-color: vars.$light-blue;
+    width: 80%;
+    padding-bottom: 1em;
+    margin: auto;
+    margin-bottom: 1em;
 
       &__subtitle{
         font-size: 1em;
@@ -32,6 +54,7 @@
           width: 80%;
           margin-left: auto;
           margin-right: auto;
+          
         }
 
   }
