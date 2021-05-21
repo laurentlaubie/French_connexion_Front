@@ -6,12 +6,14 @@ import './aboutUsReview.scss';
 
 const AboutUsReview = ({ avatar, name, role, description }) => (
   <div className="aboutUsreview">
-    <img className="aboutUsreview__image" src={avatar} alt={`Avatar de ${name}`} />
-    <div className="aboutUsreview__text">
-      <p className="aboutUsreview__text__name">{name}</p>
-      <p className="aboutUsreview__text__role"> {role}</p>
-      <p className="aboutUsreview__text__description"> {description}</p>
+    
+    <div className="aboutUsreview__picture">
+    <img  src={avatar} alt={`Avatar de ${name}`} />
+    </div>
 
+    <div className="aboutUsreview__card">
+        <div className="aboutUsreview__card__name">{name}</div>
+        <div className="aboutUsreview__card__role"> {role}</div> 
     </div>
   </div>
 );

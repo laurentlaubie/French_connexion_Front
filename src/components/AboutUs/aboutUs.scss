@@ -4,7 +4,7 @@
 
       
   width: 100%;
-  background-color: vars.$light-red;
+  //background-color: vars.$light-red;
  
     
   &__title{
@@ -25,6 +25,7 @@
         width: 70%;
         margin-left: auto;
         margin-right: auto;
+        line-height: 1.5;
         //background-color: vars.$light-blue;
 
         @media (min-width: vars.$breakpoint-tablet){
@@ -37,19 +38,22 @@
 
   &__list{
 
-    
+    width: 100%;
     margin:auto;
-    display:flex;
-    flex-direction:column;
-    justify-content:center ;
-    //flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
 
     @media (min-width: vars.$breakpoint-tablet) {
-      flex-direction:row;
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     @media (min-width: vars.$max-width) {
       width:vars.$max-width;
+     
     }
 
 
