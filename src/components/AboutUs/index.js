@@ -9,13 +9,16 @@ import './aboutUs.scss';
 
 const AboutUs = ({dataTeam}) => (
 <div className="aboutUs">
-  <h1 className="aboutUs__title" > A Propos de nous</h1>
-  <h2 className="aboutUs__title__subtitle" > Le Projet French Connection</h2>
-  <div className="aboutUs__text">Vide, quantum, inquam, fallare, Torquate. oratio me istius philosophi non offendit; nam et complectitur verbis, quod vult, et dicit plane, quod intellegam; et tamen ego a philosopho, si afferat eloquentiam, non asperner, si non habeat, 
-  non admodum flagitem. re mihi non aeque satisfacit, et quidem locis pluribus. sed quot homines, tot sententiae; falli igitur possumus.
-  Vide, quantum, inquam, fallare, Torquate. oratio me istius philosophi non offendit; nam et complectitur verbis, quod vult, et dicit plane, quod intellegam; et tamen ego a philosopho, si afferat eloquentiam, non asperner, si non habeat, 
-  non admodum flagitem. re mihi non aeque satisfacit, et quidem locis pluribus. sed quot homines, tot sententiae; falli igitur possumus.Vide, quantum, inquam, fallare, Torquate. oratio me istius philosophi non offendit; nam et complectitur verbis, quod vult, et dicit plane, quod intellegam; et tamen ego a philosopho, si afferat eloquentiam, non asperner, si non habeat, 
-  non admodum flagitem. re mihi non aeque satisfacit, et quidem locis pluribus. sed quot homines, tot sententiae; falli igitur possumus.</div>
+  <div className="aboutUs__title" > A Propos de nous</div>
+  <div className="aboutUs__global">
+    <h2 className="aboutUs__title__subtitle" > Le Projet French Connection</h2>
+    <div className="aboutUs__text">
+    <p> Tout commence un soir de confinement lors d'un apéro visio !</p>
+    <p>`On n'a qu'a partir en voyage en Colombie dès que le confinement est fini ? `</p>
+    <p> `Euh, franchement ça craint la-bas non ? et y'a quoi à faire? on y connait personne en plus...` nous repondions tous</p>
+    <p> De là, l'idée d'un site communautaire d'entraide entre voyageurs et residants est née <span className="site">- French Connection - </span></p>
+    </div>
+  </div>
   <h2 className="aboutUs__title__subtitle">L'Equipe</h2>
   
   <div className="aboutUs__list">
