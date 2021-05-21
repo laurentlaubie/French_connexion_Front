@@ -9,7 +9,7 @@ import { LOAD_USERS_BY_COUNTRY, saveUsersList } from 'src/actions/map';
 import { LOAD_HOBBIES_LIST, saveHobbiesList, setLoadingHobbies } from 'src/actions/hobbies';
 import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/actions/services';
 
-import { MODIFY_PROFILE, redirectToMyProfile } from 'src/actions/modifyForm';
+import { MODIFY_PROFILE, redirectToMyProfile, SEND_AVATAR, saveAvatar } from 'src/actions/modifyForm';
 import { toast } from 'react-toastify';
 import { setLoading, setMyProfileLoading } from 'src/actions/loading';
 
@@ -177,29 +177,7 @@ export default (store) => (next) => (action) => {
       next(action);
       break;
     }
-
-    //case LOAD_USERS_AVATAR:
-      // modification Avatar de l'utilisateur
-      
-      //api
-       // .get('/user/avatar')
-       // .then((response) => {
-       //   console.log(response);
-       //   const avatar = response.data;
-       //   store.dispatch(saveUsersReviews(usersReviewList));
-       // }).catch((error) => {
-        // eslint-disable-next-line no-console
-          //console.log(error);
-       // })
-      
-      // puis on décide si on la laisse filer ou si on la bloque
-     // next(action);
-      //break;
-
-
-
-
-    case LOAD_USERS_CARDS:
+    case LOAD_USERS_CARDS: {
       // affichage de tous les profils sous forme de cards
       // // -- gestion loader for profilPage
       // store.dispatch(setLoading(true));
@@ -221,11 +199,30 @@ export default (store) => (next) => (action) => {
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
+    }
+    case SEND_AVATAR: {
+      const { id, avatar } = action;
+      api
+        .post(`/user/avatar/${id}`, avatar, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+        // store.dispatch(saveAvatar(response.data.avatar));
+        console.log(response);
+        }).catch((error) => {
+          const errorStatus = error.response.status;
+          if (errorStatus === 401) {
+            window.location.href = '/403';
+          }
 
+        })
+    }
 
-      case LOAD_USERS_REVIEWS:
-      // affichage de tous les profils sur la HP
-      
+    case LOAD_USERS_REVIEWS:
+    // affichage de tous les profils sur la HP
       api
         .get('/user/home')
         .then((response) => {
@@ -235,12 +232,11 @@ export default (store) => (next) => (action) => {
         }).catch((error) => {
         // eslint-disable-next-line no-console
           console.log(error);
-        })
-      
+        });
+
       // puis on décide si on la laisse filer ou si on la bloque
       next(action);
       break;
-
 
     case MODIFY_PROFILE: {
       // on récupère l'ID de la personne connectée

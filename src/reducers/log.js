@@ -23,6 +23,7 @@ import {
   BECOME_HELPER,
   REMOVE_HELPER_STATUS,
   REDIRECT_TO_MY_PROFILE,
+  SET_AVATAR,
 } from 'src/actions/modifyForm';
 
 import { SET_MY_PROFILE_LOADING } from 'src/actions/loading';
@@ -205,6 +206,14 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isMyProfileLoaded: action.value,
+      };
+    case SET_AVATAR:
+      return {
+        ...state,
+        connectedUserData: {
+          ...state.connectedUserData,
+          avatar: action.avatar,
+        },
       };
     default:
       return state;
