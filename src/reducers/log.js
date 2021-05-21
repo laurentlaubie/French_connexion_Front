@@ -25,6 +25,8 @@ import {
   REDIRECT_TO_MY_PROFILE,
 } from 'src/actions/modifyForm';
 
+import { SET_MY_PROFILE_LOADING } from 'src/actions/loading';
+
 const initialState = {
   isConnected: false,
   isLogInOpen: false,
@@ -38,6 +40,7 @@ const initialState = {
   newPassword: '',
   confirmedNewPassword: '',
   redirectionToMyProfile: false,
+  isMyProfileLoaded: false,
 
 };
 
@@ -197,6 +200,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         redirectionToMyProfile: action.value,
+      };
+    case SET_MY_PROFILE_LOADING:
+      return {
+        ...state,
+        isMyProfileLoaded: action.value,
       };
     default:
       return state;

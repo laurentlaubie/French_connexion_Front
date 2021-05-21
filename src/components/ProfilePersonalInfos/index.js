@@ -8,7 +8,7 @@ const ProfilePersonalInfos = ({
   firstname, lastname, email, cities, country, phoneNumber,
 }) => {
   let localisation='';
-  if (cities !== ''){
+  if (cities !== null){
     localisation = `${cities.name}, ${cities.country.frenchName}`;
   };
   console.log(localisation);
@@ -32,13 +32,12 @@ ProfilePersonalInfos.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  cities: PropTypes.object,
+  cities: PropTypes.object.isRequired,
   country: PropTypes.object,
 };
 
 ProfilePersonalInfos.defaultProps = {
   phoneNumber: '',
-  cities:{name:'', country:{frenchName: ''}},
 
 };
 

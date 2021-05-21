@@ -11,7 +11,7 @@ import { LOAD_SERVICES_LIST, saveServicesList, setLoadingServices } from 'src/ac
 
 import { MODIFY_PROFILE, redirectToMyProfile } from 'src/actions/modifyForm';
 import { toast } from 'react-toastify';
-import { setLoading } from 'src/actions/loading';
+import { setLoading, setMyProfileLoading } from 'src/actions/loading';
 
 const api = axios.create({
   baseURL: 'http://ec2-34-239-254-34.compute-1.amazonaws.com/api/v1/',
@@ -89,7 +89,7 @@ export default (store) => (next) => (action) => {
           // on sauvegarde ces infos
           store.dispatch(saveConnectedUserData(connectedUserInfos));
           // gestion du loader dans la page profil
-          store.dispatch(setLoading(false));
+          store.dispatch(setMyProfileLoading(true));
           console.log('la requête seffectue');
         }).catch((error) => {
           // eslint-disable-next-line no-console

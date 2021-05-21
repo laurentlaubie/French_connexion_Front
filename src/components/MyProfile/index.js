@@ -15,7 +15,7 @@ import Loading from 'src/components/Loading';
 // == import style
 import './myProfile.scss';
 
-const MyProfile = ({ connectedUserData, openLogOut, redirect, isConnected }) => {
+const MyProfile = ({ connectedUserData, openLogOut, redirect, isConnected, isMyProfileLoaded, setMyProfileLoading }) => {
   useEffect(() => {
     console.log('useEffect');
     redirect(false);
@@ -31,32 +31,37 @@ const MyProfile = ({ connectedUserData, openLogOut, redirect, isConnected }) => 
 
   return (
     <>
+      {!isMyProfileLoaded && <Loading /> }
+
       {!isConnected && <Redirect to="/" />}
 
-      <div className="myProfile">
+      {isMyProfileLoaded && isConnected && (
 
-        <LogOut />
+        <div className="myProfile">
 
-        <h1 className="myProfile__title"> Mon profil </h1>
+          <LogOut />
 
-        <div className="myProfile__content">
-          <div className="myProfile__content__left">
-            <ProfilePrincipalInfos {...connectedUserData} name={name} isMyProfile />
-            <ProfilePersonalInfos {...connectedUserData} />
+          <h1 className="myProfile__title"> Mon profil </h1>
+
+          <div className="myProfile__content">
+            <div className="myProfile__content__left">
+              <ProfilePrincipalInfos {...connectedUserData} name={name} isMyProfile />
+              <ProfilePersonalInfos {...connectedUserData} />
+            </div>
+            <div className="myProfile__content__right">
+              <ProfileDescription {...connectedUserData} isMyProfile name={name} />
+              <ProfileHobbies {...connectedUserData} isMyProfile name={name} />
+              <ProfileServices {...connectedUserData} isMyProfile name={name} />
+            </div>
           </div>
-          <div className="myProfile__content__right">
-            <ProfileDescription {...connectedUserData} name={name} />
-            <ProfileHobbies {...connectedUserData} name={name} />
-            <ProfileServices {...connectedUserData} name={name} />
+
+          <div className="myProfile__buttons">
+            <ProfileButton textContent="Me déconnecter" color="blue" linkTo="/mon-profil" onClick={openLogOut} />
+            <ProfileButton textContent="Devenez helper" color="red" linkTo="/mon-profil/modifier" />
+            <ProfileButton textContent="Modifier mon profil" color="red" linkTo="/mon-profil/modifier" />
           </div>
         </div>
-
-        <div className="myProfile__buttons">
-          <ProfileButton textContent="Me déconnecter" color="blue" linkTo="/mon-profil" onClick={openLogOut} />
-          <ProfileButton textContent="Devenez helper" color="red" linkTo="/mon-profil/modifier" />
-          <ProfileButton textContent="Modifier mon profil" color="red" linkTo="/mon-profil/modifier" />
-        </div>
-      </div>
+      )};
     </>
   );
 };
@@ -66,6 +71,7 @@ MyProfile.propTypes = {
   userInfos: PropTypes.object.isRequired,
   openLogOut: PropTypes.func.isRequired,
   loadUserProfile: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool.isRequired,
 };
 
 export default MyProfile;
