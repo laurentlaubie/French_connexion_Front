@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadUserProfile } from 'src/actions/user';
+import { loadUserProfile, setLoading } from 'src/actions/user';
 import { openLogOut } from 'src/actions/log';
 
 import Profile from 'src/components/Profile';
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
   userInfos: state.user.userInfos,
   isLogOutOpen: state.log.isLogOutOpen,
   isLoading: state.user.isLoading,
-
+  // isConnected: state.
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -25,6 +25,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   openLogOut: () => {
     dispatch(openLogOut());
+  },
+  setLoading: (value) => {
+    dispatch(setLoading(value));
   },
 });
 

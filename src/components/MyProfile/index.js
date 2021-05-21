@@ -13,7 +13,7 @@ import Loading from 'src/components/Loading';
 // == import style
 import './myProfile.scss';
 
-const MyProfile = ({ connectedUserData, isLoading, openLogOut, redirect, isConnected }) => {
+const MyProfile = ({ connectedUserData, openLogOut, redirect, isConnected }) => {
   useEffect(() => {
     console.log('useEffect');
     redirect(false);
@@ -61,7 +61,6 @@ MyProfile.propTypes = {
   connectedUserData: PropTypes.object.isRequired,
   userInfos: PropTypes.object.isRequired,
   openLogOut: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
   loadUserProfile: PropTypes.func.isRequired,
 };
 

@@ -9,10 +9,8 @@ import MyProfile from 'src/components/MyProfile';
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
   connectedUserData: state.log.connectedUserData,
-  isLoading: state.user.isLoading,
   userInfos: state.user.userInfos,
   isConnected: state.log.isConnected,
-
 });
 
 // connection de props fonctions qui déclenchent des actions
