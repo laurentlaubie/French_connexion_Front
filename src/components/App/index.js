@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
-  Route, Switch, Redirect, useLocation, useHistory,
+  Route, Switch, useLocation, useHistory,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
@@ -13,7 +13,6 @@ import jwt_decode from 'jwt-decode';
 import Footer from 'src/components/Footer';
 import Header from 'src/components/Header';
 import HomePageHeader from 'src/components/HomePageHeader';
-// import SearchBar from 'src/components/SearchBar';
 import HomePageFonctionnalities from 'src/components/HomePageFonctionnalities';
 import HomePageMap from 'src/components/HomePageMap';
 
@@ -32,7 +31,6 @@ import ModifyProfile from 'src/containers/ModifyProfile';
 import LegalsMentions from 'src/components/LegalsMentions';
 import SiteMap from 'src/components/SiteMap';
 import AboutUs from 'src/components/AboutUs';
-import Loading from 'src/components/Loading';
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/containers/LogIn';
@@ -46,22 +44,22 @@ import './styles.css';
 // == Composant
 
 const App = ({
-  loadConnectedUserData, setIsConnected, isConnected, loadHobbiesList, loadServicesList, tokenFromState, saveTokenInState
+  loadConnectedUserData, setIsConnected,
 }) => {
   // récupération du chemin
   const pathName = useLocation().pathname;
-  console.log(pathName);
+  // console.log(pathName);
 
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     const userTokenFromLocalStorage = localStorage.getItem('token');
 
     if (userTokenFromLocalStorage != null) {
       const decodedToken = jwt_decode(userTokenFromLocalStorage);
-      console.log(decodedToken);
+      // console.log(decodedToken);
       const dateNow = Math.round(Date.now() / 1000);
-      console.log(dateNow);
+      // console.log(dateNow);
 
       if (decodedToken.exp - 600 > dateNow) {
         loadConnectedUserData(decodedToken.id);
@@ -69,21 +67,20 @@ const App = ({
         setIsConnected(true);
       }
       else {
-        console.log('Token expiré');
+        // console.log('Token expiré');
         localStorage.removeItem('token');
       }
     }
     else {
       console.log('je ne suis pas encore connecté');
     }
-    console.log('on set le loading à false');
   }, []);
 
   // -- gestion du scroll
   useEffect(
     () => {
       window.scrollTo({ top: 0 });
-      console.log('le pathname a changé');
+      // console.log('le pathname a changé');
     },
     [pathName],
   );
@@ -99,7 +96,6 @@ const App = ({
           <HomePageFonctionnalities />
           <HomePageMap />
           <UsersReviews />
-          <LogIn />
         </Route>
         <Route path="/resultats" exact>
           <SearchBar />
@@ -143,11 +139,8 @@ const App = ({
 };
 
 App.propTypes = {
-  saveConnectedUserData: PropTypes.func.isRequired,
-  // isConnected: PropTypes.bool.isRequired,
-  // loading: PropTypes.bool,
-  loadHobbiesList: PropTypes.func.isRequired,
-  loadServicesList: PropTypes.func.isRequired,
+  loadConnectedUserData: PropTypes.func.isRequired,
+  setIsConnected: PropTypes.func.isRequired,
 };
 
 // App.defaultProps = {

@@ -17,7 +17,7 @@
     justify-content:center;
 
     @media (min-width: vars.$breakpoint-tablet) {
-      justify-content:start;
+      justify-content: flex-start;
     }
 
     &__image{
