@@ -38,9 +38,7 @@ import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/containers/LogIn';
 
 // == Import Data
-import DataFile from 'src/data/ProfileList';
 import DataTeam from 'src/data/DataTeam';
-import users from 'src/data/users';
 
 // == Import Style
 import './styles.css';
@@ -100,14 +98,14 @@ const App = ({
           <HomePageHeader />
           <HomePageFonctionnalities />
           <HomePageMap />
-          <UsersReviews users={users} />
+          <UsersReviews />
           <LogIn />
         </Route>
         <Route path="/resultats" exact>
           <SearchBar />
           <div className="app__ResultDesktop">
             <MapResults />
-            <ProfilesResults data={DataFile} />
+            <ProfilesResults />
           </div>
         </Route>
         <Route path="/notre-reseau" exact>

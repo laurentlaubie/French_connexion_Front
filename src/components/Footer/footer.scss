@@ -9,10 +9,19 @@
 
   &__list{
     margin:auto;
-    flex-wrap: nowrap;
+    display:flex;
+    flex-direction:column;
     text-decoration: underline;
-    margin-top:3rem;
-    padding:3rem 0 1rem;
+    margin-top:1rem;
+    // border:1px solid black;
+    justify-content: center;
+    padding-top:2rem;
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      flex-direction:row;
+      margin-top:3rem;
+
+    }
 
 
 
@@ -23,26 +32,37 @@
   }
 
   &__item{
-    padding: 3.5rem;
+    padding: 0.5rem;
     margin: 0 2rem;
     display:inline;
     font-family: vars.$font-title;
-    font-size:1.2rem;
+    font-size:1rem;
     color:white;
     text-transform: uppercase;
+    // border:1px solid red;
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      font-size:1.2rem;
+      padding: 1rem 2.5rem 0.5rem;
+
+    }
     
   }
 
   &__ref{
     text-align:left;
     margin-top:2rem;
-    margin-bottom:1rem;
+    margin-bottom:3rem;
     width:100%;
     font-family: vars.$font-title;
     padding-left:1rem;
     padding-bottom:1rem;
     font-style: italic;
 
+    @media (min-width: vars.$breakpoint-tablet) {
+      margin-bottom:1rem;
+
+    }
 
   }
 

@@ -1,7 +1,4 @@
-.otherPagesHeader{
-
-  width:100%;
-}
+@use 'src/styles/vars';
 
 .header{
   margin-top: unset;
@@ -10,8 +7,8 @@
 
 @media only screen and (min-width: 601px) {
   .header{
- 
     margin-top: -1em;
     position: relative;
+    background-color: vars.$light-grey;
   }
 }

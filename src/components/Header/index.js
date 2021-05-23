@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner from 'src/components/Banner';
+import Logo from 'src/components/Logo';
 import NavBar from 'src/containers/NavBar';
 
 import './header.scss';
@@ -7,7 +7,7 @@ import './header.scss';
 const Header = () => (
   <div className="header">
     <NavBar />
-    <Banner />
+    <Logo />
   </div>
 );
 

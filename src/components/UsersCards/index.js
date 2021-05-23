@@ -6,9 +6,7 @@ import Loading from 'src/components/Loading';
 import UserCard from 'src/containers/UserCard';
 import './usersCards.scss';
 
-
 const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, inputValue, isLoading, ChangeInputValue}) => {
-
   useEffect(
     loadUsersCards,
     [],
@@ -20,14 +18,8 @@ const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, inpu
     inputValue = document.querySelector(".usersCards__search").value;
     console.log(inputValue.toLowerCase());
 
- 
-    let searchResult = usersList.filter((user) => 
-   
-      user.nickname.toLowerCase().startsWith(inputValue.toLowerCase()))
-   
-    // if (searchResult.length === 0) {
-    //   searchResult = usersList.filter((user) => (user.firstname.toLowerCase().startsWith(inputValue.toLowerCase()) && user.nickname === null) || user.lastname.toLowerCase() === inputValue.toLowerCase() && user.nickname === null);
-    // }
+    let searchResult = usersList.filter((user) => user.nickname.toLowerCase().startsWith(inputValue.toLowerCase()));
+
     if (searchResult.length === 0) {
       searchResult = null;
     }
@@ -37,19 +29,20 @@ const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, inpu
   };
 
   return (
-    <>  {isLoading && (<Loading />)}
-        {!isLoading && (
-    <div className="usersCards">
-      <h1 className="usersCards__title">Notre réseau</h1>
-      <form className="usersCards__form" onSubmit={handleInputValueChange}>
-        <input type="text" className="usersCards__search" placeholder="Nom / pays / ville" onChange={handleInputValueChange} />
-        <input type="submit" className="usersCards__submit" value="" />
-      </form>
-      <ul className="usersCards__list">
-        {newUserList ? newUserList.map((userCard) => <UserCard key={userCard.id} {...userCard} />) : usersList.map((userCard) => <UserCard key={userCard.id} {...userCard} />)}
-      </ul>
-    </div>
-    )}
+    <>
+      {isLoading && (<Loading />)}
+      {!isLoading && (
+        <div className="usersCards">
+          <h1 className="usersCards__title">Notre réseau</h1>
+          <form className="usersCards__form" onSubmit={handleInputValueChange}>
+            <input type="text" className="usersCards__search" placeholder="Recherchez un utilisateur" onChange={handleInputValueChange} />
+            <input type="submit" className="usersCards__submit" value="" />
+          </form>
+          <ul className="usersCards__list">
+            {newUserList ? newUserList.map((userCard) => <UserCard key={userCard.id} {...userCard} />) : usersList.map((userCard) => <UserCard key={userCard.id} {...userCard} />)}
+          </ul>
+        </div>
+      )}
     </>
   );
 };
