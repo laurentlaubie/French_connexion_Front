@@ -15,7 +15,6 @@
   .app__ResultDesktop{
     display: flex;
     height: 70vh;
-    border: 1px solid #000;
     padding: 1em;
     width: 99%;
     margin: 1em auto;

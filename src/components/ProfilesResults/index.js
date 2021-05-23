@@ -10,10 +10,12 @@ const ProfilesResults = ({ usersList, usersByCity, cityName, avatar, isConnected
 
   return (
     <div className="profilesResults">
+      { usersList &&
       <div className="profilesResults__Header">
       <h1 className="profilesResults__City">{cityName}</h1>
       <h2 className="profilesResults__SearchResult">{nbProfile} profil(s) trouvé(s)</h2>
       </div>
+      }
       <ul className="profilesResults__List">
         {usersByCity ? usersByCity.map((profileData) => <ProfileResult key={profileData.id} {...profileData} />) : usersList.map((profileData) => <ProfileResult key={profileData.id} {...profileData} isConnected={isConnected} openModal={openModal} />)}
       </ul>

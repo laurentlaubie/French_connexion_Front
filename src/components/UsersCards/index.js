@@ -21,7 +21,10 @@ const UsersCards = ({loadUsersCards, usersList, RenderNewList, newUserList, inpu
     console.log(inputValue.toLowerCase());
 
  
-    let searchResult = usersList.filter((user) => user.nickname.toLowerCase().startsWith(inputValue.toLowerCase()));
+    let searchResult = usersList.filter((user) => 
+   
+      user.nickname.toLowerCase().startsWith(inputValue.toLowerCase()))
+   
     // if (searchResult.length === 0) {
     //   searchResult = usersList.filter((user) => (user.firstname.toLowerCase().startsWith(inputValue.toLowerCase()) && user.nickname === null) || user.lastname.toLowerCase() === inputValue.toLowerCase() && user.nickname === null);
     // }

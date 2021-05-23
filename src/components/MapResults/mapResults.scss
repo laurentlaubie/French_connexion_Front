@@ -1,6 +1,6 @@
 .mapResults{
   text-align: center;
-  // margin-top: 3em;
+  margin-top: 1em;
   &__map{
     height: 95%;
     width: 100%;
@@ -9,6 +9,14 @@
     min-height: 50vh;
     margin-top: 5%;
   }
+}
+
+#map{
+  height: 95%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    min-height: 50vh;
 }
 
 

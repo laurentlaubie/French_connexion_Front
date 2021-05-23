@@ -5,7 +5,7 @@ import './profileResult.scss';
 import profile from 'src/assets/pictures/profile.png';
 
 const ProfileResult = ({id,firstname,biography,nickname,lastname,avatar, isConnected, openModal}) => (
-  <Link to={isConnected ? `/notre-reseau/utilisateur/${id}` : '/resultats'} className="userCard" onClick={isConnected ? '' : openModal}>
+  <Link to={`/notre-reseau/utilisateur/${id}`} className="profileResult__Card" onClick={isConnected ? '' : openModal}>
   <div className="profileResult">
     <div className="profileResult__picture">
       <img src={`http://ec2-34-239-254-34.compute-1.amazonaws.com/images/avatars/${avatar}`} alt={`avatar de ${firstname} ${lastname}`} className="profileResult__Picture" />
