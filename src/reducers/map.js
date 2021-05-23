@@ -22,7 +22,7 @@ const initialState = {
   ],
   markerSelected: null,
   userAddress: [],
-  usersList: [],
+  usersList: null,
   adress: '',
   usersCities: [],
   listLoading: true,
