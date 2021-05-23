@@ -27,12 +27,13 @@ const MapResults = ({
   center, markers, handleSelected, markerSelected, usersCities, listLoading, selectCity, setCenter, setAdress
 }) => {
   const mapContainerStyle = {
-    height: '95%',
+    /* height: '95%',
     width: '100%',
     position: 'relative',
     overflow: 'hidden',
     minHeight: '50vh',
-    marginTop: '5%',
+    */
+    // marginTop: '5%',
   };
   const options = {
     styles: mapStyles,

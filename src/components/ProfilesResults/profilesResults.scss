@@ -12,12 +12,24 @@
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
     margin-bottom: 0.5em;
+
+    @media only screen and (min-width: 601px) {
+      border: 1px solid #000;
+      margin-top: 0;
+    }
   }
 
   &__List{
     width: 80%;
     margin: auto;
     padding-bottom: 5em;
+
+    @media only screen and (min-width: 601px) {
+      width: 100%;
+      padding-bottom: 0;
+      height: initial;
+      overflow-y: scroll;
+    }
   }
 
   &__City{
@@ -37,15 +49,16 @@
 @media only screen and (min-width: 601px) {
 
   .profilesResults{
-    //display:flex;
-    margin-top: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-top: 1em;
     width: 50%;
-    padding-bottom:0em;
+    height: 90%;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
 
-    &__List{
-      height: initial;
-      overflow-y: unset;
-    }
+   
 
   &__Title{
     
