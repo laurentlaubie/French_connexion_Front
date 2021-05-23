@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import './banner.scss';
 // import LogoMobile from 'src/assets/pictures/logo_mobile.png';
 import LogoDesktop from 'src/assets/pictures/logo_desktop.png';
+import LogoLaurent from 'src/assets/images/logolaurent.png';
+
 
 const Banner = () => (
 
@@ -14,7 +16,7 @@ const Banner = () => (
     </div> */}
     <div className="banner__logo__desktop">
     <NavLink to="/">
-      <img src={LogoDesktop} alt="logo French Connection" />
+      <img src={LogoLaurent} alt="logo French Connection" />
     </NavLink>
     </div>
   </div>

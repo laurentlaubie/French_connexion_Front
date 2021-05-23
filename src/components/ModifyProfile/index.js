@@ -193,8 +193,8 @@ const ModifyProfile = ({
               <ModifyHelperSection />
             </div>
             <div className="modifyProfile__buttons">
-            <ProfileButton type="link" textContent="Annuler" color="gray" linkTo="/mon-profil" />
-            <ProfileButton type="hashlink" textContent="Enregistrer mes modifications" color="blue" onClick={handleSubmit} />
+              <ProfileButton type="link" textContent="Annuler" color="gray" linkTo="/mon-profil" />
+              <ProfileButton type="hashlink" textContent="Enregistrer mes modifications" color="blue" onClick={handleSubmit} />
             </div>
           </form>
         </div>
