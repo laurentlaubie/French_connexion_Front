@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   changeField: (value, name) => {
     dispatch(changeProfileFormFieldValue(value, name));
   },
-  handleModifyProfile: (userId, myHobbiesList, myServicesList) => {
+  modifyProfile: (userId, myHobbiesList, myServicesList) => {
     dispatch(modifyProfile(userId, myHobbiesList, myServicesList));
   },
   openModal: () => {

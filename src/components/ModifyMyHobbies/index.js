@@ -1,21 +1,18 @@
 /* eslint-disable no-console */
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // == Import style
 import './modifyMyHobbies.scss';
 
-const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHobby, addSelectedHobby}) => {
-
-  // let myHobbiesArray = [];
-  // if (myHobbies !== '') {
-  //   myHobbies.map((hobby) => {
-  //     myHobbiesArray = [...myHobbiesArray, hobby.id];
-  // });
-  // }
-
+const ModifyMyHobbies = ({
+  myHobbies,
+  hobbiesList,
+  saveSelectedHobby,
+  selectedHobby,
+  addSelectedHobby,
+}) => {
   console.log(myHobbies);
-  // console.log(myHobbiesArray);
 
   const onChange = (evt) => {
     console.log(evt.currentTarget.value);
@@ -28,27 +25,19 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHo
     saveSelectedHobby(hobbyId, hobbyName);
   };
 
-  // const handleSubmit = (evt) => {
-  //   evt.preventDefault();
-  //   addSelectedHobby(selectedHobby);
-  //   // console.log(evt.currentTarget.);
-  // };
-
-  const onClick = (evt) => {
+  const onClick = () => {
     console.log(selectedHobby);
     addSelectedHobby(selectedHobby);
-    // evt.currentTarget();
   };
 
   return (
-
     <div className="modifyProfile__form__subsection">
       <div className="modifyProfile__form__subsection__title"> Mes centres d'intérêts </div>
       { myHobbies === '' ? "vous n'avez pas de centres d'intérêt enregistrés" : ''}
       { myHobbies !== '' && (
         <ul className="modifyMyHobbies__list">
           {myHobbies.map((hobby) => (
-            <li className="modifyMyHobbies__list__item">
+            <li key={`myHobbies-${hobby.name}`} className="modifyMyHobbies__list__item">
               <div className={`modifyMyHobbies__list__item__text hobbies-${hobby.id}`}> {hobby.name} </div>
               <button className="modifyMyHobbies__list__item__removeButton" type="button"> Retirer </button>
             </li>
@@ -59,7 +48,7 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHo
         <select onChange={onChange}>
           <option className="modifyMyHobbies__option"> Choisissez un centre d'interêt</option>
           {hobbiesList.map((hobby) => (
-            <option value={`${hobby.id}-${hobby.name}`}> {hobby.name} </option>
+            <option key={hobby.name} value={`${hobby.id}-${hobby.name}`}> {hobby.name} </option>
           ))};
         </select>
         <button className="modifyMyHobbies__select__addButton" type="button" onClick={onClick}>Ajouter</button>
@@ -68,8 +57,19 @@ const ModifyMyHobbies = ({ myHobbies, hobbiesList, saveSelectedHobby, selectedHo
   );
 };
 
-// ModifyMyHobbies.propTypes = {
-//   myHobbies: Pro
-// };
+ModifyMyHobbies.propTypes = {
+  myHobbies: PropTypes.array.isRequired,
+  hobbiesList: PropTypes.arrayOf(
+    PropTypes.shape(
+      {
+        id: PropTypes.number.isRequired,
+        name: PropTypes.number.isRequired,
+      },
+    ),
+  ).isRequired,
+  saveSelectedHobby: PropTypes.func.isRequired,
+  selectedHobby: PropTypes.object.isRequired,
+  addSelectedHobby: PropTypes.func.isRequired,
+};
 
 export default ModifyMyHobbies;

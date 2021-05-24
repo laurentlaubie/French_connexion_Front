@@ -17,7 +17,8 @@ import './modifyProfile.scss';
 const ModifyProfile = ({
   connectedUserData,
   changeField,
-  handleModifyProfile,
+  changePasswordField,
+  modifyProfile,
   openModal,
   userAddress,
   isLoaded,
@@ -27,7 +28,6 @@ const ModifyProfile = ({
   isConnected,
   newPassword,
   confirmedNewPassword,
-  changePasswordField,
   // newPassword,
   // confirmedNewPassword,
 
@@ -88,7 +88,7 @@ const ModifyProfile = ({
     }
     if (nbError === 0) {
       console.log('il ny a pas derreur');
-      handleModifyProfile(userId, myHobbiesList, myServicesList);
+      modifyProfile(userId, myHobbiesList, myServicesList);
     }
   };
 
@@ -216,8 +216,6 @@ const ModifyProfile = ({
                 <div className="modifyProfile__form__label">
                   <div className="modifyProfile__form__city">
                     {connectedUserData.cities != null && userAddress === '' ? `Votre ville de résidence est ${connectedUserData.cities.name}, ${connectedUserData.cities.country.frenchName}.` : ''}
-                    {/* {userAddress !== '' ? `Votre ville de résidence est ${userAddress[0]}, ${userAddress[1]}.` : ''}
-                    {userAddress === '' && userInfos.cities === null ? 'Vous n\'avez pas renseigné votre ville de résidence.' : ''} */}
                   </div>
                   <button className="modifyProfile__form__city__button" type="button" onClick={openModal}> Changer de ville </button>
                   <ModifyCity />
@@ -284,7 +282,7 @@ ModifyProfile.propTypes = {
     ).isRequired,
   ).isRequired,
   changeField: PropTypes.func.isRequired,
-  nickname: PropTypes.string.isRequired,
+  changePasswordField: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
   hobbiesList: PropTypes.arrayOf(
     PropTypes.shape(
@@ -294,6 +292,21 @@ ModifyProfile.propTypes = {
       },
     ).isRequired,
   ).isRequired,
+  loadHobbiesList: PropTypes.func.isRequired,
+  servicesList: PropTypes.arrayOf(
+    PropTypes.shape(
+      {
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      },
+    ).isRequired,
+  ).isRequired,
+  loadServicesList: PropTypes.func.isRequired,
+  modifyProfile: PropTypes.func.isRequired,
+  isLoaded: PropTypes.bool.isRequired,
+  redirection: PropTypes.bool.isRequired,
+  isConnected: PropTypes.bool.isRequired,
+
   // isSearchBarVisible: PropTypes.bool.isRequired,
 };
 
