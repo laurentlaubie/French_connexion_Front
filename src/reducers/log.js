@@ -49,7 +49,6 @@ const initialState = {
   newAddress: '',
   completeNewAddress: [],
   avatarFile: null,
-
 };
 
 export default (state = initialState, action = {}) => {
@@ -122,10 +121,7 @@ export default (state = initialState, action = {}) => {
     case CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE:
       return {
         ...state,
-        connectedUserData: {
-          ...state.connectedUserData,
-          [action.name]: action.value,
-        },
+        [action.name]: action.value,
       };
     case CHANGE_PROFILE_FORM_FIELD_VALUE:
       return {

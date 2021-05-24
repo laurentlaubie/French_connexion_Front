@@ -245,8 +245,12 @@ export default (store) => (next) => (action) => {
 
       // on récupère les nouvelles données de la personne connectée, ainsi que celles non modifiées
       const state = store.getState();
-      const { connectedUserData } = state.log;
-      console.log(connectedUserData);
+      const {
+        connectedUserData,
+        newPassword: password,
+        confirmedNewPassword: confirmedPassword,
+      } = state.log;
+
       const {
         email,
         firstname,
@@ -254,8 +258,6 @@ export default (store) => (next) => (action) => {
         nickname,
         phoneNumber,
         biography,
-        newPassword: password,
-        confirmedNewPassword: confirmedPassword,
         helper,
       } = connectedUserData;
 

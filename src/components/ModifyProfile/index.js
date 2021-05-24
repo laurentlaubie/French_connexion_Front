@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
@@ -25,11 +25,19 @@ const ModifyProfile = ({
   loadServicesList,
   redirection,
   isConnected,
+  newPassword,
+  confirmedNewPassword,
+  changePasswordField,
   // newPassword,
   // confirmedNewPassword,
 
 }) => {
   const userId = connectedUserData.id;
+
+  const [firstnameErrorMessage, setFirstnameErrorMessage] = useState('');
+  const [lastnameErrorMessage, setLastnameErrorMessage] = useState('');
+  const [emailErrorMessage, setEmailErrorMessage] = useState('');
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -47,7 +55,41 @@ const ModifyProfile = ({
     });
     console.log(myServicesList);
 
-    handleModifyProfile(userId, myHobbiesList, myServicesList);
+    // reset of error messages
+    setFirstnameErrorMessage('');
+    setLastnameErrorMessage('');
+    setEmailErrorMessage('');
+    setPasswordErrorMessage('');
+
+    console.log(connectedUserData.newPassword);
+
+    let nbError = 0;
+    const emailFormat = new RegExp(/^\S+@\S+\.\S+$/);
+
+    if (connectedUserData.firstname === '') {
+      setFirstnameErrorMessage('Ce champ ne doit pas être vide');
+      nbError += 1;
+    }
+    if (connectedUserData.lastname === '') {
+      setLastnameErrorMessage('Ce champ ne doit pas être vide');
+      nbError += 1;
+    }
+    if (connectedUserData.email === '') {
+      setEmailErrorMessage('Ce champ ne doit pas être vide');
+      nbError += 1;
+    }
+    if (!emailFormat.test(connectedUserData.email)) {
+      setEmailErrorMessage('Cet email n\'est pas valide');
+      nbError += 1;
+    }
+    if (newPassword !== confirmedNewPassword) {
+      setPasswordErrorMessage('Les mots de passe ne correspondent pas');
+      nbError += 1;
+    }
+    if (nbError === 0) {
+      console.log('il ny a pas derreur');
+      handleModifyProfile(userId, myHobbiesList, myServicesList);
+    }
   };
 
   useEffect(() => {
@@ -74,8 +116,12 @@ const ModifyProfile = ({
               <div className="modifyProfile__form__subsection">
                 <h3 className="modifyProfile__form__subsection__title"> Les informations de votre compte </h3>
                 <div className="modifyProfile__form__section__content">
+
                   <div className="modifyProfile__form__section__fieldGroup">
                     <div className="modifyProfile__form__label">
+                      {firstnameErrorMessage && (
+                        <div className="modifyProfile__form__errorMessage"> {firstnameErrorMessage} </div>
+                      )}
                       <div className="modifyProfile__form__label__name"> Prénom </div>
                       <Field
                         className="modifyProfile__form__field"
@@ -86,6 +132,9 @@ const ModifyProfile = ({
                       />
                     </div>
                     <div className="modifyProfile__form__label" htmlFor="lastname">
+                      {lastnameErrorMessage && (
+                        <div className="modifyProfile__form__errorMessage"> {lastnameErrorMessage} </div>
+                      )}
                       <div className="modifyProfile__form__label__name">Nom </div>
                       <Field
                         className="modifyProfile__form__field"
@@ -96,6 +145,7 @@ const ModifyProfile = ({
                       />
                     </div>
                   </div>
+
                   <div className="modifyProfile__form__label" htmlFor="nickname">
                     <div className="modifyProfile__form__label__name"> Nom d'utilisateur </div>
                     <Field
@@ -107,6 +157,9 @@ const ModifyProfile = ({
                     />
                   </div>
                   <div className="modifyProfile__form__label" htmlFor="email">
+                    {emailErrorMessage && (
+                      <div className="modifyProfile__form__errorMessage"> {emailErrorMessage} </div>
+                    )}
                     <div className="modifyProfile__form__label__name"> Email </div>
                     <Field
                       className="modifyProfile__form__field"
@@ -118,14 +171,17 @@ const ModifyProfile = ({
                     />
                   </div>
                   <div className="modifyProfile__form__section__fieldGroup">
+                    {passwordErrorMessage && (
+                      <div className="modifyProfile__form__errorMessage"> {passwordErrorMessage} </div>
+                    )}
                     <div className="modifyProfile__form__label" htmlFor="password">
                       <div className="modifyProfile__form__label__name"> Mot de passe </div>
                       <Field
                         className="modifyProfile__form__field"
                         name="newPassword"
                         placeholder="Nouveau mot de passe"
-                        onChange={changeField}
-                        value={connectedUserData.newPassword}
+                        onChange={changePasswordField}
+                        value={newPassword}
                         type="password"
                       />
                     </div>
@@ -135,8 +191,8 @@ const ModifyProfile = ({
                         className="modifyProfile__form__field"
                         name="confirmedNewPassword"
                         placeholder="Confirmez votre mot de passe"
-                        onChange={changeField}
-                        value={connectedUserData.confirmedNewPassword}
+                        onChange={changePasswordField}
+                        value={confirmedNewPassword}
                         type="password"
                       />
                     </div>
@@ -204,31 +260,19 @@ const ModifyProfile = ({
 };
 
 ModifyProfile.propTypes = {
-  // dataHobbies : PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     hobby : PropTypes.string.isRequired,
-  //     id : PropTypes.number.isRequired,
-  //   }),
-  // ).isRequired,
-  // dataServices : PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     service : PropTypes.string.isRequired,
-  //     id : PropTypes.number.isRequired,
-  //   }),
-  // ).isRequired,
   isLoading: PropTypes.bool.isRequired,
   setLoading: PropTypes.func.isRequired,
-  connectedUserData: PropTypes.shape(
-    {
-      id: PropTypes.number.isRequired,
-    },
-  ).isRequired,
   loadUserProfile: PropTypes.func.isRequired,
-  userInfos: PropTypes.arrayOf(
+  connectedUserData: PropTypes.arrayOf(
     PropTypes.shape(
       {
+        firstname: PropTypes.string.isRequired,
+        lastname: PropTypes.string.isRequired,
         helper: PropTypes.bool.isRequired,
         nickname: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        newPassword: PropTypes.string,
+        confirmedNewPassword: PropTypes.string,
         cities: PropTypes.arrayOf(
           PropTypes.shape(
             {
@@ -241,10 +285,7 @@ ModifyProfile.propTypes = {
   ).isRequired,
   changeField: PropTypes.func.isRequired,
   nickname: PropTypes.string.isRequired,
-  newPassword: PropTypes.string.isRequired,
-  confirmedNewPassword: PropTypes.string.isRequired,
   openModal: PropTypes.func.isRequired,
-  
   hobbiesList: PropTypes.arrayOf(
     PropTypes.shape(
       {
@@ -254,7 +295,6 @@ ModifyProfile.propTypes = {
     ).isRequired,
   ).isRequired,
   // isSearchBarVisible: PropTypes.bool.isRequired,
-
 };
 
 export default ModifyProfile;

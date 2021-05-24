@@ -133,6 +133,13 @@
 
     }
 
+    &__errorMessage {
+      font-size:1rem;
+      color:red;
+      font-style:italic;
+      padding-bottom:0.5rem;
+    }
+
     &__city {
       margin-bottom:1rem;
     }

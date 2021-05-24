@@ -6,7 +6,6 @@ import {
 
 import { changePasswordProfileFormFieldValue, changeProfileFormFieldValue } from 'src/actions/log';
 
-
 import { loadHobbiesList } from 'src/actions/hobbies';
 import { loadServicesList } from 'src/actions/services';
 import { modifyProfile } from 'src/actions/modifyForm';
@@ -26,8 +25,8 @@ const mapStateToProps = (state, ownProps) => ({
   isLoaded: state.hobbies.isLoaded && state.services.isLoaded,
   redirection: state.log.redirectionToMyProfile,
   isConnected: state.log.isConnected,
-  // newPassword: state.log.newPassword,
-  // confirmedNewPassword: state.log.confirmedNewPassword,
+  newPassword: state.log.newPassword,
+  confirmedNewPassword: state.log.confirmedNewPassword,
   // hobbiesListForCheckbox: state.user.myHobbies,
 });
 
@@ -51,6 +50,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   loadServicesList: () => {
     dispatch(loadServicesList());
+  },
+  changePasswordField: (value, name) => {
+    dispatch(changePasswordProfileFormFieldValue(value, name));
   },
   
   // setLoading: (value) => {
