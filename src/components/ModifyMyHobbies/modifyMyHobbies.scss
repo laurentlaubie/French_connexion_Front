@@ -1,6 +1,10 @@
 @use 'src/styles/_vars';
 
 .modifyMyHobbies{
+
+  &__emptySection{
+    text-align:left;
+  }
   
   &__list{
     margin-bottom:2rem;

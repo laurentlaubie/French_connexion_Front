@@ -6,17 +6,18 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 
 import './modifyCity.scss';
 
-const ModifyCity = ({ isOpen, close, address, setNewAddress, saveNewAddress }) => {
-  // const handleSubmit = (evt) => {
-  //   evt.preventDefault();
-  //   console.log('j\'enregistre ma nouvelle ville');
-  //   handleModifyCity();
-  // };
-
+const ModifyCity = ({
+  isOpen,
+  close,
+  address,
+  setNewAddress,
+  saveNewAddress,
+  resetCityField,
+}) => {
+  let completeAddress = [];
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     setNewAddress(value);
-
     console.log(results);
     const addressComponents = results[0].address_components;
     console.log(addressComponents);
@@ -36,24 +37,24 @@ const ModifyCity = ({ isOpen, close, address, setNewAddress, saveNewAddress }) =
     console.log(lat);
     console.log(lng);
 
-    const completeAddress = [cityName, countryName, lat, lng];
+    completeAddress = [cityName, countryName, lat, lng];
     saveNewAddress(completeAddress);
   };
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    // On force le changement d'url vers /resultats
-    // history.push('/resultats');
-    console.log('j\'enregistre ma nouvelle ville');
+  const handleClick = () => {
     close();
-    // saveNewAddress(cityName, countryName, lat, lng);
+  };
+
+  const handleClose = () => {
+    resetCityField();
+    close();
   };
 
   return (
     <div className={isOpen ? 'modifyCity' : 'modifyCity__close'}>
       <div className="modifyCity__modal">
         <h1 className="modifyCity__modal__title"> Modifier votre ville de résidence </h1>
-        <button className="modifyCity__modal__closeButton" type="button" onClick={close}> X </button>
+        <button className="modifyCity__modal__closeButton" type="button" onClick={handleClose}> X </button>
         <div className="SearchBar">
           <PlacesAutocomplete
             value={address}
@@ -65,7 +66,7 @@ const ModifyCity = ({ isOpen, close, address, setNewAddress, saveNewAddress }) =
               <div>
                 <div className="SearchBar__form">
                   <input className="SearchBar__mainInput" {...getInputProps({ placeholder: 'Saisissez votre recherche' })} />
-                  <input type="submit" className="SearchBar__submit" value="" onClick={handleSubmit} />
+                  <input type="button" className="SearchBar__submit" value="" onClick={handleClick} />
                 </div>
                 <div>
                   {loading ? <div>...loading</div> : null}
@@ -97,7 +98,7 @@ ModifyCity.propTypes = {
   address: PropTypes.string.isRequired,
   setNewAddress: PropTypes.func.isRequired,
   saveNewAddress: PropTypes.func.isRequired,
-  // handlemodifyCity: PropTypes.func.isRequired,
+  resetCityField: PropTypes.func.isRequired,
 };
 
 export default ModifyCity;

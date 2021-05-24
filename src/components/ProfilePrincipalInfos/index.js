@@ -47,9 +47,10 @@ const ProfilePrincipalInfos = ({
 };
 
 ProfilePrincipalInfos.propTypes = {
+  id: PropTypes.number.isRequired,
   isMyProfile: PropTypes.bool.isRequired,
   helper: PropTypes.bool.isRequired,
-  cities: PropTypes.object,
+  cities: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   avatar: PropTypes.string,
   createdAt: PropTypes.string,
@@ -57,7 +58,7 @@ ProfilePrincipalInfos.propTypes = {
 
 ProfilePrincipalInfos.defaultProps = {
   avatar: defaultAvatar,
-  cities: '',
+  // cities: '',
   createdAt: '2021-05-11T07:33:18+00:00',
 };
 

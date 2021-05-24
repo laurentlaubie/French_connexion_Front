@@ -35,8 +35,8 @@ export default (store) => (next) => (action) => {
       // on extrait l'email et le password du state
       const state = store.getState();
       const { email: username, password } = state.log;
-      console.log(username);
-      console.log(password);
+      // console.log(username);
+      // console.log(password);
 
       api
         .post(
@@ -76,7 +76,7 @@ export default (store) => (next) => (action) => {
           toast.info('Vous êtes maintenant connectés');
           // window.location.href = '/';
         }).catch((error) => {
-          console.log(error);
+          console.log('Vous n\'avez pas pu être identifié');
         });
       next(action);
       break;
@@ -84,7 +84,7 @@ export default (store) => (next) => (action) => {
     case LOAD_CONNECTED_USER_DATA: {
       const { id } = action;
       const userToken = localStorage.getItem('token');
-      console.log(userToken);
+      // console.log(userToken);
 
       api
         .get(`/user/${id}`, {
@@ -94,18 +94,18 @@ export default (store) => (next) => (action) => {
         })
         .then((response) => {
           // l'API nous retourne les infos de l'utilisateur
-          console.log(response.data);
+          // console.log(response.data);
           const connectedUserInfos = response.data;
-          console.log(response.headers);
+          // console.log(response.headers);
           // on sauvegarde ces infos
           store.dispatch(saveConnectedUserData(connectedUserInfos));
           // gestion du loader dans la page profil
           store.dispatch(setMyProfileLoading(true));
-          console.log('la requête seffectue');
+          // console.log('la requête seffectue');
         }).catch((error) => {
           // eslint-disable-next-line no-console
           const errorStatus = error.response.status;
-          console.log(error.response.status);
+          // console.log(error.response.status);
           console.log('vous ne passerez pas');
           if (errorStatus === 401) {
             window.location.href = '/403';
@@ -221,12 +221,13 @@ export default (store) => (next) => (action) => {
       api
         .get('/user/home')
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           const usersReviewList = response.data;
           store.dispatch(saveUsersReviews(usersReviewList));
         }).catch((error) => {
         // eslint-disable-next-line no-console
           console.log(error);
+          console.log('Les usersReviews n\'ont pas pu être chargées');
         });
 
       // puis on décide si on la laisse filer ou si on la bloque
@@ -245,8 +246,12 @@ export default (store) => (next) => (action) => {
 
       // on récupère les nouvelles données de la personne connectée, ainsi que celles non modifiées
       const state = store.getState();
-      const { connectedUserData } = state.log;
-      console.log(connectedUserData);
+      const {
+        connectedUserData,
+        newPassword: password,
+        confirmedNewPassword: confirmedPassword,
+      } = state.log;
+
       const {
         email,
         firstname,
@@ -254,8 +259,6 @@ export default (store) => (next) => (action) => {
         nickname,
         phoneNumber,
         biography,
-        newPassword: password,
-        confirmedNewPassword: confirmedPassword,
         helper,
       } = connectedUserData;
 

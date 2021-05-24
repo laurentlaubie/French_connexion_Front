@@ -28,6 +28,7 @@ import {
   SAVE_NEW_ADDRESS,
   SAVE_MODIFIED_CONNECTED_USER_DATA,
   SAVE_AVATAR_IN_STATE,
+  RESET_CITY_FIELD,
 } from 'src/actions/modifyForm';
 
 import { SET_MY_PROFILE_LOADING } from 'src/actions/loading';
@@ -41,7 +42,8 @@ const initialState = {
   password: '',
   connectedUserData: '',
   isLoading: true,
-  selectedHobby: '',
+  selectedHobby: {},
+  selectedService: {},
   newPassword: '',
   confirmedNewPassword: '',
   redirectionToMyProfile: false,
@@ -49,7 +51,6 @@ const initialState = {
   newAddress: '',
   completeNewAddress: [],
   avatarFile: null,
-
 };
 
 export default (state = initialState, action = {}) => {
@@ -122,10 +123,7 @@ export default (state = initialState, action = {}) => {
     case CHANGE_PASSWORD_PROFILE_FORM_FIELD_VALUE:
       return {
         ...state,
-        connectedUserData: {
-          ...state.connectedUserData,
-          [action.name]: action.value,
-        },
+        [action.name]: action.value,
       };
     case CHANGE_PROFILE_FORM_FIELD_VALUE:
       return {
@@ -240,6 +238,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         avatarFile: action.file,
+      };
+    case RESET_CITY_FIELD:
+      return {
+        ...state,
+        completeNewAddress: [],
+        newAddress: '',
       };
     default:
       return state;

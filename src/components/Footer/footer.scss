@@ -3,30 +3,68 @@
 
 .footer {
 
-  //border-top: 1px black solid;
   background-color: vars.$light-blue;
-  display: none;
-  //background: #ccc;
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  
+  margin-top:4rem;
 
   &__list{
-  display:flex;
-  justify-content: space-around;
-  flex-wrap: nowrap;
-  align-items:center;
-  text-decoration: underline;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    text-decoration: underline;
+    margin-top:1rem;
+    // border:1px solid black;
+    justify-content: center;
+    padding-top:2rem;
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      flex-direction:row;
+      margin-top:3rem;
+
+    }
+
+
+
+    @media (min-width: vars.$max-width) {
+      width: vars.$max-width;
+    }
+
   }
 
-}
+  &__item{
+    padding: 0.5rem;
+    margin: 0 2rem;
+    display:inline;
+    font-family: vars.$font-title;
+    font-size:1rem;
+    color:white;
+    text-transform: uppercase;
+    // border:1px solid red;
 
-@media only screen and (min-width: 601px) {
+    @media (min-width: vars.$breakpoint-tablet) {
+      font-size:1.2rem;
+      padding: 1rem 2.5rem 0.5rem;
 
-  .footer{
-   display: block;
-}
+    }
+    
+  }
+
+  &__ref{
+    text-align:left;
+    margin-top:2rem;
+    margin-bottom:3rem;
+    width:100%;
+    font-family: vars.$font-title;
+    padding-left:1rem;
+    padding-bottom:1rem;
+    font-style: italic;
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      margin-bottom:1rem;
+
+    }
+
+  }
 
 }
 // -- definir la couleur exact du footer sur le spring 3 lors d'un dailyScrum !!!!

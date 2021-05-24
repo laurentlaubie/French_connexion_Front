@@ -11,16 +11,19 @@ const ProfileDescription = ({ biography, name, isMyProfile }) => {
   return (
     <div className="profileDescription card">
       <div className="card__title"> À propos de moi </div>
-      <div className={biography !== null ? 'card__text' : 'hidden'}> {biography} </div>
       <div className="card__text"> {biography !== null ? biography : emptyMessage} </div>
     </div>
   );
 };
 
 ProfileDescription.propTypes = {
-  biography: PropTypes.string.isRequired,
+  biography: PropTypes.string,
   name: PropTypes.string.isRequired,
   isMyProfile: PropTypes.bool.isRequired,
+};
+
+ProfileDescription.defaultProps = {
+  biography: '',
 };
 
 export default ProfileDescription;

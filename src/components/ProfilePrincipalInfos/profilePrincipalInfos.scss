@@ -79,16 +79,24 @@
     margin:auto;
 
     img{
-      // object-fit:contain;
-      width: 300px;
-      height: 300px;
+      width: 250px;
+      height: 250px;
       border-radius:50%;
       object-fit:cover;
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
+      @media (min-width:vars.$breakpoint-phone){
+        width:300px;
+        height:300px;
+      }
       @media (min-width:vars.$breakpoint-tablet){
-        width:200px;
-        height:200px;
+        width:250px;
+        height:250px;
+      }
+
+      @media (min-width:vars.$breakpoint-tablet){
+        width:250px;
+        height:250px;
       }
 
       @media (min-width:vars.$breakpoint-desktop){

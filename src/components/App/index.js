@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
-  Route, Switch, Redirect, useLocation, useHistory,
+  Route, Switch, useLocation, useHistory,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
@@ -13,13 +13,10 @@ import jwt_decode from 'jwt-decode';
 import Footer from 'src/components/Footer';
 import Header from 'src/components/Header';
 import HomePageHeader from 'src/components/HomePageHeader';
-// import SearchBar from 'src/components/SearchBar';
 import HomePageFonctionnalities from 'src/components/HomePageFonctionnalities';
 import HomePageMap from 'src/components/HomePageMap';
 
 import UsersReviews from 'src/containers/UsersReviews';
-
-
 
 import ProfilesResults from 'src/containers/ProfilesResults';
 
@@ -34,15 +31,12 @@ import ModifyProfile from 'src/containers/ModifyProfile';
 import LegalsMentions from 'src/components/LegalsMentions';
 import SiteMap from 'src/components/SiteMap';
 import AboutUs from 'src/components/AboutUs';
-import Loading from 'src/components/Loading';
 
 import SignIn from 'src/containers/SignIn';
 import LogIn from 'src/containers/LogIn';
 
 // == Import Data
-import DataFile from 'src/data/ProfileList';
 import DataTeam from 'src/data/DataTeam';
-import users from 'src/data/users';
 
 // == Import Style
 import './styles.css';
@@ -50,51 +44,45 @@ import './styles.css';
 // == Composant
 
 const App = ({
-  loadConnectedUserData, setIsConnected, isConnected, loadHobbiesList, loadServicesList, tokenFromState, saveTokenInState
+  loadConnectedUserData, setIsConnected,
 }) => {
   // récupération du chemin
   const pathName = useLocation().pathname;
-  console.log(pathName);
-
-  const history = useHistory();
+  // console.log(pathName);
 
   useEffect(() => {
     const userTokenFromLocalStorage = localStorage.getItem('token');
-
     if (userTokenFromLocalStorage != null) {
       const decodedToken = jwt_decode(userTokenFromLocalStorage);
-      console.log(decodedToken);
+      // console.log(decodedToken);
       const dateNow = Math.round(Date.now() / 1000);
-      console.log(dateNow);
-
+      // console.log(dateNow);
       if (decodedToken.exp - 600 > dateNow) {
         loadConnectedUserData(decodedToken.id);
         console.log('je suis déjà connecté');
         setIsConnected(true);
       }
       else {
-        console.log('Token expiré');
+        // console.log('Token expiré');
         localStorage.removeItem('token');
       }
     }
     else {
       console.log('je ne suis pas encore connecté');
     }
-    console.log('on set le loading à false');
   }, []);
 
   // -- gestion du scroll
   useEffect(
     () => {
       window.scrollTo({ top: 0 });
-      console.log('le pathname a changé');
+      // console.log('le pathname a changé');
     },
     [pathName],
   );
 
   return (
     <div className="app">
-      <Footer />
       <Header />
       <LogIn />
       <SignIn />
@@ -103,14 +91,13 @@ const App = ({
           <HomePageHeader />
           <HomePageFonctionnalities />
           <HomePageMap />
-          <UsersReviews users={users} />
-          <LogIn />
+          <UsersReviews />
         </Route>
         <Route path="/resultats" exact>
           <SearchBar />
           <div className="app__ResultDesktop">
             <MapResults />
-            <ProfilesResults data={DataFile} />
+            <ProfilesResults />
           </div>
         </Route>
         <Route path="/notre-reseau" exact>
@@ -142,21 +129,15 @@ const App = ({
         </Route>
       </Switch>
       <ToastContainer autoClose={2000} />
+      <Footer />
     </div>
   );
 };
 
 App.propTypes = {
-  saveConnectedUserData: PropTypes.func.isRequired,
-  // isConnected: PropTypes.bool.isRequired,
-  // loading: PropTypes.bool,
-  loadHobbiesList: PropTypes.func.isRequired,
-  loadServicesList: PropTypes.func.isRequired,
+  loadConnectedUserData: PropTypes.func.isRequired,
+  setIsConnected: PropTypes.func.isRequired,
 };
-
-// App.defaultProps = {
-//   loading: false,
-// };
 
 // == Export
 export default App;

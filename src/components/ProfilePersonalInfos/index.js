@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import './profilePersonalInfos.scss';
 
 const ProfilePersonalInfos = ({
-  firstname, lastname, email, cities, country, phoneNumber,
+  firstname, lastname, email, cities, phoneNumber,
 }) => {
-  let localisation='';
+  let localisation = '';
   if (cities !== null){
     localisation = `${cities.name}, ${cities.country.frenchName}`;
   };
@@ -20,7 +20,7 @@ const ProfilePersonalInfos = ({
       <div className="profilePersonalInfos__list">
         <div className="profilePersonalInfos__item">{firstname} {lastname}</div>
         <div className="profilePersonalInfos__item">{email}</div>
-        <div className={cities != '' ? 'profilePersonalInfos__item' : 'hiden'}>{localisation}</div>
+        <div className={cities !== '' ? 'profilePersonalInfos__item' : 'hiden'}>{localisation}</div>
         <div className="profilePersonalInfos__item">{phoneNumber}</div>
       </div>
     </div>
@@ -32,13 +32,7 @@ ProfilePersonalInfos.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  cities: PropTypes.object.isRequired,
-  country: PropTypes.object,
-};
-
-ProfilePersonalInfos.defaultProps = {
-  phoneNumber: '',
-
+  phoneNumber: PropTypes.string.isRequired,
 };
 
 export default ProfilePersonalInfos;

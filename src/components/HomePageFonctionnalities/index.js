@@ -13,9 +13,9 @@ const HomePageFonctionnalities = () => (
     <div className="homePageFonctionnalities__item">
       <img className="homePageFonctionnalities__item__image" src={func1} alt="girl is waiting for you" />
       <div className="homePageFonctionnalities__item__text">
-        <h3 className="homePageFonctionnalities__item__text__title"> Entrez en contact avec des helpeurs  </h3>
+        <h3 className="homePageFonctionnalities__item__text__title"> Entrez en contact avec des helpers  </h3>
         <p className="homePageFonctionnalities__item__text__content">
-          Les helpeurs sont des utilisateurs francophone habitant dans d’autres pays. Entrez en contact avec eux, pour faire de nouvelles rencontres et profiter de leur expérience de leur pays.
+          Les helpers sont des utilisateurs francophone habitant dans d’autres pays. Entrez en contact avec eux, pour faire de nouvelles rencontres et profiter de leur expérience de leur pays.
         </p>
       </div>
     </div>

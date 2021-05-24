@@ -6,7 +6,6 @@ import {
 
 import { changePasswordProfileFormFieldValue, changeProfileFormFieldValue } from 'src/actions/log';
 
-
 import { loadHobbiesList } from 'src/actions/hobbies';
 import { loadServicesList } from 'src/actions/services';
 import { modifyProfile } from 'src/actions/modifyForm';
@@ -16,19 +15,16 @@ import ModifyProfile from 'src/components/ModifyProfile';
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
-  // userInfos: state.user.userInfos,
   connectedUserData: state.log.connectedUserData,
-  // newPassword: state.log.connectedUserData.newPassword,
-  // confirmedNewPassword: state.log.confirmedNewPassword,
-  userAddress: state.user.userAddress,
+  userAddress: state.log.newAddress,
   hobbiesList: state.hobbies.hobbiesList,
   servicesList: state.services.servicesList,
   isLoaded: state.hobbies.isLoaded && state.services.isLoaded,
   redirection: state.log.redirectionToMyProfile,
   isConnected: state.log.isConnected,
-  // newPassword: state.log.newPassword,
-  // confirmedNewPassword: state.log.confirmedNewPassword,
-  // hobbiesListForCheckbox: state.user.myHobbies,
+  newPassword: state.log.newPassword,
+  confirmedNewPassword: state.log.confirmedNewPassword,
+  completeNewAddress: state.log.completeNewAddress,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -40,7 +36,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   changeField: (value, name) => {
     dispatch(changeProfileFormFieldValue(value, name));
   },
-  handleModifyProfile: (userId, myHobbiesList, myServicesList) => {
+  modifyProfile: (userId, myHobbiesList, myServicesList) => {
     dispatch(modifyProfile(userId, myHobbiesList, myServicesList));
   },
   openModal: () => {
@@ -52,17 +48,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   loadServicesList: () => {
     dispatch(loadServicesList());
   },
-  
-  // setLoading: (value) => {
-  //   dispatch(setLoading(value));
-  // },
-  // toggleCheckBox: (value) => {
-  //   dispatch(toggleCheckBox(value));
-  // },
-  // saveMyHobbiesInState: (myHobbies) => {
-  //   dispatch(saveMyHobbiesInState(myHobbies));
-  // },
-
+  changePasswordField: (value, name) => {
+    dispatch(changePasswordProfileFormFieldValue(value, name));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModifyProfile);

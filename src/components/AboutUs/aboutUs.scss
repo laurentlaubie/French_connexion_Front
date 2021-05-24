@@ -1,86 +1,78 @@
 @use 'src/styles/vars';
 
-.aboutUs{
+.aboutUs{   
+  margin: 5rem auto 3rem;
+  width:90%;
 
-      
-  width: 100%;
-  //background-color: vars.$light-red;
- 
-  &__global{
-    width: 60%;
-    margin: auto;
-    text-justify: inter-word;
-    padding: 3em 2em 3em 2em;
-    font-size: 1em;
-    //border: solid black 1px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    border-radius:0.5rem;
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-   // background-color: vars.$light-red;
-
-  }
-
+  @media (min-width: vars.$max-width) {
+    width: vars.$max-width;
+  }  
 
   &__title{
-    font-size: 1.5em;
     font-weight: 700;
-    //background-color: violet;
-    padding-top: 1em;
-    border-radius:0.5rem;
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-    background-color: vars.$light-blue;
-    width: 80%;
-    padding-bottom: 1em;
-    margin: auto;
-    margin-bottom: 1em;
-
-      &__subtitle{
-        font-size: 1em;
-        font-weight: 700;
-        padding-top: 2em;
-        padding-bottom: 1.5em;
-        text-decoration :underline;
-      }
-  }
-
-  &__text{
-        width: 70%;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.5;
-        //background-color: vars.$light-blue;
-
-        @media (min-width: vars.$breakpoint-tablet){
-          width: 80%;
-          margin-left: auto;
-          margin-right: auto;
-          
-        }
-
-  }
-
-  &__list{
-
+    font-size: 2.5rem;
+    //padding-top: 6em;
+    padding-bottom: 3rem;
+    text-align: center;
     width: 100%;
-    margin:auto;
-    display: flex;
-    flex-direction: column;
+  }
 
-    @media (min-width: vars.$breakpoint-tablet) {
-      width: 80%;
+  &__project{
+    display:flex;
+    align-items:center;
+    margin-bottom:2rem;
+
+    &__image{
+      width:600px;
+    }
+
+    &__content{
+    }
+
+    &__title{
+      font-size: 1.6rem;
+      font-weight: 700;
+      padding-bottom: 1.5em;
+      text-decoration :underline;
+      font-family: vars.$font-title;
+    }
+
+    &__text{
+      font-size:1.4rem;
+      font-family: vars.$font-text; 
+      padding: 0 2rem;
+      line-height: 1.7rem;
+    }
+  }
+
+  &__team{
+
+    &__title{
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding-bottom: 1.5em;
+      text-decoration :underline;
+      font-family: vars.$font-title;
+    }
+
+    &__list{
+      width: 100%;
+      margin:auto;
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+  
+      @media (min-width: vars.$breakpoint-tablet) {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+  
+      @media (min-width: vars.$max-width) {
+        width:vars.$max-width;
+      }
     }
-
-    @media (min-width: vars.$max-width) {
-      width:vars.$max-width;
-     
-    }
-
-
-
   }
 
 }
