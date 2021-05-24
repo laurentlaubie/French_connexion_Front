@@ -29,11 +29,11 @@ const ProfileButton = ({
   </>
 );
 
-// ProfileButton.propTypes = {
-//   type: PropTypes.string.isRequired,
-//   textContent: PropTypes.string.isRequired,
-//   color: PropTypes.string.isRequired,
-//   linkTo: PropTypes.string.isRequired,
-// };
+ProfileButton.propTypes = {
+  type: PropTypes.string.isRequired,
+  textContent: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  linkTo: PropTypes.string.isRequired,
+};
 
 export default ProfileButton;

@@ -39,7 +39,9 @@ const ModifyMyServices = ({
 
     <div className={helper ? 'modifyProfile__form__subsection' : 'hidden'}>
       <div className="modifyProfile__form__subsection__title"> Les services que vous proposez aux voyageurs </div>
-      { myServices.length === 0 ? "vous n'avez pas de centres d'intérêt enregistrés" : ''}
+      <div className="modifyMyServices__emptySection">
+        { myServices.length === 0 ? 'Vous ne proposez pas de services.' : ''}
+      </div>
       <ul className="modifyMyServices__list">
         {myServices.map((service) => (
           <li key={`myServices-${service.name}`} className="modifyMyServices__list__item">
@@ -61,20 +63,20 @@ const ModifyMyServices = ({
   );
 };
 
-// ModifyMyServices.propTypes = {
-//   helper: PropTypes.bool.isRequired,
-//   myServices: PropTypes.array.isRequired,
-//   servicesList: PropTypes.arrayOf(
-//     PropTypes.shape(
-//       {
-//         id: PropTypes.number.isRequired,
-//         name: PropTypes.number.isRequired,
-//       },
-//     ),
-//   ).isRequired,
-//   saveSelectedService: PropTypes.func.isRequired,
-//   selectedService: PropTypes.object.isRequired,
-//   addSelectedService: PropTypes.func.isRequired,
-// };
+ModifyMyServices.propTypes = {
+  helper: PropTypes.bool.isRequired,
+  myServices: PropTypes.array.isRequired,
+  servicesList: PropTypes.arrayOf(
+    PropTypes.shape(
+      {
+        id: PropTypes.number.isRequired,
+        name: PropTypes.number.isRequired,
+      },
+    ),
+  ).isRequired,
+  saveSelectedService: PropTypes.func.isRequired,
+  selectedService: PropTypes.object.isRequired,
+  addSelectedService: PropTypes.func.isRequired,
+};
 
 export default ModifyMyServices;

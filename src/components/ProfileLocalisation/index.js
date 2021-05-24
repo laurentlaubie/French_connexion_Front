@@ -26,27 +26,27 @@ const ProfileLocalisation = ({ name, longitude, latitude, country, isMyProfile, 
   );
 };
 
-// ProfileLocalisation.propTypes = {
-//   name: PropTypes.string,
-//   latitude: PropTypes.number,
-//   longitude: PropTypes.number,
-//   country: PropTypes.objectOf(
-//     PropTypes.shape(
-//       {
-//         id: PropTypes.number.isRequired,
-//         frenchName: PropTypes.string.isRequired,
-//       },
-//     ),
-//   ),
-//   isMyProfile: PropTypes.bool.isRequired,
-//   username: PropTypes.string.isRequired,
-// };
+ProfileLocalisation.propTypes = {
+  name: PropTypes.string,
+  latitude: PropTypes.number,
+  longitude: PropTypes.number,
+  country: PropTypes.objectOf(
+    PropTypes.shape(
+      {
+        id: PropTypes.number.isRequired,
+        frenchName: PropTypes.string.isRequired,
+      },
+    ),
+  ),
+  isMyProfile: PropTypes.bool.isRequired,
+  username: PropTypes.string.isRequired,
+};
 
-// ProfileLocalisation.defaultProps = {
-//   name: '',
-//   longitude: '',
-//   latitude: '',
-//   country: '',
-// };
+ProfileLocalisation.defaultProps = {
+  name: '',
+  longitude: '',
+  latitude: '',
+  country: '',
+};
 
 export default ProfileLocalisation;

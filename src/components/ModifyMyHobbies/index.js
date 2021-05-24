@@ -33,8 +33,10 @@ const ModifyMyHobbies = ({
   return (
     <div className="modifyProfile__form__subsection">
       <div className="modifyProfile__form__subsection__title"> Mes centres d'intérêts </div>
-      { myHobbies === '' ? "vous n'avez pas de centres d'intérêt enregistrés" : ''}
-      { myHobbies !== '' && (
+      <div className="modifyMyHobbies__emptySection">
+        { myHobbies.length === 0 ? "Vous n'avez pas de centres d'intérêt enregistrés." : ''}
+      </div>
+      { myHobbies.length !== 0 && (
         <ul className="modifyMyHobbies__list">
           {myHobbies.map((hobby) => (
             <li key={`myHobbies-${hobby.name}`} className="modifyMyHobbies__list__item">
@@ -57,19 +59,23 @@ const ModifyMyHobbies = ({
   );
 };
 
-// ModifyMyHobbies.propTypes = {
-//   myHobbies: PropTypes.array.isRequired,
-//   hobbiesList: PropTypes.arrayOf(
-//     PropTypes.shape(
-//       {
-//         id: PropTypes.number.isRequired,
-//         name: PropTypes.number.isRequired,
-//       },
-//     ),
-//   ).isRequired,
-//   saveSelectedHobby: PropTypes.func.isRequired,
-//   selectedHobby: PropTypes.object.isRequired,
-//   addSelectedHobby: PropTypes.func.isRequired,
+ModifyMyHobbies.propTypes = {
+  myHobbies: PropTypes.array.isRequired,
+  hobbiesList: PropTypes.arrayOf(
+    PropTypes.shape(
+      {
+        id: PropTypes.number.isRequired,
+        name: PropTypes.number.isRequired,
+      },
+    ),
+  ).isRequired,
+  saveSelectedHobby: PropTypes.func.isRequired,
+  selectedHobby: PropTypes.object.isRequired,
+  addSelectedHobby: PropTypes.func.isRequired,
+};
+
+// ModifyMyHobbies.defaultProps = {
+//   myHobbies: '',
 // };
 
 export default ModifyMyHobbies;

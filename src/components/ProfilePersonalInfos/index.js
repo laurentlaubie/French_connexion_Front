@@ -28,11 +28,11 @@ const ProfilePersonalInfos = ({
   );
 };
 
-// ProfilePersonalInfos.propTypes = {
-//   firstname: PropTypes.string.isRequired,
-//   lastname: PropTypes.string.isRequired,
-//   email: PropTypes.string.isRequired,
-//   phoneNumber: PropTypes.string.isRequired,
-// };
+ProfilePersonalInfos.propTypes = {
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
+};
 
 export default ProfilePersonalInfos;

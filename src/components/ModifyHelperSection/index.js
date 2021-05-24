@@ -11,20 +11,22 @@ const ModifyHelperSection = ({
   removeHelperStatus,
 }) => (
   <div className="modifyProfile__form__section">
-    <h2 className="modifyProfile__form__section__title"> {helper ? 'Votre statut helpeur' : 'Devenir helpeur'} </h2>
+    <h2 className="modifyProfile__form__section__title"> {helper ? 'Votre statut helper' : 'Devenir helper'} </h2>
     <div className="modifyProfile__form__section__content">
 
       <div className={helper ? 'hidden' : 'modifyProfile__form__subsection'}>
-        <h3 className="modifyProfile__form__subsection__title"> Pourquoi devenir helpeur </h3>
+        <h3 className="modifyProfile__form__subsection__title"> Pourquoi devenir helper </h3>
         <div className="modifyProfile__form__text">
-          fsdouif sduifh qsodifuh fuihqs fuih dfouihq sdfui hqsdfiouhqsd foiusdfh qsodiufh
+          <p> Si êtes francophone et habitez hors de France, vous pouvez devenir helper </p>
+          <p> Devenir helper permet de proposer aux autres utilisateurs votre aide lors de leur voyage dans votre ville. Vous pouvez proposer plusieurs services.</p>
         </div>
         <button type="button" className="modifyProfile__form__becomeHelperButton" onClick={becomeHelper}> Je veux devenir helper et proposer mes services </button>
       </div>
 
       <div className={helper ? 'modifyProfile__form__subsection' : 'hidden'}>
         <div className="modifyProfile__form__text">
-          Vos statut de helper vous permet de proposer divers services aux voyageurs. Vous pouvez ajouter ou retirer des services ci-dessous, ceux-ci seront visibles par les autres utilisateurs sur votre profil.
+          <p> Vous êtes helper !</p>
+          <p> Votre statut de helper vous permet de proposer divers services aux voyageurs. Vous pouvez ajouter ou retirer des services ci-dessous, ceux-ci seront visibles par les autres utilisateurs sur votre profil. </p>
         </div>
       </div>
       <div className="modifyProfile__form__subsection">

@@ -72,20 +72,20 @@ const MyProfile = ({
   );
 };
 
-// MyProfile.propTypes = {
-//   connectedUserData: PropTypes.objectOf(
-//     PropTypes.shape(
-//       {
-//         nickname: PropTypes.string.isRequired,
-//         firstname: PropTypes.string.isRequired,
-//         lastname: PropTypes.string.isRequired,
-//       },
-//     ).isRequired,
-//   ).isRequired,
-//   openLogOut: PropTypes.func.isRequired,
-//   redirect: PropTypes.func.isRequired,
-//   isConnected: PropTypes.bool.isRequired,
-//   isMyProfileLoaded: PropTypes.bool.isRequired,
-// };
+MyProfile.propTypes = {
+  connectedUserData: PropTypes.objectOf(
+    PropTypes.shape(
+      {
+        nickname: PropTypes.string.isRequired,
+        firstname: PropTypes.string.isRequired,
+        lastname: PropTypes.string.isRequired,
+      },
+    ).isRequired,
+  ).isRequired,
+  openLogOut: PropTypes.func.isRequired,
+  redirect: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool.isRequired,
+  isMyProfileLoaded: PropTypes.bool.isRequired,
+};
 
 export default MyProfile;
