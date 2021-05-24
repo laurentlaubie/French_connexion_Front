@@ -235,7 +235,7 @@ const ModifyProfile = ({
               <div className="modifyProfile__form__section__content">
 
                 <div className="modifyProfile__form__subsection">
-                  <h3 className="modifyProfile__form__subsection__title"> Présentationyarn </h3>
+                  <h3 className="modifyProfile__form__subsection__title"> Présentation </h3>
                   <div className="modifyProfile__form__label" htmlFor="biography">
                     <TextArea
                       className="modifyProfile__form__textarea"
