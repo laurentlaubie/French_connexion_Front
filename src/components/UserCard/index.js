@@ -46,7 +46,7 @@ UserCard.propTypes = {
   lastname: PropTypes.string.isRequired,
   nickname: PropTypes.string,
   helper: PropTypes.bool.isRequired,
-  avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
   cities: PropTypes.shape(
     {
       name: PropTypes.string,
@@ -64,6 +64,7 @@ UserCard.propTypes = {
 UserCard.defaultProps = {
   nickname: '',
   cities: '',
+  avatar: '',
 };
 
 export default UserCard;

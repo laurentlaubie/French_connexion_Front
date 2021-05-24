@@ -115,3 +115,11 @@ export const saveAvatarInState = (file) => ({
   type: SAVE_AVATAR_IN_STATE,
   file,
 });
+
+// action type RESET_CITY_FIELD
+export const RESET_CITY_FIELD = 'RESET_CITY_FIELD';
+
+// action creator resetCityField
+export const resetCityField = () => ({
+  type: RESET_CITY_FIELD,
+});

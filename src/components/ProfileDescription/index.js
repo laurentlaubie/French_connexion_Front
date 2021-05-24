@@ -17,9 +17,13 @@ const ProfileDescription = ({ biography, name, isMyProfile }) => {
 };
 
 ProfileDescription.propTypes = {
-  biography: PropTypes.string.isRequired,
+  biography: PropTypes.string,
   name: PropTypes.string.isRequired,
   isMyProfile: PropTypes.bool.isRequired,
+};
+
+ProfileDescription.defaultProps = {
+  biography: '',
 };
 
 export default ProfileDescription;

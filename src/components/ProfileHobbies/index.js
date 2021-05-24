@@ -2,9 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import './profileHobbies.scss';
-
-const ProfileHobbies = ({ hobbies, name, isMyProfile }) => { 
+const ProfileHobbies = ({ hobbies, name, isMyProfile }) => {
   let emptyMessage = `${name} n'a pas précisé ses centres d'intérêts.`;
   if (isMyProfile) {
     emptyMessage = 'Vous n\'avez pas précisé vos centres d\'intérêts. Complétez votre profil !';
@@ -18,7 +16,7 @@ const ProfileHobbies = ({ hobbies, name, isMyProfile }) => {
           {hobbies.length === 0 ? emptyMessage : ''}
         </div>
         {hobbies.map((hobby) => (
-          <div className="card__item card__item--grey">{hobby.name}</div>
+          <div className="card__item card__item--grey" key={`hobby-${hobby.id}`}>{hobby.name}</div>
         ))}
       </div>
     </div>
