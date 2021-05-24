@@ -50,17 +50,13 @@ const App = ({
   const pathName = useLocation().pathname;
   // console.log(pathName);
 
-  // const history = useHistory();
-
   useEffect(() => {
     const userTokenFromLocalStorage = localStorage.getItem('token');
-
     if (userTokenFromLocalStorage != null) {
       const decodedToken = jwt_decode(userTokenFromLocalStorage);
       // console.log(decodedToken);
       const dateNow = Math.round(Date.now() / 1000);
       // console.log(dateNow);
-
       if (decodedToken.exp - 600 > dateNow) {
         loadConnectedUserData(decodedToken.id);
         console.log('je suis déjà connecté');
@@ -142,10 +138,6 @@ App.propTypes = {
   loadConnectedUserData: PropTypes.func.isRequired,
   setIsConnected: PropTypes.func.isRequired,
 };
-
-// App.defaultProps = {
-//   loading: false,
-// };
 
 // == Export
 export default App;

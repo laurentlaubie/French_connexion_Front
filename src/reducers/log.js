@@ -28,6 +28,7 @@ import {
   SAVE_NEW_ADDRESS,
   SAVE_MODIFIED_CONNECTED_USER_DATA,
   SAVE_AVATAR_IN_STATE,
+  RESET_CITY_FIELD,
 } from 'src/actions/modifyForm';
 
 import { SET_MY_PROFILE_LOADING } from 'src/actions/loading';
@@ -237,6 +238,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         avatarFile: action.file,
+      };
+    case RESET_CITY_FIELD:
+      return {
+        ...state,
+        completeNewAddress: [],
+        newAddress: '',
       };
     default:
       return state;

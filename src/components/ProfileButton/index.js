@@ -6,8 +6,14 @@ import PropTypes from 'prop-types';
 // == import style
 import './profileButton.scss';
 
-const ProfileButton = ({ type, textContent, color, linkTo, onClick }) => (
-
+const ProfileButton = ({
+  type,
+  textContent,
+  color,
+  linkTo,
+  // eslint-disable-next-line react/prop-types
+  onClick,
+}) => (
   <>
     {type === 'link' && (
       <Link to={linkTo} className={`profileButton profileButton--${color}`} onClick={onClick}>
@@ -23,12 +29,11 @@ const ProfileButton = ({ type, textContent, color, linkTo, onClick }) => (
   </>
 );
 
-ProfileButton.propTypes = {
-  type: PropTypes.string.isRequired,
-  textContent: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  linkTo: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
+// ProfileButton.propTypes = {
+//   type: PropTypes.string.isRequired,
+//   textContent: PropTypes.string.isRequired,
+//   color: PropTypes.string.isRequired,
+//   linkTo: PropTypes.string.isRequired,
+// };
 
 export default ProfileButton;

@@ -19,7 +19,7 @@ const ProfileServices = ({ services, name, isMyProfile, helper }) => {
           {services.length === 0 ? emptyMessage : ''}
         </div>
         {services.map((service) => (
-          <div className="card__item card__item--red">{service.name}</div>
+          <div className="card__item card__item--red" key={`service-${service.id}`}>{service.name}</div>
         ))}
       </div>
     </div>

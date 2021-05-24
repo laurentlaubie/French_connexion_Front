@@ -57,19 +57,19 @@ const ModifyMyHobbies = ({
   );
 };
 
-ModifyMyHobbies.propTypes = {
-  myHobbies: PropTypes.array.isRequired,
-  hobbiesList: PropTypes.arrayOf(
-    PropTypes.shape(
-      {
-        id: PropTypes.number.isRequired,
-        name: PropTypes.number.isRequired,
-      },
-    ),
-  ).isRequired,
-  saveSelectedHobby: PropTypes.func.isRequired,
-  selectedHobby: PropTypes.object.isRequired,
-  addSelectedHobby: PropTypes.func.isRequired,
-};
+// ModifyMyHobbies.propTypes = {
+//   myHobbies: PropTypes.array.isRequired,
+//   hobbiesList: PropTypes.arrayOf(
+//     PropTypes.shape(
+//       {
+//         id: PropTypes.number.isRequired,
+//         name: PropTypes.number.isRequired,
+//       },
+//     ),
+//   ).isRequired,
+//   saveSelectedHobby: PropTypes.func.isRequired,
+//   selectedHobby: PropTypes.object.isRequired,
+//   addSelectedHobby: PropTypes.func.isRequired,
+// };
 
 export default ModifyMyHobbies;

@@ -15,11 +15,8 @@ import ModifyProfile from 'src/components/ModifyProfile';
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string
 const mapStateToProps = (state, ownProps) => ({
-  // userInfos: state.user.userInfos,
   connectedUserData: state.log.connectedUserData,
-  // newPassword: state.log.connectedUserData.newPassword,
-  // confirmedNewPassword: state.log.confirmedNewPassword,
-  userAddress: state.user.userAddress,
+  userAddress: state.log.newAddress,
   hobbiesList: state.hobbies.hobbiesList,
   servicesList: state.services.servicesList,
   isLoaded: state.hobbies.isLoaded && state.services.isLoaded,
@@ -27,7 +24,7 @@ const mapStateToProps = (state, ownProps) => ({
   isConnected: state.log.isConnected,
   newPassword: state.log.newPassword,
   confirmedNewPassword: state.log.confirmedNewPassword,
-  // hobbiesListForCheckbox: state.user.myHobbies,
+  completeNewAddress: state.log.completeNewAddress,
 });
 
 // connection de props fonctions qui déclenchent des actions
@@ -54,17 +51,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   changePasswordField: (value, name) => {
     dispatch(changePasswordProfileFormFieldValue(value, name));
   },
-  
-  // setLoading: (value) => {
-  //   dispatch(setLoading(value));
-  // },
-  // toggleCheckBox: (value) => {
-  //   dispatch(toggleCheckBox(value));
-  // },
-  // saveMyHobbiesInState: (myHobbies) => {
-  //   dispatch(saveMyHobbiesInState(myHobbies));
-  // },
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModifyProfile);

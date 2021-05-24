@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import TextArea from 'src/components/TextArea';
 import ModifyCity from 'src/containers/ModifyCity';
-import Loading from 'src/components/Loading';
 import ModifyMyHobbies from 'src/containers/ModifyMyHobbies';
 import ProfilePrincipalInfos from 'src/components/ProfilePrincipalInfos';
 import ModifyHelperSection from 'src/containers/ModifyHelperSection';
@@ -17,20 +16,17 @@ import './modifyProfile.scss';
 const ModifyProfile = ({
   connectedUserData,
   changeField,
+  newPassword,
+  confirmedNewPassword,
   changePasswordField,
   modifyProfile,
-  openModal,
-  userAddress,
+  completeNewAddress,
   isLoaded,
   loadHobbiesList,
   loadServicesList,
+  openModal,
   redirection,
   isConnected,
-  newPassword,
-  confirmedNewPassword,
-  // newPassword,
-  // confirmedNewPassword,
-
 }) => {
   const userId = connectedUserData.id;
 
@@ -215,7 +211,9 @@ const ModifyProfile = ({
                 <h3 className="modifyProfile__form__subsection__title"> Votre ville de résidence </h3>
                 <div className="modifyProfile__form__label">
                   <div className="modifyProfile__form__city">
-                    {connectedUserData.cities != null && userAddress === '' ? `Votre ville de résidence est ${connectedUserData.cities.name}, ${connectedUserData.cities.country.frenchName}.` : ''}
+                    {connectedUserData.cities.length === 0 && completeNewAddress.length === 0 ? 'Vous n\'avez pas renseigné votre ville de résidence' : ''}
+                    {connectedUserData.cities.length !== 0 && completeNewAddress.length === 0 ? `Votre ville de résidence est ${connectedUserData.cities.name}, ${connectedUserData.cities.country.frenchName}.` : ''}
+                    {completeNewAddress.length !== 0 ? `Votre ville de résidence est ${completeNewAddress[0]}, ${completeNewAddress[1]}.` : ''}
                   </div>
                   <button className="modifyProfile__form__city__button" type="button" onClick={openModal}> Changer de ville </button>
                   <ModifyCity />
@@ -257,57 +255,45 @@ const ModifyProfile = ({
   );
 };
 
-ModifyProfile.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
-  setLoading: PropTypes.func.isRequired,
-  loadUserProfile: PropTypes.func.isRequired,
-  connectedUserData: PropTypes.arrayOf(
-    PropTypes.shape(
-      {
-        firstname: PropTypes.string.isRequired,
-        lastname: PropTypes.string.isRequired,
-        helper: PropTypes.bool.isRequired,
-        nickname: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        newPassword: PropTypes.string,
-        confirmedNewPassword: PropTypes.string,
-        cities: PropTypes.arrayOf(
-          PropTypes.shape(
-            {
-              name: PropTypes.string.isRequired,
-            },
-          ).isRequired,
-        ).isRequired,
-      },
-    ).isRequired,
-  ).isRequired,
-  changeField: PropTypes.func.isRequired,
-  changePasswordField: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
-  hobbiesList: PropTypes.arrayOf(
-    PropTypes.shape(
-      {
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-      },
-    ).isRequired,
-  ).isRequired,
-  loadHobbiesList: PropTypes.func.isRequired,
-  servicesList: PropTypes.arrayOf(
-    PropTypes.shape(
-      {
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-      },
-    ).isRequired,
-  ).isRequired,
-  loadServicesList: PropTypes.func.isRequired,
-  modifyProfile: PropTypes.func.isRequired,
-  isLoaded: PropTypes.bool.isRequired,
-  redirection: PropTypes.bool.isRequired,
-  isConnected: PropTypes.bool.isRequired,
-
-  // isSearchBarVisible: PropTypes.bool.isRequired,
-};
+// ModifyProfile.propTypes = {
+//   connectedUserData: PropTypes.objectOf(
+//     PropTypes.shape(
+//       {
+//         firstname: PropTypes.string.isRequired,
+//         lastname: PropTypes.string.isRequired,
+//         helper: PropTypes.bool.isRequired,
+//         nickname: PropTypes.string.isRequired,
+//         email: PropTypes.string.isRequired,
+//         biography: PropTypes.string.isRequired,
+//         cities: PropTypes.objectOf(
+//           PropTypes.shape(
+//             {
+//               name: PropTypes.string,
+//               country: PropTypes.objectOf(
+//                 PropTypes.shape(
+//                   {
+//                     frenchName: PropTypes.string,
+//                   },
+//                 ),
+//               ),
+//             },
+//           ),
+//         ).isRequired,
+//       },
+//     ).isRequired,
+//   ).isRequired,
+//   changeField: PropTypes.func.isRequired,
+//   newPassword: PropTypes.string.isRequired,
+//   confirmedNewPassword: PropTypes.string.isRequired,
+//   changePasswordField: PropTypes.func.isRequired,
+//   modifyProfile: PropTypes.func.isRequired,
+//   completeNewAddress: PropTypes.array.isRequired,
+//   isLoaded: PropTypes.bool.isRequired,
+//   loadHobbiesList: PropTypes.func.isRequired,
+//   loadServicesList: PropTypes.func.isRequired,
+//   openModal: PropTypes.func.isRequired,
+//   redirection: PropTypes.bool.isRequired,
+//   isConnected: PropTypes.bool.isRequired,
+// };
 
 export default ModifyProfile;

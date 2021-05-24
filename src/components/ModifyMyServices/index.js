@@ -13,7 +13,7 @@ const ModifyMyServices = ({
   selectedService,
   addSelectedService,
 }) => {
-  console.log(myServices);
+  // console.log(myServices);
   // console.log(myServicesArray);
 
   const onChange = (evt) => {
@@ -61,20 +61,20 @@ const ModifyMyServices = ({
   );
 };
 
-ModifyMyServices.propTypes = {
-  helper: PropTypes.bool.isRequired,
-  myServices: PropTypes.array.isRequired,
-  servicesList: PropTypes.arrayOf(
-    PropTypes.shape(
-      {
-        id: PropTypes.number.isRequired,
-        name: PropTypes.number.isRequired,
-      },
-    ),
-  ).isRequired,
-  saveSelectedService: PropTypes.func.isRequired,
-  selectedService: PropTypes.object.isRequired,
-  addSelectedService: PropTypes.func.isRequired,
-};
+// ModifyMyServices.propTypes = {
+//   helper: PropTypes.bool.isRequired,
+//   myServices: PropTypes.array.isRequired,
+//   servicesList: PropTypes.arrayOf(
+//     PropTypes.shape(
+//       {
+//         id: PropTypes.number.isRequired,
+//         name: PropTypes.number.isRequired,
+//       },
+//     ),
+//   ).isRequired,
+//   saveSelectedService: PropTypes.func.isRequired,
+//   selectedService: PropTypes.object.isRequired,
+//   addSelectedService: PropTypes.func.isRequired,
+// };
 
 export default ModifyMyServices;
