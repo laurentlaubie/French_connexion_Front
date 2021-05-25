@@ -35,6 +35,15 @@
       &--Laurent{
         background-image: url(src/assets/images/laurent.jpg);
       }
+
+      &--Thomas{
+        background-image: url(src/assets/images/thomas.jpeg);
+        background-position:65% 50%;
+      }
+
+      &--Tom{
+        background-image: url(src/assets/images/tom.jpg);
+      }
     
       img{
         object-fit: contain;
